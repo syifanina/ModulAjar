@@ -1,0 +1,211 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Title Box */
+.title-container {
+    border: 5px solid #1F59B1;
+    border-radius: 20px;
+    padding: 15px 30px;
+    text-align: center;
+    background-color: transparent;
+}
+
+.title-container h1 {
+    color: #ED4E53;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+/* Main Content: Left and Right Split */
+.main-content {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+/* Left Palette Container */
+.palette-area {
+    flex: 1.2;
+    background-color: #FDB85B;
+    border: 5px solid #1F59B1;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    min-height: 250px;
+}
+
+/* Draggable Items */
+.draggable-item {
+    background-color: transparent;
+    border: 3px solid black;
+    border-radius: 15px;
+    cursor: grab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.draggable-item:active {
+    cursor: grabbing;
+}
+
+.draggable-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    display: block;
+}
+
+/* Right Drop Zones */
+.drop-zones-area {
+    flex: 1.8;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.drop-zone-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-top: 15px;
+}
+
+.drop-zone-title {
+    font-family: 'Fredoka', 'Arial Black', sans-serif;
+    font-size: 2.5rem;
+    color: #ED4E53;
+    -webkit-text-stroke: 3px white;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.drop-zone {
+    width: 100%;
+    background-color: #FDB85B;
+    border: 5px solid #1F59B1;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 10px 10px 10px;
+    min-height: 300px;
+    gap: 10px;
+}
+
+/* Prevent squishing layout inside drop zones */
+.drop-zone .draggable-item {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+/* Feedback Results */
+.feedback-result {
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: center;
+    min-height: 1.5rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.feedback-result.correct {
+    color: #28a745;
+}
+
+.feedback-result.incorrect {
+    color: #dc3545;
+}
+
+/* Submit Button */
+.submit-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submit-btn {
+    background-color: #E4222E;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s;
+}
+
+.submit-btn:hover {
+    background-color: #c91b26;
+}
+
+.submit-btn:active {
+    transform: translateY(2px);
+}
+
+/* Responsive constraints */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .drop-zone {
+        min-height: 150px;
+    }
+
+    .palette-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .drop-zones-area {
+        margin-top: 20px;
+    }
+
+    .submit-container {
+        justify-content: center;
+    }
+}
