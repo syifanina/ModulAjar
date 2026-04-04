@@ -1,14 +1,10 @@
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-// 🔊 PENGATURAN VOLUME UTAMA
-// Ubah angka ini untuk membesarkan/mengecilkan volume. Contoh: 2.0 = 2x lebih keras. 0.5 = setengah suara.
-const MASTER_VOLUME = 1.5; 
-
 function playSound(type) {
     if (audioCtx.state === 'suspended') {
         audioCtx.resume();
     }
-    
+
     const gainNode = audioCtx.createGain();
     const dest = audioCtx.destination;
     gainNode.connect(dest);
@@ -17,8 +13,8 @@ function playSound(type) {
 
     if (type === 'click') {
         // Soft click sound
-        gainNode.gain.setValueAtTime(0.2 * MASTER_VOLUME, t);
-        gainNode.gain.exponentialRampToValueAtTime(0.01 * MASTER_VOLUME, t + 0.05);
+        gainNode.gain.setValueAtTime(0.2, t);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, t + 0.05);
 
         const osc = audioCtx.createOscillator();
         osc.type = 'sine';
@@ -27,20 +23,20 @@ function playSound(type) {
         osc.connect(gainNode);
         osc.start(t);
         osc.stop(t + 0.05);
-    } 
+    }
     else if (type === 'whoosh') {
         // Subtle whoosh noise for drag start
         gainNode.gain.setValueAtTime(0, t);
-        gainNode.gain.linearRampToValueAtTime(0.05 * MASTER_VOLUME, t + 0.1);
+        gainNode.gain.linearRampToValueAtTime(0.05, t + 0.1);
         gainNode.gain.linearRampToValueAtTime(0, t + 0.4);
 
-        const bufferSize = audioCtx.sampleRate * 0.4; 
+        const bufferSize = audioCtx.sampleRate * 0.4;
         const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
         const data = buffer.getChannelData(0);
         for (let i = 0; i < bufferSize; i++) {
             data[i] = Math.random() * 2 - 1;
         }
-        
+
         const noiseSource = audioCtx.createBufferSource();
         noiseSource.buffer = buffer;
 
@@ -49,15 +45,15 @@ function playSound(type) {
         filter.frequency.setValueAtTime(400, t);
         filter.frequency.linearRampToValueAtTime(1500, t + 0.2);
         filter.frequency.linearRampToValueAtTime(300, t + 0.4);
-        
+
         noiseSource.connect(filter);
         filter.connect(gainNode);
         noiseSource.start(t);
     }
     else if (type === 'drop') {
         // Soft drop "thwomp"
-        gainNode.gain.setValueAtTime(0.3 * MASTER_VOLUME, t);
-        gainNode.gain.exponentialRampToValueAtTime(0.01 * MASTER_VOLUME, t + 0.15);
+        gainNode.gain.setValueAtTime(0.3, t);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, t + 0.15);
 
         const osc = audioCtx.createOscillator();
         osc.type = 'sine';
@@ -69,7 +65,7 @@ function playSound(type) {
     }
     else if (type === 'chime') {
         // Positive chime: Arpeggio up C - E - G
-        gainNode.gain.setValueAtTime(0.15 * MASTER_VOLUME, t);
+        gainNode.gain.setValueAtTime(0.15, t);
         gainNode.gain.linearRampToValueAtTime(0, t + 0.8);
 
         [523.25, 659.25, 783.99].forEach((freq, idx) => {
@@ -83,9 +79,9 @@ function playSound(type) {
     }
     else if (type === 'error') {
         // Soft error: Low dull tone
-        gainNode.gain.setValueAtTime(0.15 * MASTER_VOLUME, t);
-        gainNode.gain.linearRampToValueAtTime(0.15 * MASTER_VOLUME, t + 0.15);
-        gainNode.gain.linearRampToValueAtTime(0.01 * MASTER_VOLUME, t + 0.3);
+        gainNode.gain.setValueAtTime(0.15, t);
+        gainNode.gain.linearRampToValueAtTime(0.15, t + 0.15);
+        gainNode.gain.linearRampToValueAtTime(0.01, t + 0.3);
 
         const osc1 = audioCtx.createOscillator();
         osc1.type = 'triangle';
@@ -108,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.draggable-item').forEach(item => {
         item.addEventListener('mousedown', () => playSound('click'));
         // Touch start for mobile responsiveness
-        item.addEventListener('touchstart', () => playSound('click'), {passive: true});
+        item.addEventListener('touchstart', () => playSound('click'), { passive: true });
     });
 });
 
@@ -119,7 +115,7 @@ function allowDrop(ev) {
 function drag(ev) {
     const targetId = ev.target.id || ev.target.closest('.draggable-item').id;
     ev.dataTransfer.setData("text", targetId);
-    
+
     playSound('whoosh'); // play subtle whoosh sound
 }
 
@@ -153,7 +149,6 @@ async function checkAnswers() {
         const resultEl = document.getElementById(results[i]);
         resultEl.textContent = "";
         resultEl.className = "feedback-result";
-        resultEl.style.color = "";
     }
 
     for (let i = 0; i < zones.length; i++) {
@@ -169,7 +164,6 @@ async function checkAnswers() {
         if (items.length === 1) {
             resultEl.innerHTML = "Belum berkelompok&#10060;"; // ❌
             resultEl.className = "feedback-result incorrect";
-            resultEl.style.color = "#dc3545"; // Merah
             playSound('error');
             // Tunda 1 detik untuk zona berikutnya (sequential display)
             await new Promise(resolve => setTimeout(resolve, 1000));
@@ -189,12 +183,10 @@ async function checkAnswers() {
         if (isSame) {
             resultEl.innerHTML = firstShape;
             resultEl.className = "feedback-result correct";
-            resultEl.style.color = "#28a745"; // Hijau
             playSound('chime');
         } else {
             resultEl.innerHTML = "Bukan sejenis&#10060;"; // ❌
             resultEl.className = "feedback-result incorrect";
-            resultEl.style.color = "#dc3545"; // Merah
             playSound('error');
         }
 
