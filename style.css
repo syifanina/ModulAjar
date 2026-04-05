@@ -13,7 +13,8 @@ body {
     width: 100vw;
     height: 100vh;
     margin: 0;
-    overflow: hidden; /* Mencegah scrollbar muncul di dalam Genially */
+    overflow: hidden;
+    /* Mencegah scrollbar muncul di dalam Genially */
 }
 
 .game-container {
@@ -144,7 +145,8 @@ body {
 
 /* Prevent squishing layout inside drop zones */
 .drop-zone .draggable-item {
-    width: 80%; /* Jika isi hanya 1 atau 2, dia berukuran besar (menumpuk atas bawah) */
+    width: 80%;
+    /* Jika isi hanya 1 atau 2, dia berukuran besar (menumpuk atas bawah) */
     margin: 5px auto;
 }
 
@@ -166,16 +168,20 @@ body {
 }
 
 .feedback-result.correct {
-    color: #28a745; /* Tulisan hijau */
+    color: #28a745;
+    /* Tulisan hijau */
     background-color: white;
-    border: 4px solid #28a745; /* Border hijau untuk jawaban benar */
+    border: 4px solid #28a745;
+    /* Border hijau untuk jawaban benar */
     padding: 5px 15px;
 }
 
 .feedback-result.incorrect {
-    color: #ED4E53; /* Tulisan merah */
+    color: #ED4E53;
+    /* Tulisan merah */
     background-color: white;
-    border: 4px solid #ED4E53; /* Border merah untuk jawaban salah */
+    border: 4px solid #ED4E53;
+    /* Border merah untuk jawaban salah */
     padding: 5px 15px;
 }
 
