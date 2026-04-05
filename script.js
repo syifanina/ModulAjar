@@ -181,7 +181,7 @@ async function checkAnswers() {
         }
 
         if (isSame) {
-            resultEl.innerHTML = firstShape;
+            resultEl.innerHTML = "Sejenis &#9989;"; // ✅
             resultEl.className = "feedback-result correct";
             playSound('chime');
         } else {
