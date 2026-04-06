@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Bangun Ruang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Quicksand:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <div class="main-content">
+            <div class="palette-area">
+                <div class="palette-grid" id="source-grid" aria-dropeffect="move" ondragover="allowDrop(event)"
+                    ondrop="drop(event)">
+                    <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="item1"
+                        data-shape="Kubus">
+                        <img src="img/rubik.png" alt="Rubik (Kubus)">
+                    </div>
+                    <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="item2"
+                        data-shape="Prisma Segitiga">
+                        <img src="img/tenda.png" alt="Tenda (Prisma Segitiga)">
+                    </div>
+                    <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="item3"
+                        data-shape="Balok">
+                        <img src="img/buku.png" alt="Rak Buku (Balok)">
+                    </div>
+                    <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="item4"
+                        data-shape="Balok">
+                        <img src="img/sepatu.png" alt="Rak Sepatu (Balok)">
+                    </div>
+                    <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="item5"
+                        data-shape="Kubus">
+                        <img src="img/dadu.png" alt="Dadu (Kubus)">
+                    </div>
+                    <div class="draggable-item" draggable="true" ondragstart="drag(event)" id="item6"
+                        data-shape="Prisma Segitiga">
+                        <img src="img/genteng.png" alt="Atap (Prisma Segitiga)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="drop-zones-area">
+                <div class="drop-zone-wrapper">
+                    <div class="drop-zone-title">A</div>
+                    <div class="drop-zone" id="zoneA" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+                    <div class="feedback-result" id="resultA"></div>
+                </div>
+
+                <div class="drop-zone-wrapper">
+                    <div class="drop-zone-title">B</div>
+                    <div class="drop-zone" id="zoneB" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+                    <div class="feedback-result" id="resultB"></div>
+                </div>
+
+                <div class="drop-zone-wrapper">
+                    <div class="drop-zone-title">C</div>
+                    <div class="drop-zone" id="zoneC" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+                    <div class="feedback-result" id="resultC"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="submit-container">
+            <button class="submit-btn" onclick="checkAnswers()">SUBMIT ></button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
