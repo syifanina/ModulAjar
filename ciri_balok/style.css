@@ -28,30 +28,32 @@ body {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 40px;
+    font-weight: bold;
     color: #ff6b6b;
     margin-bottom: 5px;
 }
 
 .subtitle {
-    font-size: 14px;
+    font-size: 30px;
+    font-weight: normal;
     color: #555;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .controls {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 
 button {
     background-color: #f0f0f0;
     color: #333;
     border: 2px solid transparent;
-    padding: 12px 15px;
-    font-size: 16px;
-    font-weight: 600;
+    padding: 15px 20px;
+    font-size: 30px;
+    font-weight: normal;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -71,15 +73,28 @@ button.active {
     box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
 }
 
+.music-btn {
+    margin-top: 15px;
+    width: 100%;
+    background-color: #ffeaa7;
+    color: #d63031;
+    border: 2px dashed #fab1a0;
+    text-align: center;
+}
+
+.music-btn:hover {
+    background-color: #fdcb6e;
+}
+
 .info-panel {
     margin-top: 20px;
     padding: 15px;
     background-color: #fff9e6;
     border-left: 5px solid #feca57;
     border-radius: 8px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #ff9f43;
+    font-size: 30px;
+    font-weight: normal;
+    color: #e74c3c; /* Diubah dari orange ke merah */
     animation: fadeIn 0.3s ease;
 }
 
@@ -107,10 +122,10 @@ button.active {
     position: absolute;
     background: #ff6b6b;
     color: white;
-    font-weight: bold;
-    font-size: 14px;
-    width: 26px;
-    height: 26px;
+    font-weight: normal;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -131,9 +146,10 @@ button.active {
     position: absolute;
     background: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 5px 10px;
+    padding: 10px 15px;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 30px;
+    font-weight: normal;
     pointer-events: none;
     z-index: 20;
     transition: opacity 0.2s;
