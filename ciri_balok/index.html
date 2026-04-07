@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran: Ciri-ciri Balok 3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Panel Interaksi UI -->
+    <div class="ui-container">
+        <h1>Balok 3D Interaktif</h1>
+        <p class="subtitle">Eksplorasi ciri-ciri balok dengan memutar dan klik!</p>
+        
+        <div class="controls">
+            <button id="btn-sisi" onclick="setMode('sisi')">Tampilkan Sisi (6)</button>
+            <button id="btn-rusuk" onclick="setMode('rusuk')">Tampilkan Rusuk (12)</button>
+            <button id="btn-sudut" onclick="setMode('sudut')">Tampilkan Titik Sudut (8)</button>
+            <button id="btn-volume" onclick="setMode('volume')">Tampilkan Volume (Isi)</button>
+        </div>
+
+        <div id="info-panel" class="info-panel hidden">
+            <!-- Teks akan diisi melalui JS -->
+        </div>
+    </div>
+
+    <!-- Container untuk label angka 2D -->
+    <div id="labels-container"></div>
+    <!-- Tooltip interaktif -->
+    <div id="tooltip" class="hidden"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
