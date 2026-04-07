@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran: Ciri-ciri Prisma Segitiga 3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Panel Interaksi UI -->
+    <div class="ui-container">
+        <h1>Prisma Segitiga Interaktif</h1>
+        <p class="subtitle">Eksplorasi ciri-ciri prisma segitiga!</p>
+
+        <div class="controls">
+            <button id="btn-sisi" onclick="setMode('sisi')">Tampilkan Sisi (5)</button>
+            <button id="btn-rusuk" onclick="setMode('rusuk')">Tampilkan Rusuk (9)</button>
+            <button id="btn-sudut" onclick="setMode('sudut')">Tampilkan Titik Sudut (6)</button>
+        </div>
+
+        <button id="btn-music" class="music-btn" onclick="toggleMusic()">🔇 Nyalakan Musik</button>
+    </div>
+
+    <!-- Panel Informasi (Dipindah ke kanan) -->
+    <div id="info-panel" class="info-panel hidden">
+        <!-- Teks akan diisi melalui JS -->
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="https://syifanina.github.io/genially_assets/musik_3d.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Watermark -->
+    <div class="watermark">Made by Syifa Sabrina</div>
+
+    <!-- Container untuk label angka 2D -->
+    <div id="labels-container"></div>
+    <!-- Tooltip interaktif -->
+    <div id="tooltip" class="hidden"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
