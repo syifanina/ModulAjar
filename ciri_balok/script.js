@@ -31,7 +31,7 @@ function init() {
     
     // 2. Setup Camera
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(3.5, 2.5, 4.5); // Diperdekat agar balok terlihat lebih besar
+    camera.position.set(4, 3, 5); // Digeser sedikit ke belakang agar posisinya pas di tengah layar
 
     // 3. Setup Renderer
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -93,7 +93,7 @@ function createObjects() {
     // 2. Rusuk (Edges)
     // ===========================
     edgesGroup = new THREE.Group();
-    const edgeRadius = 0.05;
+    const edgeRadius = 0.05; // Dikembalikan ke ukuran semula
     const edgeMat = new THREE.MeshPhongMaterial({ color: 0x222222 });
     const edgeHoverMat = new THREE.MeshPhongMaterial({ color: 0xffd32a, emissive: 0xffa502 });
 
@@ -143,7 +143,7 @@ function createObjects() {
     verticesGroup = new THREE.Group();
     
     // Create markers for vertices
-    const sphereGeo = new THREE.SphereGeometry(0.15, 16, 16);
+    const sphereGeo = new THREE.SphereGeometry(0.15, 16, 16); // Dikembalikan ke ukuran semula
     const sphereMat = new THREE.MeshPhongMaterial({ color: 0xff6b6b }); // Reddish
     const hoverMat = new THREE.MeshPhongMaterial({ color: 0xffd32a, emissive: 0xffa502 });
 
