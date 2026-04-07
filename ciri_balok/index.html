@@ -20,10 +20,17 @@
             <button id="btn-volume" onclick="setMode('volume')">Tampilkan Volume (Isi)</button>
         </div>
 
+        <button id="btn-music" class="music-btn" onclick="toggleMusic()">🔇 Nyalakan Musik</button>
+
         <div id="info-panel" class="info-panel hidden">
             <!-- Teks akan diisi melalui JS -->
         </div>
     </div>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="https://syifanina.github.io/genially_assets/musik_3d.mp3" type="audio/mpeg">
+    </audio>
 
     <!-- Container untuk label angka 2D -->
     <div id="labels-container"></div>
