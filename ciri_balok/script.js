@@ -269,6 +269,52 @@ function playBlipSound() {
     osc.stop(audioCtx.currentTime + 0.03);
 }
 
+function resetViewSmoothly(camX, camY, camZ) {
+    isIdle = false; // Hentikan auto-rotation sebentar
+    clearTimeout(idleTimer);
+    
+    const startCam = camera.position.clone();
+    const endCam = new THREE.Vector3(camX, camY, camZ);
+    
+    // Normalisasi rotasi agar tidak memutar berkali-kali
+    let curX = mainGroup.rotation.x % (Math.PI * 2);
+    let curY = mainGroup.rotation.y % (Math.PI * 2);
+    let curZ = mainGroup.rotation.z % (Math.PI * 2);
+    
+    // Cari rute rotasi terpendek ke 0
+    if (curX > Math.PI) curX -= Math.PI * 2;
+    if (curX < -Math.PI) curX += Math.PI * 2;
+    if (curY > Math.PI) curY -= Math.PI * 2;
+    if (curY < -Math.PI) curY += Math.PI * 2;
+    
+    const startRot = new THREE.Vector3(curX, curY, curZ);
+    const endRot = new THREE.Vector3(0, 0, 0);
+
+    let progress = 0;
+    function anim() {
+        progress += 0.04;
+        if (progress > 1) progress = 1;
+        
+        // Easing (easeOutCubic)
+        const ease = 1 - Math.pow(1 - progress, 3);
+        
+        camera.position.lerpVectors(startCam, endCam, ease);
+        mainGroup.rotation.set(
+            startRot.x * (1 - ease) + endRot.x * ease,
+            startRot.y * (1 - ease) + endRot.y * ease,
+            startRot.z * (1 - ease) + endRot.z * ease
+        );
+        controls.update();
+
+        if (progress < 1) {
+            requestAnimationFrame(anim);
+        } else {
+            resetIdleTimer(); // Lanjut putar perlahan kembali
+        }
+    }
+    anim();
+}
+
 function setMode(mode) {
     currentMode = mode;
     playClickSound();
@@ -293,11 +339,13 @@ function setMode(mode) {
     if (mode === 'sisi') {
         panel.textContent = "Balok memiliki 6 sisi berbentuk persegi panjang. Tiap sisi diberi warna berbeda agar mudah dilihat.";
         cuboidMesh.material.forEach(mat => mat.opacity = 0.9); 
+        resetViewSmoothly(0, 0, 6.5);
     } 
     else if (mode === 'rusuk') {
         panel.textContent = "Balok memiliki 12 rusuk (garis tepi).";
         cuboidMesh.material.forEach(mat => mat.opacity = 0.15);
         edgesGroup.visible = true;
+        resetViewSmoothly(0, 3, 6);
     } 
     else if (mode === 'sudut') {
         panel.textContent = "Balok memiliki 8 titik sudut (pertemuan 3 rusuk).";
@@ -305,6 +353,7 @@ function setMode(mode) {
         edgesGroup.visible = true;
         verticesGroup.visible = true;
         vertexLabels.forEach(lbl => lbl.element.classList.add('visible'));
+        resetViewSmoothly(4, 3, 5); // Tampilan isometrik ideal
     }
     else if (mode === 'volume') {
         panel.textContent = "Volume adalah isi ruangan. Balok ini (p=4, l=2, t=2) memuat tepat 16 kubus satuan!";
@@ -312,6 +361,7 @@ function setMode(mode) {
         edgesGroup.visible = true;
         volumeGroup.visible = true;
         playVolumeAnimation();
+        resetViewSmoothly(4, 3, 5); // Tampilan isometrik ideal
     }
 }
 
