@@ -8,6 +8,7 @@ let cuboidMaterial, cuboidMesh;
 let edgesGroup, edgesMesh;
 let verticesGroup;
 let vertexSpheres = [];
+let edgeTubes = [];
 let volumeGroup;
 let unitCubes = [];
 let volumeAnimTimer = null;
@@ -30,7 +31,7 @@ function init() {
     
     // 2. Setup Camera
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(5, 4, 6);
+    camera.position.set(3.5, 2.5, 4.5); // Diperdekat agar balok terlihat lebih besar
 
     // 3. Setup Renderer
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -91,17 +92,49 @@ function createObjects() {
     // ===========================
     // 2. Rusuk (Edges)
     // ===========================
-    const edgesGeometry = new THREE.EdgesGeometry(geometry);
-    const edgesMaterial = new THREE.LineBasicMaterial({ 
-        color: 0x222222, 
-        linewidth: 3 // Note: WebGL lines are mostly 1px wide depending on platform
-    });
-    edgesMesh = new THREE.LineSegments(edgesGeometry, edgesMaterial);
-    
-    // Grouping edge segments
     edgesGroup = new THREE.Group();
-    edgesGroup.add(edgesMesh);
-    edgesGroup.visible = false; // Hidden default
+    const edgeRadius = 0.05;
+    const edgeMat = new THREE.MeshPhongMaterial({ color: 0x222222 });
+    const edgeHoverMat = new THREE.MeshPhongMaterial({ color: 0xffd32a, emissive: 0xffa502 });
+
+    const geoX = new THREE.CylinderGeometry(edgeRadius, edgeRadius, W + edgeRadius*2, 8);
+    const geoY = new THREE.CylinderGeometry(edgeRadius, edgeRadius, H + edgeRadius*2, 8);
+    const geoZ = new THREE.CylinderGeometry(edgeRadius, edgeRadius, D + edgeRadius*2, 8);
+
+    edgeTubes = [];
+    let edgeCount = 1;
+
+    function addEdge(geo, x, y, z, rotX, rotZ) {
+        const mesh = new THREE.Mesh(geo, edgeMat.clone());
+        mesh.position.set(x, y, z);
+        mesh.rotation.set(rotX, 0, rotZ);
+        mesh.userData = { id: edgeCount++, originalMat: edgeMat, hoverMat: edgeHoverMat, type: 'rusuk' };
+        edgesGroup.add(mesh);
+        edgeTubes.push(mesh);
+    }
+
+    const rx = Math.PI / 2;
+    const rz = Math.PI / 2;
+
+    // 4 edges along X
+    addEdge(geoX, 0, H/2, D/2, 0, rz);
+    addEdge(geoX, 0, H/2, -D/2, 0, rz);
+    addEdge(geoX, 0, -H/2, D/2, 0, rz);
+    addEdge(geoX, 0, -H/2, -D/2, 0, rz);
+
+    // 4 edges along Y
+    addEdge(geoY, W/2, 0, D/2, 0, 0);
+    addEdge(geoY, W/2, 0, -D/2, 0, 0);
+    addEdge(geoY, -W/2, 0, D/2, 0, 0);
+    addEdge(geoY, -W/2, 0, -D/2, 0, 0);
+
+    // 4 edges along Z
+    addEdge(geoZ, W/2, H/2, 0, rx, 0);
+    addEdge(geoZ, W/2, -H/2, 0, rx, 0);
+    addEdge(geoZ, -W/2, H/2, 0, rx, 0);
+    addEdge(geoZ, -W/2, -H/2, 0, rx, 0);
+
+    edgesGroup.visible = false;
     mainGroup.add(edgesGroup);
     
     // ===========================
@@ -196,8 +229,49 @@ function createObjects() {
 }
 
 // Interaksi Logic
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playClickSound() {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.05);
+
+    gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+    
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.05);
+}
+
+function playBlipSound() {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(900, audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(700, audioCtx.currentTime + 0.03);
+
+    gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03);
+    
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.03);
+}
+
 function setMode(mode) {
     currentMode = mode;
+    playClickSound();
     
     // Update Button UI
     document.querySelectorAll('.controls button').forEach(btn => btn.classList.remove('active'));
@@ -250,60 +324,121 @@ function playVolumeAnimation() {
             return;
         }
         unitCubes[index].scale.set(1, 1, 1);
+        playBlipSound();
         index++;
     }, 150); // 150ms delay per cube
 }
 
-// Raycasting (Hover Effect pada Titik Sudut)
-let hoveredSphere = null;
+// Musik Background
+let isMusicPlaying = false;
+function toggleMusic() {
+    playClickSound();
+    const music = document.getElementById('bgMusic');
+    const btn = document.getElementById('btn-music');
+    
+    if (isMusicPlaying) {
+        music.pause();
+        isMusicPlaying = false;
+        btn.innerHTML = '🔇 Nyalakan Musik';
+    } else {
+        music.play();
+        isMusicPlaying = true;
+        btn.innerHTML = '🎵 Matikan Musik';
+    }
+}
+
+// Raycasting (Hover Effect)
+let hoveredObj = null;
+let hoveredFaceIndex = -1; // Specific for Sisi mode
+const sisiNames = ["Sisi Kanan", "Sisi Kiri", "Sisi Atas", "Sisi Bawah", "Sisi Depan", "Sisi Belakang"];
+
 function onMouseMove(event) {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    
+    raycastCheck(event);
+}
+
+window.addEventListener('click', () => {
+    if (hoveredObj) {
+        playClickSound(); // Tembakkan suara jika diklik object tersebut!
+    }
+});
+
+function raycastCheck(event) {
     const tooltip = document.getElementById('tooltip');
+    raycaster.setFromCamera(mouse, camera);
     
-    if (currentMode === 'sudut' && verticesGroup.visible) {
-        raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObjects(vertexSpheres);
+    let intersects = [];
+    if (currentMode === 'sudut') intersects = raycaster.intersectObjects(vertexSpheres);
+    else if (currentMode === 'rusuk') intersects = raycaster.intersectObjects(edgeTubes);
+    else if (currentMode === 'sisi') intersects = raycaster.intersectObject(cuboidMesh);
+
+    if (intersects.length > 0) {
+        const intersect = intersects[0];
+        const object = intersect.object;
         
-        if (intersects.length > 0) {
-            const object = intersects[0].object;
-            if (hoveredSphere !== object) {
-                // Reset old
-                if (hoveredSphere) {
-                    hoveredSphere.material = hoveredSphere.userData.originalMat;
-                    hoveredSphere.scale.set(1, 1, 1);
-                }
-                // Upgrade new
-                hoveredSphere = object;
-                hoveredSphere.material = hoveredSphere.userData.hoverMat;
-                hoveredSphere.scale.set(1.4, 1.4, 1.4);
-                document.body.style.cursor = 'pointer';
+        let shouldUpdateHover = false;
+        
+        if (currentMode === 'sisi') {
+            const materialIndex = intersect.face.materialIndex;
+            if (hoveredObj !== object || hoveredFaceIndex !== materialIndex) {
+                resetHover();
+                hoveredObj = object;
+                hoveredFaceIndex = materialIndex;
+                const mat = cuboidMesh.material[materialIndex];
+                mat.emissive.setHex(0x555555); // Highlight face
+                tooltip.textContent = sisiNames[materialIndex];
+                shouldUpdateHover = true;
+            } else {
+                shouldUpdateHover = true; // just update tooltip pos
             }
-            
-            tooltip.textContent = `Titik Sudut ${hoveredSphere.userData.id}`;
+        } 
+        else { // sudut or rusuk
+            if (hoveredObj !== object) {
+                resetHover();
+                hoveredObj = object;
+                hoveredObj.material = hoveredObj.userData.hoverMat;
+                if (currentMode === 'sudut') {
+                    hoveredObj.scale.set(1.4, 1.4, 1.4);
+                    tooltip.textContent = `Titik Sudut ${hoveredObj.userData.id}`;
+                } else { // rusuk
+                    hoveredObj.scale.set(1.15, 1, 1.15);
+                    tooltip.textContent = `Rusuk ${hoveredObj.userData.id}`;
+                }
+                shouldUpdateHover = true;
+            } else {
+                shouldUpdateHover = true;
+            }
+        }
+
+        if (shouldUpdateHover) {
+            document.body.style.cursor = 'pointer';
             tooltip.style.left = event.clientX + 'px';
             tooltip.style.top = event.clientY + 'px';
             tooltip.classList.remove('hidden');
 
-            // Set idle to false when actively interacting
             isIdle = false;
             clearTimeout(idleTimer);
             resetIdleTimer();
-
-        } else {
-            resetHover();
         }
+
     } else {
         resetHover();
     }
 }
 
 function resetHover() {
-    if (hoveredSphere) {
-        hoveredSphere.material = hoveredSphere.userData.originalMat;
-        hoveredSphere.scale.set(1, 1, 1);
-        hoveredSphere = null;
+    if (hoveredObj) {
+        if (currentMode === 'sisi') {
+            if (hoveredFaceIndex !== -1) {
+                cuboidMesh.material[hoveredFaceIndex].emissive.setHex(0x000000);
+            }
+        } else {
+            hoveredObj.material = hoveredObj.userData.originalMat;
+            hoveredObj.scale.set(1, 1, 1);
+        }
+        hoveredObj = null;
+        hoveredFaceIndex = -1;
         document.body.style.cursor = 'default';
         document.getElementById('tooltip').classList.add('hidden');
     }
