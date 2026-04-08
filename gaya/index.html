@@ -13,11 +13,38 @@
   <div class="ppt">
 
     <!-- ══════════════════════════════════
-         SLIDE 1 — COVER
+         SLIDE 1 — MUATAN IMTAQ
     ══════════════════════════════════ -->
     <div class="slide active" id="s1">
       <div class="bg"></div>
-      <!-- Decorative dark overlay for text readability -->
+      <div class="imtaq-overlay"></div>
+
+      <div class="imtaq-layout">
+        <div class="imtaq-badge">☪️ MUATAN IMTAQ</div>
+
+        <div class="imtaq-card">
+          <div class="imtaq-ornament top">❧</div>
+          <p class="imtaq-hadith">
+            "Mukmin yang kuat lebih baik dan lebih dicintai Allah daripada mukmin yang lemah,
+            namun pada keduanya ada kebaikan."
+          </p>
+          <div class="imtaq-source">(HR. Muslim)</div>
+          <div class="imtaq-ornament bot">❧</div>
+        </div>
+
+        <p class="imtaq-pesan">
+          💪 Sebagai siswa, kita perlu menjadi <strong>mukmin yang kuat</strong> — kuat ilmu, kuat fisik, dan kuat iman!
+        </p>
+
+        <button class="btn-wood" onclick="goTo(1)" style="margin-top:8px">Lanjut ▶</button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SLIDE 2 — COVER
+    ══════════════════════════════════ -->
+    <div class="slide" id="s2">
+      <div class="bg"></div>
       <div class="cover-overlay"></div>
 
       <div class="cover-layout">
@@ -31,15 +58,15 @@
           <div class="cover-guru-box">
             <span>👩‍🏫 Guru IPAS Kelas IV</span>
           </div>
-          <button class="btn-wood" onclick="goTo(1)">Mulai Belajar →</button>
+          <button class="btn-wood" onclick="goTo(2)">Mulai Belajar →</button>
         </div>
       </div>
     </div>
 
     <!-- ══════════════════════════════════
-         SLIDE 2 — PERTANYAAN PEMANTIK
+         SLIDE 3 — PERTANYAAN PEMANTIK
     ══════════════════════════════════ -->
-    <div class="slide" id="s2">
+    <div class="slide" id="s3">
       <div class="bg"></div>
       <div class="slide-inner">
         <div class="slide-header">
@@ -65,16 +92,16 @@
         <div class="think-box">💭 Pikirkan dulu jawabanmu sebelum lanjut!</div>
       </div>
       <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(0)">◀ Kembali</button>
-        <div class="dot-row" id="dots2"></div>
-        <button class="btn-nav" onclick="goTo(2)">Selanjutnya ▶</button>
+        <button class="btn-nav" onclick="goTo(1)">◀ Kembali</button>
+        <div class="dot-row"></div>
+        <button class="btn-nav" onclick="goTo(3)">Selanjutnya ▶</button>
       </div>
     </div>
 
     <!-- ══════════════════════════════════
-         SLIDE 3 — EKSPLORASI
+         SLIDE 4 — EKSPLORASI
     ══════════════════════════════════ -->
-    <div class="slide" id="s3">
+    <div class="slide" id="s4">
       <div class="bg"></div>
       <div class="slide-inner">
         <div class="slide-header">
@@ -102,16 +129,45 @@
         </div>
       </div>
       <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(1)">◀ Kembali</button>
-        <div class="dot-row" id="dots3"></div>
-        <button class="btn-nav" onclick="goTo(3)">Selanjutnya ▶</button>
+        <button class="btn-nav" onclick="goTo(2)">◀ Kembali</button>
+        <div class="dot-row"></div>
+        <button class="btn-nav" onclick="goTo(4)">Selanjutnya ▶</button>
       </div>
     </div>
 
     <!-- ══════════════════════════════════
-         SLIDE 4 — KONSEP GAYA
+         SLIDE 5 — DEFINISI GAYA (PERTENGAHAN)
     ══════════════════════════════════ -->
-    <div class="slide" id="s4">
+    <div class="slide" id="s5">
+      <div class="bg"></div>
+      <div class="definisi-layout">
+        <div class="definisi-badge">📖 Pengertian Gaya</div>
+
+        <div class="definisi-main-card">
+          <div class="definisi-icon">⚡</div>
+          <p class="definisi-main-text">
+            Gaya adalah <span class="hl">dorongan atau tarikan</span> yang dapat membuat benda
+            <span class="hl">bergerak</span>, <span class="hl">berhenti</span>, atau <span class="hl">berubah</span>.
+          </p>
+        </div>
+
+        <div class="definisi-pills">
+          <div class="def-pill" style="--dc:#fdcb6e;--dcs:#f39c12">🏃 Bergerak</div>
+          <div class="def-pill" style="--dc:#74b9ff;--dcs:#0984e3">🛑 Berhenti</div>
+          <div class="def-pill" style="--dc:#fd79a8;--dcs:#e84393">🔄 Berubah</div>
+        </div>
+      </div>
+      <div class="nav-bar">
+        <button class="btn-nav" onclick="goTo(3)">◀ Kembali</button>
+        <div class="dot-row"></div>
+        <button class="btn-nav" onclick="goTo(5)">Selanjutnya ▶</button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════
+         SLIDE 6 — KONSEP GAYA
+    ══════════════════════════════════ -->
+    <div class="slide" id="s6">
       <div class="bg"></div>
       <div class="slide-inner">
         <div class="slide-header">
@@ -148,16 +204,16 @@
         </div>
       </div>
       <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(2)">◀ Kembali</button>
-        <div class="dot-row" id="dots4"></div>
-        <button class="btn-nav" onclick="goTo(4)">Selanjutnya ▶</button>
+        <button class="btn-nav" onclick="goTo(4)">◀ Kembali</button>
+        <div class="dot-row"></div>
+        <button class="btn-nav" onclick="goTo(6)">Selanjutnya ▶</button>
       </div>
     </div>
 
     <!-- ══════════════════════════════════
-         SLIDE 5 — PENGARUH GAYA
+         SLIDE 7 — PENGARUH GAYA
     ══════════════════════════════════ -->
-    <div class="slide" id="s5">
+    <div class="slide" id="s7">
       <div class="bg"></div>
       <div class="slide-inner">
         <div class="slide-header">
@@ -191,16 +247,16 @@
         </div>
       </div>
       <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(3)">◀ Kembali</button>
-        <div class="dot-row" id="dots5"></div>
-        <button class="btn-nav" onclick="goTo(5)">Selanjutnya ▶</button>
+        <button class="btn-nav" onclick="goTo(5)">◀ Kembali</button>
+        <div class="dot-row"></div>
+        <button class="btn-nav" onclick="goTo(7)">Selanjutnya ▶</button>
       </div>
     </div>
 
     <!-- ══════════════════════════════════
-         SLIDE 6 — MACAM-MACAM GAYA
+         SLIDE 8 — MACAM-MACAM GAYA
     ══════════════════════════════════ -->
-    <div class="slide" id="s6">
+    <div class="slide" id="s8">
       <div class="bg"></div>
       <div class="slide-inner">
         <div class="slide-header">
@@ -232,16 +288,16 @@
         </div>
       </div>
       <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(4)">◀ Kembali</button>
-        <div class="dot-row" id="dots6"></div>
-        <button class="btn-nav" onclick="goTo(6)">Selanjutnya ▶</button>
+        <button class="btn-nav" onclick="goTo(6)">◀ Kembali</button>
+        <div class="dot-row"></div>
+        <button class="btn-nav" onclick="goTo(8)">Selanjutnya ▶</button>
       </div>
     </div>
 
     <!-- ══════════════════════════════════
-         SLIDE 7 — CONTOH MACAM GAYA
+         SLIDE 9 — CONTOH MACAM GAYA
     ══════════════════════════════════ -->
-    <div class="slide" id="s7">
+    <div class="slide" id="s9">
       <div class="bg"></div>
       <div class="slide-inner">
         <div class="slide-header">
@@ -281,15 +337,15 @@
         </div>
       </div>
       <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(5)">◀ Kembali</button>
-        <div class="dot-row" id="dots7"></div>
+        <button class="btn-nav" onclick="goTo(7)">◀ Kembali</button>
+        <div class="dot-row"></div>
         <button class="btn-nav btn-finish" onclick="goTo(0)">🔄 Ulangi</button>
       </div>
     </div>
 
   </div><!-- /ppt -->
 
-  <div class="slide-counter" id="counter">1 / 7</div>
+  <div class="slide-counter" id="counter">1 / 9</div>
 </div><!-- /ppt-outer -->
 
 <script src="script.js"></script>
