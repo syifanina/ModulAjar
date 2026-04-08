@@ -11,6 +11,7 @@ body {
   min-height: 100vh;
   overflow: hidden;
   font-family: 'Nunito', sans-serif;
+  font-size: 30px;
 }
 
 /* ═══════════════════════════════════════
@@ -68,7 +69,6 @@ body {
 .cover-overlay {
   position: absolute;
   inset: 0;
-  /* Overlay starts earlier so the right text panel is always fully visible */
   background: linear-gradient(90deg, rgba(255,248,220,0) 30%, rgba(255,248,220,0.96) 48%);
   z-index: 1;
 }
@@ -82,7 +82,6 @@ body {
   width: 100%;
 }
 
-/* Image takes only 45% of width so text panel always fits */
 .cover-left {
   flex: 0 0 45%;
   display: flex;
@@ -103,7 +102,6 @@ body {
   50% { transform: translateY(-10px); }
 }
 
-/* Text panel takes the remaining 55% */
 .cover-right {
   flex: 0 0 55%;
   display: flex;
@@ -119,7 +117,7 @@ body {
   background: #c8860a;
   color: #fff8dc;
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(0.7rem, 1.6vw, 1rem);
+  font-size: 18px;
   padding: 4px 18px;
   border-radius: 30px;
   width: fit-content;
@@ -128,14 +126,14 @@ body {
 
 .cover-title {
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-size: 50px;
   color: #6d4c00;
   line-height: 1.1;
   text-shadow: 2px 2px 0 rgba(255,255,255,0.5);
 }
 
 .cover-sub {
-  font-size: clamp(0.7rem, 1.5vw, 0.95rem);
+  font-size: 20px;
   color: #555;
   font-weight: 700;
 }
@@ -145,7 +143,7 @@ body {
   border-left: 4px solid #c8860a;
   padding: 6px 12px;
   border-radius: 0 8px 8px 0;
-  font-size: clamp(0.65rem, 1.4vw, 0.9rem);
+  font-size: 20px;
   font-weight: 700;
   color: #6d4c00;
 }
@@ -159,9 +157,9 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: clamp(12px, 2vw, 22px) clamp(16px, 3vw, 36px);
-  padding-bottom: 60px;
-  gap: clamp(8px, 1.5vw, 16px);
+  padding: 18px 30px;
+  padding-bottom: 64px;
+  gap: 12px;
 }
 
 /* Header area */
@@ -174,7 +172,7 @@ body {
 .chip {
   display: inline-block;
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(0.65rem, 1.4vw, 0.9rem);
+  font-size: 18px;
   padding: 3px 16px;
   border-radius: 30px;
   width: fit-content;
@@ -187,7 +185,7 @@ body {
 
 .slide-title {
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(1.2rem, 3.2vw, 2.2rem);
+  font-size: 50px;
   color: #5a3a00;
   text-shadow: 1px 1px 0 rgba(255,255,255,0.6);
 }
@@ -197,7 +195,7 @@ body {
 ═══════════════════════════════════════ */
 .pemantik-grid {
   display: flex;
-  gap: clamp(8px, 2vw, 16px);
+  gap: 14px;
   flex: 1;
 }
 
@@ -217,13 +215,13 @@ body {
 
 .pemantik-card img {
   width: 100%;
-  height: clamp(80px, 14vw, 130px);
+  height: 120px;
   object-fit: contain;
   border-radius: 10px;
 }
 
 .pemantik-card p {
-  font-size: clamp(0.65rem, 1.4vw, 0.9rem);
+  font-size: 22px;
   text-align: center;
   color: #444;
   line-height: 1.4;
@@ -232,7 +230,7 @@ body {
 .think-box {
   background: linear-gradient(90deg, #fdcb6e, #f39c12);
   color: #663c00;
-  font-size: clamp(0.65rem, 1.4vw, 0.88rem);
+  font-size: 22px;
   font-weight: 700;
   padding: 8px 18px;
   border-radius: 12px;
@@ -248,14 +246,14 @@ body {
   border-left: 5px solid #00b894;
   padding: 8px 16px;
   border-radius: 0 12px 12px 0;
-  font-size: clamp(0.68rem, 1.5vw, 0.92rem);
+  font-size: 24px;
   color: #333;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
 .eksplorasi-grid {
   display: flex;
-  gap: clamp(8px, 2vw, 16px);
+  gap: 14px;
   flex: 1;
 }
 
@@ -274,13 +272,13 @@ body {
 
 .exp-card img {
   width: 100%;
-  height: clamp(80px, 14vw, 140px);
+  height: 130px;
   object-fit: contain;
 }
 
 .exp-label {
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(0.75rem, 1.6vw, 1rem);
+  font-size: 24px;
   color: #2d6a4f;
   text-align: center;
   background: rgba(0,184,148,0.15);
@@ -294,7 +292,7 @@ body {
 ═══════════════════════════════════════ */
 .konsep-layout {
   display: flex;
-  gap: clamp(10px, 2vw, 20px);
+  gap: 16px;
   flex: 1;
   align-items: center;
 }
@@ -311,7 +309,7 @@ body {
   border-left: 6px solid #0984e3;
   padding: 12px 16px;
   border-radius: 0 14px 14px 0;
-  font-size: clamp(0.75rem, 1.7vw, 1.05rem);
+  font-size: 24px;
   line-height: 1.6;
   color: #333;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
@@ -319,7 +317,7 @@ body {
 
 .contoh-title {
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  font-size: 26px;
   color: #5a3a00;
 }
 
@@ -336,12 +334,12 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  font-size: 24px;
   font-weight: 700;
   color: #444;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
-.contoh-icon { font-size: 1.3em; }
+.contoh-icon { font-size: 1.2em; }
 
 .konsep-img-wrap {
   flex: 1;
@@ -387,7 +385,7 @@ body {
   align-items: center;
   gap: 10px;
   padding: 12px 16px;
-  font-size: clamp(0.8rem, 1.7vw, 1.05rem);
+  font-size: 26px;
   font-weight: 900;
   color: #333;
   box-shadow: 0 4px 10px rgba(0,0,0,0.12);
@@ -395,7 +393,7 @@ body {
 }
 .pengaruh-card:hover { transform: scale(1.04); }
 
-.p-icon { font-size: clamp(1.2rem, 3vw, 2rem); }
+.p-icon { font-size: 2rem; }
 
 .pengaruh-img {
   flex: 1;
@@ -419,7 +417,7 @@ body {
 .jenis-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(8px, 1.5vw, 14px);
+  gap: 12px;
   flex: 1;
 }
 
@@ -440,19 +438,19 @@ body {
 .jenis-card:hover { transform: translateY(-5px) scale(1.03); }
 
 .jenis-card img {
-  height: clamp(60px, 10vw, 100px);
+  height: 80px;
   width: auto;
   object-fit: contain;
 }
 
 .jenis-name {
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(0.75rem, 1.6vw, 1rem);
+  font-size: 22px;
   color: #5a3a00;
 }
 
 .jenis-sub {
-  font-size: clamp(0.6rem, 1.2vw, 0.78rem);
+  font-size: 18px;
   color: #777;
   font-weight: 700;
 }
@@ -483,7 +481,7 @@ body {
   background: linear-gradient(90deg, #c8860a, #8b5a00);
   color: #fff8dc;
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(0.75rem, 1.6vw, 1rem);
+  font-size: 26px;
   border-radius: 12px 12px 0 0;
 }
 .ct-head div { flex: 1; }
@@ -494,18 +492,18 @@ body {
   align-items: center;
   gap: 8px;
   font-weight: 900;
-  font-size: clamp(0.65rem, 1.4vw, 0.88rem);
+  font-size: 24px;
   color: #5a3a00;
 }
 .ct-jenis img {
-  height: clamp(20px, 3vw, 32px);
+  height: 30px;
   width: auto;
   object-fit: contain;
 }
 
 .ct-contoh {
   flex: 1;
-  font-size: clamp(0.65rem, 1.4vw, 0.88rem);
+  font-size: 24px;
   color: #444;
   font-weight: 700;
 }
@@ -515,7 +513,7 @@ body {
   color: #fff;
   padding: 8px 18px;
   border-radius: 12px;
-  font-size: clamp(0.65rem, 1.4vw, 0.88rem);
+  font-size: 24px;
   font-weight: 700;
   box-shadow: 0 4px 0 #4a3aa8;
   text-align: center;
@@ -537,8 +535,8 @@ body {
 
 .btn-nav, .btn-wood, .btn-finish {
   font-family: 'Fredoka One', cursive;
-  font-size: clamp(0.7rem, 1.6vw, 1rem);
-  padding: 6px 22px;
+  font-size: 22px;
+  padding: 6px 24px;
   border: none;
   border-radius: 30px;
   cursor: pointer;
@@ -577,9 +575,170 @@ body {
   left: 50%;
   transform: translateX(-50%);
   color: rgba(255,255,255,0.5);
-  font-size: 0.65rem;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: 1px;
   pointer-events: none;
   z-index: 20;
 }
+
+/* ═══════════════════════════════════════
+   SLIDE IMTAQ
+═══════════════════════════════════════ */
+.imtaq-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a472a 0%, #2d6a4f 40%, #1b4332 100%);
+  z-index: 1;
+}
+
+.imtaq-layout {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 4% 8%;
+}
+
+.imtaq-badge {
+  font-family: 'Fredoka One', cursive;
+  font-size: 30px;
+  background: linear-gradient(90deg, #d4a017, #f5c842);
+  color: #1a2340;
+  padding: 6px 28px;
+  border-radius: 30px;
+  box-shadow: 0 4px 0 #8b6914, 0 0 20px rgba(212,160,23,0.4);
+  letter-spacing: 1px;
+}
+
+.imtaq-card {
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(212,160,23,0.5);
+  border-radius: 20px;
+  padding: 24px 40px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+  max-width: 820px;
+  width: 100%;
+}
+
+.imtaq-ornament {
+  font-size: 28px;
+  color: #d4a017;
+  opacity: 0.7;
+}
+.imtaq-ornament.top { margin-bottom: 8px; }
+.imtaq-ornament.bot { margin-top: 8px; }
+
+.imtaq-hadith {
+  font-family: 'Nunito', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff8dc;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.imtaq-source {
+  font-size: 22px;
+  color: #d4a017;
+  font-weight: 900;
+  margin-top: 6px;
+  letter-spacing: 0.5px;
+}
+
+.imtaq-pesan {
+  font-size: 22px;
+  color: #b7e4c7;
+  text-align: center;
+  font-weight: 700;
+  max-width: 700px;
+}
+.imtaq-pesan strong { color: #f5c842; }
+
+/* ═══════════════════════════════════════
+   SLIDE DEFINISI GAYA (Pertengahan)
+═══════════════════════════════════════ */
+.definisi-layout {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 5% 8%;
+}
+
+.definisi-badge {
+  font-family: 'Fredoka One', cursive;
+  font-size: 30px;
+  background: linear-gradient(90deg, #0984e3, #6c5ce7);
+  color: #fff;
+  padding: 6px 28px;
+  border-radius: 30px;
+  box-shadow: 0 4px 0 #054a8a;
+  letter-spacing: 0.5px;
+}
+
+.definisi-main-card {
+  background: rgba(255,248,220,0.95);
+  border-radius: 24px;
+  padding: 30px 48px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.18), 0 0 0 4px #c8860a;
+  max-width: 860px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.definisi-icon {
+  font-size: 3.5rem;
+  animation: pulseIcon 2s ease-in-out infinite;
+}
+@keyframes pulseIcon {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.definisi-main-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  color: #3d2800;
+  line-height: 1.65;
+}
+
+.definisi-main-text .hl {
+  color: #c8860a;
+  background: linear-gradient(180deg, transparent 50%, rgba(200,134,10,0.2) 50%);
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.definisi-pills {
+  display: flex;
+  gap: 14px;
+}
+
+.def-pill {
+  background: var(--dc, #fdcb6e);
+  border-bottom: 4px solid var(--dcs, #f39c12);
+  font-family: 'Fredoka One', cursive;
+  font-size: 26px;
+  color: #333;
+  padding: 8px 24px;
+  border-radius: 30px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+  transition: transform 0.2s;
+}
+.def-pill:hover { transform: translateY(-3px); }
