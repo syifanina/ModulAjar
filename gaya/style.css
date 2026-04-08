@@ -1,0 +1,585 @@
+/* ═══════════════════════════════════════
+   RESET & GLOBAL
+═══════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #1a2340;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ═══════════════════════════════════════
+   PPT WRAPPER — 16:9
+═══════════════════════════════════════ */
+.ppt-outer {
+  width: min(100vw, calc(100vh * 16 / 9));
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+.ppt {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.65);
+}
+
+/* ═══════════════════════════════════════
+   SLIDE BASE
+═══════════════════════════════════════ */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(70px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+.slide.exit {
+  opacity: 0;
+  transform: translateX(-70px);
+  visibility: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background: url('bg.png') center / cover no-repeat;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════
+   SLIDE 1 — COVER
+═══════════════════════════════════════ */
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  /* Overlay starts earlier so the right text panel is always fully visible */
+  background: linear-gradient(90deg, rgba(255,248,220,0) 30%, rgba(255,248,220,0.96) 48%);
+  z-index: 1;
+}
+
+.cover-layout {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+}
+
+/* Image takes only 45% of width so text panel always fits */
+.cover-left {
+  flex: 0 0 45%;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 2%;
+  overflow: hidden;
+}
+
+.cover-img {
+  width: 100%;
+  max-height: 88%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+  animation: floatChar 4s ease-in-out infinite;
+}
+@keyframes floatChar {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Text panel takes the remaining 55% */
+.cover-right {
+  flex: 0 0 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4% 5% 8% 3%;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.label-pill {
+  display: inline-block;
+  background: #c8860a;
+  color: #fff8dc;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.7rem, 1.6vw, 1rem);
+  padding: 4px 18px;
+  border-radius: 30px;
+  width: fit-content;
+  box-shadow: 0 3px 0 #8b5a00;
+}
+
+.cover-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  color: #6d4c00;
+  line-height: 1.1;
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.5);
+}
+
+.cover-sub {
+  font-size: clamp(0.7rem, 1.5vw, 0.95rem);
+  color: #555;
+  font-weight: 700;
+}
+
+.cover-guru-box {
+  background: rgba(200,134,10,0.12);
+  border-left: 4px solid #c8860a;
+  padding: 6px 12px;
+  border-radius: 0 8px 8px 0;
+  font-size: clamp(0.65rem, 1.4vw, 0.9rem);
+  font-weight: 700;
+  color: #6d4c00;
+}
+
+/* ═══════════════════════════════════════
+   SLIDE INNER LAYOUT (slides 2-7)
+═══════════════════════════════════════ */
+.slide-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(12px, 2vw, 22px) clamp(16px, 3vw, 36px);
+  padding-bottom: 60px;
+  gap: clamp(8px, 1.5vw, 16px);
+}
+
+/* Header area */
+.slide-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.chip {
+  display: inline-block;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.65rem, 1.4vw, 0.9rem);
+  padding: 3px 16px;
+  border-radius: 30px;
+  width: fit-content;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.15);
+}
+.chip-orange { background: #e17055; color: #fff; }
+.chip-green  { background: #00b894; color: #fff; }
+.chip-blue   { background: #0984e3; color: #fff; }
+.chip-purple { background: #6c5ce7; color: #fff; }
+
+.slide-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.2rem, 3.2vw, 2.2rem);
+  color: #5a3a00;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.6);
+}
+
+/* ═══════════════════════════════════════
+   SLIDE 2 — PEMANTIK
+═══════════════════════════════════════ */
+.pemantik-grid {
+  display: flex;
+  gap: clamp(8px, 2vw, 16px);
+  flex: 1;
+}
+
+.pemantik-card {
+  flex: 1;
+  background: rgba(255,248,220,0.9);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12), 0 0 0 3px #c8860a;
+  transition: transform 0.2s;
+}
+.pemantik-card:hover { transform: translateY(-4px); }
+
+.pemantik-card img {
+  width: 100%;
+  height: clamp(80px, 14vw, 130px);
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.pemantik-card p {
+  font-size: clamp(0.65rem, 1.4vw, 0.9rem);
+  text-align: center;
+  color: #444;
+  line-height: 1.4;
+}
+
+.think-box {
+  background: linear-gradient(90deg, #fdcb6e, #f39c12);
+  color: #663c00;
+  font-size: clamp(0.65rem, 1.4vw, 0.88rem);
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 3px 0 #c0840a;
+}
+
+/* ═══════════════════════════════════════
+   SLIDE 3 — EKSPLORASI
+═══════════════════════════════════════ */
+.instruksi-box {
+  background: rgba(255,248,220,0.9);
+  border-left: 5px solid #00b894;
+  padding: 8px 16px;
+  border-radius: 0 12px 12px 0;
+  font-size: clamp(0.68rem, 1.5vw, 0.92rem);
+  color: #333;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.eksplorasi-grid {
+  display: flex;
+  gap: clamp(8px, 2vw, 16px);
+  flex: 1;
+}
+
+.exp-card {
+  flex: 1;
+  background: rgba(255,248,220,0.9);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12), 0 0 0 3px #00b894;
+  gap: 8px;
+}
+
+.exp-card img {
+  width: 100%;
+  height: clamp(80px, 14vw, 140px);
+  object-fit: contain;
+}
+
+.exp-label {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.75rem, 1.6vw, 1rem);
+  color: #2d6a4f;
+  text-align: center;
+  background: rgba(0,184,148,0.15);
+  padding: 4px 14px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+/* ═══════════════════════════════════════
+   SLIDE 4 — KONSEP
+═══════════════════════════════════════ */
+.konsep-layout {
+  display: flex;
+  gap: clamp(10px, 2vw, 20px);
+  flex: 1;
+  align-items: center;
+}
+
+.konsep-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.definisi-box {
+  background: rgba(255,248,220,0.95);
+  border-left: 6px solid #0984e3;
+  padding: 12px 16px;
+  border-radius: 0 14px 14px 0;
+  font-size: clamp(0.75rem, 1.7vw, 1.05rem);
+  line-height: 1.6;
+  color: #333;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.contoh-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  color: #5a3a00;
+}
+
+.contoh-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contoh-item {
+  background: rgba(255,248,220,0.9);
+  padding: 7px 14px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+  font-weight: 700;
+  color: #444;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.contoh-icon { font-size: 1.3em; }
+
+.konsep-img-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.konsep-img-wrap img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+  border-radius: 14px;
+  background: rgba(255,255,255,0.7);
+  padding: 8px;
+}
+
+/* ═══════════════════════════════════════
+   SLIDE 5 — PENGARUH GAYA
+═══════════════════════════════════════ */
+.pengaruh-layout {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+  align-items: center;
+}
+
+.pengaruh-cards {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.pengaruh-card {
+  background: var(--c, #fdcb6e);
+  border-bottom: 4px solid var(--cs, #f39c12);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  font-size: clamp(0.8rem, 1.7vw, 1.05rem);
+  font-weight: 900;
+  color: #333;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  transition: transform 0.2s;
+}
+.pengaruh-card:hover { transform: scale(1.04); }
+
+.p-icon { font-size: clamp(1.2rem, 3vw, 2rem); }
+
+.pengaruh-img {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+.pengaruh-img img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.7);
+  padding: 8px;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15));
+}
+
+/* ═══════════════════════════════════════
+   SLIDE 6 — JENIS GAYA
+═══════════════════════════════════════ */
+.jenis-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(8px, 1.5vw, 14px);
+  flex: 1;
+}
+
+.jenis-card {
+  background: rgba(255,248,220,0.92);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12), 0 0 0 3px #c8860a;
+  text-align: center;
+  transition: transform 0.2s;
+  cursor: default;
+}
+.jenis-card:hover { transform: translateY(-5px) scale(1.03); }
+
+.jenis-card img {
+  height: clamp(60px, 10vw, 100px);
+  width: auto;
+  object-fit: contain;
+}
+
+.jenis-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.75rem, 1.6vw, 1rem);
+  color: #5a3a00;
+}
+
+.jenis-sub {
+  font-size: clamp(0.6rem, 1.2vw, 0.78rem);
+  color: #777;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════
+   SLIDE 7 — CONTOH GAYA (Tabel)
+═══════════════════════════════════════ */
+.contoh-tabel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ct-row {
+  display: flex;
+  gap: 10px;
+  background: rgba(255,248,220,0.88);
+  border-radius: 12px;
+  padding: 6px 14px;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.18s;
+}
+.ct-row:hover { transform: translateX(6px); }
+
+.ct-row.ct-head {
+  background: linear-gradient(90deg, #c8860a, #8b5a00);
+  color: #fff8dc;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.75rem, 1.6vw, 1rem);
+  border-radius: 12px 12px 0 0;
+}
+.ct-head div { flex: 1; }
+
+.ct-jenis {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 900;
+  font-size: clamp(0.65rem, 1.4vw, 0.88rem);
+  color: #5a3a00;
+}
+.ct-jenis img {
+  height: clamp(20px, 3vw, 32px);
+  width: auto;
+  object-fit: contain;
+}
+
+.ct-contoh {
+  flex: 1;
+  font-size: clamp(0.65rem, 1.4vw, 0.88rem);
+  color: #444;
+  font-weight: 700;
+}
+
+.tantangan-box {
+  background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 12px;
+  font-size: clamp(0.65rem, 1.4vw, 0.88rem);
+  font-weight: 700;
+  box-shadow: 0 4px 0 #4a3aa8;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════
+   NAVIGATION BAR
+═══════════════════════════════════════ */
+.nav-bar {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  right: 20px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-nav, .btn-wood, .btn-finish {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.7rem, 1.6vw, 1rem);
+  padding: 6px 22px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background: linear-gradient(180deg, #c8860a 0%, #8b5a00 100%);
+  color: #fff8dc;
+  box-shadow: 0 4px 0 #5a3a00;
+  transition: all 0.15s;
+  letter-spacing: 0.3px;
+}
+.btn-nav:hover, .btn-wood:hover, .btn-finish:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #5a3a00;
+}
+.btn-nav:active, .btn-wood:active, .btn-finish:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #5a3a00;
+}
+
+.btn-finish {
+  background: linear-gradient(180deg, #6c5ce7, #4a3aa8);
+  box-shadow: 0 4px 0 #2d1f80;
+}
+.btn-finish:hover { box-shadow: 0 6px 0 #2d1f80; }
+
+/* Dot indicator */
+.dot-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* Slide Counter */
+.slide-counter {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  pointer-events: none;
+  z-index: 20;
+}
