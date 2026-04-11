@@ -1,353 +1,280 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Macam-Macam Gaya – IPAS Kelas IV SD</title>
+  <title>Look and Write Quiz</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@600;700;900&display=swap" rel="stylesheet">
 </head>
+
 <body>
-
-<div class="ppt-outer">
-  <div class="ppt">
-
-    <!-- ══════════════════════════════════
-         SLIDE 1 — MUATAN IMTAQ
-    ══════════════════════════════════ -->
-    <div class="slide active" id="s1">
-      <div class="bg"></div>
-      <div class="imtaq-overlay"></div>
-
-      <div class="imtaq-layout">
-        <div class="imtaq-badge">☪️ MUATAN IMTAQ</div>
-
-        <div class="imtaq-card">
-          <div class="imtaq-ornament top">❧</div>
-          <p class="imtaq-hadith">
-            "Mukmin yang kuat lebih baik dan lebih dicintai Allah daripada mukmin yang lemah,
-            namun pada keduanya ada kebaikan."
-          </p>
-          <div class="imtaq-source">(HR. Muslim)</div>
-          <div class="imtaq-ornament bot">❧</div>
-        </div>
-
-        <p class="imtaq-pesan">
-          💪 Sebagai siswa, kita perlu menjadi <strong>mukmin yang kuat</strong> — kuat ilmu, kuat fisik, dan kuat iman!
-        </p>
-
-        <button class="btn-wood" onclick="goTo(1)" style="margin-top:8px">Lanjut ▶</button>
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════
-         SLIDE 2 — COVER
-    ══════════════════════════════════ -->
-    <div class="slide" id="s2">
-      <div class="bg"></div>
-      <div class="cover-overlay"></div>
-
-      <div class="cover-layout">
-        <div class="cover-left">
-          <img src="cover_gaya.png" class="cover-img" alt="Anak menendang bola dan menarik tas">
-        </div>
-        <div class="cover-right">
-          <div class="label-pill">IPAS · Kelas IV</div>
-          <h1 class="cover-title">Macam-Macam<br>Gaya</h1>
-          <p class="cover-sub">Media Pembelajaran Interaktif</p>
-          <div class="cover-guru-box">
-            <span>👩‍🏫 Guru IPAS Kelas IV</span>
+  <div class="page">
+    <!-- EXAMPLE -->
+    <div class="example-row">
+      <div class="img-card">
+        <div class="number-badge example-badge">EXAMPLE</div>
+        <div class="img-box example-img">
+          <div class="img-placeholder">
+            <img src="assets/ear.png" alt="ear">
           </div>
-          <button class="btn-wood" onclick="goTo(2)">Mulai Belajar →</button>
+        </div>
+      </div>
+      <div class="answer-area">
+        <div class="jumble-word">A R E</div>
+        <div class="input-container example-container">
+          <div class="input-inner">
+            <div class="example-text">Ear</div>
+          </div>
+          <img src="assets/pencil.svg" class="pencil-icon" alt="pencil">
         </div>
       </div>
     </div>
 
-    <!-- ══════════════════════════════════
-         SLIDE 3 — PERTANYAAN PEMANTIK
-    ══════════════════════════════════ -->
-    <div class="slide" id="s3">
-      <div class="bg"></div>
-      <div class="slide-inner">
-        <div class="slide-header">
-          <div class="chip chip-orange">💡 Pertanyaan Pemantik</div>
-          <h2 class="slide-title">Apa yang kamu pikirkan?</h2>
-        </div>
+    <!-- QUIZ ITEMS -->
+    <div id="quiz-container">
 
-        <div class="pemantik-grid">
-          <div class="pemantik-card">
-            <img src="pemantik_bola.png" alt="Anak menendang bola">
-            <p>Mengapa bola bisa <strong>bergerak</strong> saat ditendang?</p>
-          </div>
-          <div class="pemantik-card">
-            <img src="pemantik_meja.png" alt="Mendorong meja">
-            <p>Mengapa meja bisa <strong>berpindah</strong> saat didorong?</p>
-          </div>
-          <div class="pemantik-card">
-            <img src="pemantik_jatuh.png" alt="Benda jatuh">
-            <p>Mengapa benda selalu <strong>jatuh ke bawah</strong>?</p>
-          </div>
-        </div>
-
-        <div class="think-box">💭 Pikirkan dulu jawabanmu sebelum lanjut!</div>
-      </div>
-      <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(1)">◀ Kembali</button>
-        <div class="dot-row"></div>
-        <button class="btn-nav" onclick="goTo(3)">Selanjutnya ▶</button>
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════
-         SLIDE 4 — EKSPLORASI
-    ══════════════════════════════════ -->
-    <div class="slide" id="s4">
-      <div class="bg"></div>
-      <div class="slide-inner">
-        <div class="slide-header">
-          <div class="chip chip-green">🔍 Mari Mengamati!</div>
-          <h2 class="slide-title">Eksplorasi — Apa yang terjadi?</h2>
-        </div>
-
-        <div class="instruksi-box">
-          📌 Amati gambar berikut. <strong>Apa yang sedang terjadi pada benda tersebut?</strong>
-        </div>
-
-        <div class="eksplorasi-grid">
-          <div class="exp-card">
-            <img src="pemantik_meja.png" alt="Mendorong meja">
-            <div class="exp-label">Mendorong Meja</div>
-          </div>
-          <div class="exp-card">
-            <img src="eksplorasi_pintu.png" alt="Menarik pintu">
-            <div class="exp-label">Menarik Pintu</div>
-          </div>
-          <div class="exp-card">
-            <img src="pemantik_jatuh.png" alt="Menjatuhkan bola">
-            <div class="exp-label">Bola Jatuh</div>
-          </div>
-        </div>
-      </div>
-      <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(2)">◀ Kembali</button>
-        <div class="dot-row"></div>
-        <button class="btn-nav" onclick="goTo(4)">Selanjutnya ▶</button>
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════
-         SLIDE 5 — DEFINISI GAYA (PERTENGAHAN)
-    ══════════════════════════════════ -->
-    <div class="slide" id="s5">
-      <div class="bg"></div>
-      <div class="definisi-layout">
-        <div class="definisi-badge">📖 Pengertian Gaya</div>
-
-        <div class="definisi-main-card">
-          <div class="definisi-icon">⚡</div>
-          <p class="definisi-main-text">
-            Gaya adalah <span class="hl">dorongan atau tarikan</span> yang dapat membuat benda
-            <span class="hl">bergerak</span>, <span class="hl">berhenti</span>, atau <span class="hl">berubah</span>.
-          </p>
-        </div>
-
-        <div class="definisi-pills">
-          <div class="def-pill" style="--dc:#fdcb6e;--dcs:#f39c12">🏃 Bergerak</div>
-          <div class="def-pill" style="--dc:#74b9ff;--dcs:#0984e3">🛑 Berhenti</div>
-          <div class="def-pill" style="--dc:#fd79a8;--dcs:#e84393">🔄 Berubah</div>
-        </div>
-      </div>
-      <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(3)">◀ Kembali</button>
-        <div class="dot-row"></div>
-        <button class="btn-nav" onclick="goTo(5)">Selanjutnya ▶</button>
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════
-         SLIDE 6 — KONSEP GAYA
-    ══════════════════════════════════ -->
-    <div class="slide" id="s6">
-      <div class="bg"></div>
-      <div class="slide-inner">
-        <div class="slide-header">
-          <div class="chip chip-blue">📖 Konsep Inti</div>
-          <h2 class="slide-title">Apa itu Gaya?</h2>
-        </div>
-
-        <div class="konsep-layout">
-          <div class="konsep-text">
-            <div class="definisi-box">
-              <p>Gaya adalah <strong>dorongan atau tarikan</strong> yang dapat membuat benda <strong>bergerak</strong> atau <strong>berubah bentuk</strong>.</p>
-            </div>
-
-            <div class="contoh-title">Contoh dalam kehidupan:</div>
-            <div class="contoh-list">
-              <div class="contoh-item">
-                <span class="contoh-icon">🪑</span>
-                <span>Mendorong kursi</span>
-              </div>
-              <div class="contoh-item">
-                <span class="contoh-icon">🎒</span>
-                <span>Menarik tas</span>
-              </div>
-              <div class="contoh-item">
-                <span class="contoh-icon">⚽</span>
-                <span>Menendang bola</span>
-              </div>
+      <!-- Item 1 -->
+      <div class="quiz-row" id="row-1">
+        <div class="img-card">
+          <div class="number-badge">1</div>
+          <div class="img-box">
+            <div class="img-placeholder">
+              <img src="assets/elbow.png" alt="elbow">
             </div>
           </div>
-
-          <div class="konsep-img-wrap">
-            <img src="konsep_gaya.png" alt="Ilustrasi gaya dorong dan tarik">
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">B L E W O</div>
+          <div class="input-container">
+            <div class="input-inner">
+              <input type="text" class="answer-input" id="input-1" data-answer="ELBOW"
+                placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+            </div>
+            <img src="assets/pencil.svg" class="pencil-icon" alt="pencil">
           </div>
+          <div class="feedback-icon" id="fb-1"></div>
         </div>
       </div>
-      <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(4)">◀ Kembali</button>
-        <div class="dot-row"></div>
-        <button class="btn-nav" onclick="goTo(6)">Selanjutnya ▶</button>
-      </div>
-    </div>
 
-    <!-- ══════════════════════════════════
-         SLIDE 7 — PENGARUH GAYA
-    ══════════════════════════════════ -->
-    <div class="slide" id="s7">
-      <div class="bg"></div>
-      <div class="slide-inner">
-        <div class="slide-header">
-          <div class="chip chip-purple">✨ Pengaruh Gaya</div>
-          <h2 class="slide-title">Gaya Dapat Membuat Benda...</h2>
-        </div>
-
-        <div class="pengaruh-layout">
-          <div class="pengaruh-cards">
-            <div class="pengaruh-card" style="--c:#fdcb6e;--cs:#f39c12">
-              <span class="p-icon">🏃</span>
-              <strong>Bergerak</strong>
-            </div>
-            <div class="pengaruh-card" style="--c:#74b9ff;--cs:#0984e3">
-              <span class="p-icon">🛑</span>
-              <strong>Berhenti</strong>
-            </div>
-            <div class="pengaruh-card" style="--c:#55efc4;--cs:#00b894">
-              <span class="p-icon">↩️</span>
-              <strong>Berubah Arah</strong>
-            </div>
-            <div class="pengaruh-card" style="--c:#fd79a8;--cs:#e84393">
-              <span class="p-icon">🫙</span>
-              <strong>Berubah Bentuk</strong>
+      <!-- Item 2 -->
+      <div class="quiz-row" id="row-2">
+        <div class="img-card">
+          <div class="number-badge">2</div>
+          <div class="img-box">
+            <div class="img-placeholder">
+              <img src="assets/mouth.png" alt="mouth">
             </div>
           </div>
-
-          <div class="pengaruh-img">
-            <img src="pengaruh_gaya.png" alt="4 pengaruh gaya terhadap benda">
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">U H M O T</div>
+          <div class="input-container">
+            <div class="input-inner">
+              <input type="text" class="answer-input" id="input-2" data-answer="MOUTH"
+                placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+            </div>
+            <img src="assets/pencil.svg" class="pencil-icon" alt="pencil">
           </div>
+          <div class="feedback-icon" id="fb-2"></div>
         </div>
       </div>
-      <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(5)">◀ Kembali</button>
-        <div class="dot-row"></div>
-        <button class="btn-nav" onclick="goTo(7)">Selanjutnya ▶</button>
+
+      <!-- Item 3 -->
+      <div class="quiz-row" id="row-3">
+        <div class="img-card">
+          <div class="number-badge">3</div>
+          <div class="img-box">
+            <div class="img-placeholder">
+              <img src="assets/waist.png" alt="waist">
+            </div>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">I S T W A</div>
+          <div class="input-container">
+            <div class="input-inner">
+              <input type="text" class="answer-input" id="input-3" data-answer="WAIST"
+                placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+            </div>
+            <img src="assets/pencil.svg" class="pencil-icon" alt="pencil">
+          </div>
+          <div class="feedback-icon" id="fb-3"></div>
+        </div>
       </div>
+
+      <!-- Item 4 -->
+      <div class="quiz-row" id="row-4">
+        <div class="img-card">
+          <div class="number-badge">4</div>
+          <div class="img-box">
+            <div class="img-placeholder">
+              <img src="assets/shoulder.png" alt="shoulder">
+            </div>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">R H E O U S L D</div>
+          <div class="input-container">
+            <div class="input-inner">
+              <input type="text" class="answer-input" id="input-4" data-answer="SHOULDER"
+                placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+            </div>
+            <img src="assets/pencil.svg" class="pencil-icon" alt="pencil">
+          </div>
+          <div class="feedback-icon" id="fb-4"></div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="quiz-row" id="row-5">
+        <div class="img-card">
+          <div class="number-badge">5</div>
+          <div class="img-box">
+            <div class="img-placeholder">
+              <img src="assets/knee.png" alt="knee">
+            </div>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">E N K E</div>
+          <div class="input-container">
+            <div class="input-inner">
+              <input type="text" class="answer-input" id="input-5" data-answer="KNEE"
+                placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+            </div>
+            <img src="assets/pencil.svg" class="pencil-icon" alt="pencil">
+          </div>
+          <div class="feedback-icon" id="fb-5"></div>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="quiz-row" id="row-6">
+        <div class="img-card">
+          <div class="number-badge">6</div>
+          <div class="img-box">
+            <div class="img-placeholder">
+              <img src="assets/teeth.png" alt="teeth">
+            </div>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">H E E T H</div>
+          <div class="input-container">
+            <div class="input-inner">
+              <input type="text" class="answer-input" id="input-6" data-answer="TEETH"
+                placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+            </div>
+            <img src="assets/pencil.svg" class="pencil-icon" alt="pencil">
+          </div>
+          <div class="feedback-icon" id="fb-6"></div>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="quiz-row" id="row-7">
+        <div class="img-card">
+          <div class="number-badge">7</div>
+          <div class="img-box">
+            <div class="img-placeholder">
+              <img src="assets/nose.png" alt="nose">
+            </div>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">E O N S</div>
+          <div class="input-container">
+            <div class="input-inner">
+              <input type="text" class="answer-input" id="input-7" data-answer="NOSE"
+                placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+            </div>
+            <img src="assets/pencil.svg" class="pencil-icon" alt="pencil">
+          </div>
+          <div class="feedback-icon" id="fb-7"></div>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="quiz-row" id="row-8">
+        <div class="img-card">
+          <div class="number-badge">8</div>
+          <div class="img-box">
+            <div class="img-placeholder">
+              <img src="assets/hair.png" alt="hair">
+            </div>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">I R A H</div>
+          <div class="input-container">
+            <div class="input-inner">
+              <input type="text" class="answer-input" id="input-8" data-answer="HAIR"
+                placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+            </div>
+            <img src="assets/pencil.svg" class="pencil-icon" alt="pencil">
+          </div>
+          <div class="feedback-icon" id="fb-8"></div>
+        </div>
+      </div>
+
+      <!-- Item 9 -->
+      <div class="quiz-row" id="row-9">
+        <div class="img-card">
+          <div class="number-badge">9</div>
+          <div class="img-box">
+            <div class="img-placeholder">
+              <img src="assets/nail.png" alt="nail">
+            </div>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">I L A N</div>
+          <div class="input-container">
+            <div class="input-inner">
+              <input type="text" class="answer-input" id="input-9" data-answer="NAIL"
+                placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+            </div>
+            <img src="assets/pencil.svg" class="pencil-icon" alt="pencil">
+          </div>
+          <div class="feedback-icon" id="fb-9"></div>
+        </div>
+      </div>
+
+      <!-- Item 10 -->
+      <div class="quiz-row" id="row-10">
+        <div class="img-card">
+          <div class="number-badge">10</div>
+          <div class="img-box">
+            <div class="img-placeholder">
+              <img src="assets/eyebrow.png" alt="eyebrow">
+            </div>
+          </div>
+        </div>
+        <div class="answer-area">
+          <div class="jumble-word">B E Y O W E R</div>
+          <div class="input-container">
+            <div class="input-inner">
+              <input type="text" class="answer-input" id="input-10" data-answer="EYEBROW"
+                placeholder="Type your answer here..." autocomplete="off" autocorrect="off" spellcheck="false">
+            </div>
+            <img src="assets/pencil.svg" class="pencil-icon" alt="pencil">
+          </div>
+          <div class="feedback-icon" id="fb-10"></div>
+        </div>
+      </div>
+
+    </div><!-- end quiz-container -->
+
+    <div class="btn-row">
+      <button class="reset-btn" onclick="resetAnswers()">Reset</button>
+      <button class="check-btn" onclick="checkAnswers()">Check Answers</button>
     </div>
+    <div class="result-msg" id="result-msg"></div>
 
-    <!-- ══════════════════════════════════
-         SLIDE 8 — MACAM-MACAM GAYA
-    ══════════════════════════════════ -->
-    <div class="slide" id="s8">
-      <div class="bg"></div>
-      <div class="slide-inner">
-        <div class="slide-header">
-          <div class="chip chip-orange">🔬 Jenis-Jenis Gaya</div>
-          <h2 class="slide-title">Macam-Macam Gaya</h2>
-        </div>
+  </div><!-- end page -->
 
-        <div class="jenis-grid">
-          <div class="jenis-card">
-            <img src="icon_otot.png" alt="Gaya Otot">
-            <div class="jenis-name">Gaya Dorong &amp; Tarik</div>
-            <div class="jenis-sub">(Gaya Otot)</div>
-          </div>
-          <div class="jenis-card">
-            <img src="icon_gravitasi.png" alt="Gaya Gravitasi">
-            <div class="jenis-name">Gaya Gravitasi</div>
-            <div class="jenis-sub">Tarikan bumi</div>
-          </div>
-          <div class="jenis-card">
-            <img src="icon_magnet.png" alt="Gaya Magnet">
-            <div class="jenis-name">Gaya Magnet</div>
-            <div class="jenis-sub">Menarik besi</div>
-          </div>
-          <div class="jenis-card">
-            <img src="icon_gesek.png" alt="Gaya Gesek">
-            <div class="jenis-name">Gaya Gesek</div>
-            <div class="jenis-sub">Hambatan gerak</div>
-          </div>
-        </div>
-      </div>
-      <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(6)">◀ Kembali</button>
-        <div class="dot-row"></div>
-        <button class="btn-nav" onclick="goTo(8)">Selanjutnya ▶</button>
-      </div>
-    </div>
-
-    <!-- ══════════════════════════════════
-         SLIDE 9 — CONTOH MACAM GAYA
-    ══════════════════════════════════ -->
-    <div class="slide" id="s9">
-      <div class="bg"></div>
-      <div class="slide-inner">
-        <div class="slide-header">
-          <div class="chip chip-green">📝 Contoh Gaya</div>
-          <h2 class="slide-title">Contoh Macam-Macam Gaya</h2>
-        </div>
-
-        <div class="contoh-tabel">
-          <div class="ct-row ct-head">
-            <div>Jenis Gaya</div>
-            <div>Contoh</div>
-          </div>
-          <div class="ct-row">
-            <div class="ct-jenis"><img src="icon_otot.png" alt=""> Gaya Dorong</div>
-            <div class="ct-contoh">Mendorong meja 🪑</div>
-          </div>
-          <div class="ct-row">
-            <div class="ct-jenis"><img src="icon_otot.png" alt=""> Gaya Tarik</div>
-            <div class="ct-contoh">Menarik pintu 🚪</div>
-          </div>
-          <div class="ct-row">
-            <div class="ct-jenis"><img src="icon_gravitasi.png" alt=""> Gaya Gravitasi</div>
-            <div class="ct-contoh">Benda jatuh ke bawah 🍎</div>
-          </div>
-          <div class="ct-row">
-            <div class="ct-jenis"><img src="icon_magnet.png" alt=""> Gaya Magnet</div>
-            <div class="ct-contoh">Magnet menarik paku 🔩</div>
-          </div>
-          <div class="ct-row">
-            <div class="ct-jenis"><img src="icon_gesek.png" alt=""> Gaya Gesek</div>
-            <div class="ct-contoh">Menghapus papan tulis 🖊️</div>
-          </div>
-        </div>
-
-        <div class="tantangan-box">
-          🎯 <strong>Tantangan:</strong> Sebutkan contoh lain dari setiap jenis gaya yang kamu tahu!
-        </div>
-      </div>
-      <div class="nav-bar">
-        <button class="btn-nav" onclick="goTo(7)">◀ Kembali</button>
-        <div class="dot-row"></div>
-        <button class="btn-nav btn-finish" onclick="goTo(0)">🔄 Ulangi</button>
-      </div>
-    </div>
-
-  </div><!-- /ppt -->
-
-  <div class="slide-counter" id="counter">1 / 9</div>
-</div><!-- /ppt-outer -->
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
