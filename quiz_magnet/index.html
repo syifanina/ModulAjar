@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuis Sains Seru: Gaya dan Magnet!</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
     <div class="app-container">
@@ -103,8 +106,21 @@
                 <h2>Kuis Selesai! 🎉</h2>
                 <div class="popup-icon">🏆</div>
                 <p>Kamu hebat! Kamu mendapatkan <br><b id="final-score">0</b> Bintang ⭐</p>
+
+                <div class="wa-report-box"
+                    style="margin-top: 15px; text-align: left; background: #f3e5f5; padding: 20px; border-radius: 12px; border: 2px solid #ce93d8;">
+                    <label for="student-name"
+                        style="font-weight: 800; color: #4a148c; display: block; margin-bottom: 8px;">Kumpulkan Nilai ke
+                        Guru:</label>
+                    <input type="text" id="student-name" placeholder="Tulis Nama Lengkapmu (Misal: Syifa Sabrina)"
+                        style="width: 100%; padding: 12px; border: 2px solid #ba68c8; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 1.1rem; margin-bottom: 15px;">
+                    <button class="action-btn" onclick="sendToGoogleForm()"
+                        style="background: #673AB7; box-shadow: 0 5px 0 #4527A0;">Kirim ke Google Form 📄</button>
+                </div>
+
                 <div class="btn-group">
-                    <button class="action-btn" onclick="restartQuiz()">Ulangi Kuis 🔄</button>
+                    <button class="action-btn" onclick="restartQuiz()"
+                        style="background: #95a5a6; box-shadow: 0 5px 0 #7f8c8d;">Ulangi / Kembali 🔄</button>
                 </div>
             </div>
         </div>
@@ -121,8 +137,10 @@
                     <div class="wheel-inner"></div>
                     <div class="wheel-text" id="wheel-text">Pencet Putar</div>
                 </div>
-                <button class="action-btn" id="btn-spin" onclick="spinWheel()" style="background: var(--green); box-shadow: 0 5px 0 #2e8b57;">Putar Roda!</button>
-                <button class="nav-btn prev-btn" style="margin-top: 15px; width: 100%;" onclick="closeWheel()">Kembali</button>
+                <button class="action-btn" id="btn-spin" onclick="spinWheel()"
+                    style="background: var(--green); box-shadow: 0 5px 0 #2e8b57;">Putar Roda!</button>
+                <button class="nav-btn prev-btn" style="margin-top: 15px; width: 100%;"
+                    onclick="closeWheel()">Kembali</button>
             </div>
         </div>
     </div>
@@ -134,4 +152,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
