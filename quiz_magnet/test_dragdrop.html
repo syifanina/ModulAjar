@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <style>
-    .word { display: inline-block; padding: 5px 10px; background: #eee; border: 1px solid #ccc; cursor: grab; margin: 5px; border-radius: 5px; }
-    .dropzone { display: inline-block; min-width: 150px; min-height: 30px; background: #fff; border: 2px dashed #999; vertical-align: bottom; }
-    .dropzone.filled { border-style: solid; border-color: #2b7af0; background: #e0eeff;}
+    .word {
+      display: inline-block;
+      padding: 5px 10px;
+      background: #eee;
+      border: 1px solid #ccc;
+      cursor: grab;
+      margin: 5px;
+      border-radius: 5px;
+    }
+
+    .dropzone {
+      display: inline-block;
+      min-width: 150px;
+      min-height: 30px;
+      background: #fff;
+      border: 2px dashed #999;
+      vertical-align: bottom;
+    }
+
+    .dropzone.filled {
+      border-style: solid;
+      border-color: #2b7af0;
+      background: #e0eeff;
+    }
   </style>
 </head>
+
 <body>
   <div class="word-bank" id="word-bank">
     <div class="word" draggable="true" id="w1">menggerakkan benda</div>
@@ -16,4 +39,5 @@
     1. Benda dapat bergerak jika <div class="dropzone" id="q1"></div>
   </div>
 </body>
+
 </html>
