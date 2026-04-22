@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Sains Seru: Gaya dan Magnet!</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- SCREEN COVER -->
+        <div id="screen-cover" class="screen active">
+            <div class="cover-content">
+                <h1>Quiz PR IPAS Kelas 4</h1>
+                <button class="action-btn start-btn" onclick="goToMenu()">Mulai Bermain! 🎮</button>
+            </div>
+        </div>
+
+        <!-- SCREEN MENU -->
+        <div id="screen-menu" class="screen" style="display: none;">
+            <div class="menu-content">
+                <h2>Pilih Mode Bermain</h2>
+                <div class="menu-cards">
+                    <div class="menu-card" onclick="startMode('pg')">
+                        <div class="menu-icon">📝</div>
+                        <h3>Pilihan Ganda</h3>
+                        <p>15 Soal Pilihan</p>
+                    </div>
+                    <div class="menu-card" onclick="startMode('isian')">
+                        <div class="menu-icon">🧩</div>
+                        <h3>Isian (Drag & Drop)</h3>
+                        <p>Lengkapi Kalimat</p>
+                    </div>
+                    <div class="menu-card" onclick="startMode('essay')">
+                        <div class="menu-icon">💡</div>
+                        <h3>Soal Uraian</h3>
+                        <p>Essay Interaktif</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN QUIZ -->
+        <div id="screen-quiz" class="screen" style="display: none;">
+            <!-- HEADER -->
+            <header>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="slide-indicator">
+                    <span id="slide-text-prefix">Soal</span>
+                    <span id="slide-numbers-container">
+                        <span id="current-slide-num">1</span> / <span id="total-slide-num">15</span>
+                    </span>
+                </div>
+                <div class="score-display">Bintang: <span id="score-text">0</span> ⭐</div>
+            </header>
+
+            <!-- SLIDES CONTAINER -->
+            <main class="slides-wrapper" id="slides-wrapper">
+                <!-- Slides will be injected here by JS -->
+            </main>
+
+            <!-- NAVIGATION CONTROLS -->
+            <div class="nav-controls">
+                <button class="nav-btn prev-btn" id="prev-btn" onclick="prevSlide()" disabled>⬅️ Kembali</button>
+                <button class="nav-btn menu-btn" onclick="goToMenu()">🏠 Menu Utama</button>
+                <button class="nav-btn next-btn" id="next-btn" onclick="nextSlide()" disabled>Lanjut ➡️</button>
+            </div>
+        </div>
+
+        <!-- SCREEN ESSAY -->
+        <div id="screen-essay" class="screen" style="display: none;">
+            <header>
+                <div class="slide-indicator">
+                    Soal Uraian (Essay)
+                </div>
+            </header>
+            <main class="essay-wrapper" id="essay-wrapper">
+                <!-- Essay cards will be injected by JS -->
+            </main>
+            <!-- NAVIGATION CONTROLS -->
+            <div class="nav-controls" style="justify-content: center;">
+                <button class="nav-btn menu-btn" onclick="goToMenu()">🏠 Buka Menu Utama</button>
+            </div>
+        </div>
+
+        <!-- POPUP PENJELASAN -->
+        <div class="overlay" id="explanation-overlay">
+            <div class="popup-box" id="popup-box">
+                <h2 id="popup-title">Benar! 🥳</h2>
+                <div class="popup-icon" id="popup-icon">✨</div>
+                <p id="popup-text">Penjelasan akan muncul di sini.</p>
+                <button class="action-btn" onclick="closePopup()">Oke, Lanjut! 👍</button>
+            </div>
+        </div>
+
+        <!-- END SCREEN -->
+        <div class="overlay" id="end-screen">
+            <div class="popup-box end-box">
+                <h2>Kuis Selesai! 🎉</h2>
+                <div class="popup-icon">🏆</div>
+                <p>Kamu hebat! Kamu mendapatkan <br><b id="final-score">0</b> Bintang ⭐</p>
+                <div class="btn-group">
+                    <button class="action-btn" onclick="restartQuiz()">Ulangi Kuis 🔄</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLOATING SPIN BUTTON -->
+        <button class="fab-spin" onclick="openWheel()">🎡 Pilih Absen</button>
+
+        <!-- WHEEL OVERLAY -->
+        <div class="overlay" id="wheel-overlay" style="display: none; z-index: 200;">
+            <div class="popup-box wheel-box" style="padding-top: 25px;">
+                <h2 style="color: var(--blue);">Siapa yang Jawab? 🎡</h2>
+                <div class="wheel-container">
+                    <div class="wheel" id="wheel-ring"></div>
+                    <div class="wheel-inner"></div>
+                    <div class="wheel-text" id="wheel-text">Pencet Putar</div>
+                </div>
+                <button class="action-btn" id="btn-spin" onclick="spinWheel()" style="background: var(--green); box-shadow: 0 5px 0 #2e8b57;">Putar Roda!</button>
+                <button class="nav-btn prev-btn" style="margin-top: 15px; width: 100%;" onclick="closeWheel()">Kembali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUDIO EFFECTS -->
+    <audio id="sfx-correct" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3"></audio>
+    <audio id="sfx-wrong" src="https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3"></audio>
+    <audio id="sfx-pop" src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
