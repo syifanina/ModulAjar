@@ -183,7 +183,7 @@ const quizData = [
         type: 'drag-and-drop',
         question: "Tarik atau Ketuk kata di bawah ini untuk melengkapi kalimat!",
         questions: [
-            { id: "q16", prefix: "16. Perhatikan gambar berikut! Benda seperti gambar di samping dapat bergerak jika", suffix: "." },
+            { id: "q16", prefix: "16. Perhatikan gambar berikut! Benda seperti gambar di samping dapat bergerak jika", suffix: ".", image: "gerobak.png" },
             { id: "q17", prefix: "17. Meja akan bergerak apabila ada orang yang mendorongnya. Hal ini menunjukkan bahwa tarikan dan dorongan dapat", suffix: "." },
             { id: "q18", prefix: "18. Serbuk besi yang ditaburkan di sekitar magnet akan membentuk pola yang disebut", suffix: "." },
             { id: "q19", prefix: "19. Benda yang tidak dapat ditarik oleh magnet, seperti kayu dan plastik, disebut benda", suffix: "." },
@@ -207,24 +207,60 @@ const quizData = [
 ];
 const essayData = [
     {
+        id: "e1",
         question: "21. Jelaskan apa yang dimaksud dengan kemagnetan?",
-        answer: "Kemagnetan adalah sifat suatu benda yang dapat menarik benda lain yang terbuat dari bahan tertentu (seperti besi atau baja) di sekitarnya."
+        answer: "Kemagnetan adalah sifat suatu benda yang dapat menarik benda lain yang terbuat dari bahan tertentu (seperti besi atau baja) di sekitarnya.",
+        check: (t) => {
+            let txt = t.toLowerCase();
+            const hasTarik = txt.includes('tarik') || txt.includes('narik') || txt.includes('nempel');
+            const hasBenda = txt.includes('benda') || txt.includes('besi') || txt.includes('logam') || txt.includes('baja');
+            return hasTarik && hasBenda;
+        }
     },
     {
+        id: "e2",
         question: "22. Sebutkan 3 pemanfaatan gaya otot dalam kehidupan!",
-        answer: "<ul style='margin-left: 20px; text-align: left;'><li>Mengangkat tas</li><li>Mendorong meja</li><li>Menarik pintu</li><li>Mengayuh sepeda</li><li>Menendang bola</li><li>Mengangkat ember berisi air</li></ul>"
+        answer: "<ul style='margin-left: 20px; text-align: left;'><li>Mengangkat tas</li><li>Mendorong meja</li><li>Menarik pintu</li><li>Mengayuh sepeda</li><li>Menendang bola</li><li>Mengangkat ember berisi air</li></ul>",
+        check: (t) => {
+            let txt = t.toLowerCase();
+            const keywords = ['tas', 'meja', 'pintu', 'sepeda', 'bola', 'ember', 'kursi', 'angkat', 'dorong', 'tarik'];
+            let count = 0;
+            keywords.forEach(k => { if (txt.includes(k)) count++; });
+            return count >= 3;
+        }
     },
     {
+        id: "e3",
         question: "23. Apa pengaruh dari gaya magnet?",
-        answer: "Gaya magnet dapat menarik benda tertentu (seperti besi) dan dapat menggerakkan benda tanpa disentuh langsung."
+        answer: "Gaya magnet dapat menarik benda tertentu (seperti besi) dan dapat menggerakkan benda tanpa disentuh langsung.",
+        check: (t) => {
+            let txt = t.toLowerCase();
+            const keywords = ['tarik', 'gerak', 'besi', 'logam', 'benda', 'sentuh', 'paku'];
+            let count = 0;
+            keywords.forEach(k => { if (txt.includes(k)) count++; });
+            return count >= 2;
+        }
     },
     {
+        id: "e4",
         question: "24. Tuliskan tiga contoh kegiatan yang menggunakan gaya dorong!",
-        answer: "<ul style='margin-left: 20px; text-align: left;'><li>Mendorong meja</li><li>Mendorong gerobak</li><li>Menutup pintu</li><li>Mendorong kursi</li><li>Mendorong motor mogok</li><li>Menekan tombol</li></ul>"
+        answer: "<ul style='margin-left: 20px; text-align: left;'><li>Mendorong meja</li><li>Mendorong gerobak</li><li>Menutup pintu</li><li>Mendorong kursi</li><li>Mendorong motor mogok</li><li>Menekan tombol</li></ul>",
+        check: (t) => {
+            let txt = t.toLowerCase();
+            const keywords = ['meja', 'gerobak', 'pintu', 'kursi', 'motor', 'tombol', 'mobil', 'lemari'];
+            let count = 0;
+            keywords.forEach(k => { if (txt.includes(k)) count++; });
+            return count >= 3;
+        }
     },
     {
+        id: "e5",
         question: "25. Benda bergerak di lantai dan karpet, mana gaya gesek lebih besar? Jelaskan!",
-        answer: "Gaya gesek lebih besar pada karpet, karena permukaannya kasar sehingga menghambat gerakan benda."
+        answer: "Gaya gesek lebih besar pada karpet, karena permukaannya kasar sehingga menghambat gerakan benda.",
+        check: (t) => {
+            let txt = t.toLowerCase();
+            return txt.includes('karpet') && (txt.includes('kasar') || txt.includes('hambat') || txt.includes('besar'));
+        }
     }
 ];
 
@@ -320,6 +356,8 @@ function startMode(mode) {
 
 function renderEssay() {
     essayWrapper.innerHTML = '';
+    let essaysCompleted = 0; // Pelacak jumlah soal terjawab
+
     essayData.forEach((item, index) => {
         const card = document.createElement('div');
         card.className = 'essay-card';
@@ -328,25 +366,109 @@ function renderEssay() {
         q.className = 'essay-q';
         q.innerText = item.question;
 
+        const inputArea = document.createElement('textarea');
+        inputArea.className = 'essay-textarea';
+        inputArea.placeholder = "Ketik jawabanmu di sini...";
+
+        const feedback = document.createElement('div');
+        feedback.className = 'essay-feedback';
+
+        const checkBtn = document.createElement('button');
+        checkBtn.className = 'action-btn essay-check-btn';
+        checkBtn.innerText = 'Periksa 🔍';
+        checkBtn.style.marginRight = '10px';
+        checkBtn.style.padding = '10px 15px';
+        checkBtn.style.fontSize = '14px';
+
         const btn = document.createElement('button');
         btn.className = 'essay-ans-btn';
-        btn.innerText = 'Buka Kunci Jawaban 👁️';
+        btn.innerText = 'Kunci Jawaban Resmi 👁️';
+        btn.style.display = 'none'; // Disembunyikan pada awalnya
+        btn.style.padding = '10px 15px';
+        btn.style.fontSize = '14px';
 
         const ans = document.createElement('div');
         ans.className = 'essay-ans';
         ans.innerHTML = "<b>Jawaban:</b><br>" + item.answer;
 
+        checkBtn.onclick = () => {
+            const val = inputArea.value.trim();
+            if (!val) {
+                playSound(sfxWrong);
+                feedback.innerHTML = "<span style='color: #e74c3c;'>Kamu belum mengetik apa-apa! 😅</span>";
+                return;
+            }
+
+            // Tampilkan tombol kunci jawaban setelah siswa mencoba menjawab
+            btn.style.display = 'inline-block';
+
+            // Kunci kolom ketik dan matikan tombol periksa agar tidak bisa direvisi
+            inputArea.disabled = true;
+            checkBtn.disabled = true;
+            checkBtn.style.opacity = '0.6';
+            checkBtn.style.cursor = 'not-allowed';
+
+            essaysCompleted++;
+            if (essaysCompleted === essayData.length) {
+                finishBtnWrap.style.display = 'block';
+                setTimeout(() => finishBtnWrap.scrollIntoView({ behavior: 'smooth', block: 'end' }), 500);
+            }
+
+            if (item.check(val)) {
+                playSound(sfxCorrect);
+                inputArea.classList.add('correct-input');
+                inputArea.classList.remove('wrong-input');
+                feedback.innerHTML = "<span style='color: #2ecc71; font-weight: bold;'>Hebat! Jawabanmu logis dan kata kuncinya tepat! 🎉</span>";
+                score += 10; // Tambah bintang!
+            } else {
+                playSound(sfxWrong);
+                inputArea.classList.add('wrong-input');
+                inputArea.classList.remove('correct-input');
+                feedback.innerHTML = "<span style='color: #e74c3c; font-weight: bold;'>Hmm, sepertinya kamu belum menyebutkan kata kunci yang tepat, coba baca lagi! 🧐</span>";
+            }
+        };
+
         btn.onclick = () => {
             ans.classList.toggle('show');
-            btn.innerText = ans.classList.contains('show') ? 'Tutup Kunci Jawaban 🙈' : 'Buka Kunci Jawaban 👁️';
+            btn.innerText = ans.classList.contains('show') ? 'Tutup Kunci 🙈' : 'Kunci 👁️';
             playSound(sfxPop);
         };
 
         card.appendChild(q);
-        card.appendChild(btn);
+        card.appendChild(inputArea);
+        card.appendChild(feedback);
+
+        const btnRow = document.createElement('div');
+        btnRow.style.margin = '15px 0';
+        btnRow.appendChild(checkBtn);
+        btnRow.appendChild(btn);
+
+        card.appendChild(btnRow);
         card.appendChild(ans);
         essayWrapper.appendChild(card);
     });
+
+    // Menambahkan tombol "Selesai" untuk memunculkan Google Form pelaporan di akhir Uraian
+    const finishBtnWrap = document.createElement('div');
+    finishBtnWrap.style.display = 'none'; // Disembunyikan sampai semua soal terjawab
+    finishBtnWrap.style.marginTop = '30px';
+    finishBtnWrap.style.paddingBottom = '30px';
+
+    const finishBtn = document.createElement('button');
+    finishBtn.className = 'action-btn';
+    finishBtn.style.width = '100%';
+    finishBtn.style.padding = '15px';
+    finishBtn.style.background = '#00BCD4'; // cyan
+    finishBtn.style.boxShadow = '0 5px 0 #0097A7';
+    finishBtn.innerText = 'Selesai';
+
+    finishBtn.onclick = () => {
+        playSound(sfxPop);
+        showEndScreen();
+    };
+
+    finishBtnWrap.appendChild(finishBtn);
+    essayWrapper.appendChild(finishBtnWrap);
 }
 
 function initQuiz() {
@@ -417,6 +539,16 @@ function renderSlides() {
                 const sentenceEl = document.createElement('div');
                 sentenceEl.className = 'dnd-sentence';
 
+                if (question.image) {
+                    const img = document.createElement('img');
+                    img.src = question.image;
+                    img.style = "max-height: 120px; display: block; margin: 10px auto; border-radius: 10px; border: 3px solid #ccc; max-width: 100%; object-fit: contain;";
+                    sentenceEl.appendChild(img);
+                }
+
+                const postfixRow = document.createElement('div');
+                postfixRow.style = "display: inline-block;";
+
                 const prefixEl = document.createElement('span');
                 prefixEl.innerText = question.prefix + " ";
 
@@ -435,9 +567,11 @@ function renderSlides() {
                 // Click events for touch fallback
                 dropzoneEl.addEventListener('click', (e) => handleDrop({ preventDefault: () => { } }, dropzoneEl, q, index, true));
 
-                sentenceEl.appendChild(prefixEl);
-                sentenceEl.appendChild(dropzoneEl);
-                sentenceEl.appendChild(suffixEl);
+                postfixRow.appendChild(prefixEl);
+                postfixRow.appendChild(dropzoneEl);
+                postfixRow.appendChild(suffixEl);
+
+                sentenceEl.appendChild(postfixRow);
                 sentencesContainer.appendChild(sentenceEl);
             });
 
@@ -650,6 +784,7 @@ function showEndScreen() {
     playSound(sfxCorrect);
     const scaledScore = score / 10;
     finalScore.innerText = scaledScore;
+    document.getElementById('student-name').value = ''; // Reset nama
     endScreen.classList.add('show');
 }
 
@@ -657,6 +792,62 @@ function restartQuiz() {
     playSound(sfxPop);
     endScreen.classList.remove('show');
     goToMenu();
+}
+
+function sendToGoogleForm() {
+    const studentName = document.getElementById('student-name').value.trim();
+    if (!studentName) {
+        playSound(sfxWrong);
+        alert("Mohon ketik nama kamu dulu ya! 😊");
+        document.getElementById('student-name').focus();
+        return;
+    }
+
+    let modeLabel = "";
+    if (currentMode === 'pg') modeLabel = "Pilihan Ganda";
+    else if (currentMode === 'isian') modeLabel = "Isian (Drag & Drop)";
+    else if (currentMode === 'essay') modeLabel = "Essay";
+    else modeLabel = "Kuis Magnet";
+
+    const finalBintang = score / 10;
+    const maxBintang = activeQuizData.length;
+    const scoreText = `${finalBintang} / ${maxBintang} Bintang`;
+
+    // ==============================================================
+    // PENGIRIMAN RAHASIA KE GOOGLE FORM SECARA BACKGROUND (Anti-Cheating)
+    // ==============================================================
+    // Pastikan URL diakhiri dengan /formResponse, GANTI kata viewform menjadi formResponse
+    const formResponseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfDsNBTU_a5REr4KzGgulAB3n8DhQAtdnpkxPG6wK3DJNdHRw/formResponse";
+
+    const formData = new FormData();
+    formData.append("entry.2107131171", studentName); // Nama
+    formData.append("entry.159700786", scoreText);    // Skor
+    formData.append("entry.622091598", modeLabel);    // Mode
+
+    // Ubah UI tombol menjadi loading
+    const btn = document.querySelector('.wa-report-box .action-btn');
+    const originalText = btn.innerText;
+    btn.innerText = "⏳ Mengirim Nilai...";
+    btn.disabled = true;
+
+    fetch(formResponseUrl, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+    })
+        .then(() => {
+            playSound(sfxCorrect);
+            btn.innerText = "✅ Nilai Sudah Masuk Buku Guru!";
+            btn.style.background = "#4CAF50"; // Warna hijau sukses
+            btn.style.boxShadow = "0 5px 0 #388E3C";
+            document.getElementById('student-name').disabled = true;
+        })
+        .catch((error) => {
+            playSound(sfxWrong);
+            btn.innerText = originalText;
+            btn.disabled = false;
+            alert("Gagal mengirim nilai. Coba cek internetmu ya! 😥");
+        });
 }
 
 // Do NOT call initQuiz() automatically on load.
