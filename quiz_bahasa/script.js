@@ -974,4 +974,3 @@ function sendToGoogleForm() {
         alert("Sepertinya ada sedikit masalah saat mengirim nilai. Coba lagi ya!");
     });
 }
-
