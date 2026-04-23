@@ -29,6 +29,7 @@ body {
     background: radial-gradient(circle at top, #b7e4f9, #70a1ff);
     color: var(--dark);
     height: 100vh;
+    height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,6 +52,7 @@ body {
     width: 100%;
     max-width: 900px;
     height: 100vh;
+    height: 100dvh;
     background: var(--light);
     display: flex;
     flex-direction: column;
@@ -77,6 +79,7 @@ header {
     border-bottom: 2px solid #EEE;
     position: relative;
     z-index: 10;
+    flex-shrink: 0;
 }
 
 .progress-container {
@@ -330,6 +333,7 @@ header {
     background: white;
     border-top: 2px solid #EEE;
     z-index: 10;
+    flex-shrink: 0;
 }
 
 .nav-btn {
