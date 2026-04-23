@@ -323,6 +323,7 @@ function goToMenu() {
     screenMenu.style.display = 'flex';
     setTimeout(() => screenMenu.classList.add('active'), 10);
     playSound(sfxPop);
+    setFabVisibility(false);
 }
 
 function startMode(mode) {
@@ -334,6 +335,7 @@ function startMode(mode) {
         screenEssay.style.display = 'flex';
         setTimeout(() => screenEssay.classList.add('active'), 10);
         renderEssay();
+        setFabVisibility(true);
     } else {
         screenQuiz.style.display = 'flex';
         setTimeout(() => screenQuiz.classList.add('active'), 10);
@@ -351,6 +353,7 @@ function startMode(mode) {
             if (numContainer) numContainer.style.display = "none";
         }
         initQuiz();
+        setFabVisibility(true);
     }
 }
 
@@ -909,5 +912,13 @@ function spinWheel() {
     }, 80);
 }
 
-// Start Game
-window.onload = initQuiz;
+// Helper: show/hide FAB
+function setFabVisibility(visible) {
+    const fab = document.getElementById('fab-spin-btn');
+    if (fab) fab.style.display = visible ? 'block' : 'none';
+}
+
+// Hide FAB on initial load (cover screen)
+window.onload = function () {
+    setFabVisibility(false);
+};
