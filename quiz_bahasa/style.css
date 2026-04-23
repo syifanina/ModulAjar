@@ -41,6 +41,7 @@ body {
     height: 100%;
     display: none;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .screen.active {
@@ -118,13 +119,14 @@ header {
 /* SLIDES */
 .slides-wrapper {
     flex: 1;
+    min-height: 0;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
     overflow-y: auto;
-    /* Allow scroll if absolutely necessary */
+    overflow-x: hidden;
 }
 
 .slide {
