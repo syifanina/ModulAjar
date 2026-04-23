@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>QUIZ PR BAHASA INDONESIA KELAS 4</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap"
@@ -16,7 +16,9 @@
         <!-- SCREEN COVER -->
         <div id="screen-cover" class="screen active">
             <div class="cover-content">
-                <h1>QUIZ PR BAHASA INDONESIA KELAS 4</h1>
+                <div class="cover-icon">📚</div>
+                <h1>Quiz PR Bahasa<br>Indonesia Kelas 4</h1>
+                <p style="color: #5a8acd; font-weight: 700; margin-bottom: 20px; font-size: clamp(0.9rem, 2.5vw, 1.1rem);">Ringkasan, PUEBI &amp; Kosakata ✏️</p>
                 <button class="action-btn start-btn" onclick="goToMenu()">Mulai Bermain! 🎮</button>
             </div>
         </div>
@@ -102,16 +104,12 @@
                 <div class="popup-icon">🏆</div>
                 <p>Kamu hebat! Kamu mendapatkan <br><b id="final-score">0</b> Bintang ⭐</p>
 
-                <div class="wa-report-box"
-                    style="margin-top: 15px; text-align: left; background: #f3e5f5; padding: 20px; border-radius: 12px; border: 2px solid #ce93d8;">
-                    <label for="student-name"
-                        style="font-weight: 800; color: #4a148c; display: block; margin-bottom: 8px;">Kumpulkan Nilai ke
-                        Guru:</label>
-                    <input type="text" id="student-name" placeholder="Tulis Nama Lengkapmu (Misal: Syifa Sabrina)"
-                        style="width: 100%; padding: 12px; border: 2px solid #ba68c8; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 1.1rem; margin-bottom: 15px;">
+                <div class="wa-report-box">
+                    <label for="student-name">Kumpulkan Nilai ke Guru:</label>
+                    <input type="text" id="student-name" placeholder="Tulis Nama Lengkapmu (Misal: Syifa Sabrina)">
 
-                    <select id="student-class"
-                        style="width: 100%; padding: 12px; border: 2px solid #ba68c8; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 1.1rem; margin-bottom: 15px; color: #4a148c; font-weight: bold; appearance: none; background: #fff url('data:image/svg+xml;utf8,<svg xmlns=`http://www.w3.org/2000/svg` width=`24` height=`24` viewBox=`0 0 24 24` fill=`none` stroke=`%23ba68c8` stroke-width=`2` stroke-linecap=`round` stroke-linejoin=`round`><polyline points=`6 9 12 15 18 9`></polyline></svg>') no-repeat right 10px center / 20px;">
+                    <label for="student-class" style="margin-top: 4px;">Pilih Kelasmu:</label>
+                    <select id="student-class">
                         <option value="" disabled selected>-- Pilih Kelasmu --</option>
                         <option value="4 Bukhari">4 Bukhari</option>
                         <option value="4 Tirmidzi">4 Tirmidzi</option>
