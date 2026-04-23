@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ PR BAHASA INDONESIA KELAS 4</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- SCREEN COVER -->
+        <div id="screen-cover" class="screen active">
+            <div class="cover-content">
+                <h1>QUIZ PR BAHASA INDONESIA KELAS 4</h1>
+                <button class="action-btn start-btn" onclick="goToMenu()">Mulai Bermain! 🎮</button>
+            </div>
+        </div>
+
+        <!-- SCREEN MENU -->
+        <div id="screen-menu" class="screen" style="display: none;">
+            <div class="menu-content">
+                <h2>Pilih Mode Bermain</h2>
+                <div class="menu-cards">
+                    <div class="menu-card" onclick="showInstructions('pg')">
+                        <div class="menu-icon">📝</div>
+                        <h3>Pilihan Ganda</h3>
+                        <p>10 Soal Pilihan</p>
+                    </div>
+                    <div class="menu-card" onclick="showInstructions('dnd')">
+                        <div class="menu-icon">👆</div>
+                        <h3>Isian (Drag & Drop)</h3>
+                        <p>5 Soal Mencocokkan</p>
+                    </div>
+                    <div class="menu-card" onclick="showInstructions('essay')">
+                        <div class="menu-icon">✒️</div>
+                        <h3>Uraian (Essay)</h3>
+                        <p>5 Soal Ketik</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN QUIZ -->
+        <div id="screen-quiz" class="screen" style="display: none;">
+            <!-- HEADER -->
+            <header>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="slide-indicator">
+                    <span id="slide-text-prefix">Soal</span>
+                    <span id="slide-numbers-container">
+                        <span id="current-slide-num">1</span> / <span id="total-slide-num">10</span>
+                    </span>
+                </div>
+                <div class="score-display">Bintang: <span id="score-text">0</span> ⭐</div>
+            </header>
+
+            <!-- SLIDES CONTAINER -->
+            <main class="slides-wrapper" id="slides-wrapper">
+                <!-- Slides will be injected here by JS -->
+            </main>
+
+            <!-- NAVIGATION CONTROLS -->
+            <div class="nav-controls">
+                <button class="nav-btn prev-btn" id="prev-btn" onclick="prevSlide()" disabled>⬅️ Kembali</button>
+                <button class="nav-btn menu-btn" onclick="goToMenu()">🏠 Menu Utama</button>
+                <button class="nav-btn next-btn" id="next-btn" onclick="nextSlide()" disabled>Lanjut ➡️</button>
+            </div>
+        </div>
+
+        <!-- POPUP PENJELASAN -->
+        <div class="overlay" id="explanation-overlay">
+            <div class="popup-box" id="popup-box">
+                <h2 id="popup-title">Benar! 🥳</h2>
+                <div class="popup-icon" id="popup-icon">✨</div>
+                <p id="popup-text">Penjelasan akan muncul di sini.</p>
+                <button class="action-btn" onclick="closePopup()">Oke, Lanjut! 👍</button>
+            </div>
+        </div>
+
+        <!-- POPUP INSTRUKSI -->
+        <div class="overlay" id="instruction-overlay">
+            <div class="popup-box">
+                <h2 id="inst-title" style="color: var(--blue);">📝 Petunjuk Kuis</h2>
+                <p id="inst-text"
+                    style="text-align: left; font-size: 1.1rem; line-height: 1.6; margin-top: 15px; margin-bottom: 25px;">
+                </p>
+                <button class="action-btn" onclick="startQuizTransition()">Siap, Mulai! 🚀</button>
+            </div>
+        </div>
+
+        <!-- END SCREEN -->
+        <div class="overlay" id="end-screen">
+            <div class="popup-box end-box">
+                <h2>Kuis Selesai! 🎉</h2>
+                <div class="popup-icon">🏆</div>
+                <p>Kamu hebat! Kamu mendapatkan <br><b id="final-score">0</b> Bintang ⭐</p>
+
+                <div class="wa-report-box"
+                    style="margin-top: 15px; text-align: left; background: #f3e5f5; padding: 20px; border-radius: 12px; border: 2px solid #ce93d8;">
+                    <label for="student-name"
+                        style="font-weight: 800; color: #4a148c; display: block; margin-bottom: 8px;">Kumpulkan Nilai ke
+                        Guru:</label>
+                    <input type="text" id="student-name" placeholder="Tulis Nama Lengkapmu (Misal: Syifa Sabrina)"
+                        style="width: 100%; padding: 12px; border: 2px solid #ba68c8; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 1.1rem; margin-bottom: 15px;">
+
+                    <select id="student-class"
+                        style="width: 100%; padding: 12px; border: 2px solid #ba68c8; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 1.1rem; margin-bottom: 15px; color: #4a148c; font-weight: bold; appearance: none; background: #fff url('data:image/svg+xml;utf8,<svg xmlns=`http://www.w3.org/2000/svg` width=`24` height=`24` viewBox=`0 0 24 24` fill=`none` stroke=`%23ba68c8` stroke-width=`2` stroke-linecap=`round` stroke-linejoin=`round`><polyline points=`6 9 12 15 18 9`></polyline></svg>') no-repeat right 10px center / 20px;">
+                        <option value="" disabled selected>-- Pilih Kelasmu --</option>
+                        <option value="4 Bukhari">4 Bukhari</option>
+                        <option value="4 Tirmidzi">4 Tirmidzi</option>
+                        <option value="4 Muslim">4 Muslim</option>
+                    </select>
+                    <button class="action-btn" onclick="sendToGoogleForm()"
+                        style="background: #673AB7; box-shadow: 0 5px 0 #4527A0;">Kirim ke Form 📄</button>
+                </div>
+
+                <div class="btn-group">
+                    <button class="action-btn" onclick="restartQuiz()"
+                        style="background: #95a5a6; box-shadow: 0 5px 0 #7f8c8d;">Ulangi / Kembali 🔄</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AUDIO EFFECTS -->
+    <audio id="sfx-correct" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3"></audio>
+    <audio id="sfx-wrong" src="https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3"></audio>
+    <audio id="sfx-pop" src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3"></audio>
+    <audio id="sfx-click" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
