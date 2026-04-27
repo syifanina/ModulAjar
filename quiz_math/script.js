@@ -201,7 +201,7 @@ const essayData = [
         num: 17,
         question: "Kerucut memiliki ________ alas dan ________ sisi lengkung.",
         placeholder: "Contoh: 1 alas dan 1 sisi lengkung",
-        keys: ["1"],
+        keys: ["1 alas dan 1 sisi", "1 alas dan 1", "satu alas dan satu sisi", "satu dan satu", "1 dan 1"],
         answer: "1 alas dan 1 sisi lengkung"
     },
     {
