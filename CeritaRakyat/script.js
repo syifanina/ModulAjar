@@ -62,8 +62,8 @@ const YT_CONFIG = {
     'yt-slide3': { slide: 3, start: 13,  end: 139 },  // 00:13 → 2:19
     'yt-slide4': { slide: 4, start: 20,  end: 35  },  // 00:20 → 0:35
     'yt-slide5': { slide: 5, start: 4,   end: 92  },  // 00:04 → 1:32
-    'yt-slide8': { slide: 8, start: null, end: null }, // full video, siswa bisa kontrol
-    'yt-completion': { slide: 9, start: 71, end: 84 }, // video penyemangat
+    'yt-slide8': { slide: 8, start: null, end: 525 }, // unlock Next & popup di menit 8:45
+    'yt-completion':{ slide: 9, start: 71, end: 84 }, // video penyemangat
     'yt-slide10':{ slide: 10, start: null, end: null } // full video, doa penutup
 };
 
@@ -177,6 +177,7 @@ function autoPlaySlide(slide) {
         resetSiap();
     } else if (slide === 8) {
         playYT('yt-slide8');
+        startEndTimer('yt-slide8'); // mulai polling → unlock di menit 8:45
     } else if (slide === 10) {
         playYT('yt-slide10');
     }
