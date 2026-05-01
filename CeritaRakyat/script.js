@@ -48,7 +48,7 @@ window.SFX = (() => {
 })();
 
 // ─── STATE ───────────────────────────────────
-const TOTAL_SLIDES = 10;
+const TOTAL_SLIDES = 11;
 let currentSlide = 1;
 let videoReady    = {};   // slideIndex → boolean
 
@@ -64,7 +64,7 @@ const YT_CONFIG = {
     'yt-slide5': { slide: 5, start: 4,   end: 92  },  // 00:04 → 1:32
     'yt-slide8': { slide: 8, start: null, end: 525 }, // unlock Next & popup di menit 8:45
     'yt-completion':{ slide: 9, start: 71, end: 84 }, // video penyemangat
-    'yt-slide10':{ slide: 10, start: null, end: null } // full video, doa penutup
+    'yt-slide11':{ slide: 11, start: null, end: null } // doa penutup
 };
 
 // Timer untuk polling waktu pada video dengan batas end
@@ -179,7 +179,12 @@ function autoPlaySlide(slide) {
         playYT('yt-slide8');
         startEndTimer('yt-slide8'); // mulai polling → unlock di menit 8:45
     } else if (slide === 10) {
-        playYT('yt-slide10');
+        // Hall of Fame: tidak ada video, langsung unlock Lanjut
+        videoReady[10] = true;
+        updateNavButtons();
+        loadHallOfFame();
+    } else if (slide === 11) {
+        playYT('yt-slide11');
     }
 }
 
@@ -205,7 +210,7 @@ function pauseSlideMedia(slide) {
     else if (slide === 5) pauseYT('yt-slide5');
     else if (slide === 8) pauseYT('yt-slide8');
     else if (slide === 9) pauseYT('yt-completion');
-    else if (slide === 10) pauseYT('yt-slide10');
+    else if (slide === 11) pauseYT('yt-slide11');
 }
 
 function pauseYT(frameId) {
@@ -388,4 +393,51 @@ function siapBelajar() {
 
     // Aktifkan tombol Lanjut
     unlockNext(7);
+}
+
+// ─── HALL OF FAME: fetch nama siswa dari Google Sheets ───────────
+async function loadHallOfFame() {
+    const SHEET_ID = '1D2g_uB3mqxMukDHXT3vObe3XILH35ZAxcSzRxX3E_is';
+    const GID      = '316157574';
+    const url      = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${GID}`;
+
+    const grid = document.getElementById('hofGrid');
+    if (!grid) return;
+    grid.innerHTML = '<div class="hof-loading">⏳ Memuat data...</div>';
+
+    try {
+        const res  = await fetch(url);
+        const text = await res.text();
+
+        // Strip JSONP wrapper: /*O_o*/google.visualization.Query.setResponse({...});
+        const jsonStr = text.replace(/^[^(]+\(/, '').replace(/\);?\s*$/, '');
+        const data    = JSON.parse(jsonStr);
+        const rows    = data?.table?.rows;
+
+        if (!rows || rows.length === 0) {
+            grid.innerHTML = '<p class="hof-empty">Belum ada yang mengumpulkan. 😊</p>';
+            return;
+        }
+
+        grid.innerHTML = '';
+        rows.forEach((row, i) => {
+            const nama  = row.c?.[1]?.v ?? '–';  // kolom B: Nama
+            const kelas = row.c?.[2]?.v ?? '';    // kolom C: Kelas
+
+            const card = document.createElement('div');
+            card.className = 'hof-card';
+            card.style.animationDelay = `${i * 0.07}s`;
+            card.innerHTML = `
+                <div class="hof-rank">${i + 1}</div>
+                <div class="hof-info">
+                    <div class="hof-name">${nama}</div>
+                    ${kelas ? `<div class="hof-kelas">${kelas}</div>` : ''}
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    } catch (e) {
+        grid.innerHTML = '<p class="hof-empty">⚠️ Gagal memuat. Pastikan sheet sudah dipublikasikan dan coba klik Muat Ulang.</p>';
+        console.error('[HoF]', e);
+    }
 }
