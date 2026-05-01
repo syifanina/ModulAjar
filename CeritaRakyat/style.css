@@ -277,6 +277,20 @@ body::after {
     font-weight: 600;
 }
 
+/* Kredit penulis — pojok kanan bawah, subtle */
+.cover-creator {
+    position: absolute;
+    bottom: 10px;
+    right: 14px;
+    font-size: 0.72rem;
+    color: rgba(80, 60, 50, 0.45);
+    font-style: italic;
+    letter-spacing: 0.3px;
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+}
+
 .start-btn {
     font-family: 'Fredoka One', cursive;
     font-size: clamp(1rem, 3vw, 1.4rem);
