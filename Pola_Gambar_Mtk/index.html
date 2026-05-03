@@ -161,11 +161,13 @@
                         <h2 class="slide-title">🎬 Video Pembelajaran Pola Gambar</h2>
                     </div>
                     <div class="video-wrap" style="position: relative;">
-                        <video id="video-pola-gambar" class="slide-video" playsinline controls
-                            controlsList="nodownload nofullscreen">
-                            <source src="assets/video_pola_gambar.mp4" type="video/mp4">
-                            Browser kamu tidak mendukung video HTML5.
-                        </video>
+                        <!-- YouTube Video for Slide 7 -->
+                        <div class="yt-container">
+                            <iframe id="yt-slide7" class="yt-frame"
+                                src="https://www.youtube.com/embed/VAtHqseHf90?enablejsapi=1&rel=0&modestbranding=1&fs=0&disablekb=1"
+                                title="Video Pembelajaran Pola Gambar" frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                        </div>
 
                         <!-- Box Pertanyaan 1 -->
                         <div id="qBox-1" class="interactive-qbox">
@@ -222,7 +224,7 @@
             <div class="slide slide-quiz" id="slide-8">
                 <div class="quiz-inner">
                     <div class="quiz-top-header">
-                        <span class="slide-num">Slide 8 / 8</span>
+                        <span class="slide-num">Slide 8 / 10</span>
                         <h2 class="quiz-main-title">✍️ Latihan Soal</h2>
                         <p class="quiz-subtitle">Pola Gambar Matematika</p>
                     </div>
@@ -235,7 +237,77 @@
                         <div class="completion-emoji">🎊</div>
                         <h3>Latihan Selesai!</h3>
                         <p id="resultScore">Skor kamu: 0</p>
-                        <p>Kerjamu luar biasa! Terus semangat belajar ya! 🌟</p>
+
+                        <div class="submit-form" id="submitForm">
+                            <div class="sf-field">
+                                <label for="sfName">👤 Nama Lengkap</label>
+                                <input type="text" id="sfName" placeholder="Tulis namamu di sini..." autocomplete="off">
+                            </div>
+                            <div class="sf-field">
+                                <label for="sfClass">🏫 Kelas</label>
+                                <select id="sfClass">
+                                    <option value="">-- Pilih Kelas --</option>
+                                    <option value="4 Bukhari">4 Bukhari</option>
+                                    <option value="4 Tirmizi">4 Tirmizi</option>
+                                    <option value="4 Muslim">4 Muslim</option>
+                                </select>
+                            </div>
+                            <div class="sf-field">
+                                <label for="sfFeel">💚 Bagaimana perasaanmu setelah mempelajari kuis pola gambar
+                                    ini?</label>
+                                <select id="sfFeel">
+                                    <option value="">-- Pilih perasaanmu --</option>
+                                    <option value="Sangat Senang">🤩 Sangat Senang</option>
+                                    <option value="Senang">😊 Senang</option>
+                                    <option value="Biasa Saja">😐 Biasa Saja</option>
+                                    <option value="Kurang Senang">😕 Kurang Senang</option>
+                                    <option value="Tidak Senang">😞 Tidak Senang</option>
+                                </select>
+                            </div>
+                            <button class="sf-submit-btn" id="sfSubmitBtn" onclick="submitToGForm()">
+                                Kirim Nilai ke Guru 🚀
+                            </button>
+                        </div>
+
+                        <div class="sf-success" id="sfSuccess">
+                            <span>🌟</span>
+                            <p id="sfSuccessMsg"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 9: HALL OF FAME ─── -->
+            <div class="slide" id="slide-9">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 9 / 10</span>
+                        <h2 class="slide-title">🏆 Siswa Keren yang Sudah Selesai!</h2>
+                    </div>
+                    <div class="hof-wrap">
+                        <p class="hof-subtitle">Kalian semua luar biasa! 🌟</p>
+                        <div class="hof-grid" id="hofGrid">
+                            <div class="hof-loading">⏳ Memuat data...</div>
+                        </div>
+                        <button class="hof-refresh-btn" onclick="loadHallOfFame()">🔄 Muat Ulang</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 10: YOUTUBE DOA PENUTUP ─── -->
+            <div class="slide" id="slide-10">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 10 / 10</span>
+                        <h2 class="slide-title">Mari kita membaca doa penutup majelis. 🤲</h2>
+                    </div>
+                    <div class="video-wrap">
+                        <div class="yt-container yt-locked">
+                            <iframe id="yt-slide10" class="yt-frame"
+                                src="https://www.youtube.com/embed/5-9D4JT84Bc?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3"
+                                title="Doa Penutup Setelah Belajar" frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
