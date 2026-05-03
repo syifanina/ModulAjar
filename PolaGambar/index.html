@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detektif Pola – Pola Gambar Kelas 4 SD</title>
+  <meta name="description" content="Latihan interaktif Pola Gambar untuk siswa kelas 4 SD. Temukan pola bintang dan seret bintang ke kotak kosong!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== APP CONTAINER (matches CeritaRakyat layout) ===== -->
+  <div class="app-container">
+
+    <!-- ═══ PROGRESS BAR ═══ -->
+    <div class="progress-strip">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <!-- ─── SLIDE 1: COVER ─── -->
+    <div class="slide active" id="slide-1">
+        <div class="cover-content">
+            <!-- Siswi pojok kiri (absolute) -->
+            <img src="siswi.png" alt="Siswi" class="cover-char cover-char-left">
+
+            <!-- Konten tengah -->
+            <div class="cover-center">
+                <div class="cover-badge">📖 Media Pembelajaran</div>
+                <img src="cover_pola_gambar.png" alt="Cover Pola Gambar" class="cover-img" id="coverImg">
+                <h1 class="cover-title">Pola Gambar</h1>
+                <p class="cover-subtitle">Mata Pelajaran Matematika</p>
+                <button class="start-btn" id="btnStart" onclick="startExercise()">
+                    Mulai ✨
+                </button>
+                <div class="cover-info">
+                    Kelas 4
+                </div>
+            </div>
+
+            <!-- Siswa pojok kanan (absolute) -->
+            <img src="siswa.png" alt="Siswa" class="cover-char cover-char-right">
+
+            <!-- Kredit penulis — pojok kanan bawah -->
+            <div class="cover-creator">Syifa Sabrina, S.Pd.</div>
+        </div>
+    </div>
+
+    <!-- ─── SLIDE 2: VIDEO LOKAL (ADAB BERDOA) ─── -->
+    <div class="slide" id="slide-2">
+        <div class="slide-inner">
+            <div class="slide-header">
+                <span class="slide-num">Slide 2 / 6</span>
+                <h2 class="slide-title">Let's start with a prayer. 🙏</h2>
+            </div>
+            <div class="video-wrap">
+                <video id="video-local" class="slide-video" playsinline controls>
+                    <source src="assets/Raise_your_hand.mp4" type="video/mp4">
+                    Browser kamu tidak mendukung video HTML5.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SLIDE 3: YOUTUBE AL-FATIHAH ─── -->
+    <div class="slide" id="slide-3">
+        <div class="slide-inner">
+            <div class="slide-header">
+                <span class="slide-num">Slide 3 / 6</span>
+                <h2 class="slide-title">Please recite Surah Al-Fatihah <span class="arabic">(الفاتحة)</span></h2>
+            </div>
+            <div class="video-wrap">
+                <div class="yt-container yt-locked">
+                    <iframe id="yt-slide3" class="yt-frame"
+                        src="https://www.youtube.com/embed/Urs2ScPSjC0?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3&start=13&end=139"
+                        title="Surah Al-Fatihah" frameborder="0"
+                        allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                    <div class="yt-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SLIDE 4: YOUTUBE DOA ORANG TUA ─── -->
+    <div class="slide" id="slide-4">
+        <div class="slide-inner">
+            <div class="slide-header">
+                <span class="slide-num">Slide 4 / 6</span>
+                <h2 class="slide-title">Please recite the dua for your parents. 🤲</h2>
+            </div>
+            <div class="video-wrap">
+                <div class="yt-container yt-locked">
+                    <iframe id="yt-slide4" class="yt-frame"
+                        src="https://www.youtube.com/embed/cjBjfMk4K84?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3&start=20&end=35"
+                        title="Dua for Parents" frameborder="0"
+                        allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                    <div class="yt-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SLIDE 5: YOUTUBE DOA BELAJAR ─── -->
+    <div class="slide" id="slide-5">
+        <div class="slide-inner">
+            <div class="slide-header">
+                <span class="slide-num">Slide 5 / 6</span>
+                <h2 class="slide-title">Please recite the prayer before studying. 📚</h2>
+            </div>
+            <div class="video-wrap">
+                <div class="yt-container yt-locked">
+                    <iframe id="yt-slide5" class="yt-frame"
+                        src="https://www.youtube.com/embed/53_CbWOpsnc?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3&start=4&end=92"
+                        title="Prayer Before Studying" frameborder="0"
+                        allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                    <div class="yt-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── SLIDE 6: EXERCISE ─── -->
+    <div class="slide" id="slide-6">
+      <!-- ===== SCROLLABLE CONTENT ===== -->
+      <div class="app-scroll">
+
+        <!-- Header removed by user request -->
+
+      <!-- ===== TUTORIAL OVERLAY ===== -->
+      <div class="tutorial-overlay" id="tutorial-overlay" style="display: none;">
+        <div class="tutorial-card">
+          <h3>Perhatikan Contoh! 👀</h3>
+          <p>Ini adalah contoh soal. Perhatikan bagaimana cara mengerjakannya.</p>
+          <button class="btn-check" onclick="startTutorial()">Mulai Contoh</button>
+        </div>
+      </div>
+
+      <!-- ===== INSTRUCTION CARD ===== -->
+      <section class="instruction-card" aria-label="Petunjuk soal">
+        <span class="instruction-icon">💡</span>
+        <p class="instruction-text">
+          <strong>Detektif Pola:</strong> Berapa sisa bintang di kotak terakhir?
+          Geser bintang ke kotak kosong sesuai pola!
+        </p>
+      </section>
+
+      <!-- ===== PATTERN BOXES ===== -->
+      <main class="pattern-section" aria-label="Kotak pola bintang">
+        <div class="boxes-wrapper">
+
+          <!-- Box 1 – 8 stars -->
+          <article class="pattern-box" id="box-1" aria-label="Kotak 1: 8 bintang">
+            <div class="box-label">Kotak 1</div>
+            <div class="stars-grid" id="stars-1"></div>
+          </article>
+
+          <!-- Arrow -->
+          <div class="arrow-connector" aria-hidden="true">→</div>
+
+          <!-- Box 2 – 6 stars -->
+          <article class="pattern-box" id="box-2" aria-label="Kotak 2: 6 bintang">
+            <div class="box-label">Kotak 2</div>
+            <div class="stars-grid" id="stars-2"></div>
+          </article>
+
+          <!-- Arrow -->
+          <div class="arrow-connector" aria-hidden="true">→</div>
+
+          <!-- Box 3 – 4 stars -->
+          <article class="pattern-box" id="box-3" aria-label="Kotak 3: 4 bintang">
+            <div class="box-label">Kotak 3</div>
+            <div class="stars-grid" id="stars-3"></div>
+          </article>
+
+          <!-- Arrow -->
+          <div class="arrow-connector" aria-hidden="true">→</div>
+
+          <!-- Box 4 – dropzone (empty) -->
+          <article class="pattern-box dropzone" id="box-4"
+                   aria-label="Kotak 4: seret bintang ke sini"
+                   aria-dropeffect="copy">
+            <div class="box-label">Kotak 4</div>
+            <div class="stars-grid dropzone-grid" id="stars-4">
+              <div class="drop-hint" id="drop-hint">Seret bintang ke sini ✨</div>
+            </div>
+            <button class="btn-remove" id="btn-remove" onclick="removeLastStar()" aria-label="Hapus satu bintang">
+              ✕ Hapus 1
+            </button>
+          </article>
+
+        </div><!-- /.boxes-wrapper -->
+      </main>
+
+      <!-- ===== STAR BANK ===== -->
+      <section class="star-bank-section" aria-label="Bank bintang">
+        <h2 class="bank-title">⭐ Bank Bintang</h2>
+        <p class="bank-subtitle">Geser bintang ke Kotak 4</p>
+        <div class="star-bank" id="star-bank" aria-label="Sumber bintang yang bisa diseret"></div>
+      </section>
+
+      <!-- ===== ACTION BUTTONS ===== -->
+      <div class="action-row">
+        <button class="btn-reset" id="btn-reset" onclick="resetExercise()">🔄 Ulangi</button>
+        <button class="btn-check" id="btn-check" onclick="checkAnswer()">🔎 Periksa</button>
+      </div>
+
+      </div><!-- /.app-scroll -->
+    </div><!-- /slide-6 -->
+
+    <!-- ═══ NAVIGATION ═══ -->
+    <div class="nav-controls" id="navControls">
+        <button class="nav-btn prev-btn" id="btnBack" onclick="navigate(-1)">
+            ← Kembali
+        </button>
+        <div class="dot-indicator" id="dotIndicator"></div>
+        <button class="nav-btn next-btn" id="btnNavNext" onclick="navigate(1)" disabled>
+            Lanjut →
+        </button>
+    </div>
+
+  </div><!-- /.app-container -->
+
+  <!-- ===== POPUP OVERLAY ===== -->
+  <div class="popup-overlay" id="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-title" hidden>
+    <div class="popup-card" id="popup-card">
+      <div class="popup-icon" id="popup-icon" aria-hidden="true"></div>
+      <h2 class="popup-title" id="popup-title"></h2>
+      <p class="popup-message" id="popup-message"></p>
+      <div class="popup-actions">
+        <button class="btn-popup-close" id="btn-popup-close" onclick="closePopup()">✕ Tutup</button>
+        <button class="btn-popup-next" id="btn-popup-next" onclick="goNext()" hidden>Lanjut ➜</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CONFETTI CANVAS ===== -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- YouTube IFrame API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="script.js"></script>
+</body>
+</html>
