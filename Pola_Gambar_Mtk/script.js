@@ -50,7 +50,8 @@ window.SFX = (() => {
 // ─── STATE ───────────────────────────────────
 const TOTAL_SLIDES = 10;
 let currentSlide = 1;
-let videoReady = { 7: true, 9: true };   // slideIndex → boolean
+let videoReady = {};
+for (let i = 1; i <= TOTAL_SLIDES; i++) videoReady[i] = true; // Semua slide langsung terbuka (unlocked)
 
 // State untuk Box Pertanyaan Interaktif di Video
 let qBoxStates = {
