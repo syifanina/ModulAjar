@@ -963,6 +963,7 @@ function showPembahasan(teks, isCorrect, cardId, isReview = false) {
 
     icon.textContent = isCorrect ? '⭐' : '📖';
     body.innerHTML   = teks;
+    body.scrollTop   = 0;
     if (yesBtn) { yesBtn.disabled = false; yesBtn.textContent = '✅ Sudah Paham'; }
 
     // Kunci scroll slide (karena slide 8 yang bisa discroll, bukan body)
