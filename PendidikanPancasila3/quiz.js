@@ -282,14 +282,14 @@ function renderDnDGap() {
                 ${q.sentence.map(part => {
                     if (part.startsWith('{gap')) {
                         const gapId = part.replace('{', '').replace('}', '');
-                        return `<div class="dnd-drop-zone" id="${qi}-${gapId}" ondragover="event.preventDefault()" ondrop="handleDrop(event, ${qi}, '${gapId}')">Tarik di sini</div>`;
+                        return `<div class="dnd-drop-zone" id="${qi}-${gapId}" ondragover="event.preventDefault()" ondrop="handleDrop(event, ${qi}, '${gapId}')" onclick="handleZoneClick(${qi}, '${gapId}')">Tarik di sini</div>`;
                     }
                     return `<span>${part}</span>`;
                 }).join('')}
             </div>
             <div class="dnd-choices-pool" id="dndChoices-${qi}">
                 ${q.choices.map((c, ci) => `
-                    <div class="dnd-choice-item" id="choice-${qi}-${ci}" draggable="true" ondragstart="handleDragStart(event, '${c}')">${c}</div>
+                    <div class="dnd-choice-item" id="choice-${qi}-${ci}" draggable="true" ondragstart="handleDragStart(event, '${c}')" onclick="handleChoiceClick(${qi}, ${ci}, '${c}')">${c}</div>
                 `).join('')}
             </div>
             <button class="dnd-check-btn" id="dndCheckBtn-${qi}" onclick="checkDnDGap(${qi})" disabled>Cek Urutan ✓</button>
@@ -384,13 +384,53 @@ function checkEssayAnswer(qi) {
     totalDoneCount++; checkQuizComplete();
 }
 
-function handleDragStart(e, text) { e.dataTransfer.setData('text/plain', text); if (window.SFX) window.SFX.click(); }
+let selectedChoice = null;
+
+function handleDragStart(e, text) { 
+    e.dataTransfer.setData('text/plain', text); 
+    selectedChoice = text;
+    if (window.SFX) window.SFX.click(); 
+}
+
+function handleChoiceClick(qi, ci, text) {
+    if (dndState[qi].locked) return;
+    if (window.SFX) window.SFX.click();
+    
+    // Remove selected class from all items in this pool
+    document.querySelectorAll(`#dndChoices-${qi} .dnd-choice-item`).forEach(el => el.classList.remove('selected'));
+    
+    const btn = document.getElementById(`choice-${qi}-${ci}`);
+    if (selectedChoice === text) {
+        selectedChoice = null;
+    } else {
+        selectedChoice = text;
+        btn.classList.add('selected');
+    }
+}
+
+function handleZoneClick(qi, gapId) {
+    if (dndState[qi].locked || !selectedChoice) return;
+    placeAnswer(qi, gapId, selectedChoice);
+    
+    // Clear selection
+    selectedChoice = null;
+    document.querySelectorAll(`.dnd-choice-item`).forEach(el => el.classList.remove('selected'));
+}
 
 function handleDrop(e, qi, gapId) {
-    e.preventDefault(); const text = e.dataTransfer.getData('text/plain');
+    e.preventDefault(); 
+    const text = e.dataTransfer.getData('text/plain') || selectedChoice;
+    if (!text) return;
+    placeAnswer(qi, gapId, text);
+    selectedChoice = null;
+}
+
+function placeAnswer(qi, gapId, text) {
     const zone = document.getElementById(`${qi}-${gapId}`);
-    zone.textContent = text; zone.classList.add('dropped');
+    zone.textContent = text; 
+    zone.classList.add('dropped');
     dndState[qi].answers[gapId] = text;
+    
     const allFilled = Object.values(dndState[qi].answers).every(v => v !== null);
     document.getElementById(`dndCheckBtn-${qi}`).disabled = !allFilled;
     if (window.SFX) window.SFX.correct();
@@ -406,12 +446,10 @@ function checkDnDGap(qi) {
         fb.className = 'q-feedback fb-correct'; fb.textContent = '✅ Benar! Kamu hebat!';
         lockDnD(qi); setTimeout(() => showPembahasan(q.pembahasan, true), 600);
     } else {
-        // Unlimited attempts: Always show try again, never lock on wrong
         if (window.SFX) window.SFX.wrong(); 
         fb.className = 'q-feedback fb-wrong'; fb.textContent = '❌ Belum tepat. Ayo coba lagi!';
         showTryAgain();
         
-        // Reset gaps so they can try from scratch
         q.gaps.forEach(g => { 
             const z = document.getElementById(`${qi}-${g.id}`); 
             z.textContent = 'Tarik di sini'; 
