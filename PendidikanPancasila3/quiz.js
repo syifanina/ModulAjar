@@ -282,14 +282,14 @@ function renderDnDGap() {
                 ${q.sentence.map(part => {
                     if (part.startsWith('{gap')) {
                         const gapId = part.replace('{', '').replace('}', '');
-                        return `<div class="dnd-drop-zone" id="${qi}-${gapId}" ondragover="event.preventDefault()" ondrop="handleDrop(event, ${qi}, '${gapId}')" onclick="handleZoneClick(${qi}, '${gapId}')" ontouchstart="handleZoneClick(${qi}, '${gapId}')">Tarik di sini</div>`;
+                        return `<div class="dnd-drop-zone" id="${qi}-${gapId}" ondragover="event.preventDefault()" ondrop="handleDrop(event, ${qi}, '${gapId}')" onclick="handleZoneClick(event, ${qi}, '${gapId}')" ontouchstart="handleZoneClick(event, ${qi}, '${gapId}')">Tarik di sini</div>`;
                     }
                     return `<span>${part}</span>`;
                 }).join('')}
             </div>
             <div class="dnd-choices-pool" id="dndChoices-${qi}">
                 ${q.choices.map((c, ci) => `
-                    <div class="dnd-choice-item" id="choice-${qi}-${ci}" draggable="true" ondragstart="handleDragStart(event, '${c}')" onclick="handleChoiceClick(${qi}, ${ci}, '${c}')" ontouchstart="handleChoiceClick(${qi}, ${ci}, '${c}')">${c}</div>
+                    <div class="dnd-choice-item" id="choice-${qi}-${ci}" draggable="true" ondragstart="handleDragStart(event, '${c}')" onclick="handleChoiceClick(event, ${qi}, ${ci}, '${c}')" ontouchstart="handleChoiceClick(event, ${qi}, ${ci}, '${c}')">${c}</div>
                 `).join('')}
             </div>
             <button class="dnd-check-btn" id="dndCheckBtn-${qi}" onclick="checkDnDGap(${qi})" disabled>Cek Urutan ✓</button>
@@ -385,6 +385,7 @@ function checkEssayAnswer(qi) {
 }
 
 let selectedChoice = null;
+let lastInteractionTime = 0;
 
 function handleDragStart(e, text) { 
     e.dataTransfer.setData('text/plain', text); 
@@ -392,7 +393,11 @@ function handleDragStart(e, text) {
     if (window.SFX) window.SFX.click(); 
 }
 
-function handleChoiceClick(qi, ci, text) {
+function handleChoiceClick(e, qi, ci, text) {
+    const now = Date.now();
+    if (now - lastInteractionTime < 300) return;
+    lastInteractionTime = now;
+
     if (dndState[qi].locked) return;
     if (window.SFX) window.SFX.click();
     
@@ -409,7 +414,11 @@ function handleChoiceClick(qi, ci, text) {
     if (btn) btn.classList.add('selected');
 }
 
-function handleZoneClick(qi, gapId) {
+function handleZoneClick(e, qi, gapId) {
+    const now = Date.now();
+    if (now - lastInteractionTime < 300) return;
+    lastInteractionTime = now;
+
     if (dndState[qi].locked || !selectedChoice) return;
     placeAnswer(qi, gapId, selectedChoice.text);
     selectedChoice = null;
