@@ -1175,28 +1175,30 @@ body::after {
   margin-top: 2px;
 }
 
-background: linear-gradient(135deg, var(--orange), var(--primary));
-box-shadow: 0 3px 0 #c0392b;
+.isian-card .q-num-badge,
+.essay-card .q-num-badge {
+  background: linear-gradient(135deg, var(--orange), var(--primary));
+  box-shadow: 0 3px 0 #c0392b;
 }
 
 .q-text {
-  font-size: 1.15rem;
-  line-height: 1.5;
-  color: var(--text-dark);
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: var(--text-dark);
 }
 
 .q-img {
-  max-width: 100%;
-  width: auto;
-  max-height: 280px;
-  height: auto;
-  border-radius: var(--border-radius-md);
-  margin: 15px auto;
-  display: block;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  object-fit: contain;
+    max-width: 100%;
+    width: auto;
+    max-height: 280px;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    margin: 15px auto;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    object-fit: contain;
 }
 
 /* ── Options ── */
@@ -1319,69 +1321,68 @@ box-shadow: 0 3px 0 #c0392b;
 }
 
 /* ── DnD Order List ── */
-font-family: 'Fredoka One',
-cursive;
-font-size: clamp(0.9rem, 2.2vw, 1.1rem);
-padding: clamp(9px, 1.8vw, 13px) clamp(20px, 5vw, 32px);
-background: linear-gradient(135deg, var(--orange), var(--primary));
-color: white;
-border: none;
-border-radius: 30px;
-cursor: pointer;
-box-shadow: 0 4px 0 #c0392b,
-0 6px 18px rgba(255, 107, 107, 0.3);
-transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-align-self: flex-start;
+.check-order-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+  padding: clamp(9px, 1.8vw, 13px) clamp(20px, 5vw, 32px);
+  background: linear-gradient(135deg, var(--orange), var(--primary));
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #c0392b, 0 6px 18px rgba(255, 107, 107, 0.3);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  align-self: flex-start;
 }
 
 .fb-essay-done {
-  background: #fffbeb !important;
-  color: #92400e !important;
-  border: 2px solid #fde68a !important;
-  padding: 15px !important;
+    background: #fffbeb !important;
+    color: #92400e !important;
+    border: 2px solid #fde68a !important;
+    padding: 15px !important;
 }
 
 .essay-success-msg {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  color: #15803d;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #15803d;
 }
 
 .essay-kj-box {
-  background: white;
-  border-radius: 10px;
-  padding: 12px;
-  border-left: 5px solid #f59e0b;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    border-left: 5px solid #f59e0b;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .essay-kj-title {
-  font-weight: 800;
-  font-size: 0.9rem;
-  color: #b45309;
-  margin-bottom: 5px;
-  text-transform: uppercase;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: #b45309;
+    margin-bottom: 5px;
+    text-transform: uppercase;
 }
 
 .essay-kj-content {
-  font-size: 0.92rem;
-  font-weight: 700;
-  line-height: 1.5;
-  color: #374151;
+    font-size: 0.92rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #374151;
 }
 
 .essay-kj-content ul {
-  margin: 5px 0 0 20px;
-  padding: 0;
+    margin: 5px 0 0 20px;
+    padding: 0;
 }
 
 .essay-kj-content li {
-  margin-bottom: 4px;
+    margin-bottom: 4px;
 }
 
 .check-order-btn:hover {
-  transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .check-order-btn:active {
@@ -1420,49 +1421,49 @@ align-self: flex-start;
 }
 
 .fb-msg {
-  font-size: 1.1rem;
-  font-family: 'Fredoka One', cursive;
-  margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-family: 'Fredoka One', cursive;
+    margin-bottom: 8px;
 }
 
 .fb-user-box {
-  font-size: 0.95rem;
-  color: #4b5563;
-  margin-bottom: 5px;
-  padding-left: 5px;
+    font-size: 0.95rem;
+    color: #4b5563;
+    margin-bottom: 5px;
+    padding-left: 5px;
 }
 
 .fb-kj-box-isian {
-  display: inline-block;
-  background: #2563eb;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-weight: 800;
-  font-size: 1rem;
-  margin-top: 5px;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-  border: 2px solid #1d4ed8;
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1rem;
+    margin-top: 5px;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    border: 2px solid #1d4ed8;
 }
 
 .fb-kj-box-isian span {
-  background: white;
-  color: #2563eb;
-  padding: 2px 8px;
-  border-radius: 6px;
-  margin-left: 8px;
-  font-family: 'Fredoka One', cursive;
+    background: white;
+    color: #2563eb;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: 8px;
+    font-family: 'Fredoka One', cursive;
 }
 
 .fb-hint-msg {
-  font-size: 0.9rem;
-  font-style: italic;
-  color: #b91c1c;
-  margin-top: 5px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #b91c1c;
+    margin-top: 5px;
 }
 
 .quiz-completion h3 {
-  font-family: 'Fredoka One', cursive;
+    font-family: 'Fredoka One', cursive;
   font-size: var(--fs-xl);
   color: var(--dark);
 }
@@ -1729,505 +1730,485 @@ align-self: flex-start;
   transform: translateY(-2px);
   box-shadow: 0 6px 0 #0667b3;
 }
-
 /* =============================================
    POPUP PEMBAHASAN
    ============================================= */
 .pembahasan-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9000;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  box-sizing: border-box;
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .pembahasan-overlay.visible {
-  display: flex;
-  animation: fadeInOverlay 0.25s ease;
+    display: flex;
+    animation: fadeInOverlay 0.25s ease;
 }
 
 .pembahasan-card {
-  background: white;
-  border-radius: 20px;
-  padding: 24px 20px 20px;
-  max-width: 620px;
-  width: 90%;
-  max-height: 85vh;
-  margin: 0 auto;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-  border-top: 6px solid #f59e0b;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: white;
+    border-radius: 20px;
+    padding: 24px 20px 20px;
+    max-width: 620px;
+    width: 90%;
+    max-height: 85vh;
+    margin: 0 auto;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    border-top: 6px solid #f59e0b;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .pembahasan-icon {
-  font-size: 2.5rem;
-  text-align: center;
+    font-size: 2.5rem;
+    text-align: center;
 }
 
 .pembahasan-title {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.3rem;
-  color: #b45309;
-  text-align: center;
-  margin: 0;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.3rem;
+    color: #b45309;
+    text-align: center;
+    margin: 0;
 }
 
 .pembahasan-body {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #374151;
-  line-height: 1.65;
-  background: #fffbeb;
-  border-radius: 12px;
-  padding: 12px 16px;
-  border-left: 4px solid #f59e0b;
-  overflow-y: auto;
-  flex: 1;
-  min-height: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #374151;
+    line-height: 1.65;
+    background: #fffbeb;
+    border-radius: 12px;
+    padding: 12px 16px;
+    border-left: 4px solid #f59e0b;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
 }
 
 .pembahasan-body strong {
-  color: #065f46;
+    color: #065f46;
 }
 
 .pembahasan-paham {
-  text-align: center;
+    text-align: center;
 }
 
 .pembahasan-paham p {
-  font-size: 0.9rem;
-  font-weight: 800;
-  color: #374151;
-  margin-bottom: 10px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #374151;
+    margin-bottom: 10px;
 }
 
 .pembahasan-close-btn {
-  font-family: 'Fredoka One', cursive;
-  padding: 10px 30px;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 0 #15803d;
-  transition: all 0.2s;
+    font-family: 'Fredoka One', cursive;
+    padding: 10px 30px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #15803d;
+    transition: all 0.2s;
 }
 
 .pembahasan-close-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #15803d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #15803d;
 }
 
 .pembahasan-close-btn:active {
-  transform: translateY(2px);
-  box-shadow: none;
+    transform: translateY(2px);
+    box-shadow: none;
 }
 
 /* Review Button (Book Icon) */
 .review-pembahasan-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 2px solid #f59e0b;
-  background: #fffbeb;
-  color: #b45309;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-left: 10px;
-  vertical-align: middle;
-  transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #f59e0b;
+    background: #fffbeb;
+    color: #b45309;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 10px;
+    vertical-align: middle;
+    transition: all 0.2s;
 }
 
 .review-pembahasan-btn:hover {
-  background: #f59e0b;
-  color: white;
-  transform: scale(1.1);
+    background: #f59e0b;
+    color: white;
+    transform: scale(1.1);
 }
 
 @keyframes fadeInOverlay {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes popIn {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 /* Multi-Answer Support */
 .opt-selected {
-  background: #e0f2fe !important;
-  border-color: #3b82f6 !important;
-  transform: scale(1.02);
+    background: #e0f2fe !important;
+    border-color: #3b82f6 !important;
+    transform: scale(1.02);
 }
 
 .check-multi-btn {
-  width: 100%;
-  margin-top: 15px;
-  padding: 12px;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.1rem;
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 4px 0 #b45309;
-  transition: all 0.2s;
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #b45309;
+    transition: all 0.2s;
 }
 
 .check-multi-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #b45309;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #b45309;
 }
 
 .check-multi-btn:active:not(:disabled) {
-  transform: translateY(2px);
-  box-shadow: none;
+    transform: translateY(2px);
+    box-shadow: none;
 }
 
 .check-multi-btn:disabled {
-  background: #e2e8f0;
-  color: #94a3b8;
-  box-shadow: none;
-  cursor: not-allowed;
+    background: #e2e8f0;
+    color: #94a3b8;
+    box-shadow: none;
+    cursor: not-allowed;
 }
 
 /* Isian Section */
 .isian-section-title {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.4rem;
-  color: var(--primary);
-  text-align: center;
-  margin: 30px 0 15px;
-  padding-bottom: 10px;
-  border-bottom: 2px dashed #cbd5e1;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    color: var(--primary);
+    text-align: center;
+    margin: 30px 0 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed #cbd5e1;
 }
 
 .isian-card {
-  border-left: 6px solid #a855f7 !important;
+    border-left: 6px solid #a855f7 !important;
 }
 
 .isian-input-wrap {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .isian-input {
-  flex: 1;
-  padding: 12px 16px;
-  border: 2.5px solid #e2e8f0;
-  border-radius: 12px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  outline: none;
-  transition: all 0.2s;
+    flex: 1;
+    padding: 12px 16px;
+    border: 2.5px solid #e2e8f0;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    outline: none;
+    transition: all 0.2s;
 }
 
 .isian-input:focus {
-  border-color: #a855f7;
-  background: #fdf4ff;
+    border-color: #a855f7;
+    background: #fdf4ff;
 }
 
 .isian-input.input-correct {
-  border-color: #22c55e;
-  background: #f0fdf4;
-  color: #15803d;
+    border-color: #22c55e;
+    background: #f0fdf4;
+    color: #15803d;
 }
 
 .isian-input.input-wrong {
-  border-color: #ef4444;
-  background: #fef2f2;
-  color: #b91c1c;
+    border-color: #ef4444;
+    background: #fef2f2;
+    color: #b91c1c;
 }
 
 .isian-check-btn {
-  padding: 0 24px;
-  background: #a855f7;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 0 #7e22ce;
-  transition: all 0.2s;
+    padding: 0 24px;
+    background: #a855f7;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #7e22ce;
+    transition: all 0.2s;
 }
 
 .isian-check-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #7e22ce;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #7e22ce;
 }
 
 .isian-check-btn:active {
-  transform: translateY(2px);
-  box-shadow: none;
+    transform: translateY(2px);
+    box-shadow: none;
 }
 
 /* Essay Section */
 .section-title {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.4rem;
-  color: var(--primary);
-  text-align: center;
-  margin: 30px 0 15px;
-  padding-bottom: 10px;
-  border-bottom: 2px dashed #cbd5e1;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.4rem;
+    color: var(--primary);
+    text-align: center;
+    margin: 30px 0 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px dashed #cbd5e1;
 }
 
 .essay-card {
-  border-left: 6px solid #f59e0b !important;
+    border-left: 6px solid #f59e0b !important;
 }
 
 .essay-input-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
 }
 
 .essay-input {
-  width: 100%;
-  padding: 14px;
-  border: 2.5px solid #e2e8f0;
-  border-radius: 12px;
-  font-family: 'Nunito', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  outline: none;
-  transition: all 0.2s;
-  resize: vertical;
+    width: 100%;
+    padding: 14px;
+    border: 2.5px solid #e2e8f0;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    outline: none;
+    transition: all 0.2s;
+    resize: vertical;
 }
 
 .essay-input:focus {
-  border-color: #f59e0b;
-  background: #fffbeb;
+    border-color: #f59e0b;
+    background: #fffbeb;
 }
 
 .essay-check-btn {
-  align-self: flex-end;
-  padding: 10px 24px;
-  background: #f59e0b;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1rem;
-  cursor: pointer;
-  box-shadow: 0 4px 0 #b45309;
-  transition: all 0.2s;
+    align-self: flex-end;
+    padding: 10px 24px;
+    background: #f59e0b;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #b45309;
+    transition: all 0.2s;
 }
 
 .essay-check-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #b45309;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #b45309;
 }
 
 .essay-check-btn:active {
-  transform: translateY(2px);
-  box-shadow: none;
+    transform: translateY(2px);
+    box-shadow: none;
 }
 
 /* Try Again Overlay */
 .try-again-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
 .try-again-overlay.visible {
-  opacity: 1;
-  pointer-events: all;
+    opacity: 1;
+    pointer-events: all;
 }
 
 .try-again-content {
-  background: white;
-  padding: 30px 40px;
-  border-radius: 25px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  border-bottom: 8px solid #3b82f6;
-  transform: scale(0.8);
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background: white;
+    padding: 30px 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    border-bottom: 8px solid #3b82f6;
+    transform: scale(0.8);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .try-again-overlay.visible .try-again-content {
-  transform: scale(1);
+    transform: scale(1);
 }
 
 .try-again-emoji {
-  font-size: 4rem;
-  margin-bottom: 15px;
-  animation: bounce 1s infinite;
+    font-size: 4rem;
+    margin-bottom: 15px;
+    animation: bounce 1s infinite;
 }
 
 .try-again-text {
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.5rem;
-  color: #1e3a8a;
-  line-height: 1.3;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.5rem;
+    color: #1e3a8a;
+    line-height: 1.3;
 }
 
 @keyframes bounce {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 /* DnD Gap Section */
 .dnd-gap-card {
-  border-left: 6px solid #3b82f6 !important;
+    border-left: 6px solid #3b82f6 !important;
 }
 
 .dnd-sentence {
-  font-size: 1.2rem;
-  line-height: 2.5;
-  background: #f8fafc;
-  padding: 20px;
-  border-radius: 15px;
-  border: 2px solid #e2e8f0;
-  margin: 15px 0;
-  font-weight: 700;
-  color: #334155;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
+    font-size: 1.2rem;
+    line-height: 2.5;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #e2e8f0;
+    margin: 15px 0;
+    font-weight: 700;
+    color: #334155;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
 }
 
 .dnd-drop-zone {
-  display: inline-flex;
-  min-width: 140px;
-  height: 40px;
-  background: white;
-  border: 3px dashed #cbd5e1;
-  border-radius: 10px;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.95rem;
-  color: #94a3b8;
-  transition: all 0.2s;
-  padding: 0 10px;
+    display: inline-flex;
+    min-width: 140px;
+    height: 40px;
+    background: white;
+    border: 3px dashed #cbd5e1;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    color: #94a3b8;
+    transition: all 0.2s;
+    padding: 0 10px;
 }
 
 .dnd-drop-zone.dropped {
-  background: #eff6ff;
-  border: 3px solid #3b82f6;
-  color: #1e40af;
-  font-family: 'Fredoka One', cursive;
-  border-style: solid;
+    background: #eff6ff;
+    border: 3px solid #3b82f6;
+    color: #1e40af;
+    font-family: 'Fredoka One', cursive;
+    border-style: solid;
 }
 
 .dnd-drop-zone.correct-ans {
-  background: #f0fdf4;
-  border-color: #22c55e;
-  color: #15803d;
+    background: #f0fdf4;
+    border-color: #22c55e;
+    color: #15803d;
 }
 
 .dnd-choices-pool {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 20px 0;
-  padding: 15px;
-  background: #f1f5f9;
-  border-radius: 15px;
-  justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f1f5f9;
+    border-radius: 15px;
+    justify-content: center;
 }
 
 .dnd-choice-item {
-  background: white;
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1rem;
-  color: #3b82f6;
-  cursor: grab;
-  box-shadow: 0 4px 0 #bfdbfe, 0 4px 10px rgba(0, 0, 0, 0.05);
-  border: 2px solid #3b82f6;
-  transition: all 0.2s;
-  user-select: none;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    color: #3b82f6;
+    cursor: grab;
+    box-shadow: 0 4px 0 #bfdbfe, 0 4px 10px rgba(0,0,0,0.05);
+    border: 2px solid #3b82f6;
+    transition: all 0.2s;
+    user-select: none;
 }
 
 .dnd-choice-item:hover {
-  transform: translateY(-3px);
-  background: #3b82f6;
-  color: white;
+    transform: translateY(-3px);
+    background: #3b82f6;
+    color: white;
 }
 
 .dnd-choice-item:active {
-  cursor: grabbing;
+    cursor: grabbing;
 }
 
 .dnd-check-btn {
-  width: 100%;
-  padding: 14px;
-  background: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-family: 'Fredoka One', cursive;
-  font-size: 1.2rem;
-  cursor: pointer;
-  box-shadow: 0 6px 0 #1e40af;
-  transition: all 0.2s;
-  margin-top: 10px;
+    width: 100%;
+    padding: 14px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #1e40af;
+    transition: all 0.2s;
+    margin-top: 10px;
 }
 
 .dnd-check-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 0 #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 #1e40af;
 }
 
 .dnd-check-btn:active:not(:disabled) {
-  transform: translateY(2px);
-  box-shadow: none;
+    transform: translateY(2px);
+    box-shadow: none;
 }
 
 .dnd-check-btn:disabled {
-  background: #e2e8f0;
-  color: #94a3b8;
-  box-shadow: none;
-  cursor: not-allowed;
+    background: #e2e8f0;
+    color: #94a3b8;
+    box-shadow: none;
+    cursor: not-allowed;
 }
