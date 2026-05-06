@@ -2201,6 +2201,14 @@ body::after {
   cursor: grabbing;
 }
 
+.dnd-choice-item.selected {
+  background: #3b82f6;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+  border-color: #1e40af;
+}
+
 .dnd-check-btn {
   width: 100%;
   padding: 14px;
