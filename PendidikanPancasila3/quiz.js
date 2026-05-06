@@ -282,14 +282,14 @@ function renderDnDGap() {
                 ${q.sentence.map(part => {
                     if (part.startsWith('{gap')) {
                         const gapId = part.replace('{', '').replace('}', '');
-                        return `<div class="dnd-drop-zone" id="${qi}-${gapId}" ondragover="event.preventDefault()" ondrop="handleDrop(event, ${qi}, '${gapId}')" onclick="handleZoneClick(${qi}, '${gapId}')">Tarik di sini</div>`;
+                        return `<div class="dnd-drop-zone" id="${qi}-${gapId}" ondragover="event.preventDefault()" ondrop="handleDrop(event, ${qi}, '${gapId}')" onclick="handleZoneClick(${qi}, '${gapId}')" ontouchstart="handleZoneClick(${qi}, '${gapId}')">Tarik di sini</div>`;
                     }
                     return `<span>${part}</span>`;
                 }).join('')}
             </div>
             <div class="dnd-choices-pool" id="dndChoices-${qi}">
                 ${q.choices.map((c, ci) => `
-                    <div class="dnd-choice-item" id="choice-${qi}-${ci}" draggable="true" ondragstart="handleDragStart(event, '${c}')" onclick="handleChoiceClick(${qi}, ${ci}, '${c}')">${c}</div>
+                    <div class="dnd-choice-item" id="choice-${qi}-${ci}" draggable="true" ondragstart="handleDragStart(event, '${c}')" onclick="handleChoiceClick(${qi}, ${ci}, '${c}')" ontouchstart="handleChoiceClick(${qi}, ${ci}, '${c}')">${c}</div>
                 `).join('')}
             </div>
             <button class="dnd-check-btn" id="dndCheckBtn-${qi}" onclick="checkDnDGap(${qi})" disabled>Cek Urutan ✓</button>
@@ -388,7 +388,7 @@ let selectedChoice = null;
 
 function handleDragStart(e, text) { 
     e.dataTransfer.setData('text/plain', text); 
-    selectedChoice = text;
+    selectedChoice = { text };
     if (window.SFX) window.SFX.click(); 
 }
 
@@ -396,30 +396,29 @@ function handleChoiceClick(qi, ci, text) {
     if (dndState[qi].locked) return;
     if (window.SFX) window.SFX.click();
     
-    // Remove selected class from all items in this pool
-    document.querySelectorAll(`#dndChoices-${qi} .dnd-choice-item`).forEach(el => el.classList.remove('selected'));
-    
-    const btn = document.getElementById(`choice-${qi}-${ci}`);
-    if (selectedChoice === text) {
+    // If clicking the same one, deselect
+    if (selectedChoice && selectedChoice.qi === qi && selectedChoice.ci === ci) {
         selectedChoice = null;
-    } else {
-        selectedChoice = text;
-        btn.classList.add('selected');
+        document.querySelectorAll(`.dnd-choice-item`).forEach(el => el.classList.remove('selected'));
+        return;
     }
+
+    selectedChoice = { qi, ci, text };
+    document.querySelectorAll(`.dnd-choice-item`).forEach(el => el.classList.remove('selected'));
+    const btn = document.getElementById(`choice-${qi}-${ci}`);
+    if (btn) btn.classList.add('selected');
 }
 
 function handleZoneClick(qi, gapId) {
     if (dndState[qi].locked || !selectedChoice) return;
-    placeAnswer(qi, gapId, selectedChoice);
-    
-    // Clear selection
+    placeAnswer(qi, gapId, selectedChoice.text);
     selectedChoice = null;
     document.querySelectorAll(`.dnd-choice-item`).forEach(el => el.classList.remove('selected'));
 }
 
 function handleDrop(e, qi, gapId) {
     e.preventDefault(); 
-    const text = e.dataTransfer.getData('text/plain') || selectedChoice;
+    const text = e.dataTransfer.getData('text/plain') || (selectedChoice ? selectedChoice.text : null);
     if (!text) return;
     placeAnswer(qi, gapId, text);
     selectedChoice = null;
@@ -427,6 +426,7 @@ function handleDrop(e, qi, gapId) {
 
 function placeAnswer(qi, gapId, text) {
     const zone = document.getElementById(`${qi}-${gapId}`);
+    if (!zone) return;
     zone.textContent = text; 
     zone.classList.add('dropped');
     dndState[qi].answers[gapId] = text;
