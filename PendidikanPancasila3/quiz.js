@@ -129,8 +129,8 @@ const isianQuestions = [
     },
     {
         q: "Tarian dan pakaian adat termasuk budaya…",
-        ans: "Daerah",
-        keywords: ["daerah"],
+        ans: "Kebudayaan Daerah / Kebudayaan Tradisional",
+        keywords: ["daerah", "tradisional"],
         pembahasan: "Tarian dan pakaian adat merupakan hasil cipta karya masyarakat di suatu wilayah tertentu. Setiap daerah di Indonesia memiliki ciri khas budaya yang berbeda-beda."
     }
 ];
@@ -432,9 +432,12 @@ function lockDnD(qi) {
 
 function isAnswerSimilar(u, c, k) {
     const cu = u.toLowerCase().replace(/[^\w\s]/g, '').trim();
-    const cc = c.toLowerCase().replace(/[^\w\s]/g, '').trim();
-    if (cu === cc) return true;
-    if (k && k.every(kw => cu.includes(kw.toLowerCase()))) return true;
+    // Support multiple correct answer variations separated by '/'
+    const validVariants = c.split('/').map(v => v.toLowerCase().replace(/[^\w\s]/g, '').trim());
+    if (validVariants.some(v => cu === v)) return true;
+    
+    // Check if user's input contains any of the keywords
+    if (k && k.some(kw => cu.includes(kw.toLowerCase()))) return true;
     return false;
 }
 
