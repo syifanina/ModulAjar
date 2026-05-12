@@ -106,12 +106,6 @@ const isianQuestions = [];
 
 const essayQuestions = [
     {
-        q: "Jelaskan minimal 2 manfaat keberagaman budaya bagi bangsa Indonesia!",
-        kj: "<ul><li>Menambah kekayaan budaya Indonesia</li><li>Mempererat persatuan dan kesatuan bangsa</li><li>Menumbuhkan sikap saling menghargai perbedaan</li><li>Menjadi daya tarik wisata sehingga meningkatkan ekonomi</li><li>Memperkuat identitas bangsa Indonesia di mata dunia</li></ul>",
-        points: ["kekayaan", "persatuan", "kesatuan", "menghargai", "wisata", "ekonomi", "identitas"],
-        minPoints: 2
-    },
-    {
         q: "Jelaskan secara singkat tradisi bakar batu dari Papua!",
         kj: "Tradisi bakar batu adalah tradisi masyarakat Papua memasak makanan bersama dengan batu panas secara gotong royong dalam acara adat sebagai bentuk kebersamaan dan rasa syukur.",
         points: ["papua", "memasak", "batu", "panas", "gotong royong", "bersama", "syukur"],
@@ -158,9 +152,9 @@ const dndQuestions = [
     {
         q: "Lengkapilah kalimat di bawah ini dengan menarik jawaban yang benar!",
         sentence: ["Tradisi yang diwariskan dari generasi ke generasi disebut", "{gap0}", "."],
-        gaps: [{ id: 'gap0', ans: 'Tradisi' }],
-        choices: ['Tradisi', 'Modernisasi', 'Globalisasi', 'Teknologi'],
-        pembahasan: "<b>Tradisi</b> adalah kebiasaan atau adat istiadat yang diteruskan secara turun-temurun dari nenek moyang kepada generasi berikutnya."
+        gaps: [{ id: 'gap0', ans: 'Kearifan Lokal' }],
+        choices: ['Kearifan Lokal', 'Modernisasi', 'Globalisasi', 'Teknologi'],
+        pembahasan: "<b>Kearifan Lokal</b> adalah nilai-baru luhur, aturan, atau tradisi khas yang dimiliki oleh masyarakat daerah tertentu untuk mengatur kehidupan bersama secara bijaksana."
     },
     {
         q: "Lengkapilah kalimat di bawah ini dengan menarik jawaban yang benar!",
@@ -172,9 +166,9 @@ const dndQuestions = [
     {
         q: "Lengkapilah kalimat di bawah ini dengan menarik jawaban yang benar!",
         sentence: ["Kebiasaan atau aturan khas masyarakat di suatu daerah disebut", "{gap0}", "."],
-        gaps: [{ id: 'gap0', ans: 'Kearifan Lokal' }],
-        choices: ['Kearifan Lokal', 'Modernisasi', 'Budaya luar', 'Globalisasi'],
-        pembahasan: "<b>Kearifan Lokal</b> adalah nilai-baru luhur, aturan, atau tradisi khas yang dimiliki oleh masyarakat daerah tertentu untuk mengatur kehidupan bersama secara bijaksana."
+        gaps: [{ id: 'gap0', ans: 'Tradisi' }],
+        choices: ['Tradisi', 'Modernisasi', 'Budaya luar', 'Globalisasi'],
+        pembahasan: "<b>Tradisi</b> adalah kebiasaan atau adat istiadat yang diteruskan secara turun-temurun dari nenek moyang kepada generasi berikutnya."
     },
     {
         q: "Lengkapilah kalimat di bawah ini dengan menarik jawaban yang benar!",
@@ -257,12 +251,12 @@ function renderDnDGap() {
 
     // 1. Fixed set of 9 correct answers + 3 distractors
     const correctAnswers = [
-        'Sasi', 'Subak', 'Ritual adat', 'Tarian', 
-        'Keseimbangan lingkungan', 'Tradisi', 'Pencak silat Betawi', 
+        'Sasi', 'Subak', 'Ritual adat', 'Tarian',
+        'Keseimbangan lingkungan', 'Tradisi', 'Pencak silat Betawi',
         'Kearifan Lokal', 'Ngaben'
     ];
     const distractors = ['Modernisasi', 'Keuntungan pribadi', 'Gaya hidup boros'];
-    
+
     let allChoices = [...correctAnswers, ...distractors];
     // Shuffle
     allChoices.sort(() => Math.random() - 0.5);
@@ -393,15 +387,15 @@ function checkIsianAnswer(qi) {
 
 function checkEssayAnswer(qi) {
     const state = essayState[qi]; if (state.locked) return;
-    const q = essayQuestions[qi]; 
+    const q = essayQuestions[qi];
     const input = document.getElementById(`essay-input-${qi}`);
-    const userVal = input.value.trim().toLowerCase(); 
+    const userVal = input.value.trim().toLowerCase();
     if (!userVal) { alert('Tuliskan jawabanmu dulu ya! 😊'); return; }
 
     // Scoring based on keywords (Scale 1-10)
     let foundPoints = 0;
     q.points.forEach(p => { if (userVal.includes(p.toLowerCase())) foundPoints++; });
-    
+
     // Calculate score: (found / minPoints) * 10, capped at 10
     const score = Math.min(10, Math.max(0, Math.round((foundPoints / q.minPoints) * 10)));
     state.points = score;
@@ -464,7 +458,7 @@ function handleDragStart(e, text) {
     const pool = document.getElementById('globalChoicesPool');
     const item = Array.from(pool.querySelectorAll('.dnd-choice-item')).find(el => el.textContent === text && !el.classList.contains('used'));
     if (!item) { e.preventDefault(); return; }
-    
+
     e.dataTransfer.setData('text/plain', text);
     selectedChoice = { text };
     if (window.SFX) window.SFX.click();
@@ -507,7 +501,7 @@ function handleDrop(e, qi, gapId) {
     if (dndState[qi].locked) return;
     const text = e.dataTransfer.getData('text/plain') || (selectedChoice ? selectedChoice.text : null);
     if (!text) return;
-    
+
     // Check if text is used
     const pool = document.getElementById('globalChoicesPool');
     const item = Array.from(pool.querySelectorAll('.dnd-choice-item')).find(el => el.textContent === text && !el.classList.contains('used'));
