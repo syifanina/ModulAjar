@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Media Pembelajaran Interaktif Pendidikan Pancasila untuk Siswa SD Kelas 3">
+    <title>IPAS Bab 4 – Keragaman Budaya Indonesia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- ═══ PROGRESS BAR ═══ -->
+        <div class="progress-strip">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- ═══ SLIDES WRAPPER ═══ -->
+        <div class="slides-wrapper" id="slidesWrapper">
+
+            <!-- ─── SLIDE 1: COVER ─── -->
+            <div class="slide active" id="slide-1">
+                <div class="cover-content">
+                    <img src="assets/siswi.png" alt="Siswi" class="cover-char cover-char-left">
+                    <div class="cover-center">
+                        <div class="cover-badge">📖 Media Pembelajaran</div>
+                        <img src="assets/cover_budaya.png" alt="Cover Keragaman Budaya Indonesia" class="cover-img"
+                            id="coverImg">
+                        <h1 class="cover-title">Keragaman Budaya Indonesia</h1>
+                        <p class="cover-subtitle">Mengenal Kekayaan Budaya Bangsa</p>
+                        <button class="start-btn" id="btnStart"
+                            onclick="if(window.SFX) window.SFX.click(); goToSlide(2)">
+                            Mulai ✨
+                        </button>
+                        <div class="cover-info">
+                            Tahun Pelajaran 2026
+                        </div>
+                    </div>
+                    <img src="assets/siswa.png" alt="Siswa" class="cover-char cover-char-right">
+                    <div class="cover-creator">Syifa Sabrina, S.Pd.</div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 2: VIDEO LOKAL ─── -->
+            <div class="slide" id="slide-2">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 2 / 9</span>
+                        <h2 class="slide-title">Mari kita mulai dengan berdoa. 🙏</h2>
+                        <img src="assets/cultural_snacks.png" alt="Snack Tradisional" class="deco-snack deco-right">
+                    </div>
+                    <div class="video-wrap">
+                        <video id="video-local" class="slide-video" playsinline controls>
+                            <source src="assets/Raise_your_hand.mp4" type="video/mp4">
+                            Browser kamu tidak mendukung video HTML5.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 3: YOUTUBE AL-FATIHAH ─── -->
+            <div class="slide" id="slide-3">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 3 / 9</span>
+                        <h2 class="slide-title">Silakan membaca Surah Al-Fatihah <span class="arabic">(الفاتحة)</span>
+                        </h2>
+                    </div>
+                    <div class="video-wrap">
+                        <div class="yt-container yt-locked">
+                            <iframe id="yt-slide3" class="yt-frame"
+                                src="https://www.youtube.com/embed/Urs2ScPSjC0?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3&start=13&end=139"
+                                title="Surah Al-Fatihah" frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 4: YOUTUBE DOA ORANG TUA ─── -->
+            <div class="slide" id="slide-4">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 4 / 9</span>
+                        <h2 class="slide-title">Silakan membaca doa untuk kedua orang tua. 🤲</h2>
+                    </div>
+                    <div class="video-wrap">
+                        <div class="yt-container yt-locked">
+                            <iframe id="yt-slide4" class="yt-frame"
+                                src="https://www.youtube.com/embed/cjBjfMk4K84?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3&start=20&end=35"
+                                title="Doa Orang Tua" frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 5: YOUTUBE DOA BELAJAR ─── -->
+            <div class="slide" id="slide-5">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 5 / 9</span>
+                        <h2 class="slide-title">Silakan membaca doa sebelum belajar. 📚</h2>
+                    </div>
+                    <div class="video-wrap">
+                        <div class="yt-container yt-locked">
+                            <iframe id="yt-slide5" class="yt-frame"
+                                src="https://www.youtube.com/embed/53_CbWOpsnc?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3&start=4&end=92"
+                                title="Doa Belajar" frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 6: SIAP BELAJAR ─── -->
+            <div class="slide" id="slide-6">
+                <div class="slide-inner siap-slide">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 6 / 9</span>
+                    </div>
+
+                    <!-- State A: Pertanyaan -->
+                    <div class="siap-content" id="siapContent">
+                        <img src="assets/cultural_collage.png" alt="Keragaman Budaya" class="siap-img">
+                        <h2 class="siap-question">Apakah kamu sudah<br>siap belajar?</h2>
+                        <button class="siap-btn" id="siapBtn" onclick="siapBelajar()">
+                            Siap! 🚀
+                        </button>
+                    </div>
+
+                    <!-- State B: Konfirmasi -->
+                    <div class="siap-ready" id="siapReady">
+                        <div class="siap-emoji">🎉</div>
+                        <h2 class="siap-message">Bagus sekali!</h2>
+                        <p class="siap-hint">Yuk, kerjakan latihan soal<br>berikut ini dengan seksama! 📝</p>
+                        <div class="siap-arrow">👇</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 7: LATIHAN SOAL ─── -->
+            <div class="slide slide-quiz" id="slide-7">
+                <div class="quiz-inner">
+                    <div class="quiz-top-header">
+                        <span class="slide-num">Slide 7 / 9</span>
+                        <h2 class="quiz-main-title">📝 Latihan Soal</h2>
+                        <p class="quiz-subtitle">IPAS Bab 4 — Kelas 4</p>
+                    </div>
+                    <div id="pgContainer"></div>
+                    <div id="isianContainer"></div>
+                    <div id="essayContainer"></div>
+
+                    <!-- New DnD Gap Section -->
+                    <div id="dndGapContainer"></div>
+
+                    <div class="quiz-completion" id="quizCompletion">
+                        <img src="assets/cultural_collage.png" alt="Budaya Indonesia" class="completion-img">
+                        <h3>Latihan Selesai!</h3>
+
+                        <div class="video-wrap" id="ytCompletionWrap"
+                            style="display: none; margin: 10px 0; border-radius: var(--border-radius-sm); overflow: hidden;">
+                            <div class="yt-container yt-locked">
+                                <iframe id="yt-completion" class="yt-frame"
+                                    src="https://www.youtube.com/embed/0ftR_0q1vAk?enablejsapi=1&rel=0&modestbranding=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&start=71&end=84"
+                                    title="Apresiasi Video" frameborder="0"
+                                    allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                                <div class="yt-overlay" style="position: absolute; inset: 0; z-index: 10;"></div>
+                            </div>
+                        </div>
+
+                        <div class="submit-form" id="submitForm">
+                            <div class="sf-field">
+                                <label for="sfName">👤 Nama Lengkap</label>
+                                <input type="text" id="sfName" placeholder="Tulis namamu di sini..." autocomplete="off">
+                            </div>
+                            <div class="sf-field">
+                                <label for="sfClass">🏫 Kelas</label>
+                                <select id="sfClass">
+                                    <option value="">-- Pilih Kelas --</option>
+                                    <option value="4 Bukhari">4 Bukhari</option>
+                                    <option value="4 Muslim">4 Muslim</option>
+                                    <option value="4 Tirmizi">4 Tirmizi</option>
+                                </select>
+                            </div>
+                            <div class="sf-field">
+                                <label for="sfFeel">📝 Sudah siap untuk ulangan harian?</label>
+                                <select id="sfFeel">
+                                    <option value="">-- Pilih jawaban --</option>
+                                    <option value="Sangat Siap">🤩 Sangat Siap</option>
+                                    <option value="Siap">😊 Siap</option>
+                                    <option value="Cukup Siap">😐 Cukup Siap</option>
+                                    <option value="Belum Siap">😕 Belum Siap</option>
+                                </select>
+                            </div>
+                            <button class="sf-submit-btn" id="sfSubmitBtn" onclick="submitToGForm()">
+                                Kirim Nilai ke Guru 🚀
+                            </button>
+                        </div>
+                        <div class="sf-success" id="sfSuccess">
+                            <span>🌟</span>
+                            <p id="sfSuccessMsg"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 8: HALL OF FAME ─── -->
+            <div class="slide" id="slide-8">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 8 / 9</span>
+                        <h2 class="slide-title">🏆 Siswa Keren yang Sudah Selesai!</h2>
+                        <img src="assets/cultural_snacks.png" alt="Snack Tradisional" class="deco-snack deco-left">
+                    </div>
+                    <div class="hof-wrap">
+                        <p class="hof-subtitle">Kalian semua luar biasa! 🌟</p>
+                        <div class="hof-grid" id="hofGrid">
+                            <div class="hof-loading">⏳ Memuat data...</div>
+                        </div>
+                        <button class="hof-refresh-btn" onclick="loadHallOfFame()">🔄 Muat Ulang</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 9: YOUTUBE DOA PENUTUP ─── -->
+            <div class="slide" id="slide-9">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 9 / 9</span>
+                        <h2 class="slide-title">Mari kita membaca doa penutup majelis. 🤲</h2>
+                    </div>
+                    <div class="video-wrap">
+                        <div class="yt-container yt-locked">
+                            <iframe id="yt-slide9" class="yt-frame"
+                                src="https://www.youtube.com/embed/5-9D4JT84Bc?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3"
+                                title="Doa Penutup Setelah Belajar" frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /slides-wrapper -->
+
+        <!-- ═══ NAVIGATION ═══ -->
+        <div class="nav-controls" id="navControls">
+            <button class="nav-btn prev-btn" id="btnBack" onclick="navigate(-1)">
+                ← Kembali
+            </button>
+            <div class="dot-indicator" id="dotIndicator"></div>
+            <button class="nav-btn next-btn" id="btnNext" onclick="navigate(1)" disabled>
+                Lanjut →
+            </button>
+        </div>
+
+    </div><!-- /app-container -->
+
+    <!-- ═══ POPUP PEMBAHASAN ═══ -->
+    <div class="pembahasan-overlay" id="pembahasanOverlay">
+        <div class="pembahasan-card">
+            <div class="pembahasan-icon" id="pembahasanIcon">📖</div>
+            <h3 class="pembahasan-title">Pembahasan</h3>
+            <div class="pembahasan-body" id="pembahasanBody"></div>
+            <div class="pembahasan-paham">
+                <p>Sudah paham? Yuk lanjut!</p>
+                <div class="pembahasan-btns">
+                    <button class="pembahasan-close-btn" onclick="hidePembahasan()">Saya Paham! 👍</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <!-- Try Again Overlay -->
+    <div class="try-again-overlay" id="tryAgainOverlay">
+        <div class="try-again-content">
+            <div class="try-again-emoji">💪</div>
+            <div class="try-again-text">Belum tepat! Ayo coba lagi, kamu pasti bisa!</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="quiz.js"></script>
+</body>
+
+</html>
