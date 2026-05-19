@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spin Wheel 🎡 – Kelas Alpam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Background bubbles -->
+  <div class="bg-bubbles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- Header -->
+    <header class="header">
+      <h1 class="title">🎡 Spin the Wheel!</h1>
+      <p class="subtitle">Siapa yang beruntung hari ini?</p>
+    </header>
+
+    <!-- Wheel area -->
+    <main class="wheel-area">
+
+      <!-- Pointer -->
+      <div class="pointer" aria-hidden="true">▼</div>
+
+      <!-- Canvas for the wheel -->
+      <div class="canvas-wrap">
+        <canvas id="wheelCanvas" width="500" height="500"></canvas>
+      </div>
+
+      <!-- Spin button -->
+      <button id="spinBtn" class="spin-btn" onclick="spinWheel()">
+        <span class="btn-inner">PUTAR! 🎲</span>
+      </button>
+
+    </main>
+
+  </div>
+
+  <!-- Winner overlay -->
+  <div id="overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="winnerName">
+    <div class="modal">
+      <div class="confetti-area" id="confettiArea"></div>
+      <div class="trophy">🏆</div>
+      <h2 class="modal-title">Selamat!</h2>
+      <p class="modal-label">Yang terpilih adalah:</p>
+      <p id="winnerName" class="winner-name"></p>
+      <button class="close-btn" onclick="closeModal()">Putar Lagi 🔄</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
