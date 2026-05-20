@@ -1,0 +1,2275 @@
+/* ============================================================
+   CERITA RAKYAT — RESPONSIVE SLIDE CSS
+   Mendukung: HP kecil, HP besar, tablet, laptop, landscape & portrait
+   ============================================================ */
+
+/* === ROOT VARIABLES === */
+:root {
+  --primary: #EC4899;
+  /* Vibrant Pink */
+  --secondary: #2563EB;
+  /* Vibrant Blue */
+  --accent: #F472B6;
+  /* Soft Pink */
+  --blue: #1D4ED8;
+  /* Deep Blue */
+  --green: #10B981;
+  /* Emerald Green for correct */
+  --orange: #0EA5E9;
+  /* Light/Sky Blue */
+  --purple: #D946EF;
+  /* Violet/Magenta */
+  --dark: #1E293B;
+  /* Slate Dark */
+  --light: #F8FAFC;
+  /* Slate Light */
+  --white: #FFFFFF;
+
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+  --border-radius-lg: 28px;
+  --border-radius-md: 18px;
+  --border-radius-sm: 12px;
+
+  /* Fluid font scale */
+  --fs-base: clamp(13px, 1.9vw, 17px);
+  --fs-sm: clamp(11px, 1.5vw, 14px);
+  --fs-lg: clamp(16px, 2.6vw, 22px);
+  --fs-xl: clamp(20px, 3.8vw, 32px);
+  --fs-xxl: clamp(26px, 5.5vw, 48px);
+
+  /* Fluid spacing */
+  --sp-xs: clamp(5px, 1vw, 9px);
+  --sp-sm: clamp(9px, 1.8vw, 15px);
+  --sp-md: clamp(14px, 2.8vw, 24px);
+  --sp-lg: clamp(18px, 4vw, 34px);
+}
+
+/* === RESET === */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === HTML & BODY === */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: var(--fs-base);
+  background: url('Background_quiz.png') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+/* Subtle animated background blobs */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+  animation: blobMove 8s ease-in-out infinite alternate;
+}
+
+body::before {
+  width: clamp(200px, 40vw, 500px);
+  height: clamp(200px, 40vw, 500px);
+  background: radial-gradient(circle, #60A5FA, #3B82F6);
+  top: -10%;
+  left: -10%;
+}
+
+body::after {
+  width: clamp(150px, 30vw, 380px);
+  height: clamp(150px, 30vw, 380px);
+  background: radial-gradient(circle, #F472B6, #EC4899);
+  bottom: -10%;
+  right: -5%;
+  animation-delay: -4s;
+}
+
+@keyframes blobMove {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+
+  to {
+    transform: translate(30px, 20px) scale(1.1);
+  }
+}
+
+/* === APP CONTAINER === */
+.app-container {
+  width: 100%;
+  height: 100dvh;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Desktop & large tablet */
+@media (min-width: 768px) and (min-height: 600px) {
+  .app-container {
+    max-width: 860px;
+    height: 92dvh;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin: auto;
+  }
+}
+
+/* === PROGRESS STRIP (top) === */
+.progress-strip {
+  flex-shrink: 0;
+  height: 6px;
+  background: #EEF0F3;
+  position: relative;
+  z-index: 20;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary), var(--blue));
+  width: 20%;
+  /* starts at slide 1 = 1/5 */
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 4px 4px 0;
+}
+
+/* === SLIDES WRAPPER === */
+.slides-wrapper {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* === SLIDE BASE === */
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+  z-index: 5;
+}
+
+.slide.prev {
+  opacity: 0;
+  transform: translateX(-100%);
+  z-index: 4;
+}
+
+/* =============================================
+   SLIDE 1 — COVER
+   ============================================= */
+.cover-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, rgba(224, 242, 254, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(252, 231, 243, 0.9) 100%);
+  overflow: hidden;
+}
+
+.cover-badge {
+  background: linear-gradient(135deg, var(--orange), var(--primary));
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-sm);
+  padding: 6px 18px;
+  border-radius: 30px;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.12);
+  letter-spacing: 0.5px;
+}
+
+.cover-img {
+  width: 100%;
+  max-width: clamp(180px, 80%, 360px);
+  max-height: clamp(120px, 26dvh, 220px);
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  border: 4px solid white;
+  animation: floatCover 4s ease-in-out infinite;
+}
+
+@keyframes floatCover {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ── Karakter siswa/siswi (absolute di pojok) ── */
+.cover-char {
+  position: absolute;
+  bottom: 0;
+  height: 90%;
+  width: auto;
+  max-width: 27%;
+  /* max 27% lebar slide agar tidak tumpang tindih */
+  object-fit: contain;
+  object-position: bottom;
+  z-index: 0;
+  pointer-events: none;
+  animation: floatStudents 5s ease-in-out infinite;
+}
+
+.cover-char-left {
+  left: 0;
+  object-position: left bottom;
+}
+
+.cover-char-right {
+  right: 0;
+  object-position: right bottom;
+}
+
+@keyframes floatStudents {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ── Konten tengah (di atas karakter) ── */
+.cover-center {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 1.2vw, 10px);
+  padding: clamp(10px, 2vw, 20px) clamp(8px, 1.5vw, 16px);
+  text-align: center;
+  max-width: 55%;
+  /* jaga jarak dari karakter kiri & kanan */
+}
+
+
+.cover-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-xxl);
+  color: var(--dark);
+  line-height: 1.1;
+  text-shadow: 2px 3px 0 rgba(0, 0, 0, 0.08);
+}
+
+.cover-subtitle {
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-xl);
+  color: var(--primary);
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+.cover-info {
+  font-size: var(--fs-sm);
+  color: #555;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 8px 16px;
+  border-radius: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* Kredit penulis — pojok kanan bawah, subtle */
+.cover-creator {
+  position: absolute;
+  bottom: 10px;
+  right: 14px;
+  font-size: 0.72rem;
+  color: rgba(80, 60, 50, 0.45);
+  font-style: italic;
+  letter-spacing: 0.3px;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+.start-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  padding: clamp(12px, 2.4vw, 18px) clamp(28px, 7vw, 52px);
+  background: linear-gradient(135deg, var(--orange), var(--primary));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #be185d, 0 10px 24px rgba(236, 72, 153, 0.4);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: var(--sp-xs);
+  letter-spacing: 0.5px;
+}
+
+.start-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 9px 0 #be185d, 0 14px 30px rgba(236, 72, 153, 0.45);
+}
+
+.start-btn:active {
+  transform: translateY(4px) scale(0.98);
+  box-shadow: 0 2px 0 #be185d;
+}
+
+/* Landscape HP: cover compact */
+@media (max-height: 480px) {
+  .cover-content {
+    gap: 6px;
+    padding: 10px 16px;
+  }
+
+  .cover-img {
+    max-height: 100px;
+  }
+
+  .cover-title {
+    font-size: 1.5rem;
+  }
+
+  .cover-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* =============================================
+   SLIDE 2–5 — INNER LAYOUT
+   ============================================= */
+.slide-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: var(--sp-sm) var(--sp-md);
+  background: linear-gradient(180deg, rgba(224, 242, 254, 0.85) 0%, rgba(255, 255, 255, 0.85) 60%);
+  backdrop-filter: blur(5px);
+  gap: var(--sp-sm);
+  overflow-y: auto;
+}
+
+.slide-header {
+  flex-shrink: 0;
+  text-align: center;
+  padding-top: var(--sp-xs);
+}
+
+.slide-num {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-sm);
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 0 rgba(77, 150, 255, 0.35);
+}
+
+.slide-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-xl);
+  color: var(--dark);
+  line-height: 1.3;
+  text-align: center;
+}
+
+.arabic {
+  color: var(--primary);
+  font-size: 0.95em;
+}
+
+/* =============================================
+   VIDEO WRAP
+   ============================================= */
+.video-wrap {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: var(--sp-sm);
+}
+
+/* ── Local video ── */
+.slide-video {
+  width: 100%;
+  max-height: clamp(200px, 55dvh, 460px);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  background: #000;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── YouTube embed ── */
+.yt-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  /* 16:9 */
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.yt-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ── Transparent overlay to block student clicks on YT controls ── */
+.yt-locked {
+  /* ensures overlay is positioned relative to the container */
+  isolation: isolate;
+}
+
+.yt-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  /* Fully transparent — invisible but captures all pointer events */
+  background: transparent;
+  cursor: default;
+}
+
+/* Landscape HP: video lebih kecil */
+@media (max-height: 480px) {
+  .slide-inner {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .slide-title {
+    font-size: 1rem;
+  }
+
+  .slide-video {
+    max-height: 130px;
+  }
+
+  .video-wrap {
+    padding-bottom: 4px;
+  }
+}
+
+/* =============================================
+   VIDEO STATUS INDICATOR
+   ============================================= */
+.video-status {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-sm);
+  color: var(--orange);
+  background: #FFEBEE;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 2px solid #EF9A9A;
+  transition: all 0.3s ease;
+}
+
+.video-status.done {
+  color: var(--green);
+  background: #f0fff4;
+  border-color: #b2dfdb;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.video-status.done .status-dot {
+  animation: none;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
+}
+
+/* =============================================
+   NAVIGATION CONTROLS
+   ============================================= */
+.nav-controls {
+  flex-shrink: 0;
+  padding: var(--sp-xs) var(--sp-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-top: 2px solid #EEF0F3;
+  z-index: 10;
+  gap: 8px;
+  min-height: 58px;
+}
+
+/* ── Dot indicator ── */
+.dot-indicator {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #DDE1E9;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background: var(--blue);
+  transform: scale(1.3);
+  box-shadow: 0 0 0 3px rgba(77, 150, 255, 0.2);
+}
+
+/* ── Buttons ── */
+.nav-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.82rem, 2vw, 1.05rem);
+  padding: clamp(8px, 1.5vw, 12px) clamp(14px, 3vw, 24px);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  white-space: nowrap;
+  flex: 1;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.prev-btn {
+  background: var(--light);
+  color: var(--dark);
+  box-shadow: 0 4px 0 #c9d0da;
+  flex: 0.8;
+}
+
+.next-btn {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: white;
+  box-shadow: 0 4px 0 var(--blue);
+}
+
+.nav-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+.nav-btn:not(:disabled):active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.nav-btn:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Next button unlocked animation */
+.next-btn:not(:disabled) {
+  animation: unlockPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes unlockPop {
+  0% {
+    transform: scale(0.88);
+  }
+
+  60% {
+    transform: scale(1.06);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-height: 480px) {
+  .nav-btn {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+  }
+
+  .nav-controls {
+    padding: 5px 8px;
+    min-height: 44px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+/* =============================================
+   SLIDE 6 — TUJUAN PEMBELAJARAN
+   ============================================= */
+.tujuan-slide {
+  background: linear-gradient(160deg, rgba(224, 242, 254, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(252, 231, 243, 0.9) 100%);
+  justify-content: flex-start;
+}
+
+.tujuan-subtitle {
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: #5a6474;
+  text-align: center;
+  padding: 0 var(--sp-sm);
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+
+/* ── List container ── */
+.tujuan-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.8vw, 14px);
+  width: 100%;
+  max-width: 680px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Each item card ── */
+.tujuan-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  background: white;
+  border-radius: var(--border-radius-sm);
+  padding: clamp(10px, 2vw, 16px) clamp(12px, 2.4vw, 20px);
+  box-shadow: 0 4px 0 var(--item-shadow, #ccc),
+    0 8px 20px rgba(0, 0, 0, 0.07);
+  border-left: 5px solid var(--item-color, #aaa);
+  /* revealed state */
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* hidden = before reveal */
+.tujuan-item.hidden {
+  opacity: 0;
+  transform: translateY(32px) scale(0.95);
+  pointer-events: none;
+}
+
+/* number badge */
+.tujuan-num {
+  flex-shrink: 0;
+  width: clamp(32px, 5vw, 42px);
+  height: clamp(32px, 5vw, 42px);
+  border-radius: 50%;
+  background: var(--item-color, #aaa);
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 0 var(--item-shadow, #999);
+}
+
+.tujuan-item p {
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.45;
+  flex: 1;
+}
+
+/* ── Reveal button ── */
+.reveal-btn {
+  flex-shrink: 0;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.95rem, 2.4vw, 1.2rem);
+  padding: clamp(10px, 2vw, 14px) clamp(24px, 6vw, 44px);
+  background: linear-gradient(135deg, var(--purple), #6c5ce7);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #4b3bbd, 0 8px 20px rgba(108, 92, 231, 0.35);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  letter-spacing: 0.5px;
+  margin-top: auto;
+  margin-bottom: var(--sp-xs);
+  animation: revealBtnPulse 2s ease-in-out infinite;
+}
+
+.reveal-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 0 #4b3bbd, 0 12px 28px rgba(108, 92, 231, 0.4);
+}
+
+.reveal-btn:active {
+  transform: translateY(3px) scale(0.97);
+  box-shadow: 0 2px 0 #4b3bbd;
+}
+
+.reveal-btn:disabled {
+  background: linear-gradient(135deg, var(--green), #38a169);
+  box-shadow: 0 5px 0 #276749;
+  animation: none;
+  cursor: default;
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes revealBtnPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 5px 0 #4b3bbd, 0 8px 20px rgba(108, 92, 231, 0.35);
+  }
+
+  50% {
+    box-shadow: 0 5px 0 #4b3bbd, 0 8px 28px rgba(108, 92, 231, 0.6);
+  }
+}
+
+/* Landscape HP: compact */
+@media (max-height: 480px) {
+  .tujuan-item {
+    padding: 8px 12px;
+  }
+
+  .tujuan-num {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
+  }
+
+  .reveal-btn {
+    padding: 7px 20px;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+  }
+}
+
+/* =============================================
+   SLIDE 7 — SIAP BELAJAR
+   ============================================= */
+.siap-slide {
+  background: linear-gradient(160deg, rgba(224, 242, 254, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, rgba(252, 231, 243, 0.9) 100%);
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* decorative background shapes */
+.siap-slide::before {
+  content: '⭐';
+  position: absolute;
+  font-size: 8rem;
+  opacity: 0.06;
+  top: -20px;
+  right: -20px;
+  pointer-events: none;
+}
+
+/* ── State A: Pertanyaan ── */
+.siap-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-md);
+  width: 100%;
+  max-width: 560px;
+  /* transition out */
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.siap-content.hiding {
+  opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
+}
+
+/* ── State B: Konfirmasi ── */
+.siap-ready {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--sp-md);
+  width: 100%;
+  max-width: 560px;
+  position: absolute;
+  /* hidden initially */
+  opacity: 0;
+  transform: scale(0.75);
+  pointer-events: none;
+  transition: opacity 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.siap-ready.visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+  position: relative;
+}
+
+/* ── Shared emoji ── */
+.siap-emoji {
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  line-height: 1;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.12));
+  animation: bounceEmoji 2s ease-in-out infinite;
+}
+
+@keyframes bounceEmoji {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+/* ── Texts ── */
+.siap-question {
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-xxl);
+  color: var(--dark);
+  line-height: 1.25;
+}
+
+.siap-message {
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-xxl);
+  background: linear-gradient(135deg, var(--green), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.25;
+}
+
+.siap-hint {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: #4a5568;
+  line-height: 1.6;
+  background: white;
+  padding: var(--sp-sm) var(--sp-md);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  border-left: 4px solid var(--blue);
+}
+
+.siap-arrow {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  animation: bounceDown 1.2s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* ── Siap Button ── */
+.siap-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+  padding: clamp(14px, 2.8vw, 20px) clamp(36px, 9vw, 60px);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 var(--blue), 0 10px 28px rgba(37, 99, 235, 0.4);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  letter-spacing: 0.5px;
+  animation: siapPulse 2.2s ease-in-out infinite;
+}
+
+.siap-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 0 var(--blue), 0 14px 32px rgba(37, 99, 235, 0.5);
+  animation: none;
+}
+
+.siap-btn:active {
+  transform: translateY(4px) scale(0.97);
+  box-shadow: 0 2px 0 var(--blue);
+  animation: none;
+}
+
+@keyframes siapPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 6px 0 var(--blue), 0 10px 28px rgba(37, 99, 235, 0.4);
+  }
+
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 6px 0 var(--blue), 0 10px 36px rgba(37, 99, 235, 0.6);
+  }
+}
+
+/* Landscape HP */
+@media (max-height: 480px) {
+  .siap-emoji {
+    font-size: 2.5rem;
+  }
+
+  .siap-question,
+  .siap-message {
+    font-size: 1.4rem;
+  }
+
+  .siap-btn {
+    font-size: 1rem;
+    padding: 9px 28px;
+  }
+
+  .siap-hint {
+    font-size: 0.88rem;
+    padding: 8px 14px;
+  }
+}
+
+/* =============================================
+   SLIDE 8 — POPUP APRESIASI
+   ============================================= */
+.s8-popup {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: var(--sp-md);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.s8-popup.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.s8-popup-box {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: clamp(20px, 5vw, 36px);
+  text-align: center;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: scale(0.8);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+.s8-popup.visible .s8-popup-box {
+  transform: scale(1);
+}
+
+.s8-popup-emoji {
+  font-size: clamp(3rem, 8vw, 5rem);
+  animation: bounceEmoji 2s ease-in-out infinite;
+}
+
+.s8-popup-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-xl);
+  color: var(--dark);
+  line-height: 1.3;
+}
+
+.s8-popup-sub {
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: #5a6474;
+  line-height: 1.5;
+}
+
+.s8-popup-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1rem, 2.8vw, 1.3rem);
+  padding: clamp(12px, 2.4vw, 16px) clamp(28px, 7vw, 44px);
+  background: linear-gradient(135deg, var(--blue), #2b7af0);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #1a5cc0, 0 8px 24px rgba(77, 150, 255, 0.4);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: var(--sp-xs);
+}
+
+.s8-popup-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+}
+
+.s8-popup-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #1a5cc0;
+}
+
+/* =============================================
+   SLIDE 9 — QUIZ
+   ============================================= */
+.slide-quiz {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) transparent;
+}
+
+.slide-quiz::-webkit-scrollbar {
+  width: 4px;
+}
+
+.slide-quiz::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 4px;
+}
+
+.quiz-inner {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: var(--sp-sm) var(--sp-md) var(--sp-lg);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2.4vw, 20px);
+}
+
+.quiz-top-header {
+  text-align: center;
+  padding-top: var(--sp-xs);
+  flex-shrink: 0;
+}
+
+.quiz-main-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-xl);
+  color: var(--dark);
+  margin: 6px 0 2px;
+}
+
+.quiz-subtitle {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: #8898a9;
+}
+
+/* ── PG Card ── */
+.pg-card {
+  background: white;
+  border-radius: var(--border-radius-md);
+  padding: clamp(12px, 2.4vw, 20px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  border: 2px solid #eef0f3;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.q-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.q-num-badge {
+  flex-shrink: 0;
+  width: clamp(28px, 4.5vw, 36px);
+  height: clamp(28px, 4.5vw, 36px);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 0 #1a5cc0;
+  margin-top: 2px;
+}
+
+.isian-card .q-num-badge,
+.essay-card .q-num-badge {
+  background: linear-gradient(135deg, var(--orange), var(--primary));
+  box-shadow: 0 3px 0 #be185d;
+}
+
+.q-text {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--text-dark);
+}
+
+.q-img {
+  max-width: 100%;
+  width: auto;
+  max-height: 280px;
+  height: auto;
+  border-radius: var(--border-radius-md);
+  margin: 15px auto;
+  display: block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  object-fit: contain;
+}
+
+/* ── Options ── */
+.q-opts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.q-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--light);
+  border: 2.5px solid #e2e8f0;
+  border-radius: var(--border-radius-sm);
+  padding: clamp(8px, 1.6vw, 12px) clamp(10px, 2vw, 16px);
+  font-family: 'Nunito', sans-serif;
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--dark);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.q-opt:not(:disabled):hover {
+  border-color: var(--blue);
+  background: #e8f0ff;
+  transform: translateX(4px);
+}
+
+.opt-letter {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #dde1e9;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+}
+
+.opt-text {
+  flex: 1;
+}
+
+/* States */
+.q-opt.opt-correct {
+  background: #d4edda;
+  border-color: var(--green);
+}
+
+.q-opt.opt-correct .opt-letter {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.q-opt.opt-wrong {
+  background: #fde8e8;
+  border-color: var(--primary);
+  animation: wrongShake 0.4s;
+}
+
+.q-opt.opt-wrong .opt-letter {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.q-opt:disabled {
+  cursor: default;
+  transform: none;
+}
+
+@keyframes wrongShake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25%,
+  75% {
+    transform: translateX(-6px);
+  }
+
+  50% {
+    transform: translateX(6px);
+  }
+}
+
+/* Feedback */
+.q-feedback {
+  font-size: var(--fs-sm);
+  font-weight: 800;
+  border-radius: 8px;
+  padding: 8px 14px;
+  display: none;
+  line-height: 1.4;
+}
+
+.q-feedback:not(:empty) {
+  display: block;
+}
+
+.fb-correct {
+  background: #d4edda;
+  color: #276749;
+}
+
+.fb-wrong {
+  background: #fde8e8;
+  color: #be185d;
+}
+
+/* ── DnD Order List ── */
+.check-order-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+  padding: clamp(9px, 1.8vw, 13px) clamp(20px, 5vw, 32px);
+  background: linear-gradient(135deg, var(--orange), var(--primary));
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #be185d, 0 6px 18px rgba(236, 72, 153, 0.3);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  align-self: flex-start;
+}
+
+.fb-essay-done {
+  background: #fffbeb !important;
+  color: #92400e !important;
+  border: 2px solid #fde68a !important;
+  padding: 15px !important;
+}
+
+.essay-success-msg {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #15803d;
+}
+
+.essay-kj-box {
+  background: white;
+  border-radius: 10px;
+  padding: 12px;
+  border-left: 5px solid #f59e0b;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.essay-kj-title {
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #b45309;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.essay-kj-content {
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #374151;
+}
+
+.essay-kj-content ul {
+  margin: 5px 0 0 20px;
+  padding: 0;
+}
+
+.essay-kj-content li {
+  margin-bottom: 4px;
+}
+
+.check-order-btn:hover {
+  transform: translateY(-2px);
+}
+
+.check-order-btn:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.check-order-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+  background: var(--green);
+}
+
+/* ── Quiz Completion ── */
+.quiz-completion {
+  background: linear-gradient(135deg, #d4edda, #cce5ff);
+  border-radius: var(--border-radius-lg);
+  padding: clamp(20px, 5vw, 36px);
+  text-align: center;
+  border: 3px solid var(--green);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+.quiz-completion.show {
+  display: flex;
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.completion-emoji {
+  font-size: clamp(3rem, 8vw, 5rem);
+}
+
+.fb-msg {
+  font-size: 1.1rem;
+  font-family: 'Fredoka One', cursive;
+  margin-bottom: 8px;
+}
+
+.fb-user-box {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin-bottom: 5px;
+  padding-left: 5px;
+}
+
+.fb-kj-box-isian {
+  display: inline-block;
+  background: #2563eb;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1rem;
+  margin-top: 5px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  border: 2px solid #1d4ed8;
+}
+
+.fb-kj-box-isian span {
+  background: white;
+  color: #2563eb;
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-left: 8px;
+  font-family: 'Fredoka One', cursive;
+}
+
+.fb-hint-msg {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #b91c1c;
+  margin-top: 5px;
+}
+
+.quiz-completion h3 {
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-xl);
+  color: var(--dark);
+}
+
+.quiz-completion p {
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: #4a5568;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-height: 480px) {
+  .quiz-inner {
+    padding: 6px 10px 12px;
+    gap: 8px;
+  }
+
+  .pg-card {
+    padding: 10px 12px;
+  }
+}
+
+/* =============================================
+   QUIZ COMPLETION — SUBMIT FORM
+   ============================================= */
+.submit-form {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  text-align: left;
+}
+
+.sf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sf-field label {
+  font-size: var(--fs-sm);
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.4;
+}
+
+.sf-field input,
+.sf-field select {
+  font-family: 'Nunito', sans-serif;
+  font-size: var(--fs-base);
+  font-weight: 700;
+  color: var(--dark);
+  background: var(--light);
+  border: 2.5px solid #e2e8f0;
+  border-radius: var(--border-radius-sm);
+  padding: clamp(8px, 1.6vw, 12px) clamp(10px, 2vw, 14px);
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sf-field input:focus,
+.sf-field select:focus {
+  border-color: var(--blue);
+  background: #e8f0ff;
+}
+
+.sf-submit-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  padding: clamp(12px, 2.4vw, 16px) clamp(24px, 6vw, 40px);
+  background: linear-gradient(135deg, var(--blue), #2b7af0);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #1a5cc0, 0 8px 20px rgba(77, 150, 255, 0.35);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  align-self: center;
+  margin-top: var(--sp-xs);
+  letter-spacing: 0.3px;
+}
+
+.sf-submit-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 0 #1a5cc0, 0 12px 28px rgba(77, 150, 255, 0.45);
+}
+
+.sf-submit-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #1a5cc0;
+}
+
+.sf-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Success message */
+.sf-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sf-success.show {
+  display: flex;
+}
+
+.sf-success span {
+  font-size: clamp(2.5rem, 7vw, 4rem);
+}
+
+.sf-success p {
+  font-size: var(--fs-base);
+  font-weight: 800;
+  color: #276749;
+  line-height: 1.5;
+  background: white;
+  padding: var(--sp-sm) var(--sp-md);
+  border-radius: var(--border-radius-md);
+  border: 2px solid var(--green);
+  box-shadow: 0 4px 16px rgba(107, 203, 119, 0.2);
+}
+
+/* =============================================
+   SLIDE 10 — HALL OF FAME
+   ============================================= */
+.hof-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0 var(--sp-md) var(--sp-sm);
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hof-subtitle {
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-md);
+  color: var(--primary);
+  margin: 0;
+}
+
+.hof-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(140px, 28%, 200px), 1fr));
+  gap: 10px;
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 2px;
+}
+
+.hof-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border-radius: 14px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 0 #dde3f0, 0 6px 16px rgba(0, 0, 0, 0.07);
+  border-left: 4px solid var(--blue);
+  animation: hofCardIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes hofCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.hof-rank {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--orange), var(--primary));
+  color: white;
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hof-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.hof-name {
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-sm);
+  color: var(--dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hof-kelas {
+  font-size: 0.72rem;
+  color: #888;
+  margin-top: 1px;
+}
+
+.hof-skor {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.82rem;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+
+.hof-loading,
+.hof-empty {
+  text-align: center;
+  color: #aaa;
+  font-size: var(--fs-sm);
+  padding: 30px;
+  grid-column: 1 / -1;
+}
+
+.hof-refresh-btn {
+  font-family: 'Fredoka One', cursive;
+  font-size: var(--fs-sm);
+  padding: 8px 24px;
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #0667b3;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.hof-refresh-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #0667b3;
+}
+
+/* =============================================
+   POPUP PEMBAHASAN
+   ============================================= */
+.pembahasan-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.pembahasan-overlay.visible {
+  display: flex;
+  animation: fadeInOverlay 0.25s ease;
+}
+
+.pembahasan-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px 20px 20px;
+  max-width: 620px;
+  width: 90%;
+  max-height: 85vh;
+  margin: 0 auto;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border-top: 6px solid #f59e0b;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pembahasan-icon {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.pembahasan-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.3rem;
+  color: #b45309;
+  text-align: center;
+  margin: 0;
+}
+
+.pembahasan-body {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #374151;
+  line-height: 1.65;
+  background: #fffbeb;
+  border-radius: 12px;
+  padding: 12px 16px;
+  border-left: 4px solid #f59e0b;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.pembahasan-body strong {
+  color: #065f46;
+}
+
+.pembahasan-paham {
+  text-align: center;
+}
+
+.pembahasan-paham p {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #374151;
+  margin-bottom: 10px;
+}
+
+.pembahasan-close-btn {
+  font-family: 'Fredoka One', cursive;
+  padding: 10px 30px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #15803d;
+  transition: all 0.2s;
+}
+
+.pembahasan-close-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #15803d;
+}
+
+.pembahasan-close-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+/* Review Button (Book Icon) */
+.review-pembahasan-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #f59e0b;
+  background: #fffbeb;
+  color: #b45309;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 10px;
+  vertical-align: middle;
+  transition: all 0.2s;
+}
+
+.review-pembahasan-btn:hover {
+  background: #f59e0b;
+  color: white;
+  transform: scale(1.1);
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Multi-Answer Support */
+.opt-selected {
+  background: #e0f2fe !important;
+  border-color: #3b82f6 !important;
+  transform: scale(1.02);
+}
+
+.check-multi-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #b45309;
+  transition: all 0.2s;
+}
+
+.check-multi-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #b45309;
+}
+
+.check-multi-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.check-multi-btn:disabled {
+  background: #e2e8f0;
+  color: #94a3b8;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Isian Section */
+.isian-section-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  color: var(--primary);
+  text-align: center;
+  margin: 30px 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px dashed #cbd5e1;
+}
+
+.isian-card {
+  border-left: 6px solid #a855f7 !important;
+}
+
+.isian-input-wrap {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.isian-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.isian-input:focus {
+  border-color: #a855f7;
+  background: #fdf4ff;
+}
+
+.isian-input.input-correct {
+  border-color: #22c55e;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.isian-input.input-wrong {
+  border-color: #ef4444;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.isian-check-btn {
+  padding: 0 24px;
+  background: #a855f7;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #7e22ce;
+  transition: all 0.2s;
+}
+
+.isian-check-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #7e22ce;
+}
+
+.isian-check-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+/* Essay Section */
+.section-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.4rem;
+  color: var(--primary);
+  text-align: center;
+  margin: 30px 0 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px dashed #cbd5e1;
+}
+
+.essay-card {
+  border-left: 6px solid #f59e0b !important;
+}
+
+.essay-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.essay-input {
+  width: 100%;
+  padding: 14px;
+  border: 2.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  outline: none;
+  transition: all 0.2s;
+  resize: vertical;
+}
+
+.essay-input:focus {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.essay-check-btn {
+  align-self: flex-end;
+  padding: 10px 24px;
+  background: #f59e0b;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #b45309;
+  transition: all 0.2s;
+}
+
+.essay-check-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #b45309;
+}
+
+.essay-check-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+/* Try Again Overlay */
+.try-again-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.try-again-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.try-again-content {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  border-bottom: 8px solid #3b82f6;
+  transform: scale(0.8);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.try-again-overlay.visible .try-again-content {
+  transform: scale(1);
+}
+
+.try-again-emoji {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  animation: bounce 1s infinite;
+}
+
+.try-again-text {
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.5rem;
+  color: #1e3a8a;
+  line-height: 1.3;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* DnD Gap Section */
+.dnd-gap-card {
+  border-left: 6px solid #3b82f6 !important;
+}
+
+.dnd-sentence {
+  font-size: 1.2rem;
+  line-height: 2.5;
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 15px;
+  border: 2px solid #e2e8f0;
+  margin: 15px 0;
+  font-weight: 700;
+  color: #334155;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.dnd-drop-zone {
+  display: inline-flex;
+  min-width: 140px;
+  height: 40px;
+  background: white;
+  border: 3px dashed #cbd5e1;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  color: #94a3b8;
+  transition: all 0.2s;
+  padding: 0 10px;
+}
+
+.dnd-drop-zone.dropped {
+  background: #eff6ff;
+  border: 3px solid #3b82f6;
+  color: #1e40af;
+  font-family: 'Fredoka One', cursive;
+  border-style: solid;
+}
+
+.dnd-drop-zone.correct-ans {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  color: #15803d;
+}
+
+.dnd-choices-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+  padding: 15px;
+  background: #f1f5f9;
+  border-radius: 15px;
+  justify-content: center;
+}
+
+.dnd-choice-item {
+  background: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1rem;
+  color: #3b82f6;
+  cursor: grab;
+  box-shadow: 0 4px 0 #bfdbfe, 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 2px solid #3b82f6;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.dnd-choice-item:hover {
+  transform: translateY(-3px);
+  background: #3b82f6;
+  color: white;
+}
+
+.dnd-choice-item:active {
+  cursor: grabbing;
+}
+
+.dnd-choice-item.selected {
+  background: #3b82f6;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
+  border-color: #1e40af;
+}
+
+.dnd-check-btn {
+  width: 100%;
+  padding: 14px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #1e40af;
+  transition: all 0.2s;
+  margin-top: 10px;
+}
+
+.dnd-check-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #1e40af;
+}
+
+.dnd-check-btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.dnd-check-btn:disabled {
+  background: #e2e8f0;
+  color: #94a3b8;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Hide default isianContainer to display our custom stepper Section III */
+#isianContainer {
+  display: none !important;
+}
+
+/* Section III animations and formatting */
+.section3-container {
+  animation: slideUpQuiz 0.4s ease-out;
+}
+
+@keyframes slideUpQuiz {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
