@@ -378,6 +378,12 @@ document.addEventListener('DOMContentLoaded', () => {
             pembahasan: "Kata menceritakan sudah berarti menyampaikan cerita, sehingga kata tentang tidak perlu digunakan. Kalimat efektifnya: Biya menceritakan pengalamannya membuat jus mangga."
         },
         {
+            q: "Salah satu ciri kalimat efektif yaitu mempunyai unsur ... dan ... yang jelas.<br><br>Kata yang tepat untuk melengkapi kalimat tersebut adalah ....",
+            opts: ["subjek dan predikat", "objek dan keterangan", "tempat dan waktu", "tema dan amanat"],
+            ans: 0,
+            pembahasan: "Kalimat efektif harus memiliki unsur subjek dan predikat yang jelas agar mudah dipahami pembaca."
+        },
+        {
             q: "Bacalah cerita berikut untuk menjawab soal nomor 23–25!<br><br>Malin Kundang adalah anak dari seorang ibu yang hidup sederhana di tepi pantai. Suatu hari, Malin pergi merantau untuk mengubah nasib. Setelah bertahun-tahun, ia menjadi saudagar kaya dan kembali ke kampung halamannya dengan kapal besar.<br><br>Ibunya sangat bahagia melihat Malin pulang. Namun, Malin merasa malu mengakui ibunya yang sudah tua dan miskin. Ia menolak ibunya di hadapan banyak orang. Sang ibu sangat sedih, lalu berdoa agar Malin mendapat balasan atas perbuatannya. Tidak lama kemudian, badai besar datang dan kapal Malin hancur. Malin pun berubah menjadi batu.<br><br>23. Konflik utama dalam cerita Malin Kundang adalah ....",
             opts: ["Malin Kundang ingin membeli kapal besar untuk ibunya", "Malin Kundang malu dan tidak mau mengakui ibunya", "ibu Malin Kundang melarang anaknya pergi merantau", "Malin Kundang kehilangan harta saat berdagang"],
             ans: 1,
@@ -493,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         score = 0;
         questionsAnswered = 0;
-        currentScoreEl.textContent = score * 2;
+        currentScoreEl.textContent = Math.round(currentSubject === 'bahasa' ? (score / 3) * 10 : score * 2);
         
         // Reset state
         currentQuizState = currentQuestions.map(() => ({ locked: false, correct: false, attempts: 0 }));
@@ -572,7 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             state.correct = true;
             score += 1;
-            currentScoreEl.textContent = score * 2;
+            currentScoreEl.textContent = Math.round(currentSubject === 'bahasa' ? (score / 3) * 10 : score * 2);
             
             selectedBtn.classList.add('opt-correct');
             fb.className = 'q-feedback fb-correct';
@@ -680,7 +686,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             state.correct = true;
             score += 4;
-            currentScoreEl.textContent = score * 2;
+            currentScoreEl.textContent = Math.round(currentSubject === 'bahasa' ? (score / 3) * 10 : score * 2);
             
             fb.className = 'q-feedback fb-correct';
             fb.textContent = '✅ Benar! Hebat!';
@@ -740,7 +746,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cek jika sudah selesai semua soal
         if (questionsAnswered >= currentQuestions.length) {
             quizCompletion.style.display = 'block';
-            finalScoreText.textContent = score * 2;
+            finalScoreText.textContent = Math.round(currentSubject === 'bahasa' ? (score / 3) * 10 : score * 2);
             // Scroll to bottom
             quizCompletion.scrollIntoView({ behavior: 'smooth' });
         }
@@ -771,13 +777,13 @@ document.addEventListener('DOMContentLoaded', () => {
             body.append(entries.name, name); // Nama
             body.append(entries.kelas, kelas); // Kelas
             body.append(entries.mapel, moduleConfig.title); // Mata Pelajaran
-            body.append(entries.skor, (score * 2).toString()); // Skor
+            body.append(entries.skor, Math.round(currentSubject === 'bahasa' ? (score / 3) * 10 : score * 2).toString()); // Skor
 
             fetch(FORM_URL, { method: 'POST', mode: 'no-cors', body: body })
                 .then(() => {
                     sfContainer.style.display = 'none';
                     sfSuccess.style.display = 'block';
-                    document.getElementById('sf-final-report').innerHTML = `Hebat <strong>${name}</strong>!<br>Kamu mendapat skor akhir <strong>${score * 2}</strong>.`;
+                    document.getElementById('sf-final-report').innerHTML = `Hebat <strong>${name}</strong>!<br>Kamu mendapat skor akhir <strong>${Math.round(currentSubject === 'bahasa' ? (score / 3) * 10 : score * 2)}</strong>.`;
                     
                     // Show Leaderboard wrapper after success
                     const hofWrapper = document.getElementById('hof-wrapper');
