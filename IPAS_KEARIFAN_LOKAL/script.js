@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (q.type === 'dnd') {
                 let choicesHtml = q.opts.map((opt, oi) => 
-                    `<div class="dnd-choice-item" id="dnd-choice-${qi}-${oi}" draggable="true" ondragstart="dragStart(event, ${qi}, ${oi})">${opt}</div>`
+                    `<div class="dnd-choice-item" id="dnd-choice-${qi}-${oi}" draggable="true" ondragstart="dragStart(event, ${qi}, ${oi})" onclick="handleDndClick(${qi}, ${oi})">${opt}</div>`
                 ).join('');
                 
                 let parts = q.q.split('[ __________ ]');
@@ -309,80 +309,87 @@ document.addEventListener('DOMContentLoaded', () => {
         ev.preventDefault();
         ev.target.classList.remove('drag-over');
         
-        const state = currentQuizState[dropQi];
-        if (state.locked) return;
-        
         try {
             const data = JSON.parse(ev.dataTransfer.getData("text/plain"));
             const { qi: dragQi, oi } = data;
             
             if (dragQi !== dropQi) return;
-            
-            state.attempts = (state.attempts || 0) + 1;
-            
-            const q = currentQuestions[dropQi];
-            const isCorrect = (oi === q.ans);
-            const dropZone = document.getElementById(`dnd-drop-${dropQi}`);
-            const fb = document.getElementById(`q-fb-${dropQi}`);
-            const draggedItem = document.getElementById(`dnd-choice-${dropQi}-${oi}`);
-            
-            if (isCorrect) {
-                state.locked = true;
-                questionsAnswered++;
-                
-                dropZone.textContent = q.opts[oi];
-                dropZone.className = 'dnd-drop-zone correct-drop';
-                draggedItem.classList.add('hidden');
-                
-                state.correct = true;
-                score += 3; // DND: +3
-                currentScoreEl.textContent = score;
-                
-                fb.className = 'q-feedback fb-correct';
-                fb.textContent = '✅ Benar! Hebat!';
-                
-                setTimeout(() => showPembahasan(q.pembahasan, true, dropQi), 500);
-                addReviewButton(dropQi);
-                
-                const choicesContainer = document.getElementById(`dnd-choices-${dropQi}`);
-                choicesContainer.style.opacity = '0.5';
-                choicesContainer.style.pointerEvents = 'none';
-            } else {
-                dropZone.className = 'dnd-drop-zone wrong-drop';
-                dropZone.textContent = q.opts[oi];
-                
-                if (state.attempts < 2) {
-                    fb.className = 'q-feedback fb-wrong';
-                    fb.textContent = '❌ Kurang tepat. Coba lagi!';
-                    
-                    setTimeout(() => {
-                        dropZone.className = 'dnd-drop-zone';
-                        dropZone.textContent = 'Tarik jawaban ke sini';
-                        fb.textContent = '';
-                    }, 1200);
-                } else {
-                    state.locked = true;
-                    questionsAnswered++;
-                    
-                    dropZone.textContent = q.opts[q.ans];
-                    dropZone.className = 'dnd-drop-zone wrong-drop';
-                    dropZone.style.background = '#e74c3c';
-                    
-                    fb.className = 'q-feedback fb-wrong';
-                    fb.textContent = '❌ Masih kurang tepat.';
-                    
-                    setTimeout(() => showPembahasan(q.pembahasan, false, dropQi), 1000);
-                    addReviewButton(dropQi);
-                    
-                    const choicesContainer = document.getElementById(`dnd-choices-${dropQi}`);
-                    choicesContainer.style.opacity = '0.5';
-                    choicesContainer.style.pointerEvents = 'none';
-                }
-            }
+            processDndAnswer(dropQi, oi);
         } catch (e) {
             console.error(e);
         }
     };
+
+    window.handleDndClick = function(qi, oi) {
+        processDndAnswer(qi, oi);
+    };
+
+    function processDndAnswer(qi, oi) {
+        const state = currentQuizState[qi];
+        if (state.locked) return;
+        
+        state.attempts = (state.attempts || 0) + 1;
+        
+        const q = currentQuestions[qi];
+        const isCorrect = (oi === q.ans);
+        const dropZone = document.getElementById(`dnd-drop-${qi}`);
+        const fb = document.getElementById(`q-fb-${qi}`);
+        const draggedItem = document.getElementById(`dnd-choice-${qi}-${oi}`);
+        
+        if (isCorrect) {
+            state.locked = true;
+            questionsAnswered++;
+            
+            dropZone.textContent = q.opts[oi];
+            dropZone.className = 'dnd-drop-zone correct-drop';
+            draggedItem.classList.add('hidden');
+            
+            state.correct = true;
+            score += 3; // DND: +3
+            currentScoreEl.textContent = score;
+            
+            fb.className = 'q-feedback fb-correct';
+            fb.textContent = '✅ Benar! Hebat!';
+            
+            setTimeout(() => showPembahasan(q.pembahasan, true, qi), 500);
+            addReviewButton(qi);
+            
+            const choicesContainer = document.getElementById(`dnd-choices-${qi}`);
+            choicesContainer.style.opacity = '0.5';
+            choicesContainer.style.pointerEvents = 'none';
+        } else {
+            dropZone.className = 'dnd-drop-zone wrong-drop';
+            dropZone.textContent = q.opts[oi];
+            
+            if (state.attempts < 2) {
+                fb.className = 'q-feedback fb-wrong';
+                fb.textContent = '❌ Kurang tepat. Coba lagi!';
+                
+                setTimeout(() => {
+                    dropZone.className = 'dnd-drop-zone';
+                    dropZone.textContent = 'Tarik jawaban ke sini';
+                    fb.textContent = '';
+                }, 1200);
+            } else {
+                state.locked = true;
+                questionsAnswered++;
+                
+                dropZone.textContent = q.opts[q.ans];
+                dropZone.className = 'dnd-drop-zone wrong-drop';
+                dropZone.style.background = '#e74c3c';
+                
+                fb.className = 'q-feedback fb-wrong';
+                fb.textContent = '❌ Masih kurang tepat.';
+                
+                setTimeout(() => showPembahasan(q.pembahasan, false, qi), 1000);
+                addReviewButton(qi);
+                
+                const choicesContainer = document.getElementById(`dnd-choices-${qi}`);
+                choicesContainer.style.opacity = '0.5';
+                choicesContainer.style.pointerEvents = 'none';
+            }
+        }
+    }
 
     // Prevent default dragover behavior
     document.addEventListener("dragover", function(event) {
