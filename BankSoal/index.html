@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Soal Islami</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Decor (Stars/Moon) -->
+    <div class="bg-decor star-1">⭐</div>
+    <div class="bg-decor star-2">🌙</div>
+    <div class="bg-decor star-3">⭐</div>
+
+    <div class="app-container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+            <h1 class="main-title">BANK SOAL</h1>
+            <p class="subtitle">Assalamu'alaikum! Yuk, pilih mata pelajaran untuk mulai belajar.</p>
+            <div class="illustration">
+                🕌✨
+            </div>
+            <button id="start-btn" class="primary-btn">Mulai Belajar</button>
+        </div>
+
+        <!-- Subject Selection Screen -->
+        <div id="subject-screen" class="screen">
+            <h2 class="section-title">Pilih Mata Pelajaran</h2>
+            <div class="subject-grid">
+                <button class="subject-btn" data-subject="ipas">
+                    <span class="btn-icon">🌍</span>
+                    IPAS
+                </button>
+                <button class="subject-btn" data-subject="matematika">
+                    <span class="btn-icon">🔢</span>
+                    MATEMATIKA
+                </button>
+                <button class="subject-btn" data-subject="pancasila">
+                    <span class="btn-icon">🦅</span>
+                    PENDIDIKAN PANCASILA
+                </button>
+                <button class="subject-btn" data-subject="bahasa">
+                    <span class="btn-icon">📚</span>
+                    BAHASA INDONESIA
+                </button>
+            </div>
+            <button id="back-btn" class="secondary-btn mt-4">Kembali</button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <button id="back-to-subject-btn" class="secondary-btn small-btn">Kembali</button>
+                <h2 id="quiz-title" class="section-title" style="margin-bottom:0;">Kuis</h2>
+                <button id="open-leaderboard-btn" class="secondary-btn small-btn" style="background:#f39c12; border-color:#e67e22; color:white; padding:5px 10px; font-size:0.9rem;">🏆 Skor</button>
+                <div class="score-badge">Skor: <span id="current-score">0</span></div>
+            </div>
+            
+            <div id="quiz-container" class="quiz-container">
+                <!-- Pertanyaan akan di-render di sini -->
+            </div>
+            
+            <div id="quiz-completion" class="quiz-completion" style="display:none;">
+                <h3>Alhamdulillah! 🎉</h3>
+                <p>Kamu telah menyelesaikan semua soal.</p>
+                <div class="final-score">Skor Akhir: <span id="final-score-text">100</span></div>
+                
+                <div id="sf-container" class="sf-container">
+                    <p>Kirim skormu ke guru ya!</p>
+                    <input type="text" id="sf-name" placeholder="Nama Lengkap" class="sf-input">
+                    <select id="sf-class" class="sf-input">
+                        <option value="" disabled selected>Pilih Kelas</option>
+                        <option value="4 Bukhari">4 Bukhari</option>
+                        <option value="4 Tirmidzi">4 Tirmidzi</option>
+                        <option value="4 Muslim">4 Muslim</option>
+                    </select>
+                    <button id="sf-submit-btn" class="primary-btn mt-4">Kirim Nilai 🚀</button>
+                </div>
+                
+                <div id="sf-success" class="sf-success" style="display:none;">
+                    <h4>✅ Nilai Berhasil Dikirim!</h4>
+                    <p id="sf-final-report" style="font-size: 1.2rem; margin: 15px 0; color: #2c3e50;"></p>
+                    <button id="finish-btn" class="secondary-btn mt-4">Kembali ke Beranda</button>
+                </div>
+                
+                <div id="hof-wrapper" style="display:none; margin-top: 30px;">
+                    <button id="unlock-hof-btn" class="secondary-btn" style="width:100%; border-color:#f39c12; color:#f39c12;">🔒 Buka Papan Skor (Butuh Kode)</button>
+                    <div id="hof-container" class="hof-container" style="display:none; margin-top: 15px;">
+                        <h3>Teman yang Sudah Mengerjakan 🌟</h3>
+                        <select id="hof-filter" class="sf-input" style="margin-bottom: 15px; padding: 10px;">
+                            <option value="All">Semua Kelas</option>
+                            <option value="4 Bukhari">4 Bukhari</option>
+                            <option value="4 Tirmidzi">4 Tirmidzi</option>
+                            <option value="4 Muslim">4 Muslim</option>
+                        </select>
+                        <div id="hof-grid" class="hof-grid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pembahasan Overlay -->
+    <div id="pembahasan-overlay" class="pembahasan-overlay">
+        <div class="pembahasan-box">
+            <div class="pembahasan-icon" id="pembahasan-icon">🌟</div>
+            <div class="pembahasan-content" id="pembahasan-content">
+                <!-- Konten pembahasan akan masuk sini -->
+            </div>
+            <button id="close-pembahasan-btn" class="primary-btn mt-4">Saya Paham! 👍</button>
+        </div>
+    </div>
+
+    <!-- Leaderboard Overlay -->
+    <div id="leaderboard-overlay" class="pembahasan-overlay">
+        <div class="pembahasan-box" style="max-height: 80vh; overflow-y: auto;">
+            <h2 class="section-title">Papan Skor 🏆</h2>
+            <div id="overlay-hof-container" class="hof-container" style="display:block; width:100%;">
+                <select id="overlay-hof-filter" class="sf-input" style="margin-bottom: 15px; padding: 10px;">
+                    <option value="All">Semua Kelas</option>
+                    <option value="4 Bukhari">4 Bukhari</option>
+                    <option value="4 Tirmidzi">4 Tirmidzi</option>
+                    <option value="4 Muslim">4 Muslim</option>
+                </select>
+                <div id="overlay-hof-grid" class="hof-grid"></div>
+            </div>
+            <button id="close-leaderboard-btn" class="secondary-btn mt-4">Tutup</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
