@@ -272,32 +272,21 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             selectedBtn.classList.add('opt-wrong');
             
-            if (state.attempts < 2) {
-                fb.className = 'q-feedback fb-wrong';
-                fb.textContent = '❌ Kurang tepat. Coba 1 kali lagi ya!';
-                
-                setTimeout(() => {
-                    selectedBtn.classList.remove('opt-wrong');
-                    selectedBtn.disabled = true;
-                    fb.textContent = '';
-                }, 1200);
-            } else {
-                state.locked = true;
-                questionsAnswered++;
-                document.querySelectorAll(`#q-opts-${qi} .q-opt`).forEach(btn => btn.disabled = true);
-                
-                fb.className = 'q-feedback fb-wrong';
-                fb.textContent = '❌ Masih kurang tepat.';
-                
-                const correctBtn = document.getElementById(`q-opt-${qi}-${q.ans}`);
-                if(correctBtn) {
-                    correctBtn.classList.add('opt-correct');
-                    correctBtn.style.animation = 'pulse 1s infinite';
-                }
-                
-                setTimeout(() => showPembahasan(q.pembahasan, false, qi), 1000);
-                addReviewButton(qi);
+            state.locked = true;
+            questionsAnswered++;
+            document.querySelectorAll(`#q-opts-${qi} .q-opt`).forEach(btn => btn.disabled = true);
+            
+            fb.className = 'q-feedback fb-wrong';
+            fb.textContent = '❌ Kurang tepat.';
+            
+            const correctBtn = document.getElementById(`q-opt-${qi}-${q.ans}`);
+            if(correctBtn) {
+                correctBtn.classList.add('opt-correct');
+                correctBtn.style.animation = 'pulse 1s infinite';
             }
+            
+            setTimeout(() => showPembahasan(q.pembahasan, false, qi), 1000);
+            addReviewButton(qi);
         }
     };
 
