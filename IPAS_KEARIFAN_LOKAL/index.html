@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kuis IPAS - Kearifan Lokal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-decor star-1">✨</div>
+    <div class="bg-decor star-2">🌟</div>
+    <div class="bg-decor star-3">⭐</div>
+
+    <div class="app-container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+            <div class="illustration">🎯</div>
+            <h1 class="main-title">Kuis IPAS</h1>
+            <p class="subtitle">Kearifan Lokal</p>
+            <button id="start-btn" class="primary-btn mt-4">Mulai Belajar</button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen" class="screen">
+            <div class="quiz-header">
+                <button id="home-btn" class="secondary-btn small-btn">🏠 Kembali</button>
+                <div class="score-badge">Skor: <span id="current-score">0</span></div>
+                <button id="skor-btn" class="primary-btn small-btn">🏆 Papan Skor</button>
+            </div>
+            
+            <h2 id="quiz-title" class="section-title">Kuis IPAS: Kearifan Lokal</h2>
+            
+            <div id="quiz-container" class="quiz-container">
+                <!-- Pertanyaan akan di-render di sini oleh JavaScript -->
+            </div>
+
+            <!-- Quiz Completion UI (Student Form) -->
+            <div id="quiz-completion" class="quiz-completion" style="display: none;">
+                <h3>Alhamdulillah! 🎉</h3>
+                <p>Kamu telah menyelesaikan semua soal.</p>
+                <div class="final-score">Skor Akhir: <span id="final-score-text">0</span></div>
+                
+                <div id="sf-container" class="sf-container">
+                    <p style="font-weight: 600; color: #2c3e50; margin-bottom: 10px;">Masukkan data dirimu untuk menyimpan nilai:</p>
+                    <input type="text" id="sf-name" class="sf-input" placeholder="Nama Lengkap" required>
+                    
+                    <select id="sf-kelas" class="sf-input" required style="margin-bottom: 15px;">
+                        <option value="" disabled selected>Pilih Kelas</option>
+                        <option value="4 Bukhari">4 Bukhari</option>
+                        <option value="4 Tirmidzi">4 Tirmidzi</option>
+                        <option value="4 Muslim">4 Muslim</option>
+                    </select>
+
+                    <button id="sf-submit" class="primary-btn" style="width: 100%; font-size: 1.1rem; padding: 12px;">Simpan Nilai</button>
+                </div>
+                
+                <div id="sf-success" class="sf-success" style="display: none;">
+                    <h4>✅ Nilai Berhasil Disimpan!</h4>
+                    <p id="sf-final-report" style="margin-top: 10px; font-size: 1.1rem;"></p>
+                </div>
+
+                <!-- Leaderboard (Hall of Fame) -->
+                <div id="hof-wrapper" style="display: none; margin-top: 30px; border-top: 3px dashed #1abc9c; padding-top: 20px;">
+                    <div class="hof-container">
+                        <h3>🏆 Papan Skor - IPAS Kearifan Lokal</h3>
+                        <div id="hof-grid" class="hof-grid">
+                            <div class="hof-loading">Memuat data nilai... ⏳</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pembahasan Overlay -->
+    <div id="pembahasan-overlay" class="pembahasan-overlay">
+        <div class="pembahasan-box">
+            <div class="pembahasan-icon">💡</div>
+            <h3 style="color: #2980b9; margin-bottom: 15px; font-family: 'Baloo 2', sans-serif; font-size: 1.8rem;">Pembahasan</h3>
+            <div id="pembahasan-text" class="pembahasan-content"></div>
+            <button id="close-pembahasan" class="primary-btn">Lanjut</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
