@@ -1521,8 +1521,18 @@ function loadQuestion() {
         input.placeholder = "Tulis jawabanmu di sini...";
         input.value = savedAnswer || "";
         
+        const submitBtn = document.createElement("button");
+        submitBtn.className = "isian-submit-btn";
+        submitBtn.innerHTML = "✓";
+        
         if (isAnswered) {
             input.readOnly = true;
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.5";
+            submitBtn.style.cursor = "not-allowed";
+            submitBtn.style.boxShadow = "none";
+            submitBtn.style.transform = "none";
+            
             let isCorrect = false;
             if (Array.isArray(qData.answer)) {
                 isCorrect = qData.answer.some(a => savedAnswer.toString().trim().toLowerCase() === a.toString().trim().toLowerCase());
@@ -1533,13 +1543,22 @@ function loadQuestion() {
             input.style.borderColor = isCorrect ? "#48BB78" : "#FC8181";
             input.style.color = isCorrect ? "#22543D" : "#742A2A";
         } else {
-            input.onchange = (e) => {
-                const val = e.target.value.trim();
-                if(val) handleAnswerAttempt(val);
+            const submitAnswer = () => {
+                const val = input.value.trim();
+                if(val) {
+                    playClickSFX();
+                    handleAnswerAttempt(val);
+                }
+            };
+            
+            submitBtn.onclick = submitAnswer;
+            input.onkeydown = (e) => {
+                if (e.key === 'Enter') submitAnswer();
             };
         }
         
         container.appendChild(input);
+        container.appendChild(submitBtn);
         grid.appendChild(container);
         
         // Auto focus
