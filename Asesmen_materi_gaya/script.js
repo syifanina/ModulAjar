@@ -1326,9 +1326,20 @@ function loadQuestion() {
         const container = document.createElement("div");
         container.className = "drag-drop-container";
         
+        let stagedDragAnswer = savedAnswer || null;
+        
+        const dropZoneWrapper = document.createElement("div");
+        dropZoneWrapper.style.display = "flex";
+        dropZoneWrapper.style.gap = "12px";
+        dropZoneWrapper.style.alignItems = "center";
+        dropZoneWrapper.style.justifyContent = "center";
+        dropZoneWrapper.style.width = "100%";
+        
         // Drop Zone Box
         const dropZone = document.createElement("div");
         dropZone.className = "drop-zone";
+        dropZone.style.flex = "1";
+        
         if (savedAnswer) {
             dropZone.textContent = savedAnswer;
             dropZone.classList.add("filled");
@@ -1342,6 +1353,43 @@ function loadQuestion() {
         } else {
             dropZone.innerHTML = `<span class="drop-placeholder">👉 Taruh / Klik jawaban di sini 👈</span>`;
         }
+        
+        const submitDragBtn = document.createElement("button");
+        submitDragBtn.className = "isian-submit-btn";
+        submitDragBtn.innerHTML = "✓";
+        if (isAnswered) {
+            submitDragBtn.disabled = true;
+            submitDragBtn.style.opacity = "0.5";
+            submitDragBtn.style.cursor = "not-allowed";
+            submitDragBtn.style.boxShadow = "none";
+            submitDragBtn.style.transform = "none";
+        } else {
+            submitDragBtn.onclick = () => {
+                if (stagedDragAnswer) {
+                    playClickSFX();
+                    selectDragAnswer(stagedDragAnswer);
+                }
+            };
+        }
+        
+        // Draggable Options List
+        const optionsList = document.createElement("div");
+        optionsList.className = "drag-options-list";
+        
+        const stageAnswer = (text) => {
+            stagedDragAnswer = text;
+            dropZone.textContent = text;
+            dropZone.classList.add("filled");
+            
+            const allCards = optionsList.querySelectorAll('.drag-card');
+            allCards.forEach(c => {
+                if(c.textContent === text) {
+                    c.classList.add('selected');
+                } else {
+                    c.classList.remove('selected');
+                }
+            });
+        };
         
         if (!isAnswered) {
             // Handle drag & drop events
@@ -1359,24 +1407,24 @@ function loadQuestion() {
                 dropZone.classList.remove("drag-over");
                 const text = e.dataTransfer.getData("text/plain");
                 if (text) {
-                    selectDragAnswer(text);
+                    playClickSFX();
+                    stageAnswer(text);
                 }
             };
             
             // Clear answer on click of drop zone (to reset)
             dropZone.onclick = () => {
-                if (studentAnswers[currentQuestionIndex]) {
+                if (stagedDragAnswer || studentAnswers[currentQuestionIndex]) {
                     playClickSFX();
-                    studentAnswers[currentQuestionIndex] = null;
-                    saveSessionState();
+                    stagedDragAnswer = null;
+                    if (studentAnswers[currentQuestionIndex]) {
+                        studentAnswers[currentQuestionIndex] = null;
+                        saveSessionState();
+                    }
                     loadQuestion();
                 }
             };
         }
-        
-        // Draggable Options List
-        const optionsList = document.createElement("div");
-        optionsList.className = "drag-options-list";
         
         qData.dragOptions.forEach(opt => {
             const dragCard = document.createElement("div");
@@ -1403,14 +1451,16 @@ function loadQuestion() {
                 dragCard.ondragend = () => dragCard.classList.remove("dragging");
                 dragCard.onclick = () => {
                     playClickSFX();
-                    selectDragAnswer(opt);
+                    stageAnswer(opt);
                 };
             }
             
             optionsList.appendChild(dragCard);
         });
         
-        container.appendChild(dropZone);
+        dropZoneWrapper.appendChild(dropZone);
+        dropZoneWrapper.appendChild(submitDragBtn);
+        container.appendChild(dropZoneWrapper);
         container.appendChild(optionsList);
         grid.appendChild(container);
     } else {
@@ -1424,8 +1474,18 @@ function loadQuestion() {
         input.placeholder = "Tulis jawabanmu di sini...";
         input.value = savedAnswer || "";
         
+        const submitBtn = document.createElement("button");
+        submitBtn.className = "isian-submit-btn";
+        submitBtn.innerHTML = "✓";
+        
         if (isAnswered) {
             input.readOnly = true;
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.5";
+            submitBtn.style.cursor = "not-allowed";
+            submitBtn.style.boxShadow = "none";
+            submitBtn.style.transform = "none";
+            
             let isCorrect = false;
             if (Array.isArray(qData.answer)) {
                 isCorrect = qData.answer.some(a => savedAnswer.toString().trim().toLowerCase() === a.toString().trim().toLowerCase());
@@ -1436,13 +1496,22 @@ function loadQuestion() {
             input.style.borderColor = isCorrect ? "#48BB78" : "#FC8181";
             input.style.color = isCorrect ? "#22543D" : "#742A2A";
         } else {
-            input.onchange = (e) => {
-                const val = e.target.value.trim();
-                if(val) handleAnswerAttempt(val);
+            const submitAnswer = () => {
+                const val = input.value.trim();
+                if(val) {
+                    playClickSFX();
+                    handleAnswerAttempt(val);
+                }
+            };
+            
+            submitBtn.onclick = submitAnswer;
+            input.onkeydown = (e) => {
+                if (e.key === 'Enter') submitAnswer();
             };
         }
         
         container.appendChild(input);
+        container.appendChild(submitBtn);
         grid.appendChild(container);
         
         // Auto focus
