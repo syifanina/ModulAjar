@@ -450,6 +450,9 @@ function playSuccessSFX() {
 
 // === PRELOADING SLIDES SYSTEM ===
 document.addEventListener("DOMContentLoaded", () => {
+    // Check if there is a save link parameter to restore
+    checkSaveLinkOnLoad();
+
     // Preload slide images sequentially
     preloadSlides();
     
@@ -1423,9 +1426,20 @@ function loadQuestion() {
         const container = document.createElement("div");
         container.className = "drag-drop-container";
         
+        let stagedDragAnswer = savedAnswer || null;
+        
+        const dropZoneWrapper = document.createElement("div");
+        dropZoneWrapper.style.display = "flex";
+        dropZoneWrapper.style.gap = "12px";
+        dropZoneWrapper.style.alignItems = "center";
+        dropZoneWrapper.style.justifyContent = "center";
+        dropZoneWrapper.style.width = "100%";
+        
         // Drop Zone Box
         const dropZone = document.createElement("div");
         dropZone.className = "drop-zone";
+        dropZone.style.flex = "1";
+        
         if (savedAnswer) {
             dropZone.textContent = savedAnswer;
             dropZone.classList.add("filled");
@@ -1439,6 +1453,44 @@ function loadQuestion() {
         } else {
             dropZone.innerHTML = `<span class="drop-placeholder">👉 Taruh / Klik jawaban di sini 👈</span>`;
         }
+        
+        const submitDragBtn = document.createElement("button");
+        submitDragBtn.type = "button";
+        submitDragBtn.className = "isian-submit-btn";
+        submitDragBtn.innerHTML = "✓";
+        if (isAnswered) {
+            submitDragBtn.disabled = true;
+            submitDragBtn.style.opacity = "0.5";
+            submitDragBtn.style.cursor = "not-allowed";
+            submitDragBtn.style.boxShadow = "none";
+            submitDragBtn.style.transform = "none";
+        } else {
+            submitDragBtn.onclick = () => {
+                if (stagedDragAnswer) {
+                    playClickSFX();
+                    selectDragAnswer(stagedDragAnswer);
+                }
+            };
+        }
+        
+        // Draggable Options List
+        const optionsList = document.createElement("div");
+        optionsList.className = "drag-options-list";
+        
+        const stageAnswer = (text) => {
+            stagedDragAnswer = text;
+            dropZone.textContent = text;
+            dropZone.classList.add("filled");
+            
+            const allCards = optionsList.querySelectorAll('.drag-card');
+            allCards.forEach(c => {
+                if(c.textContent === text) {
+                    c.classList.add('selected');
+                } else {
+                    c.classList.remove('selected');
+                }
+            });
+        };
         
         if (!isAnswered) {
             // Handle drag & drop events
@@ -1456,24 +1508,24 @@ function loadQuestion() {
                 dropZone.classList.remove("drag-over");
                 const text = e.dataTransfer.getData("text/plain");
                 if (text) {
-                    selectDragAnswer(text);
+                    playClickSFX();
+                    stageAnswer(text);
                 }
             };
             
             // Clear answer on click of drop zone (to reset)
             dropZone.onclick = () => {
-                if (studentAnswers[currentQuestionIndex]) {
+                if (stagedDragAnswer || studentAnswers[currentQuestionIndex]) {
                     playClickSFX();
-                    studentAnswers[currentQuestionIndex] = null;
-                    saveSessionState();
+                    stagedDragAnswer = null;
+                    if (studentAnswers[currentQuestionIndex]) {
+                        studentAnswers[currentQuestionIndex] = null;
+                        saveSessionState();
+                    }
                     loadQuestion();
                 }
             };
         }
-        
-        // Draggable Options List
-        const optionsList = document.createElement("div");
-        optionsList.className = "drag-options-list";
         
         qData.dragOptions.forEach(opt => {
             const dragCard = document.createElement("div");
@@ -1500,14 +1552,16 @@ function loadQuestion() {
                 dragCard.ondragend = () => dragCard.classList.remove("dragging");
                 dragCard.onclick = () => {
                     playClickSFX();
-                    selectDragAnswer(opt);
+                    stageAnswer(opt);
                 };
             }
             
             optionsList.appendChild(dragCard);
         });
         
-        container.appendChild(dropZone);
+        dropZoneWrapper.appendChild(dropZone);
+        dropZoneWrapper.appendChild(submitDragBtn);
+        container.appendChild(dropZoneWrapper);
         container.appendChild(optionsList);
         grid.appendChild(container);
     } else {
@@ -1522,6 +1576,7 @@ function loadQuestion() {
         input.value = savedAnswer || "";
         
         const submitBtn = document.createElement("button");
+        submitBtn.type = "button";
         submitBtn.className = "isian-submit-btn";
         submitBtn.innerHTML = "✓";
         
@@ -2591,5 +2646,98 @@ function filterTeacherTable() {
             </td>
         `;
         tableBody.appendChild(tr);
+    }
+}
+
+// === SAVE PROGRESS LINK LOGIC (COMPACT) ===
+function openSaveModal() {
+    playClickSFX();
+    saveSessionState();
+    const saved = localStorage.getItem("asesmen_kebutuhan_session");
+    if (!saved) { alert("Belum ada progress yang bisa disimpan!"); return; }
+
+    // Compact encoding: only essential fields, URL-safe Base64
+    const state = JSON.parse(saved);
+    const compact = {
+        n: state.currentStudentName || "",
+        a: state.currentStudentAbsen || "",
+        q: state.currentQuestionIndex || 0,
+        ans: (state.studentAnswers || []).map(x => (x == null) ? '' : x).join(','),
+        u: (state.isUnsureFlags || []).map(f => f ? '1' : '0').join(''),
+        att: (state.studentAttempts || []).map(v => v || 0).join('')
+    };
+    const b64 = btoa(JSON.stringify(compact)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
+    const saveUrl = `${window.location.origin}${window.location.pathname}?s=${b64}`;
+
+    document.getElementById("saveLinkInput").value = saveUrl;
+    document.getElementById("saveProgressModal").classList.add("show");
+}
+
+function closeSaveModal() {
+    playClickSFX();
+    document.getElementById("saveProgressModal").classList.remove("show");
+}
+
+function copySaveLink() {
+    playClickSFX();
+    const saveLinkInput = document.getElementById("saveLinkInput");
+    saveLinkInput.select();
+    saveLinkInput.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(saveLinkInput.value).then(() => {
+        alert("Link berhasil disalin! 📋");
+    });
+}
+
+function shareSaveLinkWA() {
+    playClickSFX();
+    const saveLinkInput = document.getElementById("saveLinkInput");
+    const text = `Halo! Ini link untuk melanjutkan kuis Asesmen Kebutuhan milikku. Klik link di bawah untuk langsung melanjutkan dari nomor terakhir:\n\n${saveLinkInput.value}`;
+    const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+    window.open(waUrl, "_blank");
+}
+
+function checkSaveLinkOnLoad() {
+    const p = new URLSearchParams(window.location.search).get('s');
+    if (!p) return;
+    try {
+        const compact = JSON.parse(atob(p.replace(/-/g, '+').replace(/_/g, '/')));
+        const totalQ = quizQuestions.length;
+        const ansParts = compact.ans ? compact.ans.split(',') : [];
+
+        const expanded = {
+            currentStudentName: compact.n || "",
+            currentStudentAbsen: compact.a || "",
+            currentQuestionIndex: parseInt(compact.q) || 0,
+            quizActive: true,
+            currentSlide: 1,
+            studentAnswers: Array.from({ length: totalQ }, (_, i) => {
+                const v = ansParts[i];
+                return (v === undefined || v === '') ? null : v;
+            }),
+            isUnsureFlags: Array.from({ length: totalQ }, (_, i) =>
+                compact.u ? compact.u[i] === '1' : false
+            ),
+            studentAttempts: Array.from({ length: totalQ }, (_, i) =>
+                compact.att ? parseInt(compact.att[i]) || 0 : 0
+            )
+        };
+
+        localStorage.setItem("asesmen_kebutuhan_session", JSON.stringify(expanded));
+        window.history.replaceState({}, document.title, window.location.pathname);
+
+        setTimeout(() => {
+            const coverScreen = document.getElementById("screen-cover");
+            const quizScreen = document.getElementById("screen-quiz");
+            if (coverScreen) { coverScreen.classList.remove("active"); coverScreen.style.display = "none"; }
+            quizActive = true;
+            if (quizScreen) { quizScreen.style.display = "flex"; quizScreen.classList.add("active"); }
+            loadSessionState();
+            loadQuestion();
+            alert("✨ Progress belajarmu berhasil dimuat! Kamu bisa melanjutkan kuisnya sekarang.");
+        }, 150);
+
+    } catch (e) {
+        console.warn("Invalid save link:", e);
+        alert("Maaf, link simpan progress tidak valid atau rusak.");
     }
 }
