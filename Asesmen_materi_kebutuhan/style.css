@@ -124,6 +124,7 @@ body {
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    overscroll-behavior: none;
     z-index: 1;
 }
 
@@ -569,6 +570,7 @@ body {
     align-items: center;
     position: relative;
     overflow-y: auto;
+    overscroll-behavior: none;
     padding: var(--sp-sm);
 }
 
@@ -1097,7 +1099,7 @@ body {
 }
 
 .isian-submit-btn {
-    background: var(--green);
+    background: var(--south-blue);
     color: var(--white);
     border: none;
     border-radius: var(--border-radius-sm);
@@ -1108,19 +1110,19 @@ body {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    box-shadow: 0 4px 0 var(--green-dark);
+    box-shadow: 0 4px 0 var(--south-blue-dark);
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     flex-shrink: 0;
 }
 
 .isian-submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 0 var(--green-dark);
+    box-shadow: 0 6px 0 var(--south-blue-dark);
 }
 
 .isian-submit-btn:active {
     transform: translateY(2px);
-    box-shadow: 0 2px 0 var(--green-dark);
+    box-shadow: 0 2px 0 var(--south-blue-dark);
 }
 
 .isian-input {
@@ -1192,10 +1194,10 @@ body {
 }
 
 .drop-zone.filled {
-    border: 4px solid var(--green);
-    background: #EBFDF3;
-    color: var(--green-dark);
-    box-shadow: 0 4px 10px rgba(46, 204, 113, 0.15);
+    border: 4px solid var(--south-blue);
+    background: #EBF4FC;
+    color: var(--south-blue-dark);
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.15);
 }
 
 .drop-placeholder {
@@ -1243,10 +1245,12 @@ body {
 }
 
 .drag-card.selected {
-    opacity: 0.3;
-    pointer-events: none;
-    background: #E2E8F0;
-    border-color: #CBD5E1;
+    background: var(--south-blue);
+    border-color: var(--south-blue-dark);
+    color: var(--white);
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
 }
 
 .option-card {
