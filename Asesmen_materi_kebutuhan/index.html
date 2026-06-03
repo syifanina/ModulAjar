@@ -196,9 +196,12 @@
         <div id="screen-quiz" class="screen" style="display: none;">
             <!-- HEADER -->
             <header class="app-header">
-                <div class="header-left">
-                    <button class="toolbar-btn" title="Kembali ke Menu Utama" onclick="goToMainMenu()" style="padding: 6px 12px; border-radius: 20px;">
+                <div class="header-left" style="display: flex; gap: 8px;">
+                    <button type="button" class="toolbar-btn" title="Kembali ke Menu Utama" onclick="goToMainMenu()" style="padding: 6px 12px; border-radius: 20px;">
                         🏠 <span class="btn-lbl">Menu Utama</span>
+                    </button>
+                    <button type="button" class="toolbar-btn" title="Simpan Progress untuk dilanjutkan di rumah" onclick="openSaveModal()" style="padding: 6px 12px; border-radius: 20px; background: #EBF8FF; color: #2B6CB0; border: 2px solid #90CDF4; font-weight: 800;">
+                        💾 <span class="btn-lbl">Simpan</span>
                     </button>
                 </div>
                 <div class="header-center">
@@ -233,28 +236,28 @@
                         </p>
                     </div>
 
+                    <!-- Instant Feedback Area -->
+                    <div id="quizFeedbackArea" style="display: none; width: 100%; flex-direction: column; gap: 8px;"></div>
+
                     <!-- Options Cards 2x2 Grid -->
                     <div class="options-grid" id="quizOptionsGrid">
                         <!-- Options will be loaded dynamically by script.js -->
                     </div>
-
-                    <!-- Instant Feedback Area -->
-                    <div id="quizFeedbackArea" style="display: none; width: 100%; flex-direction: column; gap: 8px;"></div>
                 </div>
             </main>
 
             <!-- QUIZ FOOTER CONTROLS -->
             <footer class="app-footer" style="justify-content: space-between; gap: 10px; padding: 10px var(--sp-md);">
-                <button class="nav-btn prev-btn" id="quizPrevBtn" onclick="prevQuizQuestion()">
+                <button type="button" class="nav-btn prev-btn" id="quizPrevBtn" onclick="prevQuizQuestion()">
                     ⬅️ Kembali
                 </button>
-                <button class="nav-btn unsure-btn" id="quizUnsureBtn" onclick="toggleUnsureFlag()" style="background: var(--accent-gold); color: var(--dark); box-shadow: 0 4px 0 #DCA518; border: none;">
+                <button type="button" class="nav-btn unsure-btn" id="quizUnsureBtn" onclick="toggleUnsureFlag()" style="background: var(--accent-gold); color: var(--dark); box-shadow: 0 4px 0 #DCA518; border: none;">
                     ⚠️ Ragu-Ragu
                 </button>
-                <button class="nav-btn next-btn" id="quizNextBtn" onclick="nextQuizQuestion()">
+                <button type="button" class="nav-btn next-btn" id="quizNextBtn" onclick="nextQuizQuestion()">
                     Lanjut ➡️
                 </button>
-                <button class="nav-btn submit-btn" id="quizSubmitBtn" onclick="checkSubmitQuiz()" style="background: linear-gradient(135deg, var(--north-red), var(--north-red-dark)); color: var(--white); box-shadow: 0 4px 0 #B22222; display: none;">
+                <button type="button" class="nav-btn submit-btn" id="quizSubmitBtn" onclick="checkSubmitQuiz()" style="background: linear-gradient(135deg, var(--north-red), var(--north-red-dark)); color: var(--white); box-shadow: 0 4px 0 #B22222; display: none;">
                     Selesai 🏁
                 </button>
             </footer>
@@ -417,6 +420,31 @@
                 <div id="reviewScoreSummary" style="background: white; border-radius: 12px; padding: 15px 20px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 2px solid #FEEBC8;"></div>
                 <!-- Cards soal -->
                 <div id="reviewQuestionsContainer"></div>
+            </div>
+        </div>
+
+        <!-- ═══ MODAL: SIMPAN PROGRESS (SAVE LINK) ═══ -->
+        <div class="overlay" id="saveProgressModal">
+            <div class="popup-box" style="max-width: 440px; border: 4px solid #3182CE; padding: var(--sp-lg);">
+                <h2 style="font-family: 'Fredoka One', cursive; color: #2B6CB0;">Simpan Kuis 💾</h2>
+                <div class="popup-icon" style="font-size: 3rem; margin: 10px 0;">🔗</div>
+                <p style="font-size: 0.95rem; font-weight: 700; color: #4A5568; margin-bottom: 15px; line-height: 1.5;">
+                    Salin link di bawah ini dan buka di HP/Laptop di rumah untuk melanjutkan kuis dari nomor terakhir yang kamu kerjakan!
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 10px; width: 100%;">
+                    <input type="text" id="saveLinkInput" readonly style="width: 100%; padding: 12px; border: 2px solid #CBD5E0; border-radius: 8px; background: #F7FAFC; color: #4A5568; font-size: 0.85rem; font-family: monospace; outline: none;">
+                    <div style="display: flex; gap: 8px; width: 100%;">
+                        <button type="button" class="action-btn" onclick="copySaveLink()" style="background: linear-gradient(135deg, #4A90E2, #2B7AF0); box-shadow: 0 4px 0 #1D549C; flex: 1; padding: 10px; font-size: 0.9rem;">
+                            📋 Salin Link
+                        </button>
+                        <button type="button" class="action-btn" onclick="shareSaveLinkWA()" style="background: linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 4px 0 #075E54; flex: 1; padding: 10px; font-size: 0.9rem;">
+                            📱 Kirim ke WA
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="action-btn" onclick="closeSaveModal()" style="margin-top: 15px; background: #F1F4F8; color: var(--dark); box-shadow: 0 4px 0 #D0D8E0; width: 100%; padding: 10px; font-size: 0.95rem;">
+                    Tutup ❌
+                </button>
             </div>
         </div>
 
