@@ -145,7 +145,7 @@ const bab1Data = [
     },
     {
         type: "multi-select",
-        question: "12. Perhatikan Gambar berikut!<br><br>Berdasarkan bagian di atas, pernyataan yang sesuai adalah ....",
+        question: "12. Perhatikan teks berikut!<br><br>(Gambar bagan: Telur &rarr; NIMFA &rarr; INDIVIDU MUDA &rarr; INDIVIDU DEWASA)<br><br>Berdasarkan bagan di atas, pernyataan yang sesuai adalah....<br><br><i>(Pilih 2 jawaban yang benar)</i>",
         image: "<img src='assets_bab1/no_12.png' class='soal-img' alt='Gambar Siklus Hidup'>",
         options: [
             "Bagan di atas menunjukkan siklus hidup hewan tidak bermetamorfosis.",
@@ -153,8 +153,8 @@ const bab1Data = [
             "Individu yang sesuai dengan siklus hidup pada bagan adalah jangkrik.",
             "Individu yang sesuai dengan siklus hidup pada bagan adalah lalat."
         ],
-        correct: [1, 3],
-        explanation: "Bagan tersebut menunjukkan siklus hidup hewan yang mengalami metamorfosis. Jika tahapannya sesuai dengan telur, larva, pupa, dan dewasa, maka hewan yang tepat adalah lalat. Jangkrik mengalami metamorfosis tidak sempurna, sehingga bukan jawaban yang tepat."
+        correct: [1, 2],
+        explanation: "<b>Fase Nimfa:</b> Adanya nimfa pada bagan menunjukkan proses Metamorfosis Tidak Sempurna. Maka, hewan tersebut tergolong hewan bermetamorfosis (Pilihan B Benar).<br><br><b>Contoh Hewan:</b> Jangkrik adalah contoh hewan yang mengalami metamorfosis tidak sempurna dengan siklus: Telur &rarr; Nimfa &rarr; Jangkrik Dewasa (Pilihan C Benar).<br><br><b>Catatan Tambahan:</b> Pilihan D salah karena lalat mengalami metamorfosis sempurna (melewati fase pupa/kepompong)."
     },
     {
         type: "multi-select",
