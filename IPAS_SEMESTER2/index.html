@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Latihan Soal IPAS Semester 2</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- SCREEN MENU (HALAMAN AWAL) -->
+        <div id="screen-menu" class="screen active">
+            <div class="menu-content">
+                <h1>Latihan Soal IPAS<br>Kelas 4</h1>
+                <p style="color: #5a8acd; font-weight: 700; margin-bottom: 20px; font-size: clamp(0.9rem, 2.5vw, 1.1rem);">Pilih Bab yang ingin dipelajari! ✨</p>
+                <div class="author-credit">Syifa Sabrina, S.Pd.</div>
+                
+                <button class="menu-fs-btn" onclick="toggleFullScreen()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                    </svg>
+                    Mode Layar Penuh
+                </button>
+
+                
+                <div class="menu-cards">
+                    <div class="menu-card" onclick="startMode('bab1')">
+                        <div class="menu-icon">1️⃣</div>
+                        <h3>BAB I</h3>
+                    </div>
+                    <div class="menu-card" onclick="startMode('bab2')">
+                        <div class="menu-icon">2️⃣</div>
+                        <h3>BAB II</h3>
+                    </div>
+                    <div class="menu-card" onclick="startMode('bab3')">
+                        <div class="menu-icon">3️⃣</div>
+                        <h3>BAB III</h3>
+                    </div>
+                    <div class="menu-card" onclick="startMode('bab4')">
+                        <div class="menu-icon">4️⃣</div>
+                        <h3>BAB IV</h3>
+                    </div>
+                    <div class="menu-card" onclick="startMode('bab5')">
+                        <div class="menu-icon">5️⃣</div>
+                        <h3>BAB V</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN QUIZ -->
+        <div id="screen-quiz" class="screen" style="display: none;">
+            <!-- HEADER -->
+            <header>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="slide-indicator">
+                    <span id="slide-text-prefix">Soal</span>
+                    <span id="slide-numbers-container">
+                        <span id="current-slide-num">1</span> / <span id="total-slide-num">15</span>
+                    </span>
+                </div>
+                <div class="header-right">
+                    <div class="score-display">Skor: <span id="score-text">0</span> ⭐</div>
+                    <button class="fullscreen-btn" id="fullscreen-btn" onclick="toggleFullScreen()" title="Layar Penuh">⛶</button>
+                </div>
+            </header>
+
+            <!-- QUESTION NAVIGATOR -->
+            <div class="question-nav" id="question-nav">
+                <!-- Numbers injected here -->
+            </div>
+
+            <!-- SLIDES CONTAINER -->
+            <main class="slides-wrapper" id="slides-wrapper">
+                <!-- Slides will be injected here by JS -->
+            </main>
+
+            <!-- NAVIGATION CONTROLS -->
+            <div class="nav-controls">
+                <button class="nav-btn prev-btn" id="prev-btn" onclick="prevSlide()" disabled>⬅️ Kembali</button>
+                <button class="nav-btn menu-btn" onclick="goToMenu()">🏠 Menu Utama</button>
+                <button class="nav-btn next-btn" id="next-btn" onclick="nextSlide()" disabled>Lanjut ➡️</button>
+            </div>
+        </div>
+
+        <!-- POPUP PENJELASAN -->
+        <div class="overlay" id="explanation-overlay">
+            <div class="popup-box" id="popup-box">
+                <h2 id="popup-title">Benar! 🥳</h2>
+                <div class="popup-icon" id="popup-icon">✨</div>
+                <p id="popup-text">Penjelasan akan muncul di sini.</p>
+                <button class="action-btn" onclick="closePopup()">Oke, Lanjut! 👍</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- AUDIO EFFECTS -->
+    <audio id="sfx-correct" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3"></audio>
+    <audio id="sfx-wrong" src="https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3"></audio>
+    <audio id="sfx-pop" src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3"></audio>
+    <audio id="sfx-warning" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"></audio>
+
+    <!-- Image Modal (Lightbox) -->
+    <div id="image-modal" class="image-modal" onclick="closeImageModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
