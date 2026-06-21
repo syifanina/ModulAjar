@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Media Pembelajaran Interaktif Pola Angka - Matematika untuk Siswa SD">
+    <title>Pola Angka – Matematika</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- ═══ PROGRESS BAR ═══ -->
+        <div class="progress-strip">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- ═══ SLIDES WRAPPER ═══ -->
+        <div class="slides-wrapper" id="slidesWrapper">
+
+            <!-- ─── SLIDE 1: COVER ─── -->
+            <div class="slide active" id="slide-1">
+                <div class="cover-content">
+                    <!-- Siswi pojok kiri (absolute) -->
+                    <img src="assets/siswi.png" alt="Siswi" class="cover-char cover-char-left">
+
+                    <!-- Konten tengah -->
+                    <div class="cover-center">
+                        <div class="cover-badge">📖 Media Pembelajaran</div>
+                        <img src="assets/cover_pola_angka.png" alt="Ilustrasi pola angka interaktif" class="cover-img"
+                            id="coverImg">
+                        <h1 class="cover-title">Pola Angka</h1>
+                        <p class="cover-subtitle">Mata Pelajaran Matematika</p>
+                        <button class="start-btn" id="btnStart"
+                            onclick="if(window.SFX) window.SFX.click(); goToSlide(2)">
+                            Mulai ✨
+                        </button>
+                        <div class="cover-info">
+                            Kelas 4 SD Islam Al-Azhar 15 Pamulang
+                        </div>
+                    </div>
+
+                    <!-- Siswa pojok kanan (absolute) -->
+                    <img src="assets/siswa.png" alt="Siswa" class="cover-char cover-char-right">
+
+                    <!-- Kredit penulis — pojok kanan bawah -->
+                    <div class="cover-creator">Syifa Sabrina, S.Pd.</div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 2: VIDEO LOKAL ─── -->
+            <div class="slide" id="slide-2">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 2 / 10</span>
+                        <h2 class="slide-title">Let's start with a prayer. 🙏</h2>
+                    </div>
+                    <div class="video-wrap">
+                        <video id="video-local" class="slide-video" playsinline controls>
+                            <source src="assets/Raise_your_hand.mp4" type="video/mp4">
+                            Browser kamu tidak mendukung video HTML5.
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 3: YOUTUBE AL-FATIHAH ─── -->
+            <div class="slide" id="slide-3">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 3 / 10</span>
+                        <h2 class="slide-title">Please recite Surah Al-Fatihah <span class="arabic">(الفاتحة)</span>
+                        </h2>
+                    </div>
+                    <div class="video-wrap">
+                        <!-- yt-container-locked: overlay blocks student interaction -->
+                        <div class="yt-container yt-locked">
+                            <iframe id="yt-slide3" class="yt-frame"
+                                src="https://www.youtube.com/embed/Urs2ScPSjC0?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3&start=13&end=139"
+                                title="Surah Al-Fatihah" frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 4: YOUTUBE DOA ORANG TUA ─── -->
+            <div class="slide" id="slide-4">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 4 / 10</span>
+                        <h2 class="slide-title">Please recite the dua for your parents. 🤲</h2>
+                    </div>
+                    <div class="video-wrap">
+                        <div class="yt-container yt-locked">
+                            <iframe id="yt-slide4" class="yt-frame"
+                                src="https://www.youtube.com/embed/cjBjfMk4K84?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3&start=20&end=35"
+                                title="Dua for Parents" frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 5: YOUTUBE DOA BELAJAR ─── -->
+            <div class="slide" id="slide-5">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 5 / 10</span>
+                        <h2 class="slide-title">Please recite the prayer before studying. 📚</h2>
+                    </div>
+                    <div class="video-wrap">
+                        <div class="yt-container yt-locked">
+                            <iframe id="yt-slide5" class="yt-frame"
+                                src="https://www.youtube.com/embed/53_CbWOpsnc?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3&start=4&end=92"
+                                title="Prayer Before Studying" frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ─── SLIDE 6: SIAP BELAJAR ─── -->
+            <div class="slide" id="slide-6">
+                <div class="slide-inner siap-slide">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 6 / 10</span>
+                    </div>
+
+                    <!-- State A: Pertanyaan -->
+                    <div class="siap-content" id="siapContent">
+                        <div class="siap-emoji" id="siapEmoji">🤔</div>
+                        <h2 class="siap-question">Apakah kamu sudah<br>siap belajar?</h2>
+                        <button class="siap-btn" id="siapBtn" onclick="siapBelajar()">
+                            Siap! 🚀
+                        </button>
+                    </div>
+
+                    <!-- State B: Konfirmasi (muncul setelah klik Siap) -->
+                    <div class="siap-ready" id="siapReady">
+                        <div class="siap-emoji">🎉</div>
+                        <h2 class="siap-message">Bagus sekali!</h2>
+                        <p class="siap-hint">Yuk, simak video pembelajaran<br>berikut ini dengan seksama! 🎬</p>
+                        <div class="siap-arrow">👇</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 7: VIDEO POLA GAMBAR ─── -->
+            <div class="slide" id="slide-7">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 7 / 10</span>
+                        <h2 class="slide-title">🎬 Video Pembelajaran Pola Gambar</h2>
+                    </div>
+                    <div class="video-wrap" style="position: relative;">
+                        <!-- YouTube Video for Slide 7 -->
+                        <div class="yt-container">
+                            <iframe id="yt-slide7" class="yt-frame"
+                                src="https://www.youtube.com/embed/aE_L7g0sWt8?enablejsapi=1&rel=0&modestbranding=1&fs=0&disablekb=1"
+                                title="Video Pembelajaran Pola Gambar" frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 8: LATIHAN SOAL BARU (PG + ISIAN) ─── -->
+            <div class="slide slide-quiz" id="slide-8">
+                <div class="quiz-inner">
+                    <div class="quiz-top-header">
+                        <span class="slide-num">Slide 8 / 10</span>
+                        <h2 class="quiz-main-title">✍️ Latihan Soal</h2>
+                        <p class="quiz-subtitle">Pola Angka Matematika</p>
+                    </div>
+
+                    <!-- Soal di-render oleh JS -->
+                    <div id="pgContainer"></div>
+
+                    <!-- Pembahasan Overlay (muncul per-soal) -->
+                    <!-- Pesan Selesai -->
+                    <div class="quiz-completion" id="quizCompletion">
+                        <div class="completion-emoji">🎊</div>
+                        <h3>Latihan Selesai!</h3>
+                        <p id="resultScore">Skor kamu: 0</p>
+
+                        <div class="submit-form" id="submitForm">
+                            <div class="sf-field">
+                                <label for="sfName">👤 Nama Lengkap</label>
+                                <input type="text" id="sfName" placeholder="Tulis namamu di sini..." autocomplete="off">
+                            </div>
+                            <div class="sf-field">
+                                <label for="sfClass">🏫 Kelas</label>
+                                <select id="sfClass">
+                                    <option value="">-- Pilih Kelas --</option>
+                                    <option value="4 Bukhari">4 Bukhari</option>
+                                    <option value="4 Tirmizi">4 Tirmizi</option>
+                                    <option value="4 Muslim">4 Muslim</option>
+                                </select>
+                            </div>
+                            <div class="sf-field">
+                                <label for="sfFeel">💚 Bagaimana perasaanmu setelah mempelajari kuis pola angka
+                                    ini?</label>
+                                <select id="sfFeel">
+                                    <option value="">-- Pilih perasaanmu --</option>
+                                    <option value="Sangat Senang">🤩 Sangat Senang</option>
+                                    <option value="Senang">😊 Senang</option>
+                                    <option value="Biasa Saja">😐 Biasa Saja</option>
+                                    <option value="Kurang Senang">😕 Kurang Senang</option>
+                                    <option value="Tidak Senang">😞 Tidak Senang</option>
+                                </select>
+                            </div>
+                            <button class="sf-submit-btn" id="sfSubmitBtn" onclick="submitToGForm()">
+                                Kirim Nilai ke Guru 🚀
+                            </button>
+                        </div>
+
+                        <div class="sf-success" id="sfSuccess">
+                            <span>🌟</span>
+                            <p id="sfSuccessMsg"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 9: HALL OF FAME ─── -->
+            <div class="slide" id="slide-9">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 9 / 10</span>
+                        <h2 class="slide-title">🏆 Siswa Keren yang Sudah Selesai!</h2>
+                    </div>
+                    <div class="hof-wrap">
+                        <p class="hof-subtitle">Kalian semua luar biasa! 🌟</p>
+                        <div class="hof-grid" id="hofGrid">
+                            <div class="hof-loading">⏳ Memuat data...</div>
+                        </div>
+                        <button class="hof-refresh-btn" onclick="loadHallOfFame()">🔄 Muat Ulang</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── SLIDE 10: YOUTUBE DOA PENUTUP ─── -->
+            <div class="slide" id="slide-10">
+                <div class="slide-inner">
+                    <div class="slide-header">
+                        <span class="slide-num">Slide 10 / 10</span>
+                        <h2 class="slide-title">Mari kita membaca doa penutup majelis. 🤲</h2>
+                    </div>
+                    <div class="video-wrap">
+                        <div class="yt-container yt-locked">
+                            <iframe id="yt-slide10" class="yt-frame"
+                                src="https://www.youtube.com/embed/5-9D4JT84Bc?enablejsapi=1&rel=0&modestbranding=1&controls=1&fs=0&iv_load_policy=3"
+                                title="Doa Penutup Setelah Belajar" frameborder="0"
+                                allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /slides-wrapper -->
+
+        <!-- ═══ OVERLAY KONFIRMASI LATIHAN ═══ -->
+        <div id="quizConfirmOverlay" class="quiz-confirm-overlay">
+            <div class="quiz-confirm-card">
+                <div class="quiz-confirm-emoji">📝</div>
+                <h2 class="quiz-confirm-title">Apakah kamu siap mengerjakan latihan soal?</h2>
+                <div class="quiz-confirm-btns">
+                    <button class="quiz-confirm-btn quiz-confirm-yes" onclick="confirmQuiz(true)">Siap! 🚀</button>
+                    <button class="quiz-confirm-btn quiz-confirm-no" onclick="confirmQuiz(false)">Belum 😅</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ OVERLAY PERSIAPAN KERTAS (Tahap 2) ═══ -->
+        <div id="paperConfirmOverlay" class="quiz-confirm-overlay">
+            <div class="quiz-confirm-card" style="max-width: 420px; padding: 35px 30px;">
+                <img src="assets/notebook.png" alt="Notebook"
+                    style="width: 140px; margin: 0 auto 15px; display: block; border-radius: 12px; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));">
+                <h2 class="quiz-confirm-title" style="margin-bottom: 12px; font-size: 1.25rem;">Ambillah kertas atau
+                    buku untuk coret-coret membantu menghitung!</h2>
+                <p
+                    style="font-family: 'Nunito', sans-serif; font-size: 0.95rem; color: #64748b; margin-bottom: 24px; font-weight: 800; line-height: 1.4;">
+                    (Catatan: Jawaban tetap diisi di web ini ya! 💻)</p>
+                <div class="quiz-confirm-btns">
+                    <button class="quiz-confirm-btn quiz-confirm-yes" style="width: 100%; padding: 14px 10px;"
+                        onclick="confirmPaper()">Aku sudah mengambilnya! ✋</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ OVERLAY PEMBAHASAN ═══ -->
+        <div class="pembahasan-overlay" id="pembahasanOverlay">
+            <div class="pembahasan-card">
+                <div class="pembahasan-icon" id="pembahasanIcon">📖</div>
+                <h3 class="pembahasan-title">Pembahasan</h3>
+                <div class="pembahasan-body" id="pembahasanBody"></div>
+                <div class="pembahasan-paham">
+                    <p>Apakah kamu sudah paham?</p>
+                    <div class="pembahasan-btns">
+                        <button class="paham-btn paham-yes" id="pahamYesBtn" onclick="pahamYes()">✅ Sudah Paham</button>
+                        <button class="paham-btn paham-no" onclick="pahamNo()">🤔 Belum Paham</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ NAVIGATION ═══ -->
+        <div class="nav-controls" id="navControls">
+            <button class="nav-btn prev-btn" id="btnBack" onclick="navigate(-1)">
+                ← Kembali
+            </button>
+            <div class="dot-indicator" id="dotIndicator"></div>
+            <button class="nav-btn next-btn" id="btnNext" onclick="navigate(1)" disabled>
+                Lanjut →
+            </button>
+        </div>
+
+    </div><!-- /app-container -->
+
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
