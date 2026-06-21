@@ -150,7 +150,7 @@ function updateNavButtons() {
         btnNext.style.display = '';
         btnBack.style.display = '';
         btnBack.disabled      = false;
-        btnNext.disabled      = !videoReady[currentSlide];
+        btnNext.disabled      = false; // Selalu bisa diklik
     }
 }
 
