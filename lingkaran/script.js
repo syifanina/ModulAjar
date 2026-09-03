@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- TAB 4: KUIS ---
     const quizData = [
         {
-            q: "Perhatikan gambar di bawah! Diketahui BD adalah garis lurus yang melalui pusat O (diameter). Jika besar sudut AOB = 40&deg;, maka besar sudut ACD adalah ....",
+            q: "Perhatikan gambar di bawah! Diketahui BD adalah garis lurus yang melalui pusat O (diameter). Jika besar sudut AOB = 40&deg;, maka besar sudut AOD adalah ....",
             svg: `<svg viewBox="0 0 200 200" width="100%" height="180">
                     <circle cx="100" cy="100" r="80" stroke="#000" stroke-width="3" fill="white"/>
                     <line x1="100" y1="100" x2="20" y2="100" stroke="#000" stroke-width="2"/>
@@ -547,16 +547,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     <text x="90" y="120" font-weight="bold" font-family="Nunito">O</text>
                   </svg>`,
             options: ["70&deg;", "112&deg;", "140&deg;", "143&deg;"],
-            ans: 0,
+            ans: 2,
             explanation: `
                 <div style="text-align:left; font-size: 1rem; margin-top: 15px; color: var(--text-color); background: #e0f2fe; padding: 15px; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
                 <strong>💡 Penjelasan:</strong><br><br>
-                1. Garis <b>BD</b> melewati titik pusat <b>O</b>, artinya <b>BD</b> adalah <b>Diameter</b>. Sudut lurus BOD besarnya 180&deg;.<br>
-                2. Kita tahu &ang;AOB = 40&deg;. Maka sudut di sebelahnya, &ang;AOD = 180&deg; - 40&deg; = <b>140&deg;</b>.<br>
-                3. Sudut <b>AOD</b> adalah <b>Sudut Pusat</b> yang menghadap busur AD.<br>
-                4. Sudut <b>ACD</b> adalah <b>Sudut Keliling</b> yang juga menghadap busur AD yang sama.<br>
-                5. Ingat rumus: <i>Sudut Keliling = &frac12; &times; Sudut Pusat</i>.<br>
-                Maka, &ang;ACD = &frac12; &times; 140&deg; = <b style="color:var(--primary-color);">70&deg;</b>.
+                1. Garis <b>BD</b> melewati titik pusat <b>O</b>, artinya <b>BD</b> adalah garis lurus (diameter).<br>
+                2. Sudut pada garis lurus besarnya adalah 180&deg;.<br>
+                3. Sudut AOB dan sudut AOD saling berpelurus (membentuk garis lurus BD), sehingga: <b>&ang;AOB + &ang;AOD = 180&deg;</b>.<br>
+                4. Karena &ang;AOB = 40&deg;, maka &ang;AOD = 180&deg; - 40&deg; = <b style="color:var(--primary-color);">140&deg;</b>.
                 </div>
             `
         },
