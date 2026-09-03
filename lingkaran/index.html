@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petualangan Lingkaran!</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>🌟 Petualangan Lingkaran! 🌟</h1>
+            <p>Mari belajar segala hal tentang lingkaran bersamaku!</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="tab-bagian">Bagian & Sudut</button>
+            <button class="tab-btn" data-tab="tab-rumus">Kumpulan Rumus</button>
+            <button class="tab-btn" data-tab="tab-luas-keliling">Keliling & Luas</button>
+            <button class="tab-btn" data-tab="tab-juring-busur">Juring & Busur</button>
+            <button class="tab-btn" data-tab="tab-kuis">Tantangan Kuis</button>
+            <button class="tab-btn" data-tab="tab-essay">Soal Essay</button>
+        </nav>
+
+        <main class="content-area">
+            <!-- TAB 1: Bagian dan Sudut -->
+            <section id="tab-bagian" class="tab-content active">
+                <h2>🔍 Kenali Bagian-Bagian Lingkaran</h2>
+                <div class="split-view">
+                    <div class="canvas-container" style="flex-direction: column; align-items: center;">
+                        <canvas id="circleCanvas" width="400" height="400"></canvas>
+                        <div id="all-parts-legend" style="display: none; margin-top: 20px; width: 100%;">
+                            <h4 style="text-align: center; margin-bottom: 10px; color: var(--primary-color);">Keterangan Gambar (Klik Salah Satu)</h4>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                <button class="part-btn legend-btn" data-target="pusat">Titik O (Pusat)</button>
+                                <button class="part-btn legend-btn" data-target="jari">Garis OC, OD (Jari-jari)</button>
+                                <button class="part-btn legend-btn" data-target="diameter">Garis AB (Diameter)</button>
+                                <button class="part-btn legend-btn" data-target="busur">Garis Lengkung AC (Busur)</button>
+                                <button class="part-btn legend-btn" data-target="talibusur">Garis AC, DB (Tali Busur)</button>
+                                <button class="part-btn legend-btn" data-target="juring">Daerah COA (Juring)</button>
+                                <button class="part-btn legend-btn" data-target="tembereng">Daerah AC (Tembereng)</button>
+                                <button class="part-btn legend-btn" data-target="apotema">Garis OF, OE (Apotema)</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="controls-container">
+                        <h3>Klik tombol di bawah ini:</h3>
+                        <div class="button-grid">
+                            <button class="part-btn" data-part="pusat">Titik Pusat</button>
+                            <button class="part-btn" data-part="jari">Jari-Jari (r)</button>
+                            <button class="part-btn" data-part="diameter">Diameter (d)</button>
+                            <button class="part-btn" data-part="busur">Busur</button>
+                            <button class="part-btn" data-part="talibusur">Tali Busur</button>
+                            <button class="part-btn" data-part="juring">Juring</button>
+                            <button class="part-btn" data-part="tembereng">Tembereng</button>
+                            <button class="part-btn" data-part="apotema">Apotema</button>
+                            <button class="part-btn" data-part="semua" style="grid-column: span 2; background-color: var(--warning-color); color: var(--text-color);">Tampilkan Semua</button>
+                        </div>
+                        <div id="part-description" class="info-box">
+                            Pilih salah satu bagian untuk melihat penjelasannya!
+                        </div>
+
+                        <hr class="divider">
+
+                        <h3>Sudut Pusat vs Sudut Keliling</h3>
+                        <p>Sudut Pusat = 2 &times; Sudut Keliling (jika menghadap busur yang sama).</p>
+                        <div class="angle-slider-container">
+                            <label for="angleSlider">Ubah Sudut: <span id="angleValue">90</span>&deg;</label>
+                            <input type="range" id="angleSlider" min="10" max="170" value="90">
+                        </div>
+                        <button class="action-btn" id="btn-show-angles">Tampilkan Sudut</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 1.5: KUMPULAN RUMUS -->
+            <section id="tab-rumus" class="tab-content">
+                <h2>📚 Kumpulan Rumus Penting Lingkaran</h2>
+                
+                <div class="rumus-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 25px;">
+                    
+                    <!-- 1. Jari-jari & Diameter -->
+                    <div class="rumus-card" style="background: var(--card-bg); padding: 25px; border-radius: 15px; box-shadow: var(--shadow); text-align: center;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 20px;">1. Jari-jari & Diameter</h3>
+                        <svg viewBox="0 0 200 200" width="160" height="160" style="margin-bottom: 20px;">
+                            <circle cx="100" cy="100" r="80" stroke="#cbd5e1" stroke-width="4" fill="#f8fafc"/>
+                            <!-- Diameter -->
+                            <line x1="20" y1="100" x2="180" y2="100" stroke="#ef4444" stroke-width="4" stroke-dasharray="5,5"/>
+                            <text x="110" y="85" fill="#ef4444" font-weight="bold" font-family="Nunito" font-size="14">Diameter (d)</text>
+                            <!-- Jari-jari -->
+                            <line x1="100" y1="100" x2="156" y2="44" stroke="#3b82f6" stroke-width="5"/>
+                            <text x="135" y="60" fill="#3b82f6" font-weight="bold" font-family="Nunito" font-size="14">Jari-jari (r)</text>
+                            <!-- Pusat -->
+                            <circle cx="100" cy="100" r="5" fill="#000"/>
+                        </svg>
+                        <div style="background: #e0f2fe; padding: 20px; border-radius: 10px; text-align: left;">
+                            <p style="font-size: 1.1rem; margin-bottom: 10px; color: #0284c7;"><strong>Rumus Hubungan:</strong></p>
+                            <p style="font-size: 1.25rem; margin-bottom: 8px;">🔵 <b>d = 2 &times; r</b></p>
+                            <p style="font-size: 1.25rem;">🔵 <b>r = d &divide; 2</b></p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Keliling & Luas -->
+                    <div class="rumus-card" style="background: var(--card-bg); padding: 25px; border-radius: 15px; box-shadow: var(--shadow); text-align: center;">
+                        <h3 style="color: var(--secondary-color); margin-bottom: 20px;">2. Keliling & Luas</h3>
+                        <div style="display:flex; justify-content:center; align-items:center; height: 160px; margin-bottom: 20px;">
+                            <div style="font-size: 5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">📏</div>
+                        </div>
+                        <div style="background: #ecfdf5; padding: 20px; border-radius: 10px; text-align: left;">
+                            <p style="font-size: 1.1rem; margin-bottom: 10px; color: #059669;"><strong>Rumus Keliling (K):</strong></p>
+                            <p style="font-size: 1.15rem; margin-bottom: 5px;">🟢 Jika ada d: <b>K = &pi; &times; d</b></p>
+                            <p style="font-size: 1.15rem; margin-bottom: 15px;">🟢 Jika ada r: <b>K = 2 &times; &pi; &times; r</b></p>
+                            
+                            <p style="font-size: 1.1rem; margin-bottom: 10px; color: #059669;"><strong>Rumus Luas (L):</strong></p>
+                            <p style="font-size: 1.15rem;">🟢 <b>L = &pi; &times; r &times; r</b></p>
+                            
+                            <p style="margin-top: 20px; font-size: 0.95rem; color: #475569;">*Pakai <b>&pi; = 22/7</b> (jika r/d kelipatan 7), atau <b>&pi; = 3,14</b> (jika bukan).</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. Busur & Juring -->
+                    <div class="rumus-card" style="background: var(--card-bg); padding: 25px; border-radius: 15px; box-shadow: var(--shadow); text-align: center;">
+                        <h3 style="color: var(--accent-color); margin-bottom: 20px;">3. Busur & Juring</h3>
+                        <svg viewBox="0 0 200 200" width="160" height="160" style="margin-bottom: 20px;">
+                            <circle cx="100" cy="100" r="80" stroke="#cbd5e1" stroke-width="3" fill="#f8fafc"/>
+                            <!-- Juring (Sector) -->
+                            <path d="M 100 100 L 180 100 A 80 80 0 0 0 140 30.7 Z" fill="#ffedd5" stroke="#f97316" stroke-width="2"/>
+                            <!-- Sudut -->
+                            <text x="125" y="90" fill="#f97316" font-weight="bold" font-family="Nunito" font-size="16">&alpha;</text>
+                            <!-- Busur (Arc) -->
+                            <path d="M 180 100 A 80 80 0 0 0 140 30.7" fill="none" stroke="#ef4444" stroke-width="7"/>
+                            <!-- Labels -->
+                            <text x="100" y="55" fill="#f97316" font-weight="bold" font-family="Nunito" font-size="12">Luas Juring</text>
+                            <text x="175" y="45" fill="#ef4444" font-weight="bold" font-family="Nunito" font-size="12">Panjang Busur</text>
+                        </svg>
+                        <div style="background: #fff7ed; padding: 20px; border-radius: 10px; text-align: left;">
+                            <p style="font-size: 1.1rem; margin-bottom: 10px; color: #ea580c;"><strong>Panjang Busur:</strong></p>
+                            <p style="font-size: 1.15rem; margin-bottom: 15px;">🟠 <b>(&alpha; / 360&deg;) &times; Keliling</b></p>
+                            
+                            <p style="font-size: 1.1rem; margin-bottom: 10px; color: #ea580c;"><strong>Luas Juring:</strong></p>
+                            <p style="font-size: 1.15rem;">🟠 <b>(&alpha; / 360&deg;) &times; Luas</b></p>
+                            
+                            <p style="margin-top: 20px; font-size: 0.95rem; color: #475569;">* &alpha; (alpha) = besar sudut pusat.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- TAB 2: Keliling & Luas -->
+            <section id="tab-luas-keliling" class="tab-content">
+                <h2>📏 Hitung Keliling dan Luas Lingkaran</h2>
+                <div class="calculator-card">
+                    <div class="input-group">
+                        <label for="input-r-lk">Masukkan Jari-jari (r):</label>
+                        <input type="number" id="input-r-lk" placeholder="Contoh: 7" min="1">
+                        <span>cm</span>
+                    </div>
+                    <button class="action-btn" id="btn-hitung-lk">Hitung!</button>
+                    
+                    <div class="result-box" id="result-lk" style="display: none;">
+                        <div class="result-item">
+                            <h3>Keliling (K)</h3>
+                            <p class="formula">K = 2 &times; &pi; &times; r</p>
+                            <p class="calc-step" id="step-k"></p>
+                            <p class="final-answer" id="ans-k"></p>
+                        </div>
+                        <div class="result-item">
+                            <h3>Luas (L)</h3>
+                            <p class="formula">L = &pi; &times; r &times; r</p>
+                            <p class="calc-step" id="step-l"></p>
+                            <p class="final-answer" id="ans-l"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: Juring & Busur -->
+            <section id="tab-juring-busur" class="tab-content">
+                <h2>🍕 Hitung Luas Juring dan Panjang Busur</h2>
+                <div class="calculator-card">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="input-r-jb">Jari-jari (r):</label>
+                            <input type="number" id="input-r-jb" placeholder="Contoh: 14" min="1">
+                            <span>cm</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="input-sudut-jb">Sudut Pusat (&alpha;):</label>
+                            <input type="number" id="input-sudut-jb" placeholder="Contoh: 90" min="1" max="360">
+                            <span>&deg;</span>
+                        </div>
+                    </div>
+                    <button class="action-btn" id="btn-hitung-jb">Hitung!</button>
+
+                    <div class="result-box" id="result-jb" style="display: none;">
+                        <div class="result-item">
+                            <h3>Panjang Busur</h3>
+                            <p class="formula">Panjang = (&alpha; / 360&deg;) &times; Keliling</p>
+                            <p class="calc-step" id="step-busur"></p>
+                            <p class="final-answer" id="ans-busur"></p>
+                        </div>
+                        <div class="result-item">
+                            <h3>Luas Juring</h3>
+                            <p class="formula">Luas = (&alpha; / 360&deg;) &times; Luas Lingkaran</p>
+                            <p class="calc-step" id="step-juring"></p>
+                            <p class="final-answer" id="ans-juring"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: Latihan Soal -->
+            <section id="tab-kuis" class="tab-content">
+                <h2>🎯 Tantangan Kuis Sehari-hari</h2>
+                <div class="quiz-card">
+                    <div class="score-board">Skor: <span id="quiz-score">0</span> 🌟</div>
+                    <div class="question-container">
+                        <div id="quiz-svg-container" style="margin-bottom: 15px; text-align: center;"></div>
+                        <h3 id="quiz-question">Pertanyaan memuat...</h3>
+                    </div>
+                    <div class="options-container" id="quiz-options">
+                        <!-- Options will be loaded here -->
+                    </div>
+                    <div id="quiz-feedback" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem;"></div>
+                    <button id="btn-next-quiz" class="primary-btn" style="display: none; margin-top: 20px;">Soal Berikutnya ➡️</button>
+                </div>
+            </section>
+
+            <!-- TAB 5: SOAL ESSAY -->
+            <section id="tab-essay" class="tab-content">
+                <div class="header-section">
+                    <h2>📝 Soal Essay</h2>
+                    <p>Ketikkan jawabanmu pada kotak yang tersedia!</p>
+                </div>
+                
+                <div class="quiz-card" style="text-align: left;">
+                    <h3 style="margin-bottom: 15px;">Soal 1</h3>
+                    <p style="font-size: 1.1rem;">Keliling sebuah lingkaran adalah <strong>88 cm</strong> dengan &pi; = <strong>22/7</strong>. Hitunglah:</p>
+                    
+                    <div style="margin-top: 20px; margin-bottom: 15px;">
+                        <label style="font-weight: bold; font-size: 1.05rem;">a. Jari-jari lingkaran (cm):</label><br>
+                        <input type="number" id="essay-r" class="control-input" style="width: 150px; margin-top: 8px; font-size: 1rem;" placeholder="Jawab...">
+                    </div>
+                    <div style="margin-bottom: 25px;">
+                        <label style="font-weight: bold; font-size: 1.05rem;">b. Luas lingkaran (cm&sup2;):</label><br>
+                        <input type="number" id="essay-l" class="control-input" style="width: 150px; margin-top: 8px; font-size: 1rem;" placeholder="Jawab...">
+                    </div>
+                    
+                    <button class="primary-btn" id="btn-check-essay" style="width: 100%;">Cek Jawaban 🔍</button>
+                    
+                    <div id="essay-feedback" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;"></div>
+                    
+                    <div id="essay-explanation" style="display: none; font-size: 1rem; margin-top: 20px; color: var(--text-color); background: #e0f2fe; padding: 20px; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
+                        <strong>💡 Pembahasan Lengkap:</strong><br><br>
+                        <b>a. Mencari Jari-jari (r)</b><br>
+                        Rumus Keliling (K) = 2 &times; &pi; &times; r<br>
+                        88 = 2 &times; (22/7) &times; r<br>
+                        88 = (44/7) &times; r<br>
+                        r = 88 &times; (7/44)<br>
+                        r = 2 &times; 7 = <b>14 cm</b><br><br>
+
+                        <b>b. Mencari Luas Lingkaran (L)</b><br>
+                        Rumus Luas (L) = &pi; &times; r &times; r<br>
+                        L = (22/7) &times; 14 &times; 14<br>
+                        L = 22 &times; 2 &times; 14<br>
+                        L = 44 &times; 14 = <b>616 cm&sup2;</b>
+                    </div>
+                    
+                    <!-- SOAL 2 -->
+                    <div class="divider"></div>
+                    
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Soal 2</h3>
+                    <p style="font-size: 1.1rem;">Dua buah roda A dan B berturut-turut berdiameter <strong>105 cm</strong> dan <strong>42 cm</strong>. Roda A dengan <em>n</em> kali berputar menempuh jarak <strong>198 m</strong>. Agar roda B menempuh jarak yang sama dengan roda A, maka roda B harus berputar sebanyak...</p>
+                    
+                    <div style="margin-top: 20px; margin-bottom: 25px;">
+                        <input type="number" id="essay2-n" class="control-input" style="width: 150px; font-size: 1rem;" placeholder="Jawab..."> 
+                        <span style="font-size:1.1rem; font-weight:bold; margin-left: 10px;">kali</span>
+                    </div>
+                    
+                    <button class="primary-btn" id="btn-check-essay2" style="width: 100%;">Cek Jawaban Soal 2 🔍</button>
+                    
+                    <div id="essay2-feedback" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;"></div>
+                    
+                    <div id="essay2-explanation" style="display: none; font-size: 1rem; margin-top: 20px; color: var(--text-color); background: #e0f2fe; padding: 20px; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
+                        <strong>💡 Pembahasan Lengkap:</strong><br><br>
+                        <b>Langkah 1: Samakan satuan jarak</b><br>
+                        Jarak = 198 m = <b>19.800 cm</b>.<br><br>
+                        
+                        <b>Langkah 2: Cari Keliling Roda B</b><br>
+                        Keliling B = &pi; &times; d<br>
+                        Keliling B = (22/7) &times; 42 cm<br>
+                        Keliling B = 22 &times; 6 = <b>132 cm</b><br><br>
+
+                        <b>Langkah 3: Cari banyak putaran Roda B</b><br>
+                        Rumus: <i>Banyak Putaran = Jarak Total &divide; Keliling Roda</i><br>
+                        Banyak Putaran = 19.800 &divide; 132 = <b>150 kali</b>
+                    </div>
+                    
+                    <!-- SOAL 3 -->
+                    <div class="divider"></div>
+                    
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Soal 3</h3>
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <svg viewBox="0 0 200 200" width="100%" height="180">
+                            <circle cx="100" cy="100" r="80" stroke="#000" stroke-width="3" fill="white"/>
+                            <line x1="100" y1="100" x2="169" y2="60" stroke="#000" stroke-width="2"/>
+                            <line x1="100" y1="100" x2="169" y2="140" stroke="#000" stroke-width="2"/>
+                            <line x1="100" y1="100" x2="25" y2="72" stroke="#000" stroke-width="2"/>
+                            <line x1="100" y1="100" x2="25" y2="128" stroke="#000" stroke-width="2"/>
+                            <text x="175" y="55" font-weight="bold" font-family="Nunito">Q</text>
+                            <text x="175" y="155" font-weight="bold" font-family="Nunito">P</text>
+                            <text x="10" y="65" font-weight="bold" font-family="Nunito">R</text>
+                            <text x="10" y="140" font-weight="bold" font-family="Nunito">S</text>
+                            <text x="95" y="115" font-weight="bold" font-family="Nunito">O</text>
+                            <text x="115" y="95" font-weight="bold" font-family="Nunito" font-size="12">60&deg;</text>
+                            <text x="60" y="105" font-weight="bold" font-family="Nunito" font-size="12">40&deg;</text>
+                        </svg>
+                    </div>
+                    <p style="font-size: 1.1rem;">Pada lingkaran di atas, panjang busur minor PQ = <strong>24 cm</strong>. Panjang busur minor RS = ....</p>
+                    
+                    <div style="margin-top: 20px; margin-bottom: 25px;">
+                        <input type="number" id="essay3-rs" class="control-input" style="width: 150px; font-size: 1rem;" placeholder="Jawab..."> 
+                        <span style="font-size:1.1rem; font-weight:bold; margin-left: 10px;">cm</span>
+                    </div>
+                    <button class="primary-btn" id="btn-check-essay3" style="width: 100%;">Cek Jawaban Soal 3 🔍</button>
+                    <div id="essay3-feedback" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;"></div>
+                    <div id="essay3-explanation" style="display: none; font-size: 1rem; margin-top: 20px; color: var(--text-color); background: #e0f2fe; padding: 20px; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
+                        <strong>💡 Pembahasan Lengkap:</strong><br><br>
+                        Gunakan perbandingan senilai untuk panjang busur dan sudut pusatnya.<br><br>
+                        Busur RS / Busur PQ = Sudut ROS / Sudut POQ<br>
+                        Busur RS / 24 = 40&deg; / 60&deg;<br><br>
+                        Mari sederhanakan perbandingannya (dibagi 20):<br>
+                        40 / 60 = 2 / 3<br><br>
+                        Maka, Busur RS = (2 / 3) &times; 24 cm = <b>16 cm</b>
+                    </div>
+
+                    <!-- SOAL 4 -->
+                    <div class="divider"></div>
+                    
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Soal 4</h3>
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <svg viewBox="0 0 300 120" width="100%" height="120">
+                            <circle cx="50" cy="60" r="40" stroke="#000" stroke-width="2" fill="white"/>
+                            <circle cx="130" cy="60" r="40" stroke="#000" stroke-width="2" fill="white"/>
+                            <circle cx="210" cy="60" r="40" stroke="#000" stroke-width="2" fill="white"/>
+                            <!-- Bounding band -->
+                            <line x1="50" y1="20" x2="210" y2="20" stroke="#3b82f6" stroke-width="3"/>
+                            <line x1="50" y1="100" x2="210" y2="100" stroke="#3b82f6" stroke-width="3"/>
+                            <path d="M 50 20 A 40 40 0 0 0 50 100" stroke="#3b82f6" stroke-width="3" fill="none"/>
+                            <path d="M 210 100 A 40 40 0 0 0 210 20" stroke="#3b82f6" stroke-width="3" fill="none"/>
+                        </svg>
+                    </div>
+                    <p style="font-size: 1.1rem;">Gambar di atas adalah penampang 3 buah pipa paralon yang berbentuk tabung dengan diameter <strong>14 cm</strong>. Berapakah panjang minimal sabuk pengikat untuk mengikat 3 buah paralon dengan susunan tersebut?</p>
+                    
+                    <div style="margin-top: 20px; margin-bottom: 25px;">
+                        <input type="number" id="essay4-l" class="control-input" style="width: 150px; font-size: 1rem;" placeholder="Jawab..."> 
+                        <span style="font-size:1.1rem; font-weight:bold; margin-left: 10px;">cm</span>
+                    </div>
+                    <button class="primary-btn" id="btn-check-essay4" style="width: 100%;">Cek Jawaban Soal 4 🔍</button>
+                    <div id="essay4-feedback" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;"></div>
+                    <div id="essay4-explanation" style="display: none; font-size: 1rem; margin-top: 20px; color: var(--text-color); background: #e0f2fe; padding: 20px; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
+                        <strong>💡 Pembahasan Lengkap:</strong><br><br>
+                        Tali pengikat tersebut terdiri dari:<br>
+                        1. <b>Garis lurus atas:</b> Sepanjang 2 &times; diameter paralon = 2 &times; 14 = 28 cm.<br>
+                        2. <b>Garis lurus bawah:</b> Sepanjang 2 &times; diameter paralon = 2 &times; 14 = 28 cm.<br>
+                        3. <b>Dua busur melengkung di kanan-kiri:</b> Kedua lengkungan ini akan membentuk tepat 1 keliling lingkaran penuh.<br><br>
+                        Keliling = &pi; &times; d = (22/7) &times; 14 = <b>44 cm</b>.<br><br>
+                        Panjang Total = 28 + 28 + 44 = <b>100 cm</b>.
+                    </div>
+
+                    <!-- SOAL 5 -->
+                    <div class="divider"></div>
+                    
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Soal 5</h3>
+                    <p style="font-size: 1.1rem;">Mungkinkah perbandingan antara jari-jari dan diameter selalu 1 : 2? Jelaskan pendapatmu!</p>
+                    
+                    <div style="margin-top: 20px; margin-bottom: 25px;">
+                        <textarea id="essay5-text" class="control-input" style="width: 100%; height: 100px; font-size: 1rem; padding: 10px; border-radius: 10px; border: 2px solid #cbd5e1; font-family: 'Nunito', sans-serif;" placeholder="Tuliskan alasanmu di sini..."></textarea>
+                    </div>
+                    <button class="primary-btn" id="btn-check-essay5" style="width: 100%;">Kunci Jawaban & Lihat Pembahasan 🔍</button>
+                    <div id="essay5-feedback" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;"></div>
+                    <div id="essay5-explanation" style="display: none; font-size: 1rem; margin-top: 20px; color: var(--text-color); background: #e0f2fe; padding: 20px; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
+                        <strong>💡 Pembahasan Lengkap:</strong><br><br>
+                        <b>Iya, MUNGKIN SEKALI! Bahkan PASTI selalu 1 : 2.</b><br><br>
+                        Alasannya, diameter (d) merupakan sebuah garis lurus yang membelah lingkaran melewati titik pusat. Sedangkan jari-jari (r) adalah garis dari titik pusat ke tepi keliling lingkaran.<br><br>
+                        Secara definisi mutlak, panjang diameter akan selalu dua kali lipat dari panjang jari-jarinya (<b>d = 2 &times; r</b>). Sehingga, perbandingan antara r : d akan selalu bernilai <b>1 : 2</b> untuk lingkaran sebesar apapun.
+                    </div>
+                    
+                    <!-- SOAL 6 -->
+                    <div class="divider"></div>
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Soal 6</h3>
+                    <p style="font-size: 1.1rem;">Pemerintah kota akan membangun sebuah taman berbentuk lingkaran dengan diameter 62 meter. Di dalam taman tersebut akan dibuat jalur lari melingkar yang berjarak 3 meter dari tepi taman di bagian dalam taman. Di sekeliling jalur lari akan dipasang lampu penerangan dengan jarak antar-lampu 4 meter.<br><br>a) Tentukan jumlah lampu minimal yang diperlukan.<br>b) Jika biaya 1 buah lampu adalah Rp75.000, berapa total biaya pemasangan lampu?</p>
+                    <div style="margin-top: 20px; margin-bottom: 25px;">
+                        <label style="font-weight: bold;">a. Jumlah lampu:</label><br>
+                        <input type="number" id="essay6-a" class="control-input" style="width: 150px; font-size: 1rem; margin-top:5px;" placeholder="Jawab..."> <span style="font-weight:bold;">buah</span><br><br>
+                        <label style="font-weight: bold;">b. Total biaya (Rp):</label><br>
+                        <input type="number" id="essay6-b" class="control-input" style="width: 150px; font-size: 1rem; margin-top:5px;" placeholder="Jawab...">
+                    </div>
+                    <button class="primary-btn" id="btn-check-essay6" style="width: 100%;">Cek Jawaban Soal 6 🔍</button>
+                    <div id="essay6-feedback" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;"></div>
+                    <div id="essay6-explanation" style="display: none; font-size: 1rem; margin-top: 20px; color: var(--text-color); background: #e0f2fe; padding: 20px; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
+                        <strong>💡 Pembahasan:</strong><br><br>
+                        <b>a)</b> Jari-jari taman = 62 / 2 = 31 m.<br>
+                        Jari-jari jalur lari = 31 - 3 = 28 m.<br>
+                        Keliling jalur lari = 2 &times; (22/7) &times; 28 = 176 m.<br>
+                        Jumlah lampu = 176 / 4 = <b>44 buah</b>.<br><br>
+                        <b>b)</b> Total biaya = 44 &times; Rp75.000 = <b>Rp3.300.000</b>.
+                    </div>
+
+                    <!-- SOAL 7 -->
+                    <div class="divider"></div>
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Soal 7</h3>
+                    <p style="font-size: 1.1rem;">Sebuah arena sepeda memiliki lintasan berbentuk lingkaran dengan jari-jari 35 meter. Arena tersebut akan diperlebar sehingga luas lintasan bertambah 1.694 m&sup2;. Manajemen ingin memastikan bahwa pertambahan lebar lintasan tidak melebihi 5 meter agar arena tetap aman.<br><br>a) Tentukan lebar lintasan tambahan tersebut.<br>b) Apakah keputusan manajemen memenuhi batas keamanan?</p>
+                    <div style="margin-top: 20px; margin-bottom: 25px;">
+                        <label style="font-weight: bold;">a. Lebar tambahan (m):</label><br>
+                        <input type="number" id="essay7-a" class="control-input" style="width: 150px; font-size: 1rem; margin-top:5px;" placeholder="Jawab..."><br><br>
+                        <label style="font-weight: bold;">b. Memenuhi batas aman?</label><br>
+                        <select id="essay7-b" class="control-input" style="width: 200px; font-size: 1rem; margin-top:5px; padding: 10px; border-radius: 10px; border: 2px solid #cbd5e1;">
+                            <option value="">Pilih...</option>
+                            <option value="ya">Ya, Memenuhi</option>
+                            <option value="tidak">Tidak Memenuhi</option>
+                        </select>
+                    </div>
+                    <button class="primary-btn" id="btn-check-essay7" style="width: 100%;">Cek Jawaban Soal 7 🔍</button>
+                    <div id="essay7-feedback" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;"></div>
+                    <div id="essay7-explanation" style="display: none; font-size: 1rem; margin-top: 20px; color: var(--text-color); background: #e0f2fe; padding: 20px; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
+                        <strong>💡 Pembahasan:</strong><br><br>
+                        Luas awal = (22/7) &times; 35 &times; 35 = 3.850 m&sup2;.<br>
+                        Luas akhir = 3.850 + 1.694 = 5.544 m&sup2;.<br>
+                        Jari-jari baru: &pi; &times; r&sup2; = 5.544 &rarr; (22/7) &times; r&sup2; = 5.544 &rarr; r&sup2; = 1.764 &rarr; r = 42 m.<br>
+                        Lebar tambahan = 42 - 35 = <b>7 m</b>.<br><br>
+                        Karena 7 m &gt; 5 m, maka perluasan tersebut <b>Tidak Memenuhi</b> batas keamanan.
+                    </div>
+
+                    <!-- SOAL 8 -->
+                    <div class="divider"></div>
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Soal 8</h3>
+                    <p style="font-size: 1.1rem;">Sebuah kolam ikan berbentuk lingkaran memiliki keliling 88 meter. Di tengah kolam akan dipasang tabung penyaring air berbentuk silinder dengan alas berupa lingkaran berjari-jari 3,5 meter. Air kolam setinggi 1,2 meter akan disaring seluruhnya. Berapa jarak dari dinding kolam ikan ke tabung penyaring?</p>
+                    <div style="margin-top: 20px; margin-bottom: 25px;">
+                        <input type="number" step="0.1" id="essay8" class="control-input" style="width: 150px; font-size: 1rem;" placeholder="Jawab..."> <span style="font-weight:bold;">meter</span>
+                    </div>
+                    <button class="primary-btn" id="btn-check-essay8" style="width: 100%;">Cek Jawaban Soal 8 🔍</button>
+                    <div id="essay8-feedback" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;"></div>
+                    <div id="essay8-explanation" style="display: none; font-size: 1rem; margin-top: 20px; color: var(--text-color); background: #e0f2fe; padding: 20px; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
+                        <strong>💡 Pembahasan:</strong><br><br>
+                        Keliling kolam = 88 m.<br>
+                        2 &times; (22/7) &times; r_kolam = 88 &rarr; r_kolam = 14 m.<br>
+                        Jari-jari tabung = 3,5 m.<br>
+                        Jarak dinding kolam ke tabung = 14 - 3,5 = <b>10,5 m</b>.
+                    </div>
+
+                    <!-- SOAL 9 -->
+                    <div class="divider"></div>
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Soal 9</h3>
+                    <p style="font-size: 1.1rem;">Sebuah plaza kota berbentuk lingkaran dengan jari-jari 21 meter akan dipasangi ubin di bagian pinggir selebar 7 meter sebagai area pejalan kaki. Ubin dijual dalam bentuk persegi dengan sisi 50 cm. Dalam proses pemasangan, diperkirakan 10% ubin akan terbuang karena pemotongan. Hitung luas area yang dipasangi ubin tersebut!</p>
+                    <div style="margin-top: 20px; margin-bottom: 25px;">
+                        <input type="number" id="essay9" class="control-input" style="width: 150px; font-size: 1rem;" placeholder="Jawab..."> <span style="font-weight:bold;">m&sup2;</span>
+                    </div>
+                    <button class="primary-btn" id="btn-check-essay9" style="width: 100%;">Cek Jawaban Soal 9 🔍</button>
+                    <div id="essay9-feedback" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;"></div>
+                    <div id="essay9-explanation" style="display: none; font-size: 1rem; margin-top: 20px; color: var(--text-color); background: #e0f2fe; padding: 20px; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
+                        <strong>💡 Pembahasan:</strong><br><br>
+                        Area plaza yang dipasangi ubin berbentuk cincin (ring).<br>
+                        Jari-jari luar (R) = 21 m.<br>
+                        Lebar ubin = 7 m &rarr; Jari-jari dalam (r) = 21 - 7 = 14 m.<br>
+                        Luas Area Ubin = Luas Luar - Luas Dalam<br>
+                        Luas Luar = (22/7) &times; 21 &times; 21 = 1.386 m&sup2;.<br>
+                        Luas Dalam = (22/7) &times; 14 &times; 14 = 616 m&sup2;.<br>
+                        Luas Area Ubin = 1.386 - 616 = <b>770 m&sup2;</b>.
+                    </div>
+
+                    <!-- SOAL 10 -->
+                    <div class="divider"></div>
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Soal 10</h3>
+                    <p style="font-size: 1.1rem;">Sebuah lapangan helikopter berbentuk lingkaran memiliki luas 1.386 m&sup2;. Di tengah lapangan dibuat zona aman berbentuk lingkaran dengan jari-jari sepertiga dari jari-jari lapangan. Dalam keadaan darurat, hanya daerah di luar zona aman yang boleh digunakan oleh tim penyelamat.<br><br>a) Tentukan jari-jari lapangan helikopter.<br>b) Hitung luas daerah yang boleh digunakan tim penyelamat.</p>
+                    <div style="margin-top: 20px; margin-bottom: 25px;">
+                        <label style="font-weight: bold;">a. Jari-jari lapangan (m):</label><br>
+                        <input type="number" id="essay10-a" class="control-input" style="width: 150px; font-size: 1rem; margin-top:5px;" placeholder="Jawab..."><br><br>
+                        <label style="font-weight: bold;">b. Luas daerah (m&sup2;):</label><br>
+                        <input type="number" id="essay10-b" class="control-input" style="width: 150px; font-size: 1rem; margin-top:5px;" placeholder="Jawab...">
+                    </div>
+                    <button class="primary-btn" id="btn-check-essay10" style="width: 100%;">Cek Jawaban Soal 10 🔍</button>
+                    <div id="essay10-feedback" style="margin-top: 20px; font-weight: bold; font-size: 1.1rem; text-align: center;"></div>
+                    <div id="essay10-explanation" style="display: none; font-size: 1rem; margin-top: 20px; color: var(--text-color); background: #e0f2fe; padding: 20px; border-radius: 10px; border-left: 5px solid var(--secondary-color);">
+                        <strong>💡 Pembahasan:</strong><br><br>
+                        <b>a)</b> Luas = 1.386 m&sup2; &rarr; (22/7) &times; r&sup2; = 1.386 &rarr; r&sup2; = 441 &rarr; r = <b>21 m</b>.<br>
+                        <b>b)</b> Jari-jari zona aman = 1/3 &times; 21 = 7 m.<br>
+                        Luas zona aman = (22/7) &times; 7 &times; 7 = 154 m&sup2;.<br>
+                        Luas boleh digunakan = Luas total - Luas aman = 1.386 - 154 = <b>1.232 m&sup2;</b>.
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
