@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran Wujud Zat</title>
+    <!-- Google Fonts for a friendly, cheerful look -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Background decoration elements -->
+    <div class="bg-shape circle1"></div>
+    <div class="bg-shape circle2"></div>
+    <div class="bg-shape square"></div>
+
+    <div class="app-container">
+        <!-- ==============================================
+             HOME MENU
+             ============================================== -->
+        <section id="home" class="slide active">
+            <div class="hero">
+                <h1>Belajar <span>Wujud Zat</span> Itu Seru! 🚀</h1>
+                <p>Ayo pilih menu di bawah ini untuk mulai belajar</p>
+            </div>
+            
+            <div class="main-menu">
+                <button class="menu-btn btn-blue" onclick="navigateTo('menu1')">
+                    <i class="fa-solid fa-cubes"></i>
+                    <h2>3 Jenis Wujud Zat</h2>
+                </button>
+                <button class="menu-btn btn-green" onclick="navigateTo('menu2')">
+                    <i class="fa-solid fa-water"></i>
+                    <h2>Perubahan Wujud</h2>
+                </button>
+                <button class="menu-btn btn-orange" onclick="navigateTo('menu3')">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <h2>Quiz Game</h2>
+                </button>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             MENU 1: 3 JENIS WUJUD ZAT
+             ============================================== -->
+        <section id="menu1" class="slide">
+            <button class="back-btn" onclick="navigateTo('home')">
+                <i class="fa-solid fa-arrow-left"></i> Kembali
+            </button>
+            
+            <div class="section-header">
+                <h2>🧊 3 Jenis Wujud Zat 💧</h2>
+                <p>Arahkan kursor atau klik kartu untuk melihat sifat-sifatnya!</p>
+            </div>
+
+            <div class="cards-container">
+                <!-- KARTU ZAT PADAT -->
+                <div class="card zat-padat">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="icon-wrapper">🧊</div>
+                            <h3>Zat Padat</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Zat Padat</h3>
+                            <ul>
+                                <li><strong>Bentuk:</strong> Tetap</li>
+                                <li><strong>Volume:</strong> Tetap</li>
+                                <li><strong>Partikel:</strong> Sangat rapat & teratur</li>
+                                <li><strong>Gerakan:</strong> Bergetar di tempat</li>
+                                <li class="example-box"><strong>Contoh:</strong> Batu, meja, es</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KARTU ZAT CAIR -->
+                <div class="card zat-cair">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="icon-wrapper">💧</div>
+                            <h3>Zat Cair</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Zat Cair</h3>
+                            <ul>
+                                <li><strong>Bentuk:</strong> Mengikuti wadah</li>
+                                <li><strong>Volume:</strong> Tetap</li>
+                                <li><strong>Partikel:</strong> Renggang & tak teratur</li>
+                                <li><strong>Gerakan:</strong> Bergerak & bergeser</li>
+                                <li class="example-box"><strong>Contoh:</strong> Air, minyak, susu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KARTU ZAT GAS -->
+                <div class="card zat-gas">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="icon-wrapper">💨</div>
+                            <h3>Zat Gas</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Zat Gas</h3>
+                            <ul>
+                                <li><strong>Bentuk:</strong> Tidak tetap</li>
+                                <li><strong>Volume:</strong> Tidak tetap</li>
+                                <li><strong>Partikel:</strong> Sangat renggang</li>
+                                <li><strong>Gerakan:</strong> Bergerak bebas</li>
+                                <li class="example-box"><strong>Contoh:</strong> Udara, uap air</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             MENU 2: PERUBAHAN WUJUD ZAT
+             ============================================== -->
+        <section id="menu2" class="slide">
+            <button class="back-btn" onclick="navigateTo('home')">
+                <i class="fa-solid fa-arrow-left"></i> Kembali
+            </button>
+            
+            <div class="section-header">
+                <h2>🔄 Perubahan Wujud Zat 🔄</h2>
+                <p>Ada dua jenis perubahan wujud benda. Yuk kita pelajari!</p>
+            </div>
+
+            <div class="menu2-content">
+                <!-- Bagian Penjelasan -->
+                <div class="explanation-box new-style">
+                    <div class="exp-card-new fisika">
+                        <h3>Perubahan Fisika</h3>
+                        <ul class="highlight-list">
+                            <li><i class="fa-solid fa-chevron-right icon-yellow"></i> Tidak terjadi reaksi kimia</li>
+                            <li><i class="fa-solid fa-chevron-right icon-yellow"></i> Sifat zat tetap sama</li>
+                            <li><i class="fa-solid fa-chevron-right icon-yellow"></i> Perubahan bisa dibalik</li>
+                        </ul>
+                        <ul class="example-list">
+                            <li>Es mencair menjadi air</li>
+                            <li>Air menguap menjadi uap</li>
+                            <li>Kertas dilipat atau disobek</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="exp-card-new kimia">
+                        <h3>Perubahan Kimia</h3>
+                        <ul class="highlight-list">
+                            <li><i class="fa-solid fa-chevron-right icon-yellow"></i> Terjadi reaksi kimia</li>
+                            <li><i class="fa-solid fa-chevron-right icon-yellow"></i> Sifat zat berubah</li>
+                            <li><i class="fa-solid fa-chevron-right icon-yellow"></i> Umumnya tidak bisa dibalik</li>
+                        </ul>
+                        <ul class="example-list">
+                            <li>Kayu dibakar jadi arang</li>
+                            <li>Besi berkarat</li>
+                            <li>Makanan basi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Bagian Bagan Segitiga -->
+                <div class="diagram-container">
+                    <h3>Bagan Perubahan Fisika</h3>
+                    <p class="diagram-instruction">Pilih dan klik panah di bawah ini untuk melihat animasinya!</p>
+                    
+                    <div class="svg-wrapper" style="position: relative;">
+                        <!-- Energy Info Overlay -->
+                        <div id="energy-info" class="energy-info" style="display: none;">
+                            <div class="energy-icon" id="energy-icon"><i class="fa-solid fa-fire"></i></div>
+                            <div class="energy-text" id="energy-text">Memerlukan Energi Panas</div>
+                        </div>
+
+                        <!-- SVG for diagram -->
+                        <svg id="diagram-svg" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                                    <polygon points="0 0, 8 3, 0 6" fill="#b2bec3" />
+                                </marker>
+                                <marker id="arrowhead-active" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                                    <polygon points="0 0, 8 3, 0 6" fill="#ff6b6b" />
+                                </marker>
+                            </defs>
+                            
+                            <!-- Paths (Arrows) -->
+                            <!-- Padat to Gas (Menyublim) -->
+                            <path id="path-menyublim" class="diagram-path" d="M 170 310 L 270 120" stroke="#dfe6e9" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+                            <!-- Gas to Padat (Deposisi) -->
+                            <path id="path-deposisi" class="diagram-path" d="M 250 120 L 150 310" stroke="#dfe6e9" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+                            
+                            <!-- Gas to Cair (Mengembun) -->
+                            <path id="path-mengembun" class="diagram-path" d="M 330 120 L 450 310" stroke="#dfe6e9" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+                            <!-- Cair to Gas (Menguap) -->
+                            <path id="path-menguap" class="diagram-path" d="M 430 310 L 310 120" stroke="#dfe6e9" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+                            
+                            <!-- Padat to Cair (Mencair) -->
+                            <path id="path-mencair" class="diagram-path" d="M 200 330 L 400 330" stroke="#dfe6e9" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+                            <!-- Cair to Padat (Membeku) -->
+                            <path id="path-membeku" class="diagram-path" d="M 400 360 L 200 360" stroke="#dfe6e9" stroke-width="4" fill="none" marker-end="url(#arrowhead)"/>
+
+                            <!-- The Particle to animate (hidden by default) -->
+                            <circle id="anim-particle" cx="0" cy="0" r="12" fill="#ff6b6b" opacity="0" filter="drop-shadow(0 0 8px #ff6b6b)"/>
+
+                            <!-- Nodes (Ellipses) -->
+                            <g class="node node-gas" transform="translate(300, 80)">
+                                <ellipse cx="0" cy="0" rx="60" ry="35" fill="#fff" stroke="#a29bfe" stroke-width="4"/>
+                                <text x="0" y="6" font-family="Nunito" font-size="22" font-weight="bold" text-anchor="middle" fill="#2d3436">Gas</text>
+                            </g>
+                            
+                            <g class="node node-padat" transform="translate(130, 350)">
+                                <ellipse cx="0" cy="0" rx="60" ry="35" fill="#fff" stroke="#74b9ff" stroke-width="4"/>
+                                <text x="0" y="6" font-family="Nunito" font-size="22" font-weight="bold" text-anchor="middle" fill="#2d3436">Padat</text>
+                            </g>
+                            
+                            <g class="node node-cair" transform="translate(470, 350)">
+                                <ellipse cx="0" cy="0" rx="60" ry="35" fill="#fff" stroke="#55efc4" stroke-width="4"/>
+                                <text x="0" y="6" font-family="Nunito" font-size="22" font-weight="bold" text-anchor="middle" fill="#2d3436">Cair</text>
+                            </g>
+
+                            <!-- Clickable Labels -->
+                            <!-- Padat <-> Gas -->
+                            <g class="diagram-label" onclick="playAnimation('path-deposisi', 'Deposisi (Gas ke Padat)', 'melepaskan')">
+                                <rect x="110" y="160" width="100" height="28" rx="6" fill="#fff" transform="rotate(-50, 160, 174)"/>
+                                <text x="160" y="180" transform="rotate(-50, 160, 174)" font-family="Nunito" font-size="16" font-weight="bold" text-anchor="middle" fill="#6c5ce7">Deposisi</text>
+                            </g>
+                            <g class="diagram-label" onclick="playAnimation('path-menyublim', 'Menyublim (Padat ke Gas)', 'memerlukan')">
+                                <rect x="200" y="240" width="100" height="28" rx="6" fill="#fff" transform="rotate(-50, 250, 254)"/>
+                                <text x="250" y="260" transform="rotate(-50, 250, 254)" font-family="Nunito" font-size="16" font-weight="bold" text-anchor="middle" fill="#0984e3">Menyublim</text>
+                            </g>
+
+                            <!-- Gas <-> Cair -->
+                            <g class="diagram-label" onclick="playAnimation('path-mengembun', 'Mengembun (Gas ke Cair)', 'melepaskan')">
+                                <rect x="390" y="160" width="110" height="28" rx="6" fill="#fff" transform="rotate(50, 445, 174)"/>
+                                <text x="445" y="180" transform="rotate(50, 445, 174)" font-family="Nunito" font-size="16" font-weight="bold" text-anchor="middle" fill="#00b894">Mengembun</text>
+                            </g>
+                            <g class="diagram-label" onclick="playAnimation('path-menguap', 'Menguap (Cair ke Gas)', 'memerlukan')">
+                                <rect x="300" y="240" width="90" height="28" rx="6" fill="#fff" transform="rotate(50, 345, 254)"/>
+                                <text x="345" y="260" transform="rotate(50, 345, 254)" font-family="Nunito" font-size="16" font-weight="bold" text-anchor="middle" fill="#e17055">Menguap</text>
+                            </g>
+
+                            <!-- Padat <-> Cair -->
+                            <g class="diagram-label" onclick="playAnimation('path-mencair', 'Mencair (Padat ke Cair)', 'memerlukan')">
+                                <rect x="250" y="295" width="100" height="28" rx="6" fill="#fff"/>
+                                <text x="300" y="315" font-family="Nunito" font-size="16" font-weight="bold" text-anchor="middle" fill="#00b894">Mencair</text>
+                            </g>
+                            <g class="diagram-label" onclick="playAnimation('path-membeku', 'Membeku (Cair ke Padat)', 'melepaskan')">
+                                <rect x="250" y="370" width="100" height="28" rx="6" fill="#fff"/>
+                                <text x="300" y="390" font-family="Nunito" font-size="16" font-weight="bold" text-anchor="middle" fill="#0984e3">Membeku</text>
+                            </g>
+                        </svg>
+                        <div id="anim-message" class="anim-message">✨ Klik nama perubahan pada panah ✨</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==============================================
+             MENU 3: QUIZ GAME
+             ============================================== -->
+        <section id="menu3" class="slide">
+            <!-- Pilihan Level -->
+            <div id="quiz-level-selection">
+                <button class="back-btn" onclick="navigateTo('home')">
+                    <i class="fa-solid fa-arrow-left"></i> Kembali
+                </button>
+                <div class="section-header">
+                    <h2>🎮 Quiz Game Wujud Zat 🎮</h2>
+                    <p>Pilih level kuis yang ingin kamu mainkan!</p>
+                </div>
+                <div class="level-container">
+                    <button class="level-btn active-level" onclick="startQuiz(1)">
+                        <i class="fa-solid fa-star"></i> Level 1
+                    </button>
+                    <button class="level-btn active-level" onclick="startQuiz(2)">
+                        <i class="fa-solid fa-star"></i> Level 2
+                    </button>
+                    <button class="level-btn active-level" onclick="startQuiz(3)">
+                        <i class="fa-solid fa-star"></i> Level 3
+                    </button>
+                    <button class="level-btn active-level" onclick="startQuiz(4)">
+                        <i class="fa-solid fa-star"></i> Level 4
+                    </button>
+                    <button class="level-btn active-level" onclick="startQuiz(5)">
+                        <i class="fa-solid fa-star"></i> Level 5
+                    </button>
+                    <button class="level-btn active-level" onclick="startQuiz(6)">
+                        <i class="fa-solid fa-star"></i> Level 6
+                    </button>
+                </div>
+            </div>
+
+            <!-- Area Kuis (Tersembunyi Awalnya) -->
+            <div id="quiz-playground" style="display: none;">
+                <button class="back-btn" onclick="exitQuiz()">
+                    <i class="fa-solid fa-xmark"></i> Keluar Kuis
+                </button>
+                
+                <div class="quiz-header">
+                    <div class="quiz-progress-text">Soal <span id="current-q-num">1</span> dari <span id="total-q-num">10</span></div>
+                    <div class="quiz-progress-bar">
+                        <div id="quiz-progress-fill" style="width: 10%;"></div>
+                    </div>
+                    <div class="quiz-lives">Kesempatan: <span id="lives-count">❤️ ❤️</span></div>
+                </div>
+
+                <div class="quiz-question-card">
+                    <div id="question-text" class="question-text">Pertanyaan akan muncul di sini...</div>
+                    <div id="question-image" class="question-image" style="display: none;"></div>
+                    
+                    <div id="options-container" class="options-container">
+                        <!-- Options will be injected via JS -->
+                    </div>
+                </div>
+
+                <div id="explanation-modal" class="explanation-modal" style="display: none;">
+                    <div class="explanation-content">
+                        <h3 id="exp-title"></h3>
+                        <p id="exp-text"></p>
+                        <button class="next-btn" onclick="nextQuestion()">Lanjut <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <!-- Hasil Kuis Modal -->
+                <div id="result-modal" class="result-modal" style="display: none;">
+                    <div class="result-content">
+                        <h2>Kuis Selesai! 🎉</h2>
+                        <p>Skor Akhir Kamu:</p>
+                        <div id="final-score" class="final-score">100</div>
+                        <button class="back-btn" style="margin-top:20px;" onclick="exitQuiz()">Kembali ke Menu Level</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
