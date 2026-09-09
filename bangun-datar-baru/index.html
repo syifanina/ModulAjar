@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangun Datar - Matematika Kelas 5 SD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="presentation-container">
+        <header class="header">
+            <h1 class="title">BANGUN DATAR</h1>
+            <h2 class="subtitle">Matematika Kelas 5 SD</h2>
+            
+            <div class="nav-controls">
+                <button id="btn-slide-1" class="nav-btn active">1. Pengenalan</button>
+                <button id="btn-slide-2" class="nav-btn">2. Sifat & Ciri Khusus</button>
+                <button id="btn-slide-3" class="nav-btn">3. Keliling & Luas</button>
+            </div>
+        </header>
+
+        <div class="slides-wrapper">
+            <!-- SLIDE 1: PENGENALAN -->
+            <div id="slide-1" class="slide active-slide">
+                <main class="shapes-grid">
+                    <!-- Persegi -->
+                    <div class="shape-card" data-shape="Persegi">
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 100 100" width="120" height="120">
+                                <rect x="10" y="10" width="80" height="80" fill="#1cecf0" stroke="black" stroke-width="4"/>
+                            </svg>
+                        </div>
+                        <div class="shape-label-container"><span class="shape-label"></span></div>
+                    </div>
+                    <!-- Persegi Panjang -->
+                    <div class="shape-card" data-shape="Persegi Panjang">
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 150 100" width="160" height="120">
+                                <rect x="10" y="10" width="130" height="80" fill="#eb0ce1" stroke="black" stroke-width="4"/>
+                            </svg>
+                        </div>
+                        <div class="shape-label-container"><span class="shape-label"></span></div>
+                    </div>
+                    <!-- Segitiga -->
+                    <div class="shape-card" data-shape="Segitiga">
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 100 100" width="120" height="120">
+                                <polygon points="50,10 10,90 90,90" fill="#1b90f4" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="shape-label-container"><span class="shape-label"></span></div>
+                    </div>
+                    <!-- Jajargenjang -->
+                    <div class="shape-card" data-shape="Jajargenjang">
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 150 100" width="160" height="120">
+                                <polygon points="40,10 140,10 110,90 10,90" fill="#ed0e35" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="shape-label-container"><span class="shape-label"></span></div>
+                    </div>
+                    <!-- Belah Ketupat -->
+                    <div class="shape-card" data-shape="Belah Ketupat">
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 100 100" width="120" height="120">
+                                <polygon points="50,10 90,50 50,90 10,50" fill="#19f52f" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="shape-label-container"><span class="shape-label"></span></div>
+                    </div>
+                    <!-- Trapesium -->
+                    <div class="shape-card" data-shape="Trapesium">
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 120 100" width="140" height="120">
+                                <polygon points="40,10 80,10 110,90 10,90" fill="#f5ee0a" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="shape-label-container"><span class="shape-label"></span></div>
+                    </div>
+                    <!-- Layang-layang -->
+                    <div class="shape-card" data-shape="Layang-layang">
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 100 100" width="120" height="120">
+                                <polygon points="50,10 90,40 50,90 10,40" fill="#f97316" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="shape-label-container"><span class="shape-label"></span></div>
+                    </div>
+                </main>
+            </div>
+
+            <!-- SLIDE 2: SIFAT & CIRI KHUSUS -->
+            <div id="slide-2" class="slide">
+                <main class="shapes-grid sifat-grid">
+                    <!-- Persegi -->
+                    <div class="shape-card sifat-card">
+                        <h3 class="card-title">Persegi</h3>
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 100 100" width="100" height="100">
+                                <rect x="10" y="10" width="80" height="80" fill="#1cecf0" stroke="black" stroke-width="4"/>
+                            </svg>
+                        </div>
+                        <ul class="sifat-list">
+                            <li>4 sisi sama panjang</li>
+                            <li>4 sudut siku-siku (90°)</li>
+                            <li>4 simetri lipat & 4 simetri putar</li>
+                        </ul>
+                    </div>
+                    <!-- Persegi Panjang -->
+                    <div class="shape-card sifat-card">
+                        <h3 class="card-title">Persegi Panjang</h3>
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 150 100" width="130" height="100">
+                                <rect x="10" y="10" width="130" height="80" fill="#eb0ce1" stroke="black" stroke-width="4"/>
+                            </svg>
+                        </div>
+                        <ul class="sifat-list">
+                            <li>2 pasang sisi sejajar & sama panjang</li>
+                            <li>4 sudut siku-siku (90°)</li>
+                            <li>2 simetri lipat & 2 simetri putar</li>
+                        </ul>
+                    </div>
+                    <!-- Segitiga -->
+                    <div class="shape-card sifat-card">
+                        <h3 class="card-title">Segitiga</h3>
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 100 100" width="100" height="100">
+                                <polygon points="50,10 10,90 90,90" fill="#1b90f4" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <ul class="sifat-list">
+                            <li>Memiliki 3 sisi dan 3 titik sudut</li>
+                            <li>Jumlah ketiga sudutnya 180°</li>
+                        </ul>
+                    </div>
+                    <!-- Jajargenjang -->
+                    <div class="shape-card sifat-card">
+                        <h3 class="card-title">Jajargenjang</h3>
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 150 100" width="130" height="100">
+                                <polygon points="40,10 140,10 110,90 10,90" fill="#ed0e35" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <ul class="sifat-list">
+                            <li>2 pasang sisi sejajar & sama panjang</li>
+                            <li>Sudut yang berhadapan sama besar</li>
+                            <li>Tidak memiliki simetri lipat</li>
+                        </ul>
+                    </div>
+                    <!-- Belah Ketupat -->
+                    <div class="shape-card sifat-card">
+                        <h3 class="card-title">Belah Ketupat</h3>
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 100 100" width="100" height="100">
+                                <polygon points="50,10 90,50 50,90 10,50" fill="#19f52f" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <ul class="sifat-list">
+                            <li>4 sisi sama panjang</li>
+                            <li>Sudut yang berhadapan sama besar</li>
+                            <li>Kedua diagonal berpotongan tegak lurus</li>
+                        </ul>
+                    </div>
+                    <!-- Trapesium -->
+                    <div class="shape-card sifat-card">
+                        <h3 class="card-title">Trapesium</h3>
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 120 100" width="120" height="100">
+                                <polygon points="40,10 80,10 110,90 10,90" fill="#f5ee0a" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <ul class="sifat-list">
+                            <li>Memiliki sepasang sisi sejajar</li>
+                            <li>Jumlah sudut berdekatan di antara sisi sejajar adalah 180°</li>
+                        </ul>
+                    </div>
+                    <!-- Layang-layang -->
+                    <div class="shape-card sifat-card">
+                        <h3 class="card-title">Layang-layang</h3>
+                        <div class="shape-wrapper">
+                            <svg viewBox="0 0 100 100" width="100" height="100">
+                                <polygon points="50,10 90,40 50,90 10,40" fill="#f97316" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <ul class="sifat-list">
+                            <li>2 pasang sisi berdekatan sama panjang</li>
+                            <li>Sepasang sudut berhadapan sama besar</li>
+                            <li>Diagonalnya berpotongan tegak lurus</li>
+                        </ul>
+                    </div>
+                </main>
+            </div>
+
+            <!-- SLIDE 3: KELILING & LUAS (DENGAN KETERANGAN) -->
+            <div id="slide-3" class="slide">
+                <main class="shapes-grid formula-grid">
+                    <!-- Persegi -->
+                    <div class="shape-card formula-card" data-shape="Persegi" data-keliling="K = 4 × s" data-luas="L = s × s">
+                        <h3 class="card-title">Persegi</h3>
+                        <div class="shape-wrapper">
+                            <svg class="anim-svg" viewBox="-10 -10 120 120" width="120" height="120">
+                                <rect class="shape-fill" x="10" y="10" width="80" height="80" fill="#1cecf0" stroke="transparent"/>
+                                <rect class="shape-stroke" x="10" y="10" width="80" height="80" fill="transparent" stroke="black" stroke-width="4" pathLength="100"/>
+                                <text x="50" y="105" font-size="16" font-family="Outfit" font-weight="bold" fill="#000" text-anchor="middle">s</text>
+                            </svg>
+                        </div>
+                        <div class="formula-actions">
+                            <button class="action-btn btn-keliling">Keliling</button>
+                            <button class="action-btn btn-luas">Luas</button>
+                        </div>
+                        <div class="formula-display">Pilih tombol</div>
+                    </div>
+                    <!-- Persegi Panjang -->
+                    <div class="shape-card formula-card" data-shape="Persegi Panjang" data-keliling="K = 2 × (p + l)" data-luas="L = p × l">
+                        <h3 class="card-title">Persegi Panjang</h3>
+                        <div class="shape-wrapper">
+                            <svg class="anim-svg" viewBox="-10 -10 170 120" width="160" height="120">
+                                <rect class="shape-fill" x="10" y="10" width="130" height="80" fill="#eb0ce1" stroke="transparent"/>
+                                <rect class="shape-stroke" x="10" y="10" width="130" height="80" fill="transparent" stroke="black" stroke-width="4" pathLength="100"/>
+                                <text x="75" y="105" font-size="16" font-family="Outfit" font-weight="bold" fill="#000" text-anchor="middle">p</text>
+                                <text x="-2" y="55" font-size="16" font-family="Outfit" font-weight="bold" fill="#000">l</text>
+                            </svg>
+                        </div>
+                        <div class="formula-actions">
+                            <button class="action-btn btn-keliling">Keliling</button>
+                            <button class="action-btn btn-luas">Luas</button>
+                        </div>
+                        <div class="formula-display">Pilih tombol</div>
+                    </div>
+                    <!-- Segitiga -->
+                    <div class="shape-card formula-card" data-shape="Segitiga" data-keliling="K = a + b + c" data-luas="L = ½ × a × t">
+                        <h3 class="card-title">Segitiga</h3>
+                        <div class="shape-wrapper">
+                            <svg class="anim-svg" viewBox="-10 -10 120 120" width="120" height="120">
+                                <polygon class="shape-fill" points="50,10 10,90 90,90" fill="#1b90f4" stroke="transparent" stroke-linejoin="round"/>
+                                <polygon class="shape-stroke" points="50,10 10,90 90,90" fill="transparent" stroke="black" stroke-width="4" stroke-linejoin="round" pathLength="100"/>
+                                <!-- Tinggi -->
+                                <line x1="50" y1="10" x2="50" y2="90" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,5"/>
+                                <text x="58" y="60" font-size="14" font-family="Outfit" font-weight="bold" fill="#dc2626">t</text>
+                                <text x="50" y="105" font-size="16" font-family="Outfit" font-weight="bold" fill="#000" text-anchor="middle">a</text>
+                            </svg>
+                        </div>
+                        <div class="formula-actions">
+                            <button class="action-btn btn-keliling">Keliling</button>
+                            <button class="action-btn btn-luas">Luas</button>
+                        </div>
+                        <div class="formula-display">Pilih tombol</div>
+                    </div>
+                    <!-- Jajargenjang -->
+                    <div class="shape-card formula-card" data-shape="Jajargenjang" data-keliling="K = 2 × (a + b)" data-luas="L = a × t">
+                        <h3 class="card-title">Jajargenjang</h3>
+                        <div class="shape-wrapper">
+                            <svg class="anim-svg" viewBox="-10 -10 170 120" width="240" height="180">
+                                <polygon class="shape-fill" points="40,10 140,10 110,90 10,90" fill="#ed0e35" stroke="transparent" stroke-linejoin="round"/>
+                                <polygon class="shape-stroke" points="40,10 140,10 110,90 10,90" fill="transparent" stroke="black" stroke-width="4" stroke-linejoin="round" pathLength="100"/>
+                                <!-- Tinggi -->
+                                <line x1="40" y1="10" x2="40" y2="90" stroke="#dc2626" stroke-width="2" stroke-dasharray="5,5"/>
+                                <text x="45" y="55" font-size="14" font-family="Outfit" font-weight="bold" fill="#dc2626">t</text>
+                                <text x="60" y="105" font-size="16" font-family="Outfit" font-weight="bold" fill="#000" text-anchor="middle">a</text>
+                            </svg>
+                        </div>
+                        <div class="formula-actions">
+                            <button class="action-btn btn-keliling">Keliling</button>
+                            <button class="action-btn btn-luas">Luas</button>
+                        </div>
+                        <div class="formula-display">Pilih tombol</div>
+                    </div>
+                    <!-- Belah Ketupat -->
+                    <div class="shape-card formula-card" data-shape="Belah Ketupat" data-keliling="K = 4 × s" data-luas="L = ½ × d1 × d2">
+                        <h3 class="card-title">Belah Ketupat</h3>
+                        <div class="shape-wrapper">
+                            <svg class="anim-svg" viewBox="-10 -10 120 120" width="180" height="180">
+                                <polygon class="shape-fill" points="50,10 90,50 50,90 10,50" fill="#19f52f" stroke="transparent" stroke-linejoin="round"/>
+                                <polygon class="shape-stroke" points="50,10 90,50 50,90 10,50" fill="transparent" stroke="black" stroke-width="4" stroke-linejoin="round" pathLength="100"/>
+                                <!-- Diagonal -->
+                                <line x1="50" y1="10" x2="50" y2="90" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
+                                <line x1="10" y1="50" x2="90" y2="50" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,4"/>
+                                <text x="55" y="35" font-size="14" font-family="Outfit" font-weight="bold" fill="#dc2626">d1</text>
+                                <text x="70" y="45" font-size="14" font-family="Outfit" font-weight="bold" fill="#2563eb">d2</text>
+                                <text x="20" y="30" font-size="14" font-family="Outfit" font-weight="bold" fill="#000">s</text>
+                            </svg>
+                        </div>
+                        <div class="formula-actions">
+                            <button class="action-btn btn-keliling">Keliling</button>
+                            <button class="action-btn btn-luas">Luas</button>
+                        </div>
+                        <div class="formula-display">Pilih tombol</div>
+                    </div>
+                    <!-- Trapesium -->
+                    <div class="shape-card formula-card" data-shape="Trapesium" data-keliling="K = a + b + c + d" data-luas="L = ½ × (a + b) × t">
+                        <h3 class="card-title">Trapesium</h3>
+                        <div class="shape-wrapper">
+                            <svg class="anim-svg" viewBox="-10 -10 140 120" width="210" height="180">
+                                <polygon class="shape-fill" points="40,10 80,10 110,90 10,90" fill="#f5ee0a" stroke="transparent" stroke-linejoin="round"/>
+                                <polygon class="shape-stroke" points="40,10 80,10 110,90 10,90" fill="transparent" stroke="black" stroke-width="4" stroke-linejoin="round" pathLength="100"/>
+                                <!-- Tinggi -->
+                                <line x1="40" y1="10" x2="40" y2="90" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
+                                <text x="45" y="55" font-size="14" font-family="Outfit" font-weight="bold" fill="#dc2626">t</text>
+                                <text x="60" y="-2" font-size="14" font-family="Outfit" font-weight="bold" fill="#000" text-anchor="middle">a</text>
+                                <text x="60" y="105" font-size="14" font-family="Outfit" font-weight="bold" fill="#000" text-anchor="middle">b</text>
+                            </svg>
+                        </div>
+                        <div class="formula-actions">
+                            <button class="action-btn btn-keliling">Keliling</button>
+                            <button class="action-btn btn-luas">Luas</button>
+                        </div>
+                        <div class="formula-display">Pilih tombol</div>
+                    </div>
+                    <!-- Layang-layang -->
+                    <div class="shape-card formula-card" data-shape="Layang-layang" data-keliling="K = 2 × (a + b)" data-luas="L = ½ × d1 × d2">
+                        <h3 class="card-title">Layang-layang</h3>
+                        <div class="shape-wrapper">
+                            <svg class="anim-svg" viewBox="-10 -10 120 120" width="180" height="180">
+                                <polygon class="shape-fill" points="50,10 90,40 50,90 10,40" fill="#f97316" stroke="transparent" stroke-linejoin="round"/>
+                                <polygon class="shape-stroke" points="50,10 90,40 50,90 10,40" fill="transparent" stroke="black" stroke-width="4" stroke-linejoin="round" pathLength="100"/>
+                                <!-- Diagonal -->
+                                <line x1="50" y1="10" x2="50" y2="90" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
+                                <line x1="10" y1="40" x2="90" y2="40" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,4"/>
+                                <text x="55" y="70" font-size="14" font-family="Outfit" font-weight="bold" fill="#dc2626">d1</text>
+                                <text x="75" y="35" font-size="14" font-family="Outfit" font-weight="bold" fill="#2563eb">d2</text>
+                            </svg>
+                        </div>
+                        <div class="formula-actions">
+                            <button class="action-btn btn-keliling">Keliling</button>
+                            <button class="action-btn btn-luas">Luas</button>
+                        </div>
+                        <div class="formula-display">Pilih tombol</div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
