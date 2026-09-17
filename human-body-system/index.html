@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Body System - PPT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="presentation-container">
+        <!-- Slide 1 -->
+        <section class="slide active-slide" id="slide-1">
+            <header class="slide-header">
+                <h1>THE NERVOUS SYSTEM & THE BRAIN</h1>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Top Section: Nervous System -->
+                <div class="split-section top-section">
+                    <div class="text-content">
+                        <h2>1. THE NERVOUS SYSTEM</h2>
+                        <blockquote class="highlight-quote">
+                            <strong>The Body’s Control Center</strong><br>
+                            <em>It receives signals, processes information, and tells your body how to react.</em>
+                        </blockquote>
+                        
+                        <div class="main-parts">
+                            <h3>Main Parts:</h3>
+                            <ul>
+                                <li><strong>Central Nervous System (CNS):</strong> Brain & Spinal Cord <em>(Processes information)</em></li>
+                                <li><strong>Peripheral Nervous System (PNS):</strong> Nerves throughout the body <em>(Sends signals)</em></li>
+                            </ul>
+                        </div>
+
+                        <div class="interactive-flow">
+                            <h3>How It Works (Nervous Pathway):</h3>
+                            <div class="flow-container">
+                                <div class="flow-steps">
+                                    <button class="flow-btn" data-info="Something happens (e.g., touching a hot surface).">STIMULUS</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn" data-info="Your skin detects the heat.">RECEPTOR</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn" data-info="Sends the message to the center.">SENSORY NEURON</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn" data-info="Processes the message and decides what to do.">CENTRAL NERVOUS SYSTEM</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn" data-info="Sends the command to your muscles.">MOTOR NEURON</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn" data-info="You pull your hand away!">RESPONSE</button>
+                                </div>
+                                <div class="flow-info-panel">
+                                    <p id="flow-info-text">Click a step on the left to see the explanation!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <img src="images/nervous_system.jpg" alt="Nervous System Illustration" class="anatomy-img glow-effect">
+                    </div>
+                </div>
+
+                <div class="thick-divider"></div>
+
+                <!-- Bottom Section: The Brain -->
+                <div class="split-section bottom-section">
+                    <div class="image-content">
+                        <img src="images/brain.jpg" alt="Brain Regions Illustration" class="anatomy-img float-effect">
+                    </div>
+                    <div class="text-content">
+                        <h2>2. THE BRAIN</h2>
+                        <blockquote class="highlight-quote">
+                            <strong>The Commander-in-Chief</strong>
+                        </blockquote>
+                        
+                        <div class="brain-parts">
+                            <div class="part-card blue-card">
+                                <h3>CEREBRUM (The Thinker)</h3>
+                                <p><strong>Function:</strong> Thinking, memory, learning, speech, and voluntary movements.</p>
+                            </div>
+                            <div class="part-card green-card">
+                                <h3>CEREBELLUM (The Balancer)</h3>
+                                <p><strong>Function:</strong> Balance, posture, and smooth muscle coordination (e.g., riding a bike).</p>
+                            </div>
+                            <div class="part-card yellow-card">
+                                <h3>BRAINSTEM (The Automator)</h3>
+                                <p><strong>Function:</strong> Automatic functions vital for life (breathing, heartbeat, digestion).</p>
+                            </div>
+                        </div>
+
+                        <div class="memory-trick">
+                            <h3>⚡ QUICK MEMORY TRICK!</h3>
+                            <ul>
+                                <li><strong>Cerebrum:</strong> <em>I Think!</em></li>
+                                <li><strong>Cerebellum:</strong> <em>I Balance!</em></li>
+                                <li><strong>Brainstem:</strong> <em>I Breathe!</em></li>
+                            </ul>
+                        </div>
+
+                        <!-- Quiz Button -->
+                        <div class="quiz-btn-container">
+                            <button class="quiz-btn open-quiz-btn" data-quiz="nervous">🎯 Take Nervous System Quiz!</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide Navigation -->
+                <div class="slide-nav right">
+                    <button class="nav-btn next-btn" data-target="slide-2">Next: Respiratory System ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 2 -->
+        <section class="slide" id="slide-2">
+            <header class="slide-header">
+                <h1>THE RESPIRATORY SYSTEM</h1>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Top Section: Overview & Parts -->
+                <div class="split-section top-section">
+                    <div class="text-content">
+                        <h2>1. Overview</h2>
+                        <blockquote class="highlight-quote">
+                            <em>The respiratory system is responsible for taking in oxygen (O₂) needed by the body to produce energy and releasing carbon dioxide (CO₂) as a waste product.</em>
+                        </blockquote>
+                        
+                        <h2>2. Parts and Functions</h2>
+                        <div class="brain-parts" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="part-card blue-card">
+                                <h3>Nose</h3>
+                                <p>Filters, warms, and moistens incoming air using tiny hairs (cilia) and mucus.</p>
+                            </div>
+                            <div class="part-card blue-card">
+                                <h3>Pharynx (Throat)</h3>
+                                <p>A passageway that connects the nasal cavity to the larynx, allowing air to pass through.</p>
+                            </div>
+                            <div class="part-card green-card">
+                                <h3>Larynx (Voice Box)</h3>
+                                <p>Contains vocal cords to produce sound and protects the lower airway during swallowing.</p>
+                            </div>
+                            <div class="part-card green-card">
+                                <h3>Trachea (Windpipe)</h3>
+                                <p>A main tube lined with cilia that carries air to the lungs and traps dust and germs.</p>
+                            </div>
+                            <div class="part-card yellow-card">
+                                <h3>Bronchus & Bronchioles</h3>
+                                <p>Branched tubes that direct air into each lung and divide into smaller pathways.</p>
+                            </div>
+                            <div class="part-card yellow-card">
+                                <h3>Lungs & Alveoli (Air Sacs)</h3>
+                                <p>Tiny air sacs inside the lungs where actual gas exchange takes place (O₂ enters blood, CO₂ exits).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <img src="images/respiratory_system.jpg" alt="Respiratory System Illustration" class="anatomy-img glow-effect">
+                    </div>
+                </div>
+
+                <div class="thick-divider"></div>
+
+                <!-- Bottom Section: Breathing Mechanism -->
+                <div class="split-section bottom-section">
+                    <div class="text-content" style="flex: 1;">
+                        <h2>3. How It Works (Breathing Mechanism)</h2>
+                        
+                        <div class="interactive-flow">
+                            <h3>Airflow Pathway (Inhalation):</h3>
+                            <div class="flow-container">
+                                <div class="flow-steps">
+                                    <button class="flow-btn respiratory-btn">Air In</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn respiratory-btn">Nose</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn respiratory-btn">Pharynx ➔ Larynx</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn respiratory-btn">Trachea</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn respiratory-btn">Bronchus ➔ Bronchioles</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn respiratory-btn">Alveoli (Gas Exchange)</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-content" style="flex: 1;">
+                        <h3>Breathing Process</h3>
+                        <div class="memory-trick" style="margin-bottom: 1.5rem;">
+                            <h3 style="color: var(--accent-blue);">🌬️ Inhalation (Breathing In)</h3>
+                            <p>The diaphragm contracts and moves down, the rib cage expands, and air is pulled into the lungs.</p>
+                        </div>
+                        <div class="memory-trick" style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-color: #fca5a5;">
+                            <h3 style="color: #ef4444;">💨 Exhalation (Breathing Out)</h3>
+                            <p>The diaphragm relaxes and moves up, the rib cage shrinks, and air is pushed out of the lungs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Button -->
+                <div class="quiz-btn-container" style="margin-bottom: 2rem;">
+                    <button class="quiz-btn open-quiz-btn" data-quiz="respiratory">🎯 Take Respiratory System Quiz!</button>
+                </div>
+
+                <!-- Slide Navigation -->
+                <div class="slide-nav split-nav">
+                    <button class="nav-btn prev-btn" data-target="slide-1">⬅ Previous: Nervous System</button>
+                    <button class="nav-btn next-btn" data-target="slide-3">Next: Digestive System ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3 -->
+        <section class="slide" id="slide-3">
+            <header class="slide-header">
+                <h1>THE DIGESTIVE SYSTEM</h1>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Top Section: Overview + Image -->
+                <div class="split-section top-section">
+                    <div class="text-content">
+                        <h2>1. Overview</h2>
+                        <blockquote class="highlight-quote">
+                            <em>The digestive system breaks down food into nutrients that the body absorbs for energy, growth, and cell repair, and excretes the solid waste products.</em>
+                        </blockquote>
+
+                        <h2>2. Parts and Functions</h2>
+                        <div class="brain-parts" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="part-card blue-card">
+                                <h3>Mouth</h3>
+                                <p>Teeth chew food into smaller pieces, while saliva containing enzymes starts chemical digestion.</p>
+                            </div>
+                            <div class="part-card blue-card">
+                                <h3>Esophagus</h3>
+                                <p>A muscular tube that pushes food down to the stomach using wave-like contractions (peristalsis).</p>
+                            </div>
+                            <div class="part-card green-card">
+                                <h3>Stomach</h3>
+                                <p>A muscular organ that churns food and mixes it with acid and enzymes to break down proteins.</p>
+                            </div>
+                            <div class="part-card green-card">
+                                <h3>Liver</h3>
+                                <p>Produces bile, which helps break down fats in the small intestine.</p>
+                            </div>
+                            <div class="part-card yellow-card">
+                                <h3>Gallbladder</h3>
+                                <p>Stores bile produced by the liver until it is needed in the small intestine.</p>
+                            </div>
+                            <div class="part-card yellow-card">
+                                <h3>Pancreas</h3>
+                                <p>Produces digestive enzymes released into the small intestine to break down carbs, fats, and proteins.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #a855f7; background: linear-gradient(135deg, #faf5ff, #ede9fe);">
+                                <h3 style="color: #7c3aed;">Small Intestine</h3>
+                                <p>The main site for chemical digestion and nutrient absorption into the bloodstream.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #a855f7; background: linear-gradient(135deg, #faf5ff, #ede9fe);">
+                                <h3 style="color: #7c3aed;">Large Intestine</h3>
+                                <p>Absorbs water and minerals from unabsorbed food waste and turns it into solid stool.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #ec4899; background: linear-gradient(135deg, #fff0f6, #fce7f3);">
+                                <h3 style="color: #be185d;">Rectum</h3>
+                                <p>Stores solid waste (stool) temporarily until it is ready to be excreted.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #ec4899; background: linear-gradient(135deg, #fff0f6, #fce7f3);">
+                                <h3 style="color: #be185d;">Anus</h3>
+                                <p>The opening through which solid waste leaves the body.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <img src="images/digestive_system.jpg" alt="Digestive System Illustration" class="anatomy-img glow-effect">
+                    </div>
+                </div>
+
+                <div class="thick-divider"></div>
+
+                <!-- Bottom Section: Food Pathway -->
+                <div class="split-section bottom-section" style="justify-content: center;">
+                    <div class="text-content" style="flex: 1;">
+                        <h2>3. How It Works (Digestive Process)</h2>
+                        <h3>Food Pathway:</h3>
+                        <div class="interactive-flow">
+                            <div class="flow-container">
+                                <div class="flow-steps">
+                                    <button class="flow-btn digestive-btn" data-info="Mouth: Teeth chew food into smaller pieces and saliva starts chemical digestion with enzymes like amylase.">Mouth</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn digestive-btn" data-info="Esophagus: A muscular tube that moves food down to the stomach via wave-like muscle contractions called peristalsis.">Esophagus</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn digestive-btn" data-info="Stomach: Churns and mixes food with gastric acid and enzymes to break down proteins into a liquid called chyme.">Stomach</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn digestive-btn" data-info="Small Intestine: The main site for digestion and absorption. Bile from the liver and enzymes from the pancreas help break down food, and nutrients are absorbed into the bloodstream.">Small Intestine</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn digestive-btn" data-info="Large Intestine: Absorbs remaining water and minerals from the indigestible food matter, turning it into solid stool.">Large Intestine</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn digestive-btn" data-info="Rectum: Temporarily stores solid stool until the body is ready to expel it.">Rectum</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn digestive-btn" data-info="Anus: The final opening of the digestive tract through which solid waste is eliminated from the body.">Anus</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-content" style="flex: 1; display: flex; align-items: center; justify-content: center;">
+                        <div id="digestive-flow-info" class="flow-info-panel">
+                            <p>👆 Click each step in the pathway to learn more!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Button -->
+                <div class="quiz-btn-container" style="margin-bottom: 2rem;">
+                    <button class="quiz-btn open-quiz-btn" data-quiz="digestive">🎯 Take Digestive System Quiz!</button>
+                </div>
+
+                <!-- Slide Navigation -->
+                <div class="slide-nav split-nav">
+                    <button class="nav-btn prev-btn" data-target="slide-2">⬅ Previous: Respiratory System</button>
+                    <button class="nav-btn next-btn" data-target="slide-4">Next: Circulatory System ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4 -->
+        <section class="slide" id="slide-4">
+            <header class="slide-header">
+                <h1>THE CIRCULATORY SYSTEM</h1>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Top Section: Overview & Blood Vessels -->
+                <div class="split-section top-section">
+                    <div class="text-content">
+                        <h2>1. Overview</h2>
+                        <blockquote class="highlight-quote">
+                            <em>The circulatory system pumps and transports blood throughout the body to deliver oxygen and nutrients to cells and remove carbon dioxide and waste products.</em>
+                        </blockquote>
+
+                        <h2>2. Parts and Functions</h2>
+                        <div class="brain-parts" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="part-card" style="border-left: 5px solid #ef4444; background: linear-gradient(135deg, #fff5f5, #fee2e2); grid-column: 1 / -1;">
+                                <h3 style="color: #dc2626;">❤️ Heart</h3>
+                                <p>A muscular organ that acts as a pump to push blood through the entire body.</p>
+                            </div>
+                            <div class="part-card blue-card">
+                                <h3>Arteries</h3>
+                                <p>Carry <strong>oxygen-rich</strong> blood <em>away</em> from the heart to the body.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #6366f1; background: linear-gradient(135deg, #eef2ff, #e0e7ff);">
+                                <h3 style="color: #4338ca;">Veins</h3>
+                                <p>Carry <strong>oxygen-poor</strong> blood <em>back to</em> the heart.</p>
+                            </div>
+                            <div class="part-card green-card" style="grid-column: 1 / -1;">
+                                <h3>Capillaries</h3>
+                                <p>Tiny, thin vessels where nutrients, oxygen, and waste are <strong>exchanged</strong> between blood and body cells.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #ef4444; background: linear-gradient(135deg, #fff5f5, #fee2e2);">
+                                <h3 style="color: #dc2626;">Red Blood Cells (RBC)</h3>
+                                <p>Carry oxygen throughout the body.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #f59e0b; background: linear-gradient(135deg, #fffbeb, #fef3c7);">
+                                <h3 style="color: #d97706;">White Blood Cells (WBC)</h3>
+                                <p>Fight infections and diseases.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #ec4899; background: linear-gradient(135deg, #fdf2f8, #fce7f3);">
+                                <h3 style="color: #be185d;">Platelets</h3>
+                                <p>Help form blood clots to stop bleeding.</p>
+                            </div>
+                            <div class="part-card yellow-card">
+                                <h3>Plasma</h3>
+                                <p>The liquid part of blood that carries nutrients, hormones, and waste.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image placeholder for circulatory system -->
+                    <div class="image-content">
+                        <img src="images/circulatory_pathway.png" alt="Circulatory System Pathway" class="anatomy-img glow-effect">
+                    </div>
+                </div>
+
+                <div class="thick-divider"></div>
+
+                <!-- Bottom Section: Heart Parts + Pathways -->
+                <div class="split-section bottom-section">
+                    <!-- Heart Parts -->
+                    <div class="text-content" style="flex: 1;">
+                        <h2>3. Parts of the Heart</h2>
+                        <div class="brain-parts" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+                            <div class="part-card" style="border-left: 5px solid #6366f1; background: linear-gradient(135deg, #eef2ff, #e0e7ff);">
+                                <h3 style="color: #4338ca;">Right Atrium</h3>
+                                <p>Receives <strong>oxygen-poor</strong> blood returning from the body.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #6366f1; background: linear-gradient(135deg, #eef2ff, #e0e7ff);">
+                                <h3 style="color: #4338ca;">Right Ventricle</h3>
+                                <p>Pumps <strong>oxygen-poor</strong> blood to the <em>lungs</em> to get oxygen.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #ef4444; background: linear-gradient(135deg, #fff5f5, #fee2e2);">
+                                <h3 style="color: #dc2626;">Left Atrium</h3>
+                                <p>Receives fresh, <strong>oxygen-rich</strong> blood coming from the lungs.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #ef4444; background: linear-gradient(135deg, #fff5f5, #fee2e2);">
+                                <h3 style="color: #dc2626;">Left Ventricle</h3>
+                                <p>Pumps <strong>oxygen-rich</strong> blood out to the body (the <em>strongest</em> chamber).</p>
+                            </div>
+                            <div class="part-card green-card" style="grid-column: 1 / -1;">
+                                <h3>Valves</h3>
+                                <p>Flaps of tissue that keep blood flowing in <strong>one direction</strong> and prevent backflow.</p>
+                            </div>
+                        </div>
+
+                        <!-- Heart diagram image -->
+                        <div style="margin-top: 1rem; text-align: center;">
+                            <img src="images/heart_diagram.png" alt="Heart Diagram (RA, RV, LA, LV)" class="anatomy-img glow-effect" style="max-height: 320px; width: auto;">
+                        </div>
+                    </div>
+
+                    <!-- Circulatory Pathways -->
+                    <div class="text-content" style="flex: 1;">
+                        <h2>4. How It Works</h2>
+
+                        <div class="memory-trick" style="margin-bottom: 1.5rem; border-color: #ef4444; background: linear-gradient(135deg, #fff5f5, #fee2e2);">
+                            <h3 style="color: #dc2626;">🔴 Systemic Circulation</h3>
+                            <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 0.5rem;"><em>Peredaran Darah Besar — pumps oxygen-rich blood to the entire body</em></p>
+                            <div class="flow-steps" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;">
+                                <button class="flow-btn circulatory-red-btn" data-panel="systemic-info" data-info="Left Ventricle: The strongest chamber — pumps oxygenated blood out into the aorta.">Left Ventricle</button>
+                                <span class="arrow-down">⬇</span>
+                                <button class="flow-btn circulatory-red-btn" data-panel="systemic-info" data-info="Aorta & Arteries: The main highway for oxygen-rich blood, branching out to all organs and tissues.">Aorta &amp; Arteries</button>
+                                <span class="arrow-down">⬇</span>
+                                <button class="flow-btn circulatory-red-btn" data-panel="systemic-info" data-info="Body Cells: Cells receive O₂ and nutrients, then release CO₂ and waste back into the blood.">Entire Body (O₂ used, CO₂ released)</button>
+                                <span class="arrow-down">⬇</span>
+                                <button class="flow-btn circulatory-red-btn" data-panel="systemic-info" data-info="Veins: Carry oxygen-poor (deoxygenated) blood back toward the heart via the vena cava.">Veins</button>
+                                <span class="arrow-down">⬇</span>
+                                <button class="flow-btn circulatory-red-btn" data-panel="systemic-info" data-info="Right Atrium: Receives the oxygen-poor blood returning from the body, ready to be sent to the lungs.">Right Atrium</button>
+                            </div>
+                        </div>
+
+                        <div class="memory-trick" style="border-color: #6366f1; background: linear-gradient(135deg, #eef2ff, #e0e7ff);">
+                            <h3 style="color: #4338ca;">🔵 Pulmonary Circulation</h3>
+                            <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 0.5rem;"><em>Peredaran Darah Kecil — pumps oxygen-poor blood to the lungs</em></p>
+                            <div class="flow-steps" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;">
+                                <button class="flow-btn circulatory-blue-btn" data-panel="pulmonary-info" data-info="Right Ventricle: Pumps deoxygenated blood out toward the lungs via the pulmonary artery.">Right Ventricle</button>
+                                <span class="arrow-down">⬇</span>
+                                <button class="flow-btn circulatory-blue-btn" data-panel="pulmonary-info" data-info="Pulmonary Artery: The only artery that carries oxygen-poor blood, going from the heart to the lungs.">Pulmonary Artery</button>
+                                <span class="arrow-down">⬇</span>
+                                <button class="flow-btn circulatory-blue-btn" data-panel="pulmonary-info" data-info="Lungs: Gas exchange happens here — CO₂ is released and fresh O₂ is picked up into the blood.">Lungs (CO₂ out, O₂ in)</button>
+                                <span class="arrow-down">⬇</span>
+                                <button class="flow-btn circulatory-blue-btn" data-panel="pulmonary-info" data-info="Pulmonary Vein: The only vein that carries oxygen-rich blood, returning from the lungs to the heart.">Pulmonary Vein</button>
+                                <span class="arrow-down">⬇</span>
+                                <button class="flow-btn circulatory-blue-btn" data-panel="pulmonary-info" data-info="Left Atrium: Receives the fresh, oxygen-rich blood from the lungs, ready to pump it to the body.">Left Atrium</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Button -->
+                <div class="quiz-btn-container" style="margin-bottom: 2rem;">
+                    <button class="quiz-btn open-quiz-btn" data-quiz="circulatory">🎯 Take Circulatory System Quiz!</button>
+                </div>
+
+                <!-- Slide Navigation -->
+                <div class="slide-nav split-nav">
+                    <button class="nav-btn prev-btn" data-target="slide-3">⬅ Previous: Digestive System</button>
+                    <button class="nav-btn next-btn" data-target="slide-5">Next: Excretory System ➔</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5 -->
+        <section class="slide" id="slide-5">
+            <header class="slide-header">
+                <h1>THE EXCRETORY SYSTEM</h1>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Top Section: Overview + Image -->
+                <div class="split-section top-section">
+                    <div class="text-content">
+                        <h2>1. Overview</h2>
+                        <blockquote class="highlight-quote">
+                            <em>The excretory system filters waste products, excess water, and toxins from the blood and removes them from the body as urine.</em>
+                        </blockquote>
+
+                        <h2>2. Parts and Functions</h2>
+                        <div class="brain-parts" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="part-card" style="border-left: 5px solid #ef4444; background: linear-gradient(135deg, #fff5f5, #fee2e2); grid-column: 1 / -1;">
+                                <h3 style="color: #dc2626;">Aorta & Renal Artery</h3>
+                                <p>Carries blood rich in waste into the kidneys for filtering.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #8b5cf6; background: linear-gradient(135deg, #f5f3ff, #ede9fe);">
+                                <h3 style="color: #6d28d9;">🫘 Kidney</h3>
+                                <p>Filters blood to remove waste (urea) and excess water, forming urine.</p>
+                            </div>
+                            <div class="part-card blue-card">
+                                <h3>Renal Vein & Vena Cava</h3>
+                                <p>Carries clean, filtered blood back into the body's circulation.</p>
+                            </div>
+                            <div class="part-card" style="border-left: 5px solid #d97706; background: linear-gradient(135deg, #fffbeb, #fef3c7);">
+                                <h3 style="color: #b45309;">Ureter</h3>
+                                <p>Tubes that carry urine from the kidneys down to the bladder.</p>
+                            </div>
+                            <div class="part-card green-card">
+                                <h3>Bladder (Urinary Bladder)</h3>
+                                <p>A muscular organ that stores urine temporarily until it is ready to be released.</p>
+                            </div>
+                            <div class="part-card yellow-card" style="grid-column: 1 / -1;">
+                                <h3>Urethra</h3>
+                                <p>The tube through which urine exits the body.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image content -->
+                    <div class="image-content">
+                        <img src="images/excretory_diagram.png" alt="Excretory System Diagram" class="anatomy-img glow-effect" style="max-height: 450px; width: auto; object-fit: contain;">
+                    </div>
+                </div>
+
+                <div class="thick-divider"></div>
+
+                <!-- Bottom Section: Urine Pathway -->
+                <div class="split-section bottom-section">
+                    <!-- Kidney Filtration Flow -->
+                    <div class="text-content" style="flex: 1;">
+                        <h2>3. How Kidneys Work (Urine Pathway)</h2>
+                        <h3>Blood Filtration & Urine Flow:</h3>
+                        <div class="interactive-flow">
+                            <div class="flow-container">
+                                <div class="flow-steps">
+                                    <button class="flow-btn excretory-btn" data-info="Blood enters Kidney (via Aorta ➔ Renal Artery)">Blood enters Kidney</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn excretory-btn" data-info="Kidney filters waste & excess water (Nephrons)">Kidney filters waste</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn excretory-btn" data-info="Clean blood returns to body (via Renal Vein ➔ Vena Cava)">Clean blood returns to body</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn excretory-btn" data-info="Waste forms Urine">Waste forms Urine</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn excretory-btn" data-info="Tubes that carry urine from the kidneys down to the bladder.">Ureter</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn excretory-btn" data-info="A muscular organ that stores urine temporarily until it is ready to be released.">Bladder (Stored)</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn excretory-btn" data-info="The tube through which urine exits the body.">Urethra</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn excretory-btn" data-info="Urine is expelled from the body.">Excreted from Body</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Mechanisms -->
+                    <div class="text-content" style="flex: 1;">
+                        <h3>⚙️ Key Mechanisms Inside Nephrons</h3>
+                        <div class="memory-trick" style="margin-bottom: 1rem; border-color: #8b5cf6; background: linear-gradient(135deg, #f5f3ff, #ede9fe);">
+                            <h3 style="color: #6d28d9;">🔍 Filtering</h3>
+                            <p>Nephrons filter the blood — separating waste (urea, excess salts) from useful substances.</p>
+                        </div>
+                        <div class="memory-trick" style="margin-bottom: 1rem; border-color: #10b981; background: linear-gradient(135deg, #ecfdf5, #d1fae5);">
+                            <h3 style="color: #065f46;">♻️ Reabsorbing</h3>
+                            <p>Useful substances (glucose, needed water, minerals) are reabsorbed back into the bloodstream — nothing is wasted!</p>
+                        </div>
+                        <div class="memory-trick" style="border-color: #f59e0b; background: linear-gradient(135deg, #fffbeb, #fef3c7);">
+                            <h3 style="color: #92400e;">🚽 Excreting</h3>
+                            <p>The remaining harmful waste and excess water become <strong>urine</strong>, which flows down to the bladder and exits the body.</p>
+                        </div>
+
+                        <div id="excretory-flow-info" class="flow-info-panel" style="margin-top: 1rem;">
+                            <p>👆 Click each step in the flow to learn more!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Button -->
+                <div class="quiz-btn-container" style="margin-bottom: 2rem;">
+                    <button class="quiz-btn open-quiz-btn" data-quiz="excretory">🎯 Take Excretory System Quiz!</button>
+                </div>
+
+                <!-- Slide Navigation -->
+                <div class="slide-nav split-nav">
+                    <button class="nav-btn prev-btn" data-target="slide-4">⬅ Previous: Circulatory System</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" id="close-quiz-btn">&times;</span>
+            <div class="modal-header">
+                <h2>Quick Quiz 🧠</h2>
+            </div>
+            <div class="modal-body" id="quiz-container">
+                <div id="quiz-progress">Question 1 of 10</div>
+                <div id="quiz-question-container">
+                    <h3 id="quiz-question">Question text here?</h3>
+                    <div id="quiz-options">
+                        <!-- Options will be injected here via JS -->
+                    </div>
+                </div>
+                <div id="quiz-feedback" class="hidden">
+                    <div id="quiz-feedback-icon"></div>
+                    <p id="quiz-feedback-text"></p>
+                    <div id="quiz-explanation"></div>
+                    <button id="quiz-next-btn" class="quiz-btn-small">Next Question ➔</button>
+                </div>
+                <div id="quiz-result" class="hidden">
+                    <h3>Quiz Completed! 🎉</h3>
+                    <p>Your score: <span id="quiz-score"></span>/10</p>
+                    <button id="quiz-restart-btn" class="quiz-btn-small">Restart Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
