@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pernapasan Manusia - Pembelajaran IPAS</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="presentation-container">
+        <!-- Main Menu -->
+        <section class="slide active-slide" id="menu-slide"
+            style="display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
+            <div style="text-align: center; max-width: 800px; padding: 2rem;">
+                <h1
+                    style="font-family: 'Outfit', sans-serif; font-size: 3.5rem; font-weight: 800; color: white; margin-bottom: 1rem; text-transform: uppercase; background: linear-gradient(to right, #60a5fa, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    SISTEM TUBUH MANUSIA</h1>
+                <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 3rem;">Pilih materi pembelajaran yang ingin
+                    kamu pelajari hari ini!</p>
+
+                <div class="menu-cards" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <div class="menu-card" data-target="slide-1">
+                        <div class="menu-icon">🫁</div>
+                        <h3>Sistem Pernapasan</h3>
+                    </div>
+                    <div class="menu-card" data-target="slide-2">
+                        <div class="menu-icon"
+                            style="display: flex; justify-content: center; align-items: center; height: 4rem; margin-bottom: 1rem;">
+                            <img src="lambung.png" alt="Lambung"
+                                style="height: 100%; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));">
+                        </div>
+                        <h3>Sistem Pencernaan</h3>
+                    </div>
+                    <div class="menu-card" data-target="slide-3">
+                        <div class="menu-icon">❤️</div>
+                        <h3>Sistem Peredaran Darah</h3>
+                    </div>
+                    <div class="menu-card" data-target="slide-4"
+                        style="background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(251,191,36,0.15)); border: 1px solid rgba(245,158,11,0.4);">
+                        <div class="menu-icon">📝</div>
+                        <h3>Bank Soal</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 1: Sistem Pernapasan Manusia -->
+        <section class="slide" id="slide-1">
+            <div class="content-wrapper">
+                <header class="slide-header" style="position: relative;">
+                    <button class="back-to-menu"
+                        style="position: absolute; left: 2rem; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: white; font-family: 'Outfit'; font-weight: bold; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; transition: background 0.3s;">🔙
+                        Menu Utama</button>
+                    <h1>SISTEM PERNAPASAN MANUSIA</h1>
+                </header>
+                <!-- Top Section: Overview & Parts -->
+                <div class="split-section top-section">
+                    <div class="text-content">
+                        <h2>1. Apa Itu Sistem Pernapasan?</h2>
+                        <blockquote class="highlight-quote">
+                            <em>Bernapas adalah proses menghirup <strong>oksigen (zat asam)</strong> dan mengeluarkan
+                                <strong>karbondioksida (zat asam arang)</strong>.</em>
+                        </blockquote>
+
+                        <div class="image-content" style="margin-top: 2rem; margin-bottom: 2rem; text-align: center;">
+                            <img src="sistem-pernapasan.jpg" id="main-anatomy-img" alt="Sistem Pernapasan Manusia"
+                                class="anatomy-img glow-effect"
+                                style="max-width: 100%; max-height: 500px; border-radius: 16px; object-fit: contain; cursor: pointer; transition: transform 0.2s;"
+                                title="Klik untuk memperbesar">
+                        </div>
+
+                        <h2 id="toggle-organs-btn"
+                            style="cursor: pointer; display: inline-block; padding: 0.5rem 1rem; background: var(--bg-light); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--border-color); transition: all 0.3s; margin-bottom: 0;">
+                            2. Organ Pernapasan dan Fungsinya <span id="toggle-organs-icon"
+                                style="font-size: 0.8em; margin-left: 0.5rem;">🔽</span></h2>
+                        <div class="organ-parts" id="organ-parts-container" style="display: none;">
+                            <div class="part-card blue-card">
+                                <h3>Rongga Hidung</h3>
+                                <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                                <p class="function-text" style="display: none; margin-top: 1rem;"><strong>Lubang
+                                        hidung:</strong> tempat keluar masuk udara.<br>
+                                    <strong>Rambut hidung:</strong> menyaring debu/kotoran.<br>
+                                    <strong>Selaput lendir:</strong> menghangatkan dan melembabkan udara.
+                                </p>
+                            </div>
+                            <div class="part-card green-card">
+                                <h3>Laring (Pangkal Tenggorokan)</h3>
+                                <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                                <p class="function-text" style="display: none; margin-top: 1rem;">Di dalamnya terdapat
+                                    <strong>pita suara</strong> dan otot yang mengatur ketegangan pita suara sehingga
+                                    timbul bunyi.</p>
+                            </div>
+                            <div class="part-card yellow-card">
+                                <h3>Tenggorokan (Trakea)</h3>
+                                <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                                <p class="function-text" style="display: none; margin-top: 1rem;">Berbentuk pipa.
+                                    Memiliki selaput lendir berambut getar untuk <strong>menolak debu</strong>.
+                                    Bercabang dua (<strong>bronkus</strong>) menuju paru-paru kanan & kiri.</p>
+                            </div>
+                            <div class="part-card blue-card">
+                                <h3>Paru-Paru</h3>
+                                <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                                <p class="function-text" style="display: none; margin-top: 1rem;">Terletak di rongga
+                                    dada di atas <strong>diafragma</strong>. Terdiri dari paru-paru kanan (3 gelambir)
+                                    dan kiri (2 gelambir). Dibungkus selaput <strong>pleura</strong>.</p>
+                            </div>
+                            <div class="part-card green-card">
+                                <h3>Alveolus</h3>
+                                <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                                <p class="function-text" style="display: none; margin-top: 1rem;">Ujung dari bronkeolus
+                                    berupa kantong-kantong kecil (gelembung). Berfungsi sebagai tempat
+                                    <strong>pertukaran oksigen dan karbondioksida</strong>.</p>
+                            </div>
+                            <div class="part-card yellow-card">
+                                <h3>Cara Kerja Paru-Paru</h3>
+                                <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                                <p class="function-text" style="display: none; margin-top: 1rem;">Paru-paru mengembang
+                                    dan mengempis melalui gerakan <strong>tulang rusuk</strong> dan
+                                    <strong>diafragma</strong> (sekat antara rongga dada & perut).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thick-divider"></div>
+
+                <!-- Bottom Section: Breathing Mechanism -->
+                <div class="split-section bottom-section">
+                    <div class="text-content" style="flex: 1;">
+                        <h2>3. Mekanisme Pernapasan</h2>
+
+                        <div class="interactive-flow">
+                            <h3>Alur Udara Masuk (Inspirasi):</h3>
+                            <div class="flow-container">
+                                <div class="flow-steps">
+                                    <button class="flow-btn respiratory-btn"
+                                        data-info="Udara masuk melalui lubang hidung, disaring oleh rambut hidung, dan dihangatkan oleh selaput lendir.">Rongga
+                                        Hidung</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn respiratory-btn"
+                                        data-info="Udara melewati pangkal tenggorokan yang berisi pita suara.">Laring</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn respiratory-btn"
+                                        data-info="Udara turun melewati pipa tenggorokan. Rambut getarnya menolak debu dan benda asing.">Trakea</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn respiratory-btn"
+                                        data-info="Udara dari tenggorokan masuk melalui dua cabang besar yang disebut bronkus menuju ke dalam paru-paru kanan dan kiri.">Bronkus</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn respiratory-btn"
+                                        data-info="Udara mengalir masuk lebih dalam melalui cabang-cabang bronkus yang lebih kecil di dalam paru-paru.">Bronkeolus</button>
+                                    <span class="arrow-down">⬇</span>
+                                    <button class="flow-btn respiratory-btn"
+                                        data-info="Di kantong-kantong kecil (gelembung) ini terjadi pertukaran oksigen dan karbondioksida.">Alveolus</button>
+                                </div>
+                                <div class="flow-info-panel" style="margin-left: 2rem;">
+                                    <p id="respiratory-flow-info"><em>Klik langkah di sebelah kiri untuk melihat
+                                            penjelasan alurnya!</em></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-content" style="flex: 1;">
+                        <h3>2 Macam Pernapasan</h3>
+                        <div class="memory-trick"
+                            style="margin-bottom: 1.5rem; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 5px solid #3b82f6;">
+                            <h3 style="color: #2563eb; margin-top: 0;">🫁 1. Pernapasan Dada</h3>
+                            <p>Terjadi karena aktivitas <strong>otot antar tulang rusuk</strong>. Apabila otot berkerut
+                                (berkontraksi), tulang rusuk terangkat, volume rongga dada membesar, dan udara luar yang
+                                kaya O₂ masuk ke paru-paru (inspirasi).</p>
+                        </div>
+                        <div class="memory-trick"
+                            style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-left: 5px solid #ef4444;">
+                            <h3 style="color: #dc2626; margin-top: 0;">💪 2. Pernapasan Perut</h3>
+                            <p>Terjadi karena aktivitas <strong>otot diafragma</strong>. Apabila otot berkontraksi,
+                                posisi diafragma mendatar, ruang rongga dada membesar, dan udara luar masuk ke paru-paru
+                                (inspirasi).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thick-divider"></div>
+
+                <!-- Bottom Section: Penyakit Pernapasan -->
+                <div class="split-section top-section"
+                    style="flex-direction: column; align-items: flex-start; gap: 2rem;">
+                    <h2>4. Penyakit & Gangguan Alat Pernapasan</h2>
+
+                    <div style="width: 100%; display: flex; gap: 2rem; flex-wrap: wrap;">
+                        <div class="memory-trick"
+                            style="flex: 1; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-left: 5px solid #f59e0b;">
+                            <h3 style="color: #d97706; margin-top: 0;">⚠️ Faktor Penyebab Utama</h3>
+                            <ul style="margin-left: 1.5rem; color: #451a03; line-height: 1.6;">
+                                <li style="margin-bottom: 0.5rem;"><strong>Polusi Udara:</strong> Debu, asap kendaraan,
+                                    asap pabrik (mengandung <em>karbon monoksida</em>), dan asap rokok (mengandung
+                                    <em>nikotin</em>).</li>
+                                <li><strong>Serangan Kuman:</strong> Virus, bakteri, dan jamur yang masuk ke alat
+                                    pernapasan.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 1rem;">Macam-Macam Penyakit:</h3>
+                    <div class="organ-parts" style="width: 100%; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="part-card blue-card">
+                            <h3>1. Influenza & SARS</h3>
+                            <p>Disebabkan oleh <strong>virus</strong>. Gejalanya demam, pilek, sakit kepala, dan hidung
+                                berair. Dicegah dengan minum vitamin C dan istirahat teratur.</p>
+                        </div>
+                        <div class="part-card green-card">
+                            <h3>2. Asma</h3>
+                            <p>Penyempitan saluran pernapasan mendadak akibat alergi (bulu, debu, cuaca, asap).
+                                Gejalanya <strong>sulit bernapas</strong> dan napas berbunyi.</p>
+                        </div>
+                        <div class="part-card yellow-card">
+                            <h3>3. Bronkitis</h3>
+                            <p>Peradangan pada selaput lendir trakea & bronkus (akut & kronis). Ditandai dengan
+                                <strong>batuk berdahak</strong> dan demam.</p>
+                        </div>
+                        <div class="part-card blue-card">
+                            <h3>4. Pneumonia</h3>
+                            <p>Radang paru akut akibat infeksi kuman. Gejala: sesak napas, dada nyeri, batuk berlendir.
+                                Butuh perawatan antibiotik dan oksigen.</p>
+                        </div>
+                        <div class="part-card green-card">
+                            <h3>5. TBC (Tuberkulosis)</h3>
+                            <p>Infeksi bakteri <em>M. tuberculosis</em>. Gejala: mudah letih, berat badan turun,
+                                <strong>batuk berdarah</strong>. Dicegah lewat <strong>vaksin BCG</strong>.</p>
+                        </div>
+                        <div class="part-card yellow-card">
+                            <h3>6. Faringitis & Dipteri</h3>
+                            <p>Infeksi bakteri yang menyebabkan sakit saat menelan (radang faring). Dipteri ditandai
+                                demam & sesak napas, dicegah dengan <strong>vaksin DPT</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Slide 2: Sistem Pencernaan Manusia -->
+    <section class="slide" id="slide-2">
+        <div class="content-wrapper">
+            <header class="slide-header" style="position: relative;">
+                <button class="back-to-menu"
+                    style="position: absolute; left: 2rem; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: white; font-family: 'Outfit'; font-weight: bold; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; transition: background 0.3s;">🔙
+                    Menu Utama</button>
+                <h1>SISTEM PENCERNAAN MANUSIA</h1>
+            </header>
+
+            <!-- Top Section: Pengertian & Tugas -->
+            <div class="split-section top-section">
+                <div class="text-content" style="width: 100%;">
+                    <h2>1. Pengertian Sistem Pencernaan</h2>
+                    <blockquote class="highlight-quote">
+                        <em>Pencernaan adalah proses mengubah <strong>zat-zat makanan</strong> menjadi <strong>sari-sari
+                                makanan</strong> sehingga dapat diserap oleh tubuh kita.</em>
+                    </blockquote>
+
+                    <h3 style="margin-top: 2rem;">2 Jenis Pencernaan:</h3>
+                    <div style="display: flex; gap: 2rem; margin-top: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                        <div class="memory-trick"
+                            style="flex: 1; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 5px solid #3b82f6;">
+                            <h3 style="color: #2563eb; margin-top: 0;">🦷 Pencernaan Mekanis</h3>
+                            <p>Pencernaan yang dibantu oleh gerakan fisik seperti <strong>gigi</strong> meremas dan
+                                mengunyah. Terjadi di dalam <strong>mulut</strong> dan <strong>lambung</strong>.</p>
+                        </div>
+                        <div class="memory-trick"
+                            style="flex: 1; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce3 100%); border-left: 5px solid #10b981;">
+                            <h3 style="color: #059669; margin-top: 0;">🧪 Pencernaan Kimiawi</h3>
+                            <p>Pencernaan yang dibantu oleh cairan/getah <strong>enzim-enzim pencernaan</strong>.
+                                Terjadi di dalam <strong>mulut</strong>, <strong>lambung</strong>, dan <strong>usus 12
+                                    jari</strong>.</p>
+                        </div>
+                    </div>
+
+                    <h2>2. Tugas Alat Pencernaan</h2>
+                    <ul style="margin-left: 2rem; line-height: 1.8; font-size: 1.1rem; margin-bottom: 2rem;">
+                        <li><strong>Menghancurkan makanan</strong> menjadi bentuk yang halus.</li>
+                        <li><strong>Menyerap zat-zat makanan</strong> yang larut sehingga masuk ke dalam darah.</li>
+                        <li><strong>Mengeluarkan</strong> dari tubuh zat-zat yang tidak dapat dicerna (berupa kotoran).
+                        </li>
+                    </ul>
+
+                    <div class="image-content" style="margin-top: 1rem; margin-bottom: 2rem; text-align: center;">
+                        <img src="sistem-pencernaan.png" alt="Sistem Pencernaan Manusia" class="anatomy-img glow-effect"
+                            style="max-width: 100%; max-height: 500px; border-radius: 16px; object-fit: contain; cursor: pointer; transition: transform 0.2s;"
+                            title="Klik untuk memperbesar">
+                    </div>
+
+                    <h2 id="toggle-digestive-organs-btn"
+                        style="cursor: pointer; display: inline-block; padding: 0.5rem 1rem; background: var(--bg-light); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid var(--border-color); transition: all 0.3s; margin-bottom: 0;">
+                        3. Susunan Alat Pencernaan <span id="toggle-digestive-organs-icon"
+                            style="font-size: 0.8em; margin-left: 0.5rem;">🔽</span></h2>
+                    <div class="organ-parts" id="digestive-organ-parts-container" style="display: none;">
+
+                        <div class="part-card blue-card">
+                            <h3>1. Mulut</h3>
+                            <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                            <div class="function-text" style="display: none; margin-top: 1rem;">
+                                <p><strong>Gigi (Dewasa: 32, Anak: 20):</strong> Gigi taring untuk
+                                    <strong>merobek</strong>, gigi seri untuk <strong>memotong</strong>, gigi geraham
+                                    untuk <strong>mengunyah/melumatkan</strong> makanan.</p>
+                                <p><strong>Lidah:</strong> Mengatur letak makanan, membolak-balik, mengecap rasa,
+                                    mendorong makanan ke kerongkongan, dan membantu berbicara.</p>
+                            </div>
+                        </div>
+
+                        <div class="part-card green-card">
+                            <h3>2. Kerongkongan</h3>
+                            <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                            <div class="function-text" style="display: none; margin-top: 1rem;">
+                                <p>Menyalurkan makanan menuju lambung melalui <strong>Gerak Peristaltik</strong> (gerak
+                                    mendorong dan memijat makanan masuk ke lambung).</p>
+                            </div>
+                        </div>
+
+                        <div class="part-card yellow-card">
+                            <h3>3. Lambung</h3>
+                            <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                            <div class="function-text" style="display: none; margin-top: 1rem;">
+                                <p>Melakukan pencernaan <strong>mekanis</strong> (otot dinding meremas/mengaduk makanan)
+                                    dan <strong>kimiawi</strong> (dibantu enzim).</p>
+                                <div class="memory-trick"
+                                    style="margin-top: 1rem; background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-left: 5px solid #f59e0b;">
+                                    <h4 style="color: #d97706; margin-top: 0; margin-bottom: 0.5rem;">💡 Trik Mengingat:
+                                        LA-Pe-R</h4>
+                                    <ul style="margin-left: 1.5rem; color: #451a03; line-height: 1.6;">
+                                        <li><strong>L = Lambung</strong></li>
+                                        <li><strong>A = Asam Klorida:</strong> Membunuh kuman & mengasamkan makanan</li>
+                                        <li><strong>Pe = Pepsin:</strong> Mengubah protein menjadi pepton</li>
+                                        <li><strong>R = Renin:</strong> Mengubah protein susu menjadi kasein</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="part-card blue-card">
+                            <h3>4. Usus Halus</h3>
+                            <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                            <div class="function-text" style="display: none; margin-top: 1rem;">
+                                <p>Terdiri dari 3 bagian: <strong>Duodenum</strong> (usus 12 jari ±25cm),
+                                    <strong>Jejunum</strong> (usus kosong ±7m), dan <strong>Ileum</strong> (usus
+                                    penyerapan ±1m).</p>
+                                <p>Di usus 12 jari, terdapat getah pankreas yang kaya enzim.</p>
+                                <div class="memory-trick"
+                                    style="margin-top: 1rem; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 5px solid #3b82f6;">
+                                    <h4 style="color: #2563eb; margin-top: 0; margin-bottom: 0.5rem;">💡 Trik Mengingat:
+                                        P-L-T-A</h4>
+                                    <ul style="margin-left: 1.5rem; color: #1e3a8a; line-height: 1.6;">
+                                        <li><strong>P = Pankreas</strong></li>
+                                        <li><strong>L = Lipase:</strong> Mengubah lemak menjadi asam lemak</li>
+                                        <li><strong>T = Tripsin:</strong> Mengubah protein menjadi asam amino</li>
+                                        <li><strong>A = Amylase:</strong> Mengubah tepung menjadi gula</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="part-card green-card">
+                            <h3>5. Usus Besar</h3>
+                            <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                            <div class="function-text" style="display: none; margin-top: 1rem;">
+                                <p>Terjadi <strong>penyerapan air dan garam mineral</strong>.</p>
+                                <p>Terdapat bakteri pembusuk (<em>Escherichia coli</em>) yang membusukkan sisa makanan
+                                    menjadi kotoran (tinja).</p>
+                            </div>
+                        </div>
+
+                        <div class="part-card yellow-card">
+                            <h3>6. Anus</h3>
+                            <button class="toggle-function-btn">👁️ Tampilkan Fungsi</button>
+                            <div class="function-text" style="display: none; margin-top: 1rem;">
+                                <p>Tempat pembuangan sisa makanan dari tubuh.</p>
+                                <p><em>*Seluruh proses pencernaan dari makanan sampai pelepasan berlangsung antara 12 –
+                                        24 jam.</em></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="thick-divider"></div>
+
+            <!-- Bottom Section: Penyakit Pencernaan -->
+            <div class="split-section top-section" style="flex-direction: column; align-items: flex-start; gap: 2rem;">
+                <h2>4. Penyakit Yang Menyerang Alat Pencernaan</h2>
+
+                <div class="organ-parts" style="width: 100%; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+
+                    <div class="part-card blue-card">
+                        <h3>1. Diare / Mencret</h3>
+                        <p><strong>Gejala:</strong> Buang air besar encer lebih dari 4x sehari, perut sakit.</p>
+                        <p><strong>Penyebab:</strong> Makanan kotor, alergi, asam/pedas berlebih.</p>
+                        <p><strong>Pencegahan:</strong> Minum <strong>oralit</strong> (larutan gula dan garam).</p>
+                    </div>
+
+                    <div class="part-card yellow-card">
+                        <h3>2. Maag</h3>
+                        <p>Penyakit lambung & usus 12 jari akibat produksi <strong>asam klorida</strong> berlebih.</p>
+                        <p><strong>Gejala:</strong> Perut perih dan mulas bila terlambat makan.</p>
+                    </div>
+
+                    <div class="part-card green-card">
+                        <h3>3. Radang Usus Buntu (Apendisitis)</h3>
+                        <p><strong>Penyebab:</strong> Penumpukan kotoran di usus buntu bagian umbai cacing.</p>
+                        <p><strong>Gejala:</strong> Nyeri perut kanan bawah, mual, muntah, dan demam.</p>
+                    </div>
+
+                    <div class="part-card blue-card">
+                        <h3>4. Tifus</h3>
+                        <p>Penyakit peradangan pada usus karena kebersihan makan/minum tidak terjaga.</p>
+                        <p><strong>Gejala:</strong> Menggigil, lemah, mual, demam tinggi, punggung sakit.</p>
+                    </div>
+
+                    <div class="part-card yellow-card">
+                        <h3>5. Sembelit Kronis</h3>
+                        <p><strong>Penyebab:</strong> Sulit BAB karena sering menahan BAB atau stres/cemas.</p>
+                        <p><strong>Pencegahan:</strong> Makan berserat (sayur/buah), banyak minum, BAB teratur.</p>
+                    </div>
+
+                    <div class="part-card green-card">
+                        <h3>6. Sariawan & Xerostamia</h3>
+                        <p><strong>Sariawan:</strong> Radang bibir/gusi karena tergigit, alergi pedas, kurang
+                            <strong>vitamin C</strong>.</p>
+                        <p><strong>Xerostamia:</strong> Mulut sangat kering & sedikit air liur. Sulit menelan akibat
+                            kurang enzim amilase.</p>
+                    </div>
+
+                    <div class="part-card blue-card">
+                        <h3>7. Radang Hati (Hepatitis)</h3>
+                        <p><strong>Penyebab:</strong> Serangan virus pada hati.</p>
+                        <p><strong>Gejala:</strong> Bagian putih mata dan air seni berubah kekuningan, letih, hilang
+                            nafsu makan.</p>
+                    </div>
+
+                    <div class="part-card yellow-card">
+                        <h3>8. Keracunan Makanan</h3>
+                        <p><strong>Penyebab:</strong> Bakteri dalam makanan.</p>
+                        <p><strong>Gejala:</strong> Muntah-muntah, diare, nyeri dada dan perut, demam.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Slide 3: Sistem Peredaran Darah -->
+    <section class="slide" id="slide-3">
+        <div class="content-wrapper">
+            <header class="slide-header"
+                style="position: relative; background: linear-gradient(135deg, #7f1d1d, #b91c1c);">
+                <button class="back-to-menu"
+                    style="position: absolute; left: 2rem; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); border: none; color: white; font-family: 'Outfit'; font-weight: bold; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; transition: background 0.3s;">🔙
+                    Menu Utama</button>
+                <h1>SISTEM PEREDARAN DARAH MANUSIA</h1>
+            </header>
+
+            <!-- Section 1: Jantung -->
+            <div class="split-section top-section">
+                <div class="text-content" style="width: 100%;">
+                    <h2>1. Jantung</h2>
+                    <blockquote class="highlight-quote">
+                        <em>Jantung berfungsi sebagai <strong>pompa darah</strong> ke seluruh tubuh. Letaknya di rongga
+                            dada sebelah kiri, sebesar kepalan tangan (±300 gr), dibungkus selaput
+                            <strong>Perikardium</strong>.</em>
+                    </blockquote>
+
+                    <!-- Gambar bagian jantung -->
+                    <div class="image-content" style="margin: 1.5rem 0; text-align: center;">
+                        <img src="bagian-jantung.png" alt="Bagian Jantung" class="anatomy-img glow-effect"
+                            style="max-width: 100%; max-height: 450px; border-radius: 16px; object-fit: contain; cursor: pointer; transition: transform 0.2s;"
+                            title="Klik untuk memperbesar">
+                    </div>
+
+                    <!-- Katup & Sistem Peredaran -->
+                    <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                        <div class="memory-trick"
+                            style="flex: 1; background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); border-left: 5px solid #e11d48;">
+                            <h3 style="color: #be123c; margin-top: 0;">🩸 Katup Jantung</h3>
+                            <p>Berfungsi <strong>mencegah bercampurnya darah bersih dan darah kotor</strong>.</p>
+                            <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Bikuspidalis:</strong> antara serambi kiri & bilik kiri.</li>
+                                <li><strong>Trikuspidalis:</strong> antara serambi kanan & bilik kanan.</li>
+                            </ul>
+                        </div>
+                        <div class="memory-trick"
+                            style="flex: 1; background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-left: 5px solid #dc2626;">
+                            <h3 style="color: #b91c1c; margin-top: 0;">💡 Darah Bersih vs Kotor</h3>
+                            <ul style="margin-left: 1.5rem; line-height: 1.8;">
+                                <li><strong>Darah Bersih:</strong> banyak mengandung oksigen (O₂).</li>
+                                <li><strong>Darah Kotor:</strong> banyak mengandung karbondioksida (CO₂).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Sistem Peredaran 2 jenis -->
+                    <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; align-items: stretch;">
+                        <!-- Kiri: penjelasan atas-bawah -->
+                        <div style="display: flex; flex-direction: column; gap: 1rem; flex: 1; min-width: 250px;">
+                            <div class="memory-trick"
+                                style="margin: 0; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 5px solid #2563eb;">
+                                <h3 style="color: #1d4ed8; margin-top: 0;">🔵 Peredaran Darah Besar</h3>
+                                <p>Darah keluar dari jantung membawa <strong>oksigen</strong> ke seluruh tubuh, dan
+                                    kembali ke jantung membawa <strong>karbondioksida</strong>.</p>
+                            </div>
+                            <div class="memory-trick"
+                                style="margin: 0; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a;">
+                                <h3 style="color: #15803d; margin-top: 0;">🟢 Peredaran Darah Kecil</h3>
+                                <p>Darah dari jantung menuju <strong>paru-paru</strong> membawa CO&#x2082;, dan kembali
+                                    membawa <strong>oksigen</strong> ke jantung.</p>
+                            </div>
+                        </div>
+                        <!-- Kanan: gambar -->
+                        <div
+                            style="flex: 1; min-width: 250px; display: flex; align-items: center; justify-content: center;">
+                            <img src="peredaran-darah.png" alt="Sistem Peredaran Darah" class="anatomy-img glow-effect"
+                                style="max-width: 100%; max-height: 400px; border-radius: 16px; object-fit: contain; cursor: pointer; transition: transform 0.2s;"
+                                title="Klik untuk memperbesar">
+                        </div>
+                    </div>
+
+                    <!-- Info penting jantung -->
+                    <div class="organ-parts" style="grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 2rem;">
+                        <div class="part-card blue-card">
+                            <h3>⚙️ Tahap Pemompaan</h3>
+                            <p><strong>Diastol:</strong> Jantung mengendur, darah masuk dari vena ke serambi.<br>
+                                <strong>Sistol:</strong> Serambi & bilik mengerut, darah mengalir ke pembuluh nadi.
+                            </p>
+                        </div>
+                        <div class="part-card yellow-card">
+                            <h3>💓 Denyut Jantung & Nadi</h3>
+                            <p><strong>Anak-anak:</strong> 90 – 100 kali/menit.<br>
+                                <strong>Dewasa:</strong> 70 – 80 kali/menit.<br>
+                                Alat periksa: <strong>Elektrokardiograf</strong>.
+                            </p>
+                        </div>
+                        <div class="part-card green-card">
+                            <h3>📊 Tekanan & Sirkulasi</h3>
+                            <p>Tekanan darah normal: <strong>120/80 mmHg</strong>.<br>
+                                Peredaran darah manusia bersifat <strong>tertutup</strong> (selalu di dalam pembuluh
+                                darah).</p>
+                        </div>
+                        <div class="part-card blue-card">
+                            <h3>🏛️ Fakta Sejarah</h3>
+                            <p>Penemu sistem peredaran darah: <strong>William Harvey (1616)</strong>.<br>
+                                Grafik denyut jantung disebut <strong>Elektrokardiogram</strong>.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="thick-divider"></div>
+
+            <!-- Section 2: Pembuluh Darah -->
+            <div class="split-section top-section">
+                <div class="text-content" style="width: 100%;">
+                    <h2>2. Pembuluh Darah</h2>
+                    <blockquote class="highlight-quote">
+                        <em>Pembuluh darah adalah saluran tempat mengalirnya darah dari seluruh tubuh menuju jantung
+                            atau sebaliknya, serta mengangkut <strong>nutrisi</strong> dan <strong>hormon</strong> ke
+                            semua organ tubuh.</em>
+                    </blockquote>
+
+                    <!-- 2 jenis pembuluh -->
+                    <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                        <div class="memory-trick"
+                            style="flex: 1; background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); border-left: 5px solid #e11d48;">
+                            <h3 style="color: #be123c; margin-top: 0;">🔴 Pembuluh Nadi (Arteri)</h3>
+                            <p>Mengalirkan darah <strong>keluar dari jantung</strong>. Dinding tebal, kuat, elastis.
+                                Letaknya agak dalam (tersembunyi). Jika luka, darah <strong>memancar</strong>. Arteri
+                                terbesar: <strong>Aorta</strong>.</p>
+                        </div>
+                        <div class="memory-trick"
+                            style="flex: 1; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-left: 5px solid #2563eb;">
+                            <h3 style="color: #1d4ed8; margin-top: 0;">🔵 Pembuluh Balik (Vena)</h3>
+                            <p>Mengalirkan darah <strong>masuk ke jantung</strong>. Dinding tipis, tidak elastis.
+                                Letaknya dekat permukaan (kebiruan). Jika luka, darah <strong>tidak memancar</strong>.
+                                Terdiri dari vena atas & vena bawah.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tabel perbandingan -->
+                    <h3 style="margin-bottom: 1rem;">Perbandingan Pembuluh Nadi & Balik:</h3>
+                    <div style="overflow-x: auto; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.08);">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+                            <thead>
+                                <tr style="background: linear-gradient(135deg, #1e293b, #334155); color: white;">
+                                    <th style="padding: 0.8rem 1rem; text-align: center;">No</th>
+                                    <th style="padding: 0.8rem 1rem; text-align: center;">Pembuluh Nadi (Arteri)</th>
+                                    <th style="padding: 0.8rem 1rem; text-align: center;">Pembuluh Balik (Vena)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background: #f8fafc;">
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        1</td>
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        Tempatnya agak ke dalam (tersembunyi)</td>
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        Dekat permukaan tubuh (kebiruan)</td>
+                                </tr>
+                                <tr style="background: white;">
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        2</td>
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        Dinding <strong>tebal, kuat, elastis</strong></td>
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        Dinding <strong>tipis, tidak elastis</strong></td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        3</td>
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        Aliran darah meninggalkan jantung</td>
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        Aliran darah menuju jantung</td>
+                                </tr>
+                                <tr style="background: white;">
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        4</td>
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        Katup hanya di satu tempat dekat jantung</td>
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        Katup di sepanjang pembuluh</td>
+                                </tr>
+                                <tr style="background: #f8fafc;">
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        5</td>
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        Jika luka, darah <strong>memancar</strong></td>
+                                    <td
+                                        style="padding: 0.7rem 1rem; text-align: center; border-bottom: 1px solid #e2e8f0;">
+                                        Jika luka, darah <strong>tidak memancar</strong></td>
+                                </tr>
+                                <tr style="background: white;">
+                                    <td style="padding: 0.7rem 1rem; text-align: center;">6</td>
+                                    <td style="padding: 0.7rem 1rem; text-align: center;">Denyut <strong>terasa</strong>
+                                    </td>
+                                    <td style="padding: 0.7rem 1rem; text-align: center;">Denyut <strong>tidak
+                                            terasa</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="memory-trick"
+                        style="margin-top: 1.5rem; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 5px solid #16a34a;">
+                        <h3 style="color: #15803d; margin-top: 0;">🩸 Pembuluh Kapiler</h3>
+                        <p>Pembuluh darah yang sangat halus dan berdinding tipis, merupakan <strong>ujung-ujung dari
+                                pembuluh balik dan nadi</strong>. Tempat terjadinya pertukaran zat antara darah dan
+                            jaringan tubuh.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="thick-divider"></div>
+
+            <!-- Section 3: Penyakit Peredaran Darah -->
+            <div class="split-section top-section" style="flex-direction: column; align-items: flex-start; gap: 2rem;">
+                <h2>3. Penyakit & Gangguan Peredaran Darah</h2>
+                <div class="organ-parts" style="width: 100%; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+
+                    <div class="part-card blue-card">
+                        <h3>1. Anemia</h3>
+                        <p><strong>Penyebab:</strong> Kekurangan zat besi, pendarahan, atau kanker tulang.</p>
+                        <p><strong>Gejala:</strong> Lemah, cepat lelah, kesemutan, jantung berdebar.</p>
+                        <p><strong>Pencegahan:</strong> Makan makanan yang mengandung <strong>zat besi</strong>.</p>
+                    </div>
+
+                    <div class="part-card yellow-card">
+                        <h3>2. Leukemia</h3>
+                        <p><strong>Penyebab:</strong> Produksi <strong>sel darah putih</strong> yang berlebihan hingga
+                            mengganggu keseimbangan komposisi darah.</p>
+                        <p><strong>Gejala:</strong> Lelah, kurang nafsu makan, nyeri tulang, pendarahan di kulit.</p>
+                    </div>
+
+                    <div class="part-card green-card">
+                        <h3>3. Hipertensi / Aterosklerosis</h3>
+                        <p><strong>Penyebab:</strong> Penebalan dinding arteri akibat penumpukan <strong>plaque</strong>
+                            (lemak, karbohidrat, kalsium) sehingga pembuluh menyempit.</p>
+                        <p><strong>Pencegahan:</strong> Tidak mengonsumsi garam berlebihan.</p>
+                    </div>
+
+                    <div class="part-card blue-card">
+                        <h3>4. Hipotensi</h3>
+                        <p>Tekanan darah rendah (&lt;90/70 mmHg).</p>
+                        <p><strong>Gejala:</strong> Mudah pusing saat berdiri, badan lesu, tangan & kaki dingin, mata
+                            berkunang-kunang.</p>
+                    </div>
+
+                    <div class="part-card yellow-card">
+                        <h3>5. Hemofilia</h3>
+                        <p>Penyakit <strong>keturunan</strong> dimana darah sukar membeku. Akibatnya luka kecil pun
+                            dapat menyebabkan pendarahan terus-menerus.</p>
+                    </div>
+
+                    <div class="part-card green-card">
+                        <h3>6. Pembuluh Nadi Mengeras</h3>
+                        <p><strong>Penyebab:</strong> Kelebihan zat kapur, lemak, <strong>kolesterol</strong>, dan gula
+                            dalam tubuh sehingga dinding pembuluh nadi mengeras.</p>
+                    </div>
+
+                    <div class="part-card blue-card">
+                        <h3>7. Stroke (Apoplexy)</h3>
+                        <p>Tersumbatnya pembuluh darah arteri di otak oleh plaque/gumpalan darah sehingga suplai darah
+                            ke otak <strong>terhenti tiba-tiba</strong>.</p>
+                        <p>Jika di pembuluh koroner jantung → <strong>Jantung Koroner</strong>.</p>
+                    </div>
+
+                    <div class="part-card yellow-card">
+                        <h3>8. Varises</h3>
+                        <p>Pelebaran pembuluh <strong>vena</strong> akibat bendungan atau lemahnya katup vena.</p>
+                        <p>Varises di sekitar anus disebut <strong>Wasir</strong>. Dicegah dengan
+                            <strong>olahraga</strong> teratur.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Slide 4: Bank Soal -->
+    <section class="slide" id="slide-4" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
+        <div
+            style="width: 100%; height: 100%; overflow-y: auto; display: flex; flex-direction: column; align-items: center; padding: 2rem;">
+            <button class="back-to-menu"
+                style="align-self: flex-start; background: rgba(255,255,255,0.15); border: none; color: white; font-family: 'Outfit'; font-weight: bold; padding: 0.5rem 1.2rem; border-radius: 8px; cursor: pointer; margin-bottom: 2rem; transition: background 0.3s;">🔙
+                Menu Utama</button>
+
+            <h1
+                style="font-family: 'Outfit', sans-serif; color: white; font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem; text-align: center;">
+                📝 Bank Soal</h1>
+            <p style="color: #94a3b8; margin-bottom: 2rem; font-size: 1rem; text-align: center;">Sistem Tubuh Manusia —
+                25 Soal Pilihan Ganda</p>
+
+            <!-- Quiz Container -->
+            <div id="quiz-container" style="width: 100%; max-width: 720px;">
+
+                <!-- Progress Bar -->
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <span id="quiz-progress-text" style="color: #94a3b8; font-size: 0.9rem; white-space: nowrap;">Soal 1
+                        / 8</span>
+                    <div style="flex: 1; background: rgba(255,255,255,0.1); border-radius: 99px; height: 8px;">
+                        <div id="quiz-progress-bar"
+                            style="height: 8px; border-radius: 99px; background: linear-gradient(to right, #f59e0b, #fbbf24); width: 12.5%; transition: width 0.4s ease;">
+                        </div>
+                    </div>
+                    <span id="quiz-score-display" style="color: #fbbf24; font-weight: bold; font-size: 0.9rem;">Skor:
+                        0</span>
+                </div>
+
+                <!-- Question Card -->
+                <div id="quiz-question-card"
+                    style="background: rgba(255,255,255,0.07); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <p id="quiz-question-number"
+                        style="color: #f59e0b; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; letter-spacing: 0.05em;">
+                        SOAL 1</p>
+                    <img id="quiz-question-image" src="" alt="Gambar Soal"
+                        style="display: none; max-width: 100%; max-height: 250px; border-radius: 12px; margin-bottom: 1rem; object-fit: contain;">
+                    <p id="quiz-question-text"
+                        style="color: white; font-size: 1.15rem; font-weight: 600; line-height: 1.6; margin-bottom: 0;">
+                    </p>
+                    <div id="quiz-question-hint"
+                        style="color: #94a3b8; font-size: 0.9rem; margin-top: 0.75rem; font-style: italic; display: none;">
+                    </div>
+                </div>
+
+                <!-- Answer Options -->
+                <div id="quiz-options"
+                    style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;"></div>
+
+                <!-- Explanation Box -->
+                <div id="quiz-explanation"
+                    style="display: none; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.4); border-radius: 12px; padding: 1.2rem; margin-bottom: 1.5rem;">
+                    <p id="quiz-explanation-text"
+                        style="color: #a7f3d0; margin: 0; line-height: 1.7; font-size: 0.95rem;"></p>
+                </div>
+
+                <!-- Action Button -->
+                <div style="text-align: center;">
+                    <button id="quiz-next-btn"
+                        style="display: none; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; border-radius: 12px; padding: 0.8rem 2.5rem; font-family: 'Outfit'; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s;">Soal
+                        Berikutnya ➡️</button>
+                </div>
+            </div>
+
+            <!-- Result Screen (hidden initially) -->
+            <div id="quiz-result" style="display: none; width: 100%; max-width: 720px; text-align: center;">
+                <div
+                    style="background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 3rem 2rem;">
+                    <p style="font-size: 4rem; margin-bottom: 1rem;">🎉</p>
+                    <h2 style="color: white; font-family: 'Outfit'; font-size: 2rem; margin-bottom: 0.5rem;">Selesai!
+                    </h2>
+                    <p style="color: #94a3b8; margin-bottom: 1.5rem;">Kuis Sistem Pernapasan</p>
+                    <div
+                        style="background: linear-gradient(135deg, #f59e0b, #d97706); border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem; display: inline-block; min-width: 200px;">
+                        <p style="color: white; font-family: 'Outfit'; font-size: 3rem; font-weight: 800; margin: 0;"
+                            id="result-score">0 / 8</p>
+                        <p style="color: rgba(255,255,255,0.8); margin: 0.25rem 0 0; font-size: 0.95rem;">Jawaban Benar
+                        </p>
+                    </div>
+                    <p id="result-message" style="color: #e2e8f0; font-size: 1.1rem; margin-bottom: 2rem;"></p>
+                    <button id="quiz-restart-btn"
+                        style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; border-radius: 12px; padding: 0.8rem 2rem; font-family: 'Outfit'; font-size: 1rem; font-weight: 600; cursor: pointer;">🔄
+                        Ulangi Kuis</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Zoom Modal -->
+    <div id="image-modal" class="image-modal">
+        <span class="close-modal-btn">&times;</span>
+        <img class="modal-content" id="zoomed-img">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
