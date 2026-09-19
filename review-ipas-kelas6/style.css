@@ -21,17 +21,18 @@ body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
     color: var(--text-dark);
+    height: 100dvh;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 #presentation-container {
     width: 100%;
     max-width: 1400px;
-    height: 100vh;
+    height: 100%;
     background-color: var(--bg-light);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     position: relative;
@@ -82,6 +83,8 @@ body {
     flex-direction: column;
     flex: 1;
     overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
     padding: 0;
 }
 
