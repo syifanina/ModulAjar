@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran: Ciri-ciri Limas Segilima 3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="ui-container">
+        <h1>Limas Segilima 3D</h1>
+        <p class="subtitle">Eksplorasi ciri-ciri limas segilima!</p>
+        <div class="controls">
+            <button id="btn-sisi" onclick="setMode('sisi')">Tampilkan Sisi (?)</button>
+            <button id="btn-rusuk" onclick="setMode('rusuk')">Tampilkan Rusuk (?)</button>
+            <button id="btn-sudut" onclick="setMode('sudut')">Tampilkan Titik Sudut (?)</button>
+            <button id="btn-jaring" onclick="setMode('jaring')">Tampilkan Jaring-Jaring</button>
+        </div>
+        <button id="btn-fold" onclick="toggleFold()" style="display:none; margin:10px auto; background-color:#8e44ad; color:white; border:none; padding:10px 20px; border-radius:30px; font-weight:bold; cursor:pointer; box-shadow:0 4px 15px rgba(142,68,173,0.4);">🔓 Buka Jaring-Jaring</button>
+        <button id="btn-music" class="music-btn" onclick="toggleMusic()">🔇 Nyalakan Musik</button>
+        <a href="../index.html" class="back-btn" style="display:inline-block; margin-top:20px; color:white; background-color:#2980b9; padding:10px 15px; border-radius:8px; text-decoration:none; font-weight:bold;">⬅ Kembali ke Menu</a>
+    </div>
+    <div id="info-panel" class="info-panel hidden"></div>
+    <audio id="bgMusic" loop><source src="https://syifanina.github.io/genially_assets/musik_3d.mp3" type="audio/mpeg"></audio>
+    <div class="watermark">Made by Syifa Sabrina</div>
+    <div id="labels-container"></div>
+    <div id="tooltip" class="hidden"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="script.js"></script>
+    <script src="../engine.js"></script>
+</body>
+</html>
