@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Little Steps • Addition &amp; Subtraction</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="quiz.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><a class="brand" href="#"><span class="brand-icon">＋</span> Little Steps <span class="brand-note">MATHS STUDIO</span></a><span class="stage">PRIMARY · STAGE 5</span></header>
+  <main>
+    <section class="hero">
+      <div><p class="eyebrow">A LITTLE PRACTICE. A LOT OF PROGRESS.</p><h1>Add it up.<br>Take it <span>step by step.</span></h1><p class="intro">Explore addition &amp; subtraction, build your confidence,<br class="desktop"> and make every digit count.</p><p class="translation" lang="id">Pelajari penjumlahan dan pengurangan, selangkah demi selangkah.</p><div class="hero-tags"><span>Cambridge Primary Stage 5 · Grade 5</span><span>Learn at your pace</span></div></div>
+      <div class="hero-art" aria-label="Place value: 46,785 plus 28,647 equals 75,432"><span class="art-label">SMALL STEPS, BIG DISCOVERIES</span><pre class="hero-sum">  46,785
++ 28,647
+────────
+  75,432</pre><span class="art-sticker">You've got this! ✦</span></div>
+    </section>
+    <nav class="tabs" aria-label="Learning sections"><button class="tab active" data-panel="learn" aria-pressed="true"><span>01</span> Learn</button><button class="tab" data-panel="practice" aria-pressed="false"><span>02</span> Practice quiz</button><button class="tab" data-panel="challenge" aria-pressed="false"><span>03</span> Mini challenge</button></nav>
+    <section id="learn" class="panel" aria-labelledby="learn-title">
+      <div class="section-heading"><div><p class="eyebrow">LET'S BUILD THE BASICS</p><h2 id="learn-title">A place for every digit.</h2><p class="translation" lang="id">Pahami caranya, lalu coba sendiri.</p></div><span class="pill">5 bite-sized lessons</span></div>
+      <div class="lesson-layout"><aside class="lesson-menu" aria-label="Choose a lesson"><button class="selected" data-lesson="0" aria-pressed="true"><span>01</span> Place value <small lang="id">Nilai tempat</small></button><button data-lesson="1" aria-pressed="false"><span>02</span> Addition <small lang="id">Penjumlahan dengan menyimpan</small></button><button data-lesson="2" aria-pressed="false"><span>03</span> Subtraction <small lang="id">Pengurangan melewati nol</small></button><button data-lesson="3" aria-pressed="false"><span>04</span> Decimals <small lang="id">Penjumlahan &amp; pengurangan desimal</small></button><button data-lesson="4" aria-pressed="false"><span>05</span> Word problems <small lang="id">Soal cerita</small></button></aside>
+      <article class="lesson-card"><div class="card-top"><span class="eyebrow" id="lesson-number"></span><span class="pill" id="step-count"></span></div><h3 id="lesson-title"></h3><p id="lesson-intro"></p><p class="translation" id="lesson-translation" lang="id"></p><div id="worked-example" class="worked-example" aria-live="polite"></div><div class="step-explanation" aria-live="polite"><span class="step-icon">✦</span><div><p id="step-text"></p><p class="translation" id="step-translation" lang="id"></p></div></div><div class="lesson-controls"><button class="button secondary" id="previous-step">← Previous Step</button><div id="step-dots" aria-hidden="true"></div><button class="button" id="next-step">Next Step →</button></div></article></div>
+      <div class="tip-strip"><span class="tip-symbol">✓</span><div><strong>Make checking a habit.</strong><p>Use the inverse operation to <mark>CHECK</mark>: undo addition with subtraction, and undo subtraction with addition.</p><p class="translation" lang="id">Periksa jawaban menggunakan operasi kebalikan.</p></div></div>
+      <div class="lesson-content" hidden>
+        <!-- Lesson text lives in HTML; JavaScript reveals one step at a time. -->
+        <article data-title="Meet the place-value team." data-intro="Each digit has a job. Its position tells you its value." data-id="Setiap angka memiliki nilai sesuai posisinya.">
+          <div data-view="place" data-active="0"><p>Start at the right: 5 is in the ones column. Its value is 5.</p><small>Mulai dari kanan: angka 5 berada di kolom satuan, nilainya 5.</small></div>
+          <div data-view="place" data-active="1"><p>8 is in the tens column: 8 tens have a value of 80.</p><small>Angka 8 di kolom puluhan bernilai 80.</small></div>
+          <div data-view="place" data-active="2"><p>7 is in the hundreds column. Its value is 700.</p><small>Angka 7 di kolom ratusan bernilai 700.</small></div>
+          <div data-view="place" data-active="3"><p>6 is in the thousands column. Its value is 6,000.</p><small>Angka 6 di kolom ribuan bernilai 6.000.</small></div>
+          <div data-view="place" data-active="4"><p>4 is in the ten-thousands column. Its value is 40,000. Moving one column left makes a place worth ten times as much.</p><small>Angka 4 bernilai 40.000. Setiap tempat di sebelah kiri bernilai sepuluh kali lipat.</small></div>
+        </article>
+        <article data-title="Add, carry, keep going." data-intro="Line up equal place values. Work from right to left." data-id="Sejajarkan nilai tempat. Hitung dari kanan ke kiri.">
+          <div data-a="46785" data-b="28647" data-op="+" data-result="?????"><p>Set out the numbers in columns. <mark>CARRYING</mark> is <mark>REGROUPING</mark>: exchange 10 of one unit for 1 of the next unit.</p><small>Menyimpan adalah pengelompokan ulang: tukar 10 satuan menjadi 1 puluhan.</small></div>
+          <div data-a="46785" data-b="28647" data-op="+" data-result="????2" data-carry="   1 "><p>Ones: 5 plus 7 makes 12. Write 2 ones and carry 1 ten above the tens column.</p><small>Satuan: 5 ditambah 7 menjadi 12. Tulis 2, simpan 1 ke kolom puluhan.</small></div>
+          <div data-a="46785" data-b="28647" data-op="+" data-result="???32" data-carry="  11 "><p>Tens: 8 plus 4 plus the carried 1 makes 13. Write 3 and carry 1 hundred.</p><small>Puluhan: 8 ditambah 4 ditambah simpanan 1 menjadi 13. Tulis 3, simpan 1 ratusan.</small></div>
+          <div data-a="46785" data-b="28647" data-op="+" data-result="??432" data-carry=" 111 "><p>Hundreds: 7 plus 6 plus 1 makes 14. Write 4 and carry 1 thousand.</p><small>Ratusan: 7 ditambah 6 ditambah 1 menjadi 14. Tulis 4, simpan 1 ribuan.</small></div>
+          <div data-a="46785" data-b="28647" data-op="+" data-result="?5432" data-carry="1111 "><p>Thousands: 6 plus 8 plus 1 makes 15. Write 5 and carry 1 ten-thousand.</p><small>Ribuan: 6 ditambah 8 ditambah 1 menjadi 15. Tulis 5, simpan 1 puluh ribuan.</small></div>
+          <div data-a="46785" data-b="28647" data-op="+" data-result="75432" data-carry="1111 "><p>Ten-thousands: 4 plus 2 plus 1 makes 7. The total is 75,432.</p><small>Puluh ribuan: 4 ditambah 2 ditambah 1 menjadi 7. Hasilnya 75.432.</small></div>
+        </article>
+        <article data-title="Exchange across the zeros." data-intro="Find the difference between 5,002 and 2,786." data-id="Cari selisih 5.002 dan 2.786.">
+          <div data-a="5002" data-b="2786" data-op="−" data-result="????"><p>2 ones cannot subtract 6 ones without <mark>BORROWING</mark>. We call this <mark>EXCHANGING</mark>. The tens and hundreds are both zero, so look to the thousands.</p><small>2 satuan tidak cukup untuk dikurangi 6. Puluhan dan ratusan nol, jadi mulai menukar dari ribuan.</small></div>
+          <div data-a="5002" data-b="2786" data-op="−" data-result="????" data-exchange="4,10,,"><p>Exchange 1 thousand for 10 hundreds. There are now 4 thousands and 10 hundreds.</p><small>Tukar 1 ribuan menjadi 10 ratusan. Tersisa 4 ribuan.</small></div>
+          <div data-a="5002" data-b="2786" data-op="−" data-result="????" data-exchange="4,9,10,"><p>Exchange 1 of those hundreds for 10 tens. Now there are 9 hundreds and 10 tens.</p><small>Tukar 1 ratusan menjadi 10 puluhan. Tersisa 9 ratusan.</small></div>
+          <div data-a="5002" data-b="2786" data-op="−" data-result="???6" data-exchange="4,9,9,12"><p>Exchange 1 ten for 10 ones. Now there are 9 tens and 12 ones. Subtract 6 ones from 12 to write 6.</p><small>Tukar 1 puluhan menjadi 10 satuan. Kini ada 9 puluhan dan 12 satuan. Kurangi 6 satuan, hasilnya 6.</small></div>
+          <div data-a="5002" data-b="2786" data-op="−" data-result="2216" data-exchange="4,9,9,12"><p>Tens: 9 take away 8 gives 1. Hundreds: 9 take away 7 gives 2. Thousands: 4 take away 2 gives 2.</p><small>Puluhan: 9 dikurangi 8 menjadi 1. Ratusan: 9 dikurangi 7 menjadi 2. Ribuan: 4 dikurangi 2 menjadi 2.</small></div>
+          <div data-a="2216" data-b="2786" data-op="+" data-result="5002"><p><mark>CHECK</mark> with addition. The difference plus the amount taken away gives the starting number, 5,002.</p><small>Periksa dengan penjumlahan. Selisih ditambah bilangan pengurang menghasilkan bilangan awal, 5.002.</small></div>
+        </article>
+        <article data-title="Keep the decimal points in line." data-intro="Use a dot for decimals and a comma for thousands in English notation." data-id="Dalam notasi Inggris, titik untuk desimal dan koma untuk ribuan.">
+          <div data-a="12.70" data-b="3.85" data-op="+" data-result="??.??"><p>Align the <mark>DECIMAL POINT</mark>. Add a zero so 12.7 becomes 12.70; the value stays the same.</p><small>Sejajarkan titik desimal. Tambahkan nol agar 12.7 menjadi 12.70; nilainya tetap.</small></div>
+          <div data-a="12.70" data-b="3.85" data-op="+" data-result="??.55" data-carry=" 1   "><p>Hundredths: 0 plus 5 gives 5. Tenths: 7 plus 8 gives 15. Write 5 tenths and carry 1 to the ones column.</p><small>Perseratusan: hasilnya 5. Persepuluhan: 7 ditambah 8 menjadi 15. Tulis 5 dan simpan 1 satuan.</small></div>
+          <div data-a="12.70" data-b="3.85" data-op="+" data-result="16.55" data-carry=" 1   "><p>Ones: 2 plus 3 plus 1 gives 6. Tens: 1 remains. Bring the decimal point straight down.</p><small>Satuan: 2 ditambah 3 ditambah 1 menjadi 6. Puluhan tetap 1. Turunkan titik desimal.</small></div>
+          <div data-a="10.00" data-b="4.76" data-op="−" data-result="??.??"><p>For decimal subtraction, align the points again. Exchange across the zeros, just as with whole numbers.</p><small>Untuk pengurangan desimal, sejajarkan titik dan lakukan penukaran melewati nol.</small></div>
+          <div data-a="10.00" data-b="4.76" data-op="−" data-result="05.24" data-exchange="0,9,,9,10"><p>Exchange 1 ten into 10 ones, then 1 one into 10 tenths, then 1 tenth into 10 hundredths. Subtract right to left: 10 take away 6 gives 4; 9 take away 7 gives 2; 9 take away 4 gives 5. The answer is 5.24.</p><small>Tukar bertahap hingga tersisa 9 satuan, 9 persepuluhan, dan 10 perseratusan. Kurangi dari kanan. Hasilnya 5.24.</small></div>
+        </article>
+        <article data-title="Read. Choose. Solve. Check." data-intro="A library has 1,250 books. It receives 375 more, then lends out 248. How many books remain?" data-id="Perpustakaan memiliki 1.250 buku, menerima 375 buku, lalu meminjamkan 248. Berapa buku yang tersisa?">
+          <div data-a="1250" data-b="375" data-op="+" data-result="????"><p>Choose the operations. “Receives more” means add; “lends out” means subtract. First find the total after receiving books.</p><small>Tentukan operasi: menerima berarti tambah, meminjamkan berarti kurang. Hitung jumlah setelah menerima buku.</small></div>
+          <div data-a="1250" data-b="375" data-op="+" data-result="1625"><p>After adding the new books, the library has 1,625 books.</p><small>Setelah penjumlahan, perpustakaan memiliki 1.625 buku.</small></div>
+          <div data-a="1625" data-b="248" data-op="−" data-result="1377"><p>Subtract the 248 books lent out. There are 1,377 books remaining. Include the unit in your conclusion.</p><small>Kurangi 248 buku yang dipinjamkan. Tersisa 1.377 buku. Sertakan satuan pada kesimpulan.</small></div>
+          <div data-a="1377" data-b="248" data-op="+" data-result="1625"><p><mark>CHECK</mark>: adding back the borrowed books gives 1,625, the total before lending. The answer makes sense.</p><small>Periksa: tambahkan kembali buku yang dipinjam. Hasilnya 1.625, jumlah sebelum dipinjamkan.</small></div>
+        </article>
+      </div>
+    </section>
+    <section id="practice" class="panel" hidden aria-labelledby="practice-title"><div class="section-heading"><div><p class="eyebrow">YOUR TURN TO SHINE</p><h2 id="practice-title">One question. One small win.</h2><p class="translation" lang="id">Pilih tipe latihan: 8 soal bilangan bulat, 8 desimal, atau 10 soal cerita campuran.</p></div><span class="pill">26 questions · 3 types</span></div><div class="quiz-picker" role="group" aria-label="Choose a practice type">
+      <button class="active" data-quiz-group="whole-game" aria-controls="whole-game" aria-pressed="true"><strong>01 · Whole numbers</strong><span>8 questions · Tens to ten-thousands</span><small lang="id">Bilangan bulat · Puluhan sampai puluh ribuan</small></button>
+      <button data-quiz-group="decimal-game" aria-controls="decimal-game" aria-pressed="false"><strong>02 · Decimals</strong><span>8 questions · Tenths &amp; hundredths</span><small lang="id">Desimal · Persepuluhan dan perseratusan</small></button>
+      <button data-quiz-group="story-game" aria-controls="story-game" aria-pressed="false"><strong>03 · Mixed word problems</strong><span>10 questions · Choose your operation</span><small lang="id">Soal cerita campuran · Tentukan operasinya</small></button>
+    </div><p class="quiz-picker-note">Each type has its own score. Switch any time; your progress stays until you refresh the page.<br><span class="translation" lang="id">Skor terpisah untuk setiap tipe. Kamu boleh berpindah; progres tetap ada sampai halaman dimuat ulang.</span></p>
+    <div id="whole-game" class="quiz-group" aria-label="Whole numbers practice"></div><div id="decimal-game" class="quiz-group" aria-label="Decimal practice" hidden></div><div id="story-game" class="quiz-group" aria-label="Mixed word problems practice" hidden></div></section>
+    <section id="challenge" class="panel" hidden aria-labelledby="challenge-title"><div class="section-heading"><div><p class="eyebrow">A LITTLE EXTRA CONFIDENCE</p><h2 id="challenge-title">The mini challenge.</h2><p class="translation" lang="id">5 soal penguatan: bilangan yang hilang dan soal dua langkah.</p></div><span class="pill">5 questions</span></div><div id="challenge-game"></div></section>
+    <footer><span class="brand">Little Steps <span class="footer-star">✦</span></span><p>Think carefully. Try bravely. Keep growing.<span class="translation" lang="id">Pikirkan baik-baik. Berani mencoba. Terus berkembang.</span></p><span>STAGE 5 · ADDITION &amp; SUBTRACTION</span></footer>
+  </main>
+</body>
+</html>
