@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuis Review ASAS Matematika — Kelas 4 SD</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Header Navigasi Utama -->
+    <header class="topbar">
+      <div class="topbar-brand">
+        <div class="brand-badge" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="2" width="16" height="20" rx="3" />
+            <line x1="8" y1="6" x2="16" y2="6" />
+            <line x1="8" y1="11" x2="10" y2="11" />
+            <line x1="14" y1="11" x2="16" y2="11" />
+            <line x1="8" y1="15" x2="10" y2="15" />
+            <line x1="14" y1="15" x2="16" y2="15" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Review ASAS Matematika 4 SD</h1>
+          <p>Belajar 1-on-1 &bull; 5 Bab &bull; 25 Soal</p>
+        </div>
+      </div>
+
+      <nav class="topbar-nav" aria-label="Navigasi Bab">
+        <button type="button" class="nav-pill" id="btn-home" data-view="home">
+          Home
+        </button>
+        <button type="button" class="nav-pill" id="btn-chapters" data-view="chapters">
+          Pilih Bab
+        </button>
+        <div class="chapter-pills" id="chapter-pills"></div>
+        <button type="button" class="nav-pill nav-pill-report" id="btn-report" data-view="report">
+          <span class="star-icon" aria-hidden="true">&#9733;</span>
+          Rapor
+          <span class="report-score-chip" id="header-score-chip">0/25</span>
+        </button>
+      </nav>
+
+      <!-- Mobile toggle antara Soal & Coretan -->
+      <div class="mobile-pane-switch hidden" id="mobile-pane-switch" role="tablist" aria-label="Pilih Panel">
+        <button type="button" class="mobile-tab active" data-pane="quiz">Soal</button>
+        <button type="button" class="mobile-tab" data-pane="scratch">Papan Hitung</button>
+      </div>
+    </header>
+
+    <!-- Layout Split-Screen 60% Kiri / 40% Kanan -->
+    <main class="workspace no-scratchpad" id="workspace">
+      <!-- PANEL KIRI (60%): Home, Pilih Bab, Soal, Pembahasan, Rapor -->
+      <section class="left-panel" id="left-panel" aria-label="Area Soal dan Materi">
+        <!-- View 1: Home / Start Screen -->
+        <div class="view-section" id="view-home">
+          <div class="home-welcome-card">
+            <span class="eyebrow">Persiapan ASAS Matematika Kelas 4 SD</span>
+            <h2>Selamat Datang di Kuis Review Matematika!</h2>
+            <p class="home-desc">
+              Yuk latihan soal bareng guru dengan 5 bab seru. Selesaikan Bab 1 terlebih dahulu untuk
+              membuka Bab 2, dan seterusnya sampai semua bab selesai!
+            </p>
+
+            <div class="home-highlights">
+              <div class="highlight-item">
+                <span class="highlight-num">5</span>
+                <span class="highlight-label">Bab Materi</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-num">25</span>
+                <span class="highlight-label">Soal Latihan</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-num" id="home-total-score">0</span>
+                <span class="highlight-label">Bintang Terkumpul</span>
+              </div>
+            </div>
+
+            <div class="home-start-actions">
+              <button type="button" class="btn btn-primary btn-start-hero" id="btn-start-app">
+                Start Belajar &rarr;
+              </button>
+              <button type="button" class="btn btn-outline hidden" id="btn-go-report-home">
+                Lihat Rapor Bintang
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- View 2: Pilihan Bab (Sequential Unlock) -->
+        <div class="view-section hidden" id="view-chapters">
+          <div class="chapters-header-card">
+            <div>
+              <span class="eyebrow">Pilih Bab Materi</span>
+              <h2>Kerjakan Berurutan dari Bab 1</h2>
+              <p>
+                Selesaikan semua 5 soal di setiap bab agar bab berikutnya terbuka.
+                Gunakan papan hitung di sebelah kanan untuk coret-coretan, ya!
+              </p>
+            </div>
+            <div class="hero-progress-box">
+              <div class="hero-stars-label">Progres Terbuka</div>
+              <div class="hero-stars-count"><span id="unlocked-count-text">1</span> / 5 Bab</div>
+            </div>
+          </div>
+
+          <div class="chapter-list" id="chapter-list"></div>
+        </div>
+
+        <!-- View 3: Area Pengerjaan Soal -->
+        <div class="view-section hidden" id="view-quiz">
+          <div class="quiz-header-bar">
+            <div class="quiz-pos-info">
+              <span class="pos-tag" id="quiz-chapter-tag">Bab 1</span>
+              <h2 id="quiz-chapter-title">Bilangan Cacah sampai 10.000</h2>
+            </div>
+            <div class="question-dots" id="question-dots" aria-label="Daftar Nomor Soal di Bab Ini"></div>
+          </div>
+
+          <article class="question-card" id="question-card">
+            <div class="question-meta">
+              <div class="question-num-pill">
+                <span class="question-number" id="question-number">Soal 1 dari 25</span>
+              </div>
+              <span class="question-type-badge" id="question-type-badge">PG Tunggal</span>
+            </div>
+
+            <div class="question-body" id="question-body"></div>
+
+            <!-- Visual Pendukung Soal -->
+            <div class="question-visual hidden" id="question-visual"></div>
+
+            <!-- Area Input / Pilihan Jawaban -->
+            <div class="answer-area" id="answer-area"></div>
+
+            <!-- Tombol Aksi Soal -->
+            <div class="action-bar">
+              <button type="button" class="btn btn-hint" id="btn-hint">
+                <span class="btn-icon" aria-hidden="true">&#128161;</span>
+                Petunjuk
+              </button>
+              <div class="action-bar-right">
+                <button type="button" class="btn btn-primary" id="btn-check">
+                  Cek Jawaban &#10003;
+                </button>
+              </div>
+            </div>
+
+            <!-- Kotak Petunjuk -->
+            <div class="feedback-box hint-box hidden" id="hint-box" role="region" aria-label="Petunjuk">
+              <div class="feedback-title">&#128161; Petunjuk Konsep</div>
+              <div class="feedback-content" id="hint-content"></div>
+              <div class="hint-visual hidden" id="hint-visual"></div>
+            </div>
+
+            <!-- Kotak Status & Pembahasan -->
+            <div class="feedback-box explanation-box hidden" id="explanation-box" role="region" aria-label="Hasil dan Pembahasan">
+              <div class="result-banner" id="result-banner"></div>
+              <div class="explanation-detail">
+                <div class="feedback-title">Yuk Lihat Caranya!</div>
+                <div class="feedback-content" id="explanation-content"></div>
+              </div>
+            </div>
+          </article>
+
+          <div class="quiz-footer-nav">
+            <button type="button" class="btn btn-outline" id="btn-prev">
+              &larr; Sebelumnya
+            </button>
+            <button type="button" class="btn btn-outline" id="btn-back-chapters">
+              Daftar Bab
+            </button>
+            <button type="button" class="btn btn-primary" id="btn-next">
+              Soal Berikutnya &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- View 4: Rapor Diagnostik Akhir -->
+        <div class="view-section hidden" id="view-report">
+          <div class="report-summary-card" id="report-summary-card"></div>
+          <div class="report-pos-list" id="report-chapter-list"></div>
+          <div class="report-actions">
+            <button type="button" class="btn btn-primary" id="btn-retry-wrong">
+              Ulangi Bab yang Masih Salah
+            </button>
+            <button type="button" class="btn btn-outline" id="btn-report-chapters">
+              Kembali ke Pilihan Bab
+            </button>
+            <button type="button" class="btn btn-danger-outline" id="btn-reset-all">
+              Reset Semua Jawaban
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PANEL KANAN (40%): Kanvas Coret-Coretan Digital -->
+      <aside class="right-panel" id="right-panel" aria-label="Kanvas Coret-Coretan Digital">
+        <div class="scratchpad-card">
+          <div class="scratchpad-header">
+            <div class="scratchpad-title-row">
+              <div>
+                <h3 id="scratchpad-title">Papan Hitung &mdash; Soal 1</h3>
+                <p>Coretan tersimpan otomatis per halaman soal</p>
+              </div>
+              <label class="grid-toggle" for="toggle-grid">
+                <input type="checkbox" id="toggle-grid" checked />
+                <span>Grid Kotak</span>
+              </label>
+            </div>
+
+            <div class="scratchpad-tools">
+              <div class="tool-group" role="group" aria-label="Pilih Warna Pena dan Penghapus">
+                <button type="button" class="tool-btn pen-btn active" data-tool="pen" data-color="#0F172A" title="Pena Hitam">
+                  <span class="color-dot dot-black"></span> Hitam
+                </button>
+                <button type="button" class="tool-btn pen-btn" data-tool="pen" data-color="#2563EB" title="Pena Biru">
+                  <span class="color-dot dot-blue"></span> Biru
+                </button>
+                <button type="button" class="tool-btn pen-btn" data-tool="pen" data-color="#DC2626" title="Pena Merah">
+                  <span class="color-dot dot-red"></span> Merah
+                </button>
+                <button type="button" class="tool-btn eraser-btn" data-tool="eraser" title="Penghapus">
+                  Penghapus
+                </button>
+              </div>
+
+              <div class="tool-group">
+                <button type="button" class="tool-btn" id="btn-undo-canvas" title="Batalkan goresan terakhir">
+                  Urungkan
+                </button>
+                <button type="button" class="tool-btn tool-btn-clear" id="btn-clear-canvas">
+                  Hapus Semua
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="canvas-stage show-grid" id="canvas-stage">
+            <canvas id="scratch-canvas"></canvas>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
